@@ -1,0 +1,45 @@
+ruSmart: 
+  port: ":8883"
+
+db: 
+  openDriver: "godror"
+  connection: 
+    "user=\"rusmart\" 
+     password=\"ru5mart65#\" 
+     connectString=\"10.2.1.98:1571/RUBRAM?expire_timconnect_time=2\"
+     sysdba=0
+     sysoper=0
+     poolMinSessions=1
+     poolMaxSessions=1000
+     poolIncrement=1
+     standaloneConnection=0
+     enableEvents=0
+     heterogeneousPool=0
+     externalAuth=0
+     prelim=0
+     poolWaitTimeout=5m
+     poolSessionMaxLifetime=1h
+     poolSessionTimeout=30s
+     timezone=\"local\""
+ 
+redis_cache:
+  addressLocal: "localhost:6000" 
+  address: "ru-smart-caching:6379"
+  password: "admin-ru-smart-caching"
+  db-num: 0
+
+token: 
+  issuer: "Ru-smart"
+  secretKey: "R#u#-#S#m#a#r#t"
+
+# redis_cache:
+#   addressLocal: "localhost:6000" 
+#   # addressLocal: "127.0.0.1:6000" 
+#   # addressLocal: "192.168.43.20:6000" 
+#   address: "ru-connext-caching:6379"
+#   password: "admin-ru-connext-caching"
+#   db-num: 0
+
+# token: 
+#   issuer: "Ru-connext"
+#   secretKey: "R#u#-#S#m#a#r#t"
