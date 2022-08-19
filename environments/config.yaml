@@ -2,11 +2,11 @@ ruConnext:
   port: ":8883"
 
 db: 
-  openDriver: "godror"
+  openDriver: " xxxxxxxxxx"
   connection: 
-    "user=\"rusmart\" 
-     password=\"ru5mart65#\" 
-     connectString=\"10.2.1.98:1571/RUBRAM?expire_timconnect_time=2\"
+    "user=\" xxxxxxxxxx\" 
+     password=\" xxxxxxxxxx#\" 
+     connectString=\"1 xxxxxxxxxx?expire_timconnect_time=2\"
      sysdba=0
      sysoper=0
      poolMinSessions=1
@@ -24,12 +24,12 @@ db:
  
 redis_cache:
   addressInLocal: "localhost:6000" 
-  addressInContainer: "ru-connext-caching:6379"
-  addressInServer: "202.41.160.129:6000"
-  password: "admin-ru-connext-caching"
+  addressInContainer: " xxxxxxxxxx:6379"
+  addressInServer: " xxxxxxxxxx:6000"
+  password: " xxxxxxxxxx"
   db-num: 0
 
 token: 
-  issuer: "Ru-connext"
-  secretKey: "R#u#-#C#o#n#n#e#x#c#t"
+  issuer: " xxxxxxxxxx"
+  secretKey: " xxxxxxxxxx"
 
