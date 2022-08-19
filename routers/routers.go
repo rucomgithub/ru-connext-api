@@ -66,7 +66,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 		mr30.GET("/data/pagination", mr30Handler.GetMr30Pagination)
 	}
 
-	PORT := viper.GetString("ruSmart.port")
+	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 
 }

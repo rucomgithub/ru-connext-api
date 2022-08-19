@@ -25,7 +25,7 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 	// ---------------------  Create Access Token  ----------------------------------------- //
 	accessTokenClaims := jwt.MapClaims{}
 	accessTokenClaims["issuer"] = viper.GetString("token.issuer")
-	accessTokenClaims["subject"] = "Ru-Smart" + stdCode
+	accessTokenClaims["subject"] = "Ru-Connext" + stdCode
 	accessTokenClaims["role"] = ""
 	accessTokenClaims["expires_token"] = expirationAccessToken
 	accessTokenClaims["access_token_key"] = generateToken.AccessTokenKey
@@ -42,7 +42,7 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 	// ---------------------  Create Refresh Token  ----------------------------------------- //
 	refreshTokenClaims := jwt.MapClaims{}
 	refreshTokenClaims["issuer"] = viper.GetString("token.issuer")
-	refreshTokenClaims["subject"] = "Ru-Smart::" + stdCode
+	refreshTokenClaims["subject"] = "Ru-Connext::" + stdCode
 	refreshTokenClaims["role"] = ""
 	refreshTokenClaims["expires_token"] = expirationRefreshToken
 	refreshTokenClaims["access_token_key"] = generateToken.AccessTokenKey
@@ -62,9 +62,9 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 
 	cacheStudent := CacheStudent{
 		StdCode: stdCode,
-		Role: "something message",
+		Role:    "something message",
 	}
-	
+
 	cacheDataJson, _ := json.Marshal(cacheStudent)
 
 	redisCacheExpiresAccessToken := time.Unix(expirationAccessToken, 0)

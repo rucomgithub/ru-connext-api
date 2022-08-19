@@ -29,8 +29,9 @@ func (c *connection) RedisInint() *redis.Client {
 
 func redisConnection() *redis.Client {
 	return redis.NewClient(&redis.Options{
-		Addr: viper.GetString("redis_cache.addressLocal"),
-		// Addr:     viper.GetString("redis_cache.address"),
+		Addr: viper.GetString("redis_cache.addressInLocal"),
+		// Addr:     viper.GetString("redis_cache.addressInContainer"),
+		// Addr:     viper.GetString("redis_cache.addressInServer"),
 		Password: viper.GetString("redis_cache.password"),
 		DB:       viper.GetInt("redis_cache.db-num"),
 	})

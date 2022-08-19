@@ -1,0 +1,26 @@
+version: '3.5'
+services:
+  ru-connext-caching:   
+    image: redis:6.0
+    container_name: ru-connext-caching
+    restart: always    
+    ports:
+      - 6000:6379
+    volumes:
+      - ./redis_data:/data
+      - ./redis_config/redis.conf:/redis.conf
+    command: redis-server /redis.conf --requirepass admin-ru-connext-caching --appendonly yes
+
+  # ru-connext-api:
+  #   image: charandetkrathok/ru-connext-api:v.0.1
+  #   # container_name: ru-smart-api
+  #   restart: always
+  #   depends_on:
+  #     - ru-connext-caching
+  #   # ports:
+  #   #   - 8883:8883
+
+networks:
+  default:
+    external: 
+      name: backend-services
