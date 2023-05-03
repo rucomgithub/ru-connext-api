@@ -1,26 +1,40 @@
 version: '3.5'
 services:
-  xxxxxxxxxx:   
+  ru-connext-caching:   
     image: redis:6.0
-    container_name:  xxxxxxxxxx
+    container_name:  ru-connext-caching
     restart: always    
     ports:
-      - 6000:6379
+      - 6379:6379
     volumes:
       - ./redis_data:/data
       - ./redis_config/redis.conf:/redis.conf
-    command: redis-server /redis.conf --requirepass  xxxxxxxxxx --appendonly yes
+    command: redis-server /redis.conf --requirepass  admin-ru-connext-caching --appendonly yes
 
-  #  xxxxxxxxxx:
-  #   image:  xxxxxxxxxx
-  #   # container_name:  xxxxxxxxxx
-  #   restart: always
-  #   depends_on:
-  #     -  xxxxxxxxxx
-  #   # ports:
-  #   #   - 8883:8883
+  ru-connext-api:
+    image:  ru-connext-api
+    container_name:  ru-connext-api
+    restart: always
+    depends_on:
+      -  ru-connext-caching
+    ports:
+      - 8883:8883
+
+  ru-smart-api:   
+    #build: ./
+    image: ru-smart-api
+    container_name: ru-smart-api
+    restart: always  
+    depends_on:
+       - ru-connext-caching  
+    ports:
+       - 9100:8883
+    volumes:
+       - ./:/app
+    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+    #command: go run main.go
 
 networks:
   default:
     external: 
-      name:  xxxxxxxxxx
+      name: backend-services

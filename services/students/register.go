@@ -2,6 +2,7 @@ package students
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -68,4 +69,55 @@ func (s *studentServices) GetRegister(studentCode, courseYear, courseSemester st
 	_ = s.redis_cache.Set(ctx, key, registerJSON, redisCache.Sub(timeNow)).Err()
 
 	return register, nil
+}
+
+func (s *studentServices) GetRegisterAll(std_code string, year string) (*RegisterAllResponse, error) {
+
+	registerAllResponse := RegisterAllResponse{
+		STD_CODE: std_code,
+		YEAR:     year,
+		RECORD:   []registerAllRecord{},
+	}
+
+	key := "register::" + std_code + "-" + year
+	registerCache, err := s.redis_cache.Get(ctx, key).Result()
+	if err == nil {
+		_ = json.Unmarshal([]byte(registerCache), &registerAllResponse)
+		fmt.Println("cache")
+		return &registerAllResponse, nil
+	}
+
+	fmt.Println("database")
+
+	registerAllRepo, err := s.studentRepo.GetRegisterAll(std_code, year)
+	if err != nil {
+		return &registerAllResponse, err
+	}
+
+	registerRec := []registerAllRecord{}
+	for _, c := range *registerAllRepo {
+		registerRec = append(registerRec, registerAllRecord{
+			YEAR:      c.YEAR,
+			SEMESTER:  c.SEMESTER,
+			COURSE_NO: c.COURSE_NO,
+			CREDIT:    c.CREDIT,
+		})
+	}
+
+	registerAllResponse = RegisterAllResponse{
+		STD_CODE: std_code,
+		YEAR:     year,
+		RECORD:   registerRec,
+	}
+
+	if len(registerRec) != 0 {
+		registerJSON, _ := json.Marshal(&registerAllResponse)
+		timeNow := time.Now()
+		redisCacheregister := time.Unix(timeNow.Add(time.Minute*2).Unix(), 0)
+		_ = s.redis_cache.Set(ctx, key, registerJSON, redisCacheregister.Sub(timeNow)).Err()
+	}
+
+	fmt.Println(registerRec)
+
+	return &registerAllResponse, nil
 }

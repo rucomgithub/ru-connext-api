@@ -10,7 +10,6 @@ import (
 var ctx = context.Background()
 
 type (
-	
 	mr30Services struct {
 		mr30Repo    mr30r.Mr30RepoInterface
 		redis_cache *redis.Client
@@ -21,11 +20,19 @@ type (
 		Course_semester string `json:"course_semester"`
 	}
 
-	
 	Mr30Response struct {
-		COURSE_YEAR           string `json:"course_year"`
-		COURSE_SEMESTER       string `json:"course_semester"`
-		RECORD				  []mr30Record 
+		COURSE_YEAR     string `json:"course_year"`
+		COURSE_SEMESTER string `json:"course_semester"`
+		RECORD          []mr30Record
+	}
+
+	Mr30YearResponse struct {
+		RECORDYEAR []mr30YearRecord
+	}
+
+	mr30YearRecord struct {
+		COURSE_YEAR     string `json:"course_year"`
+		COURSE_SEMESTER string `json:"course_semester"`
 	}
 
 	mr30Record struct {
@@ -53,6 +60,7 @@ type (
 
 	Mr30ServiceInterface interface {
 		GetMr30(course_year, course_semester string) (*Mr30Response, error)
+		GetMr30Year() (*Mr30YearResponse, error)
 		GetMr30Searching(course_year, course_semester, course_no string) (*Mr30Response, error)
 		GetMr30Pagination(course_year, course_semester, limit, offset string) (*Mr30Response, error)
 	}
@@ -64,6 +72,3 @@ func NewMr30Services(mr30Repo mr30r.Mr30RepoInterface, redis_cache *redis.Client
 		redis_cache: redis_cache,
 	}
 }
-
-
-
