@@ -13,12 +13,12 @@ services:
 
   ru-connext-api:
     image:  ru-connext-api
-    container_name:  ru-connext-api
+      # container_name:  ru-connext-api
     restart: always
     depends_on:
       -  ru-connext-caching
-    ports:
-      - 8883:8883
+        #ports:
+        #- 8883:8883
 
   ru-smart-api:   
     #build: ./
