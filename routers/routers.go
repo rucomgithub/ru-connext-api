@@ -25,7 +25,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 	router.GET("/healthz", func(c *gin.Context) {
 		c.IndentedJSON(http.StatusOK, gin.H{
 			"status":  "200",
-			"message": "The service works normally.",
+			"message": "The service works normally...",
 		})
 	})
 
