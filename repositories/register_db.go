@@ -6,7 +6,7 @@ func (r *registerRepoDB) GetRegister(std_code, year string) (*[]RegisterRepo, er
 	if std_code == "6299999991" {
 		//std_code = "6407501375"
 		std_code = "6006416793"
-		fmt.Print(std_code)
+		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []RegisterRepo{}
 	query := "SELECT YEAR,SEMESTER,COURSE_NO,STD_CODE,CREDIT FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and YEAR = :param2 ORDER BY YEAR DESC, SEMESTER DESC"
@@ -24,7 +24,7 @@ func (r *registerRepoDB) GetRegisterYearList(std_code string, year string) (*[]R
 	if std_code == "6299999991" {
 		//std_code = "6407501375"
 		std_code = "6006416793"
-		fmt.Print(std_code)
+		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []RegisterRepo{}
 	query := "SELECT YEAR,SEMESTER,COURSE_NO,STD_CODE,CREDIT FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and YEAR = :param2 ORDER BY YEAR DESC, SEMESTER DESC"
@@ -42,7 +42,7 @@ func (r *registerRepoDB) GetRegisterYear(std_code string) (*[]RegisterYearRepo, 
 	if std_code == "6299999991" {
 		//std_code = "6407501375"
 		std_code = "6006416793"
-		fmt.Print(std_code)
+		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []RegisterYearRepo{}
 	query := "SELECT YEAR FROM (SELECT YEAR FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1) GROUP BY YEAR ORDER BY 1 DESC"
@@ -60,7 +60,7 @@ func (r *registerRepoDB) GetRegisterGroupYearSemester(std_code string) (*[]Regis
 	if std_code == "6299999991" {
 		//std_code = "6407501375"
 		std_code = "6006416793"
-		fmt.Print(std_code)
+		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []RegisterYearSemesterRepo{}
 	query := "SELECT YEAR,SEMESTER FROM (SELECT YEAR,SEMESTER FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and SEMESTER in (1,2,3)) GROUP BY YEAR,SEMESTER ORDER BY 1 DESC , 2 DESC"
@@ -78,7 +78,7 @@ func (r *registerRepoDB) GetRegisterMr30(year, semester, std_code string) (*[]Re
 	if std_code == "6299999991" {
 		//std_code = "6407501375"
 		std_code = "6006416793"
-		fmt.Print(std_code)
+		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []RegisterMr30Repo{}
 

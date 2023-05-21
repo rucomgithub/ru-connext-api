@@ -28,11 +28,11 @@ func (g *gradeServices) GradeYear(requestBody GradeRequest) (*GradeResponse, err
 	if err == nil {
 		log.Println(err)
 		_ = json.Unmarshal([]byte(gradeCache), &gradeResponse)
-		fmt.Println("cache")
+		fmt.Println("cache-grade")
 		return &gradeResponse, nil
 	}
 
-	fmt.Println("database")
+	fmt.Println("database-grade")
 
 	gradeRepo, err := g.gradeRepo.GetGradeYear(requestBody.STD_CODE, requestBody.YEAR)
 	if err != nil {
@@ -63,7 +63,7 @@ func (g *gradeServices) GradeYear(requestBody GradeRequest) (*GradeResponse, err
 
 	gradeJSON, _ := json.Marshal(&gradeResponse)
 	timeNow := time.Now()
-	redisCachegrade := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
+	redisCachegrade := time.Unix(timeNow.Add(time.Second*10).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, gradeJSON, redisCachegrade.Sub(timeNow)).Err()
 
 	return &gradeResponse, nil
@@ -86,11 +86,11 @@ func (g *gradeServices) GradeAll(std_code string) (*GradeResponse, error) {
 	if err == nil {
 		log.Println(err)
 		_ = json.Unmarshal([]byte(gradeCache), &gradeResponse)
-		fmt.Println("cache")
+		fmt.Println("cache-grade")
 		return &gradeResponse, nil
 	}
 
-	fmt.Println("database")
+	fmt.Println("database-grade")
 
 	gradeRepo, err := g.gradeRepo.GetGradeAll(std_code)
 	if err != nil {
@@ -121,7 +121,7 @@ func (g *gradeServices) GradeAll(std_code string) (*GradeResponse, error) {
 
 	gradeJSON, _ := json.Marshal(&gradeResponse)
 	timeNow := time.Now()
-	redisCachegrade := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
+	redisCachegrade := time.Unix(timeNow.Add(time.Second*10).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, gradeJSON, redisCachegrade.Sub(timeNow)).Err()
 
 	return &gradeResponse, nil

@@ -40,7 +40,7 @@ func (register *registerServices) GetRegisterMr30Latest(std_code string) (*Regis
 		return &registerMr30Response, nil
 	}
 
-	fmt.Println("database")
+	fmt.Println("database-register")
 
 	registerRepo, err := register.registerRepo.GetRegisterMr30(yearSemesterRec[0].YEAR, yearSemesterRec[0].SEMESTER, std_code)
 
@@ -111,12 +111,12 @@ func (register *registerServices) GetRegisterMr30(std_code string, requestBody R
 	key := "registerMr30::" + std_code + requestBody.YEAR + requestBody.SEMESTER
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
-
+		fmt.Println("cache-register")
 		_ = json.Unmarshal([]byte(registerCache), &registerMr30Response)
 		return &registerMr30Response, nil
 	}
 
-	fmt.Println("database")
+	fmt.Println("database-register")
 
 	registerRepo, err := register.registerRepo.GetRegisterMr30(requestBody.YEAR, requestBody.SEMESTER, std_code)
 
@@ -189,11 +189,11 @@ func (register *registerServices) GetRegister(requestBody RegisterRequest) (*Reg
 	if err == nil {
 		log.Println(err)
 		_ = json.Unmarshal([]byte(registerCache), &registerResponse)
-		fmt.Println("cache")
+		fmt.Println("cache-register")
 		return &registerResponse, nil
 	}
 
-	fmt.Println("database")
+	fmt.Println("database-register")
 
 	registerRepo, err := register.registerRepo.GetRegister(requestBody.STD_CODE, requestBody.YEAR)
 	if err != nil {
@@ -245,11 +245,11 @@ func (register *registerServices) GetRegisterYear(std_code string) (*RegisterYea
 	if err == nil {
 		log.Println(err)
 		_ = json.Unmarshal([]byte(registerCache), &registerYearResponse)
-		fmt.Println("cache")
+		fmt.Println("cache-register")
 		return &registerYearResponse, nil
 	}
 
-	fmt.Println("database")
+	fmt.Println("database-register")
 
 	registerRepo, err := register.registerRepo.GetRegisterYear(std_code)
 	if err != nil {
@@ -297,11 +297,11 @@ func (register *registerServices) GetRegisterGroupYearSemester(std_code string) 
 	if err == nil {
 		log.Println(err)
 		_ = json.Unmarshal([]byte(registerCache), &registerYearSemesterResponse)
-		fmt.Println("cache")
+		fmt.Println("cache-register")
 		return &registerYearSemesterResponse, nil
 	}
 
-	fmt.Println("database")
+	fmt.Println("database-register")
 
 	registerRepo, err := register.registerRepo.GetRegisterGroupYearSemester(std_code)
 	if err != nil {
