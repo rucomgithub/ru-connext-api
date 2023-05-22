@@ -15,16 +15,16 @@ type (
 		CREDIT    string `db:"CREDIT"`
 	}
 
-	RegisterYearRepo struct {
+	YearRepo struct {
 		YEAR string `db:"YEAR"`
 	}
 
-	RegisterYearSemesterRepo struct {
+	YearSemesterRepo struct {
 		YEAR     string `db:"YEAR"`
 		SEMESTER string `db:"SEMESTER"`
 	}
 
-	RegisterMr30Repo struct {
+	ScheduleRepo struct {
 		ID                   string `db:"ID"`
 		COURSE_YEAR          string `db:"COURSE_YEAR"`
 		COURSE_SEMESTER      string `db:"COURSE_SEMESTER"`
@@ -48,10 +48,10 @@ type (
 	}
 
 	RegisterRepoInterface interface {
-		GetRegister(std_code, year string) (*[]RegisterRepo, error)
-		GetRegisterYear(std_code string) (*[]RegisterYearRepo, error)
-		GetRegisterGroupYearSemester(std_code string) (*[]RegisterYearSemesterRepo, error)
-		GetRegisterMr30(year, semester, studentCode string) (*[]RegisterMr30Repo, error)
+		GetRegisterAll(std_code, year string) (*[]RegisterRepo, error)
+		GetListYearAll(std_code string) (*[]YearRepo, error)
+		GetListYearSemesterAll(std_code string) (*[]YearSemesterRepo, error)
+		GetScheduleAll(year, semester, studentCode string) (*[]ScheduleRepo, error)
 	}
 )
 

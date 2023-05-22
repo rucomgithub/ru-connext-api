@@ -20,7 +20,7 @@ type (
 		YEAR     string `json:"year" validate:"min=4,max=4,regexp=^[0-9]"`
 	}
 
-	RegisterMr30Request struct {
+	RegisterScheduleRequest struct {
 		YEAR     string `json:"year" validate:"min=4,max=4,regexp=^[0-9]"`
 		SEMESTER string `json:"semester" validate:"min=1,max=1,regexp=^[1-5]"`
 	}
@@ -31,7 +31,7 @@ type (
 		RECORD   []RegisterRecord
 	}
 
-	RegisterMr30Response struct {
+	RegisterScheduleResponse struct {
 		YEAR     string `json:"course_year"`
 		SEMESTER string `json:"course_semester"`
 		RECORD   []RegisterMr30Record
@@ -88,10 +88,10 @@ type (
 
 	RegisterServiceInterface interface {
 		GetRegister(registerRequest RegisterRequest) (*RegisterResponse, error)
-		GetRegisterYear(std_code string) (*RegisterYearResponse, error)
-		GetRegisterGroupYearSemester(std_code string) (*RegisterYearSemesterResponse, error)
-		GetRegisterMr30(std_code string, registerMr30Request RegisterMr30Request) (*RegisterMr30Response, error)
-		GetRegisterMr30Latest(std_code string) (*RegisterMr30Response, error)
+		GetListYear(std_code string) (*RegisterYearResponse, error)
+		GetListYearSemester(std_code string) (*RegisterYearSemesterResponse, error)
+		GetScheduleYearSemester(std_code string, registerScheduleRequest RegisterScheduleRequest) (*RegisterScheduleResponse, error)
+		GetSchedule(std_code string) (*RegisterScheduleResponse, error)
 	}
 )
 

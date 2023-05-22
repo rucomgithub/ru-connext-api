@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/services"
+	"errors"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -34,9 +35,9 @@ func (h *registerHandlers) GetRegister(c *gin.Context) {
 
 }
 
-func (h *registerHandlers) GetRegisterYear(c *gin.Context) {
+func (h *registerHandlers) GetYear(c *gin.Context) {
 	var std_code string = c.Param("std_code")
-	registerResponse, err := h.registerServices.GetRegisterYear(std_code)
+	registerResponse, err := h.registerServices.GetListYear(std_code)
 	if err != nil {
 		handleError(c, err)
 		return
@@ -44,9 +45,9 @@ func (h *registerHandlers) GetRegisterYear(c *gin.Context) {
 	c.JSON(http.StatusOK, registerResponse)
 }
 
-func (h *registerHandlers) GetRegisterGroupYearSemester(c *gin.Context) {
+func (h *registerHandlers) GetYearSemester(c *gin.Context) {
 	var std_code string = c.Param("std_code")
-	registerResponse, err := h.registerServices.GetRegisterGroupYearSemester(std_code)
+	registerResponse, err := h.registerServices.GetListYearSemester(std_code)
 	if err != nil {
 		handleError(c, err)
 		return
@@ -54,10 +55,10 @@ func (h *registerHandlers) GetRegisterGroupYearSemester(c *gin.Context) {
 	c.JSON(http.StatusOK, registerResponse)
 }
 
-func (h *registerHandlers) GetRegisterMr30(c *gin.Context) {
+func (h *registerHandlers) GetScheduleYearSemester(c *gin.Context) {
 	var std_code string = c.Param("std_code")
 
-	var requestBody services.RegisterMr30Request
+	var requestBody services.RegisterScheduleRequest
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
@@ -65,7 +66,7 @@ func (h *registerHandlers) GetRegisterMr30(c *gin.Context) {
 		return
 	}
 
-	registerResponse, err := h.registerServices.GetRegisterMr30(std_code, requestBody)
+	registerResponse, err := h.registerServices.GetScheduleYearSemester(std_code, requestBody)
 	if err != nil {
 		handleError(c, err)
 		return
@@ -73,18 +74,15 @@ func (h *registerHandlers) GetRegisterMr30(c *gin.Context) {
 	c.JSON(http.StatusOK, registerResponse)
 }
 
-func (h *registerHandlers) GetRegisterMr30Latest(c *gin.Context) {
+func (h *registerHandlers) GetSchedule(c *gin.Context) {
 	var std_code string = c.Param("std_code")
 
-	var requestBody services.RegisterMr30Request
-
-	err := c.ShouldBindJSON(&requestBody)
-	if err != nil {
-		handleError(c, err)
+	if std_code == "" {
+		handleError(c, errors.New("โปรดระบุรหัสนักศึกษา"))
 		return
 	}
 
-	registerResponse, err := h.registerServices.GetRegisterMr30Latest(std_code)
+	registerResponse, err := h.registerServices.GetSchedule(std_code)
 	if err != nil {
 		handleError(c, err)
 		return

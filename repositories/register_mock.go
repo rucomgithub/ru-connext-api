@@ -17,17 +17,17 @@ func NewRegisterRepoMock() *registerRepoInterfaceMock {
 	return &registerRepoInterfaceMock{}
 }
 
-func (m *registerRepoInterfaceMock) GetRegister(std_code, year string) (*[]RegisterRepo, error) {
+func (m *registerRepoInterfaceMock) GetRegisterAll(std_code, year string) (*[]RegisterRepo, error) {
 	args := m.Called(std_code, year)
 	return args.Get(0).(*[]RegisterRepo), args.Error(1)
 }
 
-func (m *registerRepoInterfaceMock) GetRegisterYear(std_code string) (*[]RegisterYearRepo, error) {
+func (m *registerRepoInterfaceMock) GetListYearAll(std_code string) (*[]YearRepo, error) {
 	return nil, nil
 }
-func (m *registerRepoInterfaceMock) GetRegisterGroupYearSemester(std_code string) (*[]RegisterYearSemesterRepo, error) {
+func (m *registerRepoInterfaceMock) GetListYearSemesterAll(std_code string) (*[]YearSemesterRepo, error) {
 	return nil, nil
 }
-func (m *registerRepoInterfaceMock) GetRegisterMr30(year, semester, studentCode string) (*[]RegisterMr30Repo, error) {
+func (m *registerRepoInterfaceMock) GetScheduleAll(year, semester, studentCode string) (*[]ScheduleRepo, error) {
 	return nil, nil
 }

@@ -21,9 +21,9 @@ func (m *registerServicesMock) GetRegisterYear(std_code string) (*RegisterYearRe
 func (m *registerServicesMock) GetRegisterGroupYearSemester(std_code string) (*RegisterYearSemesterResponse, error) {
 	return nil, nil
 }
-func (m *registerServicesMock) GetRegisterMr30(std_code string, registerMr30Request RegisterMr30Request) (*RegisterMr30Response, error) {
+func (m *registerServicesMock) GetRegisterMr30(std_code string, registerMr30Request RegisterScheduleRequest) (*RegisterScheduleResponse, error) {
 	return nil, nil
 }
-func (m *registerServicesMock) GetRegisterMr30Latest(std_code string) (*RegisterMr30Response, error) {
+func (m *registerServicesMock) GetRegisterMr30Latest(std_code string) (*RegisterScheduleResponse, error) {
 	return nil, nil
 }

@@ -10,9 +10,9 @@ import (
 	"gopkg.in/validator.v2"
 )
 
-func (register *registerServices) GetRegisterMr30Latest(std_code string) (*RegisterMr30Response, error) {
+func (register *registerServices) GetSchedule(std_code string) (*RegisterScheduleResponse, error) {
 
-	yearSemesterRepo, err := register.registerRepo.GetRegisterGroupYearSemester(std_code)
+	yearSemesterRepo, err := register.registerRepo.GetListYearSemesterAll(std_code)
 	if err != nil {
 		log.Println(err.Error())
 		return nil, errs.NewUnExpectedError()
@@ -26,7 +26,7 @@ func (register *registerServices) GetRegisterMr30Latest(std_code string) (*Regis
 		})
 	}
 
-	registerMr30Response := RegisterMr30Response{
+	registerScheduleResponse := RegisterScheduleResponse{
 		YEAR:     yearSemesterRec[0].YEAR,
 		SEMESTER: yearSemesterRec[0].SEMESTER,
 		RECORD:   []RegisterMr30Record{},
@@ -36,17 +36,17 @@ func (register *registerServices) GetRegisterMr30Latest(std_code string) (*Regis
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 
-		_ = json.Unmarshal([]byte(registerCache), &registerMr30Response)
-		return &registerMr30Response, nil
+		_ = json.Unmarshal([]byte(registerCache), &registerScheduleResponse)
+		return &registerScheduleResponse, nil
 	}
 
 	fmt.Println("database-register")
 
-	registerRepo, err := register.registerRepo.GetRegisterMr30(yearSemesterRec[0].YEAR, yearSemesterRec[0].SEMESTER, std_code)
+	registerRepo, err := register.registerRepo.GetScheduleAll(yearSemesterRec[0].YEAR, yearSemesterRec[0].SEMESTER, std_code)
 
 	if err != nil {
 		log.Println(err.Error())
-		return &registerMr30Response, errs.NewUnExpectedError()
+		return &registerScheduleResponse, errs.NewUnExpectedError()
 	}
 
 	registerRec := []RegisterMr30Record{}
@@ -81,28 +81,28 @@ func (register *registerServices) GetRegisterMr30Latest(std_code string) (*Regis
 		return nil, errs.NewNotFoundError("ไม่พบข้อมูลการลงทะเบียนเรียน")
 	}
 
-	registerMr30Response = RegisterMr30Response{
+	registerScheduleResponse = RegisterScheduleResponse{
 		YEAR:     yearSemesterRec[0].YEAR,
 		SEMESTER: yearSemesterRec[0].SEMESTER,
 		RECORD:   registerRec,
 	}
 
-	registerJSON, _ := json.Marshal(registerMr30Response)
+	registerJSON, _ := json.Marshal(registerScheduleResponse)
 	timeNow := time.Now()
 	redisCache := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCache.Sub(timeNow)).Err()
 
-	return &registerMr30Response, nil
+	return &registerScheduleResponse, nil
 }
 
-func (register *registerServices) GetRegisterMr30(std_code string, requestBody RegisterMr30Request) (*RegisterMr30Response, error) {
+func (register *registerServices) GetScheduleYearSemester(std_code string, requestBody RegisterScheduleRequest) (*RegisterScheduleResponse, error) {
 
 	if err := validator.Validate(requestBody); err != nil {
 		log.Println(err)
 		return nil, errs.NewBadRequestError(err.Error())
 	}
 
-	registerMr30Response := RegisterMr30Response{
+	registerScheduleResponse := RegisterScheduleResponse{
 		YEAR:     requestBody.YEAR,
 		SEMESTER: requestBody.SEMESTER,
 		RECORD:   []RegisterMr30Record{},
@@ -112,17 +112,17 @@ func (register *registerServices) GetRegisterMr30(std_code string, requestBody R
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		fmt.Println("cache-register")
-		_ = json.Unmarshal([]byte(registerCache), &registerMr30Response)
-		return &registerMr30Response, nil
+		_ = json.Unmarshal([]byte(registerCache), &registerScheduleResponse)
+		return &registerScheduleResponse, nil
 	}
 
 	fmt.Println("database-register")
 
-	registerRepo, err := register.registerRepo.GetRegisterMr30(requestBody.YEAR, requestBody.SEMESTER, std_code)
+	registerRepo, err := register.registerRepo.GetScheduleAll(requestBody.YEAR, requestBody.SEMESTER, std_code)
 
 	if err != nil {
 		log.Println(err.Error())
-		return &registerMr30Response, errs.NewUnExpectedError()
+		return &registerScheduleResponse, errs.NewUnExpectedError()
 	}
 
 	registerRec := []RegisterMr30Record{}
@@ -157,18 +157,18 @@ func (register *registerServices) GetRegisterMr30(std_code string, requestBody R
 		return nil, errs.NewNotFoundError("ไม่พบข้อมูลการลงทะเบียนเรียน")
 	}
 
-	registerMr30Response = RegisterMr30Response{
+	registerScheduleResponse = RegisterScheduleResponse{
 		YEAR:     requestBody.YEAR,
 		SEMESTER: requestBody.SEMESTER,
 		RECORD:   registerRec,
 	}
 
-	registerJSON, _ := json.Marshal(registerMr30Response)
+	registerJSON, _ := json.Marshal(registerScheduleResponse)
 	timeNow := time.Now()
 	redisCache := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCache.Sub(timeNow)).Err()
 
-	return &registerMr30Response, nil
+	return &registerScheduleResponse, nil
 }
 
 func (register *registerServices) GetRegister(requestBody RegisterRequest) (*RegisterResponse, error) {
@@ -195,7 +195,7 @@ func (register *registerServices) GetRegister(requestBody RegisterRequest) (*Reg
 
 	fmt.Println("database-register")
 
-	registerRepo, err := register.registerRepo.GetRegister(requestBody.STD_CODE, requestBody.YEAR)
+	registerRepo, err := register.registerRepo.GetRegisterAll(requestBody.STD_CODE, requestBody.YEAR)
 	if err != nil {
 		log.Println(err.Error())
 		return &registerResponse, errs.NewUnExpectedError()
@@ -229,7 +229,7 @@ func (register *registerServices) GetRegister(requestBody RegisterRequest) (*Reg
 	return &registerResponse, nil
 }
 
-func (register *registerServices) GetRegisterYear(std_code string) (*RegisterYearResponse, error) {
+func (register *registerServices) GetListYear(std_code string) (*RegisterYearResponse, error) {
 
 	if std_code == "" {
 		return nil, errs.NewBadRequestError("ระบุรหัสนักศึกษาให้ถูกต้อง")
@@ -251,7 +251,7 @@ func (register *registerServices) GetRegisterYear(std_code string) (*RegisterYea
 
 	fmt.Println("database-register")
 
-	registerRepo, err := register.registerRepo.GetRegisterYear(std_code)
+	registerRepo, err := register.registerRepo.GetListYearAll(std_code)
 	if err != nil {
 		log.Println(err.Error())
 		return nil, errs.NewUnExpectedError()
@@ -281,7 +281,7 @@ func (register *registerServices) GetRegisterYear(std_code string) (*RegisterYea
 	return &registerYearResponse, nil
 }
 
-func (register *registerServices) GetRegisterGroupYearSemester(std_code string) (*RegisterYearSemesterResponse, error) {
+func (register *registerServices) GetListYearSemester(std_code string) (*RegisterYearSemesterResponse, error) {
 
 	if std_code == "" {
 		return nil, errs.NewBadRequestError("ระบุรหัสนักศึกษาให้ถูกต้อง")
@@ -303,7 +303,7 @@ func (register *registerServices) GetRegisterGroupYearSemester(std_code string) 
 
 	fmt.Println("database-register")
 
-	registerRepo, err := register.registerRepo.GetRegisterGroupYearSemester(std_code)
+	registerRepo, err := register.registerRepo.GetListYearSemesterAll(std_code)
 	if err != nil {
 		log.Println(err.Error())
 		return nil, errs.NewUnExpectedError()

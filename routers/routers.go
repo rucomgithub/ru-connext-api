@@ -81,10 +81,10 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sql.DB, redis_cache
 		registerHandler := handlers.NewRegisterHandlers(registerService)
 
 		register.POST("/", registerHandler.GetRegister)
-		register.GET("/:std_code/year", registerHandler.GetRegisterYear)
-		register.GET("/:std_code/yearsemester", registerHandler.GetRegisterGroupYearSemester)
-		register.GET("/:std_code/mr30", registerHandler.GetRegisterMr30)
-		register.POST("/:std_code/mr30latest", registerHandler.GetRegisterMr30Latest)
+		register.GET("/:std_code/year", registerHandler.GetYear)
+		register.GET("/:std_code/yearsemester", registerHandler.GetYearSemester)
+		register.GET("/:std_code/schedule", registerHandler.GetScheduleYearSemester)
+		register.GET("/:std_code/schedulelatest", registerHandler.GetSchedule)
 	}
 
 	grade := router.Group("/grade")
