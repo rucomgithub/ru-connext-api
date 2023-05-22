@@ -31,3 +31,6 @@ func (m *registerRepoInterfaceMock) GetListYearSemesterAll(std_code string) (*[]
 func (m *registerRepoInterfaceMock) GetScheduleAll(year, semester, studentCode string) (*[]ScheduleRepo, error) {
 	return nil, nil
 }
+func (m *registerRepoInterfaceMock) GetYearSemesterLatest() (*YearSemesterRepo, error) {
+	return nil, nil
+}

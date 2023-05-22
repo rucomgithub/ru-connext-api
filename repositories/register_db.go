@@ -4,8 +4,8 @@ import "fmt"
 
 func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo, error) {
 	if std_code == "6299999991" {
-		//std_code = "6407501375"
-		std_code = "6006416793"
+		std_code = "6407501375"
+		//std_code = "6006416793"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []RegisterRepo{}
@@ -22,8 +22,8 @@ func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo,
 
 func (r *registerRepoDB) GetListYearAll(std_code string) (*[]YearRepo, error) {
 	if std_code == "6299999991" {
-		//std_code = "6407501375"
-		std_code = "6006416793"
+		std_code = "6407501375"
+		//std_code = "6006416793"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []YearRepo{}
@@ -40,8 +40,8 @@ func (r *registerRepoDB) GetListYearAll(std_code string) (*[]YearRepo, error) {
 
 func (r *registerRepoDB) GetListYearSemesterAll(std_code string) (*[]YearSemesterRepo, error) {
 	if std_code == "6299999991" {
-		//std_code = "6407501375"
-		std_code = "6006416793"
+		std_code = "6407501375"
+		//std_code = "6006416793"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []YearSemesterRepo{}
@@ -58,8 +58,8 @@ func (r *registerRepoDB) GetListYearSemesterAll(std_code string) (*[]YearSemeste
 
 func (r *registerRepoDB) GetScheduleAll(year, semester, std_code string) (*[]ScheduleRepo, error) {
 	if std_code == "6299999991" {
-		//std_code = "6407501375"
-		std_code = "6006416793"
+		std_code = "6407501375"
+		//std_code = "6006416793"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []ScheduleRepo{}
@@ -98,4 +98,19 @@ where semester=:param11 and year=:param12 and  std_code= :param13
 	}
 
 	return &register, nil
+}
+
+func (r *registerRepoDB) GetYearSemesterLatest() (student *YearSemesterRepo, err error) {
+
+	yearsemester := YearSemesterRepo{}
+	query := `SELECT CURRENT_YEAR YEAR, CURRENT_SEMESTER SEMESTER FROM CURRENT_REGISTER WHERE ROWNUM = 1`
+
+	err = r.oracle_db.Get(&yearsemester, query)
+	if err != nil {
+		return nil, err
+	}
+
+	student = &yearsemester
+
+	return &yearsemester, nil
 }

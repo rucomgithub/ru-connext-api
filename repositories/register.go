@@ -52,6 +52,7 @@ type (
 		GetListYearAll(std_code string) (*[]YearRepo, error)
 		GetListYearSemesterAll(std_code string) (*[]YearSemesterRepo, error)
 		GetScheduleAll(year, semester, studentCode string) (*[]ScheduleRepo, error)
+		GetYearSemesterLatest() (*YearSemesterRepo, error)
 	}
 )
 
