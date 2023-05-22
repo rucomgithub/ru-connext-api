@@ -16,7 +16,7 @@ func NewRegisterHandlers(registerServices services.RegisterServiceInterface) reg
 	return registerHandlers{registerServices: registerServices}
 }
 
-func (h *registerHandlers) GetRegister(c *gin.Context) {
+func (h *registerHandlers) Registers(c *gin.Context) {
 	var requestBody services.RegisterRequest
 
 	err := c.ShouldBindJSON(&requestBody)
@@ -35,8 +35,14 @@ func (h *registerHandlers) GetRegister(c *gin.Context) {
 
 }
 
-func (h *registerHandlers) GetYear(c *gin.Context) {
+func (h *registerHandlers) Years(c *gin.Context) {
 	var std_code string = c.Param("std_code")
+
+	if std_code == "" {
+		handleError(c, errors.New("โปรดระบุรหัสนักศึกษา"))
+		return
+	}
+
 	registerResponse, err := h.registerServices.GetListYear(std_code)
 	if err != nil {
 		handleError(c, err)
@@ -45,8 +51,14 @@ func (h *registerHandlers) GetYear(c *gin.Context) {
 	c.JSON(http.StatusOK, registerResponse)
 }
 
-func (h *registerHandlers) GetYearSemester(c *gin.Context) {
+func (h *registerHandlers) YearSemesters(c *gin.Context) {
 	var std_code string = c.Param("std_code")
+
+	if std_code == "" {
+		handleError(c, errors.New("โปรดระบุรหัสนักศึกษา"))
+		return
+	}
+
 	registerResponse, err := h.registerServices.GetListYearSemester(std_code)
 	if err != nil {
 		handleError(c, err)
@@ -55,8 +67,13 @@ func (h *registerHandlers) GetYearSemester(c *gin.Context) {
 	c.JSON(http.StatusOK, registerResponse)
 }
 
-func (h *registerHandlers) GetScheduleYearSemester(c *gin.Context) {
+func (h *registerHandlers) ScheduleYearSemesters(c *gin.Context) {
 	var std_code string = c.Param("std_code")
+
+	if std_code == "" {
+		handleError(c, errors.New("โปรดระบุรหัสนักศึกษา"))
+		return
+	}
 
 	var requestBody services.RegisterScheduleRequest
 
@@ -74,7 +91,7 @@ func (h *registerHandlers) GetScheduleYearSemester(c *gin.Context) {
 	c.JSON(http.StatusOK, registerResponse)
 }
 
-func (h *registerHandlers) GetSchedule(c *gin.Context) {
+func (h *registerHandlers) Schedules(c *gin.Context) {
 	var std_code string = c.Param("std_code")
 
 	if std_code == "" {
