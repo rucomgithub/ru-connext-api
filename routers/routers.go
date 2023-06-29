@@ -57,6 +57,13 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sql.DB, redis_cache
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
 
+		student.GET("/imageprofile", middlewares.Authorization(redis_cache), studentHandler.GetImageProfile)
+
+		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
+		student.GET("/photo/:id", studentHandler.GetPhotoById)
+
+		student.GET("/photoaod", middlewares.Authorization(redis_cache), studentHandler.GetPhotoAOD)
+
 	}
 
 	mr30 := router.Group("/mr30")
@@ -84,7 +91,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sql.DB, redis_cache
 		register.GET("/:std_code/year", registerHandler.Years)
 		register.GET("/:std_code/yearsemester", registerHandler.YearSemesters)
 		register.POST("/:std_code/schedule", registerHandler.ScheduleYearSemesters)
-		register.GET("/:std_code/schedulelatest", registerHandler.Schedules)
+		register.POST("/:std_code/schedulelatest", registerHandler.Schedules)
 	}
 
 	grade := router.Group("/grade")
@@ -94,8 +101,8 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sql.DB, redis_cache
 		gradeService := services.NewGradeServices(gradeRepo, redis_cache)
 		gradeHandler := handlers.NewgradeHandlers(gradeService)
 
-		grade.POST("/:std_code/year", gradeHandler.GradeYear)
-		grade.POST("/:std_code", gradeHandler.Grades)
+		grade.POST("/:std_code/year", middlewares.Authorization(redis_cache), gradeHandler.GradeYear)
+		grade.POST("/:std_code", middlewares.Authorization(redis_cache), gradeHandler.Grades)
 	}
 
 	ondemand := router.Group("/ondemand")
