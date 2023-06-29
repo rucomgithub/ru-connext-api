@@ -1,11 +1,11 @@
 version: '3.5'
 services:
-  ru-connext-caching:   
+  ru-connext-caching-test:   
     image: redis:6.0
-    container_name:  ru-connext-caching
+    container_name:  ru-connext-caching-test
     restart: always    
     ports:
-      - 6379:6379
+      - 6378:6379
     volumes:
       - ./redis_data:/data
       - ./redis_config/redis.conf:/redis.conf
@@ -16,9 +16,9 @@ services:
     container_name:  ru-connext-api
     restart: always
     depends_on:
-      -  ru-connext-caching
+      -  ru-connext-caching-test
     ports:
-      - 8883:8883
+      - 8884:8883
 
   ru-smart-api:   
     #build: ./
@@ -26,7 +26,7 @@ services:
     container_name: ru-smart-api
     restart: always  
     depends_on:
-      - ru-connext-caching  
+      - ru-connext-caching-test
     ports:
       - 9100:8883
     volumes:
