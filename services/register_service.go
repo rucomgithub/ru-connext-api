@@ -81,7 +81,7 @@ func (register *registerServices) GetSchedule(std_code string) (*RegisterSchedul
 
 	registerJSON, _ := json.Marshal(registerScheduleResponse)
 	timeNow := time.Now()
-	redisCache := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCache := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCache.Sub(timeNow)).Err()
 
 	return &registerScheduleResponse, nil
@@ -157,7 +157,7 @@ func (register *registerServices) GetScheduleYearSemester(std_code string, reque
 
 	registerJSON, _ := json.Marshal(registerScheduleResponse)
 	timeNow := time.Now()
-	redisCache := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCache := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCache.Sub(timeNow)).Err()
 
 	return &registerScheduleResponse, nil
@@ -215,7 +215,7 @@ func (register *registerServices) GetRegister(requestBody RegisterRequest) (*Reg
 
 	registerJSON, _ := json.Marshal(&registerResponse)
 	timeNow := time.Now()
-	redisCacheregister := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCacheregister := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCacheregister.Sub(timeNow)).Err()
 
 	return &registerResponse, nil
@@ -267,7 +267,7 @@ func (register *registerServices) GetListYear(std_code string) (*RegisterYearRes
 
 	registerJSON, _ := json.Marshal(&registerYearResponse)
 	timeNow := time.Now()
-	redisCacheregister := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCacheregister := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCacheregister.Sub(timeNow)).Err()
 
 	return &registerYearResponse, nil
@@ -320,7 +320,7 @@ func (register *registerServices) GetListYearSemester(std_code string) (*Registe
 
 	registerJSON, _ := json.Marshal(&registerYearSemesterResponse)
 	timeNow := time.Now()
-	redisCacheregister := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCacheregister := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCacheregister.Sub(timeNow)).Err()
 
 	return &registerYearSemesterResponse, nil
