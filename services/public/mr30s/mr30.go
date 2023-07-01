@@ -126,7 +126,7 @@ func (mr30 *mr30Services) GetMr30Year() (*Mr30YearResponse, error) {
 	if len(mr30YearRec) != 0 {
 		mr30JSON, _ := json.Marshal(&mr30YearResponse)
 		timeNow := time.Now()
-		redisCacheMr30 := time.Unix(timeNow.Add(time.Minute*1).Unix(), 0)
+		redisCacheMr30 := time.Unix(timeNow.Add(time.Hour*1).Unix(), 0)
 		_ = mr30.redis_cache.Set(ctx, key, mr30JSON, redisCacheMr30.Sub(timeNow)).Err()
 	}
 
