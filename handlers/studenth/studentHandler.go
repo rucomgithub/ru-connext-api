@@ -134,7 +134,25 @@ func (h *studentHandlers) Unauthorization(c *gin.Context) {
 	}
 
 	c.IndentedJSON(http.StatusOK, gin.H{"message": "Unauthorization successfuly."})
+}
 
+func (h *studentHandlers) ExistsToken(c *gin.Context) {
+	token, err := middlewares.GetHeaderAuthorization(c)
+	if err != nil {
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Authorization key in header not found"})
+		c.Abort()
+		return
+	}
+
+	// ส่ง Token ไปตรวจสอบว่าได้รับสิทธิ์เข้าใช้งานหรือไม่
+	isToken := h.studentService.CheckExistsToken(token)
+	if !isToken {
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Authorization falil because of timeout."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, gin.H{"message": "Unauthorization successfuly."})
 }
 
 func (h *studentHandlers) GetStudentProfile(c *gin.Context) {

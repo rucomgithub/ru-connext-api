@@ -79,6 +79,22 @@ func VerifyToken(preTokenKey string, token string, redis_cache *redis.Client) (b
 	return true, nil
 }
 
+func CheckExistsToken(token string, redis_cache *redis.Client) (bool, error) {
+
+	claims, err := GetClaims(token)
+	if err != nil {
+		return false, err
+	}
+
+	_, err = redis_cache.Get(ctx, claims.AccessTokenKey).Result()
+
+	if err != nil {
+		return false, err
+	}
+
+	return true, nil
+}
+
 func GetClaims(encodedToken string) (*ClaimsToken, error) {
 
 	parseToken, err := jwt.Parse(encodedToken, func(token *jwt.Token) (interface{}, error) {
@@ -123,7 +139,7 @@ func GetClaims(encodedToken string) (*ClaimsToken, error) {
 	return claimsToken, nil
 }
 
-func RevokeToken(token string, redis_cache *redis.Client) (bool) {
+func RevokeToken(token string, redis_cache *redis.Client) bool {
 
 	claims, err := GetClaims(token)
 	if err != nil {

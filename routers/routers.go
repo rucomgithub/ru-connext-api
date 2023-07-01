@@ -43,6 +43,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sql.DB, redis_cache
 		googleAuth.POST("/authorization", middlewares.GoogleAuth, studentHandler.Authentication)
 		googleAuth.POST("/authorization-test", studentHandler.AuthenticationTest)
 		googleAuth.POST("/authorization-redirect", studentHandler.AuthenticationRedirect)
+
 	}
 
 	student := router.Group("/student")
@@ -53,6 +54,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sql.DB, redis_cache
 
 		student.POST("/refresh-authentication", studentHandler.RefreshAuthentication)
 		student.POST("/unauthorization", studentHandler.Unauthorization)
+		student.POST("/exists-token", studentHandler.ExistsToken)
 		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)

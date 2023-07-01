@@ -16,7 +16,7 @@ func (s *studentServices) Authentication(stdCode string) (*TokenResponse, error)
 	}
 
 	prepareToken, err := s.studentRepo.Authentication(stdCode)
-	if err != nil || prepareToken.STATUS != 1 {  
+	if err != nil || prepareToken.STATUS != 1 {
 		studentTokenResponse.Message = "สถานะภาพการเป็นนักศึกษาของท่าน (จบการศึกษา,หมดสถานภาพ,ขาดการลงทะเบียนเรียน 2 ภาคการศึกษาขึ้นไป)."
 		return &studentTokenResponse, err
 	}

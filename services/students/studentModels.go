@@ -126,6 +126,7 @@ type (
 		AuthenticationRedirect(stdCode, accessToken string) (*TokenRedirectResponse, error)
 		RefreshAuthentication(refreshToken, stdCode string) (*TokenResponse, error)
 		Unauthorization(token string) bool
+		ExistsToken(token string) bool
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetRegister(studentCode, courseYear, courseSemester string) (*RegisterResponse, error)
 		GetRegisterAll(studentCode, courseYear string) (*RegisterAllResponse, error)
