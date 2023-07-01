@@ -152,7 +152,7 @@ func (h *studentHandlers) ExistsToken(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, gin.H{"message": "Unauthorization successfuly."})
+	c.IndentedJSON(http.StatusOK, gin.H{"message": "Authorization successfuly and Exists Token."})
 }
 
 func (h *studentHandlers) GetStudentProfile(c *gin.Context) {
