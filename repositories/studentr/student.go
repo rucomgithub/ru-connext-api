@@ -4,7 +4,7 @@ func (r *studentRepoDB) GetStudentAll() (*[]StudentRepo, error) {
 
 	students := []StudentRepo{}
 
-	query := "SELECT STD_CODE FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE like '65%' and YEAR = 2565 ORDER BY YEAR DESC, SEMESTER DESC"
+	query := "select STD_CODE from DBBACH00.VM_STUDENT_PROFILE WHERE std_code like '6553000%'"
 
 	err := r.oracle_db.Select(&students, query)
 	if err != nil {
