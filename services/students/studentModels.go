@@ -94,6 +94,10 @@ type (
 		REGISTER        []RegisterResponseFromDB `json:"register"`
 	}
 
+	StudentResponse struct {
+		STUDENT_CODE string `json:"std_code"`
+	}
+
 	RegisterResponseFromDB struct {
 		ID                   string `json:"id"`
 		COURSE_YEAR          string `json:"course_year"`
@@ -125,6 +129,8 @@ type (
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetRegister(studentCode, courseYear, courseSemester string) (*RegisterResponse, error)
 		GetRegisterAll(studentCode, courseYear string) (*RegisterAllResponse, error)
+
+		GetStudentAll() (*[]StudentResponse, error)
 	}
 )
 

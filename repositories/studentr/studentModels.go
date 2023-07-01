@@ -65,11 +65,16 @@ type (
 		STATUS   int    `db:"STATUS"`
 	}
 
+	StudentRepo struct {
+		STD_CODE string `db:"STD_CODE"`
+	}
+
 	StudentRepoInterface interface {
 		GetStudentProfile(studentCode string) (*StudentProfileRepo, error)
 		GetRegisterAll(studentCode, courseYear string) (*[]RegisterAllRepo, error)
 		GetRegister(studentCode, courseYear, courseSemester string) (*[]RegisterRepo, error)
 		Authentication(studentCode string) (*PrepareTokenRepo, error)
+		GetStudentAll() (*[]StudentRepo, error)
 	}
 )
 

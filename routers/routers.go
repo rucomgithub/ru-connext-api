@@ -58,12 +58,11 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sql.DB, redis_cache
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
 
 		student.GET("/imageprofile", middlewares.Authorization(redis_cache), studentHandler.GetImageProfile)
-
 		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
 		student.GET("/photo/:id", studentHandler.GetPhotoById)
-
 		student.GET("/photoaod", middlewares.Authorization(redis_cache), studentHandler.GetPhotoAOD)
 
+		student.GET("/", studentHandler.GetStudentAll)
 	}
 
 	mr30 := router.Group("/mr30")
