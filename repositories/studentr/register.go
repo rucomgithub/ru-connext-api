@@ -1,5 +1,18 @@
 package studentr
 
+func (r *studentRepoDB) GetRegisterAll(studentCode, courseYear string) (*[]RegisterAllRepo, error) {
+
+	register := []RegisterAllRepo{}
+	query := "SELECT YEAR,SEMESTER,COURSE_NO,STD_CODE,CREDIT FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and YEAR = :param2 ORDER BY YEAR DESC, SEMESTER DESC"
+
+	err := r.oracle_db.Select(&register, query, studentCode, courseYear)
+	if err != nil {
+		return nil, err
+	}
+
+	return &register, nil
+}
+
 func (r *studentRepoDB) GetRegister(studentCode, courseYear, courseSemester string) (*[]RegisterRepo, error) {
 
 	register := []RegisterRepo{}

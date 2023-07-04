@@ -2,23 +2,26 @@ package routers
 
 import (
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	"github.com/jmoiron/sqlx"
 	"github.com/spf13/viper"
 
+	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/handlers/studenth"
-	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/repositories/studentr"
+	"RU-Smart-Workspace/ru-smart-api/services"
 	"RU-Smart-Workspace/ru-smart-api/services/students"
 
 	"RU-Smart-Workspace/ru-smart-api/handlers/public/mr30h"
 	"RU-Smart-Workspace/ru-smart-api/repositories/public/mr30r"
 	"RU-Smart-Workspace/ru-smart-api/services/public/mr30s"
+
+	"RU-Smart-Workspace/ru-smart-api/middlewares"
+	"RU-Smart-Workspace/ru-smart-api/repositories"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client,mysql_db *sqlx.DB) {
 
 	router.Use(middlewares.NewCorsAccessControl().CorsAccessControl())
 
@@ -50,6 +53,8 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 		student.POST("/unauthorization", studentHandler.Unauthorization)
 		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
+		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
+		student.GET("/photo",middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
 
 	}
 
@@ -61,12 +66,71 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 		mr30Handler := mr30h.NewMr30Handlers(mr30Service)
 
 		// mr30.GET("/data", mr30Handler.GetMr30)
+		mr30.POST("/year", mr30Handler.GetMr30Year)
 		mr30.POST("/data", mr30Handler.GetMr30)
 		mr30.GET("/data/search", mr30Handler.GetMr30Searching)
 		mr30.GET("/data/pagination", mr30Handler.GetMr30Pagination)
 	}
 
+	register := router.Group("/register")
+	{
+
+		registerRepo := repositories.NewRegisterRepo(oracle_db)
+		registerService := services.NewRegisterServices(registerRepo, redis_cache)
+		registerHandler := handlers.NewRegisterHandlers(registerService)
+
+		register.POST("/", registerHandler.GetRegister)
+		register.GET("/:std_code/year", registerHandler.GetRegisterYear)
+		register.GET("/:std_code/yearsemester", registerHandler.GetRegisterGroupYearSemester)
+		register.GET("/:std_code/mr30", registerHandler.GetRegisterMr30)
+		register.POST("/:std_code/mr30latest", registerHandler.GetRegisterMr30Latest)
+	}
+
+	grade := router.Group("/grade")
+	{
+
+		gradeRepo := repositories.NewGradeRepo(oracle_db)
+		gradeService := services.NewGradeServices(gradeRepo, redis_cache)
+		gradeHandler := handlers.NewgradeHandlers(gradeService)
+
+		grade.POST("/:std_code/year", gradeHandler.GradeYear)
+		grade.POST("/:std_code", gradeHandler.Grades)
+	}
+
+	ondemand := router.Group("/ondemand")
+	{
+
+		ondemandRepo := repositories.NewOndemandRepo(mysql_db)
+		ondemandService := services.NewOndemandServices(ondemandRepo, redis_cache)
+		ondemandHandler := handlers.NewOndemandHandlers(ondemandService)
+
+		ondemand.POST("/", ondemandHandler.GetOndemandAll)
+
+		ondemand.POST("/subjectcode", ondemandHandler.GetOndemandSubjectCode)
+
+		// ondemand.POST("/", func(c *gin.Context) {
+		// 	ondemandList, err := ondemandRepo.GetOndemandAll()
+		// 	if err != nil {
+		// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		// 		return
+		// 	}
+		// 	c.JSON(http.StatusOK, ondemandList)
+		// })
+
+		// router.GET("/healthz", func(c *gin.Context) {
+		// 	c.IndentedJSON(http.StatusOK, gin.H{
+		// 		"status":  "200",
+		// 		"message": "The service works normally.",
+		// 	})
+		// })
+			// Define routes within the route group
+		ondemand.GET("/users", func(c *gin.Context) {
+			c.String(http.StatusOK, "List of all users")
+		})
+	}
+
 	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 
-}
+} 
+ 

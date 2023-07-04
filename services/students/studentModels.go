@@ -21,8 +21,8 @@ type (
 	}
 
 	RegisterPlayload struct {
-		Std_code      string `json:"std_code"`
-		Course_year string `json:"course_year"`
+		Std_code        string `json:"std_code"`
+		Course_year     string `json:"course_year"`
 		Course_semester string `json:"course_semester"`
 	}
 
@@ -124,6 +124,7 @@ type (
 		Unauthorization(token string) bool
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetRegister(studentCode, courseYear, courseSemester string) (*RegisterResponse, error)
+		GetRegisterAll(studentCode, courseYear string) (*RegisterAllResponse, error)
 	}
 )
 

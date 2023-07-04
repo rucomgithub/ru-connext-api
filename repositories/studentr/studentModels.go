@@ -52,6 +52,14 @@ type (
 		COURSE_EXAMDATE      string `db:"COURSE_EXAMDATE"`
 	}
 
+	RegisterAllRepo struct {
+		YEAR      string `db:"YEAR"`
+		SEMESTER  string `db:"SEMESTER"`
+		COURSE_NO string `db:"COURSE_NO"`
+		STD_CODE  string `db:"STD_CODE"`
+		CREDIT    string `db:"CREDIT"`
+	}
+
 	PrepareTokenRepo struct {
 		STD_CODE string `db:"STD_CODE"`
 		STATUS   int    `db:"STATUS"`
@@ -59,6 +67,7 @@ type (
 
 	StudentRepoInterface interface {
 		GetStudentProfile(studentCode string) (*StudentProfileRepo, error)
+		GetRegisterAll(studentCode, courseYear string) (*[]RegisterAllRepo, error)
 		GetRegister(studentCode, courseYear, courseSemester string) (*[]RegisterRepo, error)
 		Authentication(studentCode string) (*PrepareTokenRepo, error)
 	}
