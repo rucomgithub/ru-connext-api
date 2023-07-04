@@ -103,7 +103,7 @@ where semester=:param11 and year=:param12 and  std_code= :param13
 func (r *registerRepoDB) GetYearSemesterLatest() (student *YearSemesterRepo, err error) {
 
 	yearsemester := YearSemesterRepo{}
-	query := `SELECT CURRENT_YEAR YEAR, CURRENT_SEMESTER SEMESTER FROM CURRENT_REGISTER WHERE ROWNUM = 1`
+	query := `SELECT CURRENT_YEAR YEAR, CURRENT_SEMESTER SEMESTER FROM CURRENT_REGISTER WHERE ROWNUM = 1 ORDER BY CURRENT_YEAR, CURRENT_SEMESTER`
 
 	err = r.oracle_db.Get(&yearsemester, query)
 	if err != nil {
