@@ -63,7 +63,7 @@ func (g *gradeServices) GradeYear(requestBody GradeRequest) (*GradeResponse, err
 
 	gradeJSON, _ := json.Marshal(&gradeResponse)
 	timeNow := time.Now()
-	redisCachegrade := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCachegrade := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, gradeJSON, redisCachegrade.Sub(timeNow)).Err()
 
 	return &gradeResponse, nil
@@ -121,7 +121,7 @@ func (g *gradeServices) GradeAll(std_code string) (*GradeResponse, error) {
 
 	gradeJSON, _ := json.Marshal(&gradeResponse)
 	timeNow := time.Now()
-	redisCachegrade := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCachegrade := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, gradeJSON, redisCachegrade.Sub(timeNow)).Err()
 
 	return &gradeResponse, nil

@@ -1,13 +1,7 @@
 package repositories
 
-import "fmt"
+func (r *registerRepoDB) GetRegister(std_code, year string) (*[]RegisterRepo, error) {
 
-func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo, error) {
-	if std_code == "6299999991" {
-		std_code = "6407501375"
-		//std_code = "6006416793"
-		fmt.Printf("register: %s \n", std_code)
-	}
 	register := []RegisterRepo{}
 	query := "SELECT YEAR,SEMESTER,COURSE_NO,STD_CODE,CREDIT FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and YEAR = :param2 ORDER BY YEAR DESC, SEMESTER DESC"
 
@@ -20,13 +14,23 @@ func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo,
 	return &register, nil
 }
 
-func (r *registerRepoDB) GetListYearAll(std_code string) (*[]YearRepo, error) {
-	if std_code == "6299999991" {
-		std_code = "6407501375"
-		//std_code = "6006416793"
-		fmt.Printf("register: %s \n", std_code)
+func (r *registerRepoDB) GetRegisterYearList(std_code string, year string) (*[]RegisterRepo, error) {
+
+	register := []RegisterRepo{}
+	query := "SELECT YEAR,SEMESTER,COURSE_NO,STD_CODE,CREDIT FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and YEAR = :param2 ORDER BY YEAR DESC, SEMESTER DESC"
+
+	err := r.oracle_db.Select(&register, query, std_code, year)
+
+	if err != nil {
+		return nil, err
 	}
-	register := []YearRepo{}
+
+	return &register, nil
+}
+
+func (r *registerRepoDB) GetRegisterYear(std_code string) (*[]RegisterYearRepo, error) {
+
+	register := []RegisterYearRepo{}
 	query := "SELECT YEAR FROM (SELECT YEAR FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1) GROUP BY YEAR ORDER BY 1 DESC"
 
 	err := r.oracle_db.Select(&register, query, std_code)
@@ -38,13 +42,9 @@ func (r *registerRepoDB) GetListYearAll(std_code string) (*[]YearRepo, error) {
 	return &register, nil
 }
 
-func (r *registerRepoDB) GetListYearSemesterAll(std_code string) (*[]YearSemesterRepo, error) {
-	if std_code == "6299999991" {
-		std_code = "6407501375"
-		//std_code = "6006416793"
-		fmt.Printf("register: %s \n", std_code)
-	}
-	register := []YearSemesterRepo{}
+func (r *registerRepoDB) GetRegisterGroupYearSemester(std_code string) (*[]RegisterYearSemesterRepo, error) {
+
+	register := []RegisterYearSemesterRepo{}
 	query := "SELECT YEAR,SEMESTER FROM (SELECT YEAR,SEMESTER FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and SEMESTER in (1,2,3)) GROUP BY YEAR,SEMESTER ORDER BY 1 DESC , 2 DESC"
 
 	err := r.oracle_db.Select(&register, query, std_code)
@@ -56,13 +56,9 @@ func (r *registerRepoDB) GetListYearSemesterAll(std_code string) (*[]YearSemeste
 	return &register, nil
 }
 
-func (r *registerRepoDB) GetScheduleAll(year, semester, std_code string) (*[]ScheduleRepo, error) {
-	if std_code == "6299999991" {
-		std_code = "6407501375"
-		//std_code = "6006416793"
-		fmt.Printf("register: %s \n", std_code)
-	}
-	register := []ScheduleRepo{}
+func (r *registerRepoDB) GetRegisterMr30(year, semester, studentCode string) (*[]RegisterMr30Repo, error) {
+
+	register := []RegisterMr30Repo{}
 
 	query := `select b.course_no, a.id, a.course_year, a.course_semester, a.course_no, a.course_method, a.course_method_number, a.day_code, a.time_code, a.room_group, a.instr_group, 
 a.course_method_detail, a.day_name_s, a.time_period, a.course_room, a.course_instructor, a.show_ru30, a.course_credit, a.course_pr, a.course_comment, a.exam_time as course_examdate 
@@ -92,7 +88,7 @@ ORDER BY a.course_no, a.course_method, a.course_method_number ) a ,(select cours
 where semester=:param11 and year=:param12 and  std_code= :param13 
 ) b where a.course_no = b.course_no`
 
-	err := r.oracle_db.Select(&register, query, semester, year, semester, year, semester, year, semester, year, semester, year, semester, year, std_code)
+	err := r.oracle_db.Select(&register, query, semester, year, semester, year, semester, year, semester, year, semester, year, semester, year, studentCode)
 	if err != nil {
 		return nil, err
 	}

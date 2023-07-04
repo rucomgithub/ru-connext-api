@@ -7,44 +7,68 @@ import (
 )
 
 type (
-	onDemandServices struct {
-		onDemandRepo repositories.OnDemandRepoInterface
-		redis_cache  *redis.Client
+	ondemandServices struct {
+		ondemandRepo   repositories.OndemandRepoInterface
+		redis_cache *redis.Client
 	}
 
-	OnDemandRequest struct {
-		COURSE_NO string `json:"course_no" validate:"min=7,max=7,regexp=^[A-Z]{3}[0-9]{4}$"`
-		YEAR      string `json:"year" validate:"min=4,max=4,regexp=^[0-9]"`
-		SEMESTER  string `json:"semester" validate:"min=1,max=1,regexp=^[0-9]"`
+	OndemandRequest struct {
+		SUBJECT_ID 	string `json:"subject_id" validate:"min=7,max=7,regexp=^[A-Z]{3}[0-9]{4}$"`
+		SEMESTER   	string `json:"semester" validate:"min=1,max=1"`
+		YEAR		string `json:"year" validate:"min=2,max=2,regexp=^[0-9]"`
 	}
 
-	OnDemandResponse struct {
-		COURSE_NO string           `json:"course_no"`
-		YEAR      string           `json:"year"`
-		SEMESTER  string           `json:"semester"`
-		COUNT     int              `json:"count"`
-		RECORD    []onDemandRecord `json:"record"`
+	OndemandSubjectCodeRequest struct {
+		SUBJECT_CODE 	string `json:"subject_code" validate:"min=2,max=10,regexp=^[0-9]"`
 	}
 
-	onDemandRecord struct {
-		STUDY_SEMESTER string `db:"STUDY_SEMESTER"`
-		STUDY_YEAR     string `db:"STUDY_YEAR"`
-		COURSE_NO      string `db:"COURSE_NO"`
-		DAY_CODE       string `db:"DAY_CODE"`
-		TIME_CODE      string `db:"TIME_CODE"`
-		BUILDING_CODE  string `db:"BUILDING_CODE"`
-		ROOM_CODE      string `db:"ROOM_CODE"`
+	OndemandResponse struct {
+		SUBJECT_ID  string `json:"subject_id"`
+		SEMESTER    string `json:"semester"`
+		YEAR        string `json:"year"`
+		RECORD   	ondemandRecord
+	} 
+
+	ondemandRecord struct {
+		SUBJECT_CODE	string `json:"subject_code"`
+		SUBJECT_ID     	string `json:"subject_id"`
+		SUBJECT_NAME_ENG string `json:"subject_name_eng"`
+		SEMESTER        string `json:"semester"`
+		YEAR          	string `json:"year"`
+		TOTAL			int `json:"total"`
+		DETAIL   	[]ondemandSubjectCodeRecord `json:"detail"`
 	}
 
-	OnDemandServiceInterface interface {
-		OnDemand(onDemandRequest OnDemandRequest) (*OnDemandResponse, error)
-		OnDemandAll(onDemandRequest OnDemandRequest) (*OnDemandResponse, error)
+	OndemandSubjectCodeResponse struct {
+		SUBJECT_CODE  string `json:"subject_code"`
+		RECORD   	[]ondemandSubjectCodeRecord
+	}
+
+	ondemandSubjectCodeRecord struct {
+		AUDIO_ID     string `json:"audio_id "`
+		SUBJECT_CODE     string `json:"subject_code"`
+		SUBJECT_ID	string `json:"subject_id"`
+		AUDIO_SEC	string `json:"audio_sec"`
+		SEM      string `json:"sem"`
+		YEAR         string `json:"year"`
+		AUDIO_CREATE         string `json:"audio_create"`
+		AUDIO_STATUS         string `json:"audio_status"`
+		AUDIO_TEACH         string `json:"audio_teach"`
+		AUDIO_COMMENT         string `json:"audio_comment"`
+
+	}
+
+	OndemandServiceInterface interface {
+		GetOndemandAll(ondemandRequest OndemandRequest) (*OndemandResponse,error)
+		GetOndemandSubjectCode(ondemandSubjectCodeRequest OndemandSubjectCodeRequest) (*OndemandSubjectCodeResponse,error)
+		// GradeYear(gradeRequest GradeRequest) (*GradeResponse, error)
+		// GradeAll(std_code string) (*GradeResponse, error)
 	}
 )
 
-func NewOnDemandServices(onDemandRepo repositories.OnDemandRepoInterface, redis_cache *redis.Client) OnDemandServiceInterface {
-	return &onDemandServices{
-		onDemandRepo: onDemandRepo,
-		redis_cache:  redis_cache,
+func NewOndemandServices(ondemandRepo repositories.OndemandRepoInterface, redis_cache *redis.Client) OndemandServiceInterface {
+	return &ondemandServices{
+		ondemandRepo:   ondemandRepo,
+		redis_cache: redis_cache,
 	}
 }
