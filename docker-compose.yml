@@ -14,6 +14,8 @@ services:
   ru-connext-api:
     image:  ruconnext-api
     container_name:  ru-connext-api
+    environment:
+      - TZ=Asia/Bangkok
     restart: always
     depends_on:
       -  ru-connext-caching-test

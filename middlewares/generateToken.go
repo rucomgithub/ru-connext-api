@@ -15,9 +15,9 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 
 	generateToken := &TokenResponse{}
 	//expirationAccessToken := time.Now().AddDate(0, 0, 1).Unix()
-	expirationAccessToken := time.Now().Add(time.Second * 30).Unix()
+	expirationAccessToken := time.Now().Add(time.Minute * 60).Unix()
 	//expirationRefreshToken := time.Now().AddDate(0, 1, 0).Unix()
-	expirationRefreshToken := time.Now().Add(time.Minute * 1).Unix()
+	expirationRefreshToken := time.Now().Add(time.Minute * 60 * 6).Unix()
 
 	generateToken.IsAuth = true
 	generateToken.AccessTokenKey = stdCode + "::access::" + uuid.New().String()
