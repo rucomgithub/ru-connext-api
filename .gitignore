@@ -1,2 +1,3 @@
 /environments/config.yaml
+/environments/environments.go
 /redis_data/appendonly.aof
