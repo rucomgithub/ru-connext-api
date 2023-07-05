@@ -26,7 +26,6 @@ func init() {
 	environments.TimeZoneInit()
 	environments.EnvironmentInit()
 	oracle_db = databases.NewDatabases().OracleInit()
-	mysql_db = databases.NewDatabases().MySQLInit()
 	redis_cache = databases.NewDatabases().RedisInint()
 	mysql_db = databases.NewDatabases().MysqlInit()
 }

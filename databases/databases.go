@@ -1,7 +1,6 @@
 package databases
 
 import (
-	"database/sql"
 	"fmt"
 
 	"github.com/go-redis/redis/v8"
@@ -18,16 +17,6 @@ func NewDatabases() *connection {
 	return &connection{}
 }
 
-func (c *connection) MySQLInit() *sql.DB {
-	dns := fmt.Sprintf("%v", viper.GetString("mysql.connection"))
-	driver := viper.GetString("mysql.openDriver")
-
-	db, err := sql.Open(driver, dns)
-	if err != nil {
-		panic(err)
-	}
-	return db
-}
 
 func (c *connection) OracleInit() *sqlx.DB {
 

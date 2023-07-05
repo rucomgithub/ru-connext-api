@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"database/sql"
 	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	"github.com/jmoiron/sqlx"
@@ -20,9 +20,11 @@ import (
 
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/repositories"
+
+	
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sqlx.DB, redis_cache *redis.Client) {
 
 	router.Use(middlewares.NewCorsAccessControl().CorsAccessControl())
 
@@ -56,6 +58,12 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 		student.POST("/exists-token", studentHandler.ExistsToken)
 		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
+		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
+
+		student.GET("/imageprofile", middlewares.Authorization(redis_cache), studentHandler.GetImageProfile)
+		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
+		student.GET("/photo/:id", studentHandler.GetPhotoById)
+		student.GET("/photoaod", middlewares.Authorization(redis_cache), studentHandler.GetPhotoAOD)
 
 		student.GET("/", studentHandler.GetStudentAll)
 	}
@@ -74,8 +82,45 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 		mr30.GET("/data/pagination", mr30Handler.GetMr30Pagination)
 	}
 
+	register := router.Group("/register")
+	{
+
+		registerRepo := repositories.NewRegisterRepo(oracle_db)
+		registerService := services.NewRegisterServices(registerRepo, redis_cache)
+		registerHandler := handlers.NewRegisterHandlers(registerService)
+
+		register.POST("/", middlewares.Authorization(redis_cache), registerHandler.Registers)
+
+		register.GET("/:std_code/year", middlewares.Authorization(redis_cache), registerHandler.Years)
+		register.GET("/:std_code/yearsemester", middlewares.Authorization(redis_cache), registerHandler.YearSemesters)
+		register.POST("/:std_code/schedule", middlewares.Authorization(redis_cache), registerHandler.ScheduleYearSemesters)
+		register.POST("/:std_code/schedulelatest", middlewares.Authorization(redis_cache), registerHandler.Schedules)
+	}
+
+	grade := router.Group("/grade")
+	{
+
+		gradeRepo := repositories.NewGradeRepo(oracle_db)
+		gradeService := services.NewGradeServices(gradeRepo, redis_cache)
+		gradeHandler := handlers.NewgradeHandlers(gradeService)
+
+		grade.POST("/:std_code/year", middlewares.Authorization(redis_cache), gradeHandler.GradeYear)
+		grade.POST("/:std_code", middlewares.Authorization(redis_cache), gradeHandler.Grades)
+	}
+
+	ondemand := router.Group("/ondemand")
+	{
+
+		ondemandRepo := repositories.NewOnDemandRepo(mysql_db)
+		// ondemandService := services.NewOnDemandServices(ondemandRepo, redis_cache)
+		// ondemandHandler := handlers.NewOnDeMandHandlers(ondemandService)
+
+
+		// ondemand.POST("/", ondemandHandler.GetOnDemandAll)
+
+	}
+
 	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 
-} 
- 
+}

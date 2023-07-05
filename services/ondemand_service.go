@@ -9,18 +9,11 @@ import (
 
 	"gopkg.in/validator.v2"
 )
-
-
-
-func (g *onDemandServices) OnDemandAll(requestBody OnDemandRequest) (*OnDemandResponse, error) {
-	type Data struct {
-		ID    string
-		Title string
-		Code  string
-	}
-
-
-
+type Data struct {
+	ID    string
+	Title string
+	Code  string
+}
 func GetTitleByID(id string, data []Data) string {
 	for _, entry := range data {
 		if entry.ID == id {
@@ -29,7 +22,6 @@ func GetTitleByID(id string, data []Data) string {
 	}
 	return "Unknown Title"
 }
-
 func (g *ondemandServices) GetOndemandAll(requestBody OndemandRequest) (*OndemandResponse, error) {
 
 	data := []Data{
