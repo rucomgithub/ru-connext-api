@@ -4,7 +4,6 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/databases"
 	"RU-Smart-Workspace/ru-smart-api/environments"
 	"RU-Smart-Workspace/ru-smart-api/routers"
-	"database/sql"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"

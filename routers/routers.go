@@ -24,7 +24,7 @@ import (
 	
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sqlx.DB, redis_cache *redis.Client) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB,redis_cache *redis.Client,mysql_db *sqlx.DB) {
 
 	router.Use(middlewares.NewCorsAccessControl().CorsAccessControl())
 
@@ -60,10 +60,9 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sqlx.DB, redis_cach
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
 
-		student.GET("/imageprofile", middlewares.Authorization(redis_cache), studentHandler.GetImageProfile)
 		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
 		student.GET("/photo/:id", studentHandler.GetPhotoById)
-		student.GET("/photoaod", middlewares.Authorization(redis_cache), studentHandler.GetPhotoAOD)
+		
 
 		student.GET("/", studentHandler.GetStudentAll)
 	}
@@ -111,12 +110,13 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, mysql_db *sqlx.DB, redis_cach
 	ondemand := router.Group("/ondemand")
 	{
 
-		ondemandRepo := repositories.NewOnDemandRepo(mysql_db)
-		// ondemandService := services.NewOnDemandServices(ondemandRepo, redis_cache)
-		// ondemandHandler := handlers.NewOnDeMandHandlers(ondemandService)
+		ondemandRepo := repositories.NewOndemandRepo(mysql_db)
+		ondemandService := services.NewOndemandServices(ondemandRepo, redis_cache)
+		ondemandHandler := handlers.NewOndemandHandlers(ondemandService)
 
+		ondemand.POST("/", ondemandHandler.GetOndemandAll)
 
-		// ondemand.POST("/", ondemandHandler.GetOnDemandAll)
+		ondemand.POST("/subjectcode", ondemandHandler.GetOndemandSubjectCode)
 
 	}
 
