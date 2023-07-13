@@ -44,7 +44,7 @@ pipeline {
        stage("deploy") {
             agent {
                 node {
-                    label 'ruconnext-uat'   
+                    label 'ruconnext-prod'   
                 }
             }
             steps {
