@@ -15,6 +15,7 @@ pipeline {
                 sh 'docker-compose down'
                 sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
                 sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                sh 'docker rm $(docker ps -a -q -f status=exited)'
                 sh 'docker rmi $(docker images -f "dangling=true" -q)'
                 sh 'docker build -t ru-connext-api .'
                 sh 'cd /home/ruconnext/ruconnext-dev'
