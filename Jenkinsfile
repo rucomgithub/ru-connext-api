@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'building...'
                  dir('/home/ruconnext/ruconnext-dev') {
-                    sh 'cd /home/ruconnext/ruconnext-dev'
+                    sh 'ls -a'
                     sh 'ls /home/ruconnext/ruconnext-dev -a'
                     sh 'docker-compose down'
                     sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
@@ -19,7 +19,7 @@ pipeline {
                 sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
                 sh 'docker build -t ru-connext-api .'
                  dir('/home/ruconnext/ruconnext-dev') {
-                    sh 'cd /home/ruconnext/ruconnext-dev'
+                    sh 'ls -a'
                     sh 'docker-compose up -d'
                     sh 'docker-compose up --scale ru-connext-api=4 -d'
                  }
@@ -49,6 +49,18 @@ pipeline {
             }
             steps {
                  echo 'deploying...'
+                 dir('/home/ruconnext/ruconnext-prod') {
+                    sh 'ls -a'
+                    sh 'docker-compose down'
+                    sh 'cp /home/ruconnext/ruconnext-prod/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                 }
+                sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                sh 'docker build -t ru-connext-api .'
+                 dir('/home/ruconnext/ruconnext-prod') {
+                    sh 'ls -a'
+                    sh 'docker-compose up -d'
+                    sh 'docker-compose up --scale ru-connext-api=4 -d'
+                 }
             }
         }
     }
