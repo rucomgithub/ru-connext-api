@@ -10,17 +10,19 @@ pipeline {
             }
             steps {
                 echo 'building...'
-                sh 'cd /home/ruconnext/ruconnext-dev'
-                sh 'ls /home/ruconnext/ruconnext-dev -a'
-                sh 'docker-compose down'
-                sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
-                sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
-                sh 'docker rm $(docker ps -a -q -f status=exited)'
-                sh 'docker rmi $(docker images -f "dangling=true" -q)'
-                sh 'docker build -t ru-connext-api .'
-                sh 'cd /home/ruconnext/ruconnext-dev'
-                sh 'docker-compose up -d'
-                sh 'docker-compose up --scale ru-connext-api=4 -d'
+                 dir('/home/ruconnext/ruconnext-dev') {
+                    sh 'cd /home/ruconnext/ruconnext-dev'
+                    sh 'ls /home/ruconnext/ruconnext-dev -a'
+                    sh 'docker-compose down'
+                    sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                    sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                    sh 'docker rm $(docker ps -a -q -f status=exited)'
+                    sh 'docker rmi $(docker images -f "dangling=true" -q)'
+                    sh 'docker build -t ru-connext-api .'
+                    sh 'cd /home/ruconnext/ruconnext-dev'
+                    sh 'docker-compose up -d'
+                    sh 'docker-compose up --scale ru-connext-api=4 -d'
+                 }
             }
         }
 
