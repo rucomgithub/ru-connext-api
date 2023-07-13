@@ -11,6 +11,7 @@ pipeline {
             steps {
                 echo 'building...'
                 sh 'cd /home/ruconnext/ruconnext-dev'
+                sh 'ls /home/ruconnext/ruconnext-dev -a'
                 sh 'docker-compose down'
                 sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
                 sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
