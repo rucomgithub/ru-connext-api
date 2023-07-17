@@ -1,5 +1,7 @@
 package repositories
 
+import "fmt"
+
 func (r *gradeRepoDB) GetGradeYear(std_code, year string) (*[]GradeRepo, error) {
 	if std_code == "6299999991" {
 		std_code = "6407501375"
