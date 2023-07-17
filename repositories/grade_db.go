@@ -1,7 +1,11 @@
 package repositories
 
 func (r *gradeRepoDB) GetGradeYear(std_code, year string) (*[]GradeRepo, error) {
-
+	if std_code == "6299999991" {
+		std_code = "6407501375"
+		//std_code = "6006416793"
+		fmt.Printf("register: %s \n", std_code)
+	}
 	grade := []GradeRepo{}
 	query := `select REGIS_YEAR,REGIS_SEMESTER,COURSE_NO,CREDIT,GRADE from gp000.ugb_master_grade 
 				where std_code=:param1 and regis_year = :param2
@@ -17,7 +21,11 @@ func (r *gradeRepoDB) GetGradeYear(std_code, year string) (*[]GradeRepo, error) 
 }
 
 func (r *gradeRepoDB) GetGradeAll(std_code string) (*[]GradeRepo, error) {
-
+	if std_code == "6299999991" {
+		std_code = "6407501375"
+		//std_code = "6006416793"
+		fmt.Printf("register: %s \n", std_code)
+	}
 	grade := []GradeRepo{}
 	query := `select REGIS_YEAR,REGIS_SEMESTER,COURSE_NO,CREDIT,GRADE from gp000.ugb_master_grade 
 				where std_code=:param1
