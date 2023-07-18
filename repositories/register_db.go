@@ -8,7 +8,7 @@ func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo,
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
-		std_code = "6390400031"
+		std_code = "5802031012"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []RegisterRepo{}
@@ -29,7 +29,7 @@ func (r *registerRepoDB) GetListYearAll(std_code string) (*[]YearRepo, error) {
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
-		std_code = "6390400031"
+		std_code = "5802031012"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []YearRepo{}
@@ -50,7 +50,7 @@ func (r *registerRepoDB) GetListYearSemesterAll(std_code string) (*[]YearSemeste
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
-		std_code = "6390400031"
+		std_code = "5802031012"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []YearSemesterRepo{}
@@ -71,7 +71,7 @@ func (r *registerRepoDB) GetScheduleAll(year, semester, std_code string) (*[]Sch
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
-		std_code = "6390400031"
+		std_code = "5802031012"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	register := []ScheduleRepo{}
