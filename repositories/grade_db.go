@@ -8,7 +8,7 @@ func (r *gradeRepoDB) GetGradeYear(std_code, year string) (*[]GradeRepo, error) 
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
-		std_code = "6390400031"
+		std_code = "5802031012"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	grade := []GradeRepo{}
@@ -31,7 +31,7 @@ func (r *gradeRepoDB) GetGradeAll(std_code string) (*[]GradeRepo, error) {
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
-		std_code = "6390400031"
+		std_code = "5802031012"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	grade := []GradeRepo{}
