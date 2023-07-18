@@ -195,7 +195,7 @@ func (h *studentHandlers) GetPhoto(c *gin.Context) {
 	}
 
 	// url := "http://10.2.1.155:9100/student/photo"
-	url := "https://iregis.ru.ac.th/RUi-Pay/assets/img/send1.png"
+	url := "https://fis.ru.ac.th/home/images/stories/icon/task.jpg"
 
 	client := &http.Client{
 		Timeout: 60 * time.Second, // Set a higher timeout value
