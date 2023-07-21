@@ -223,7 +223,7 @@ func (mr30 *mr30Services) GetMr30Pagination(course_year, course_semester, limit,
 
 		start, _ := strconv.Atoi(offset)
 		end, _ := strconv.Atoi(limit)
-		for i := start; i < end; i++ {
+		for i := start; i < (start + end); i++ {
 			mr30RecPage = append(mr30RecPage, mr30Response.RECORD[i])
 		}
 
@@ -283,7 +283,7 @@ func (mr30 *mr30Services) GetMr30Pagination(course_year, course_semester, limit,
 
 	start, _ := strconv.Atoi(offset)
 	end, _ := strconv.Atoi(limit)
-	for i := start; i < end; i++ {
+	for i := start; i < (start + end); i++ {
 		mr30RecPage = append(mr30RecPage, mr30Rec[i])
 	}
 
