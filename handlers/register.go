@@ -106,3 +106,16 @@ func (h *registerHandlers) Schedules(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, registerResponse)
 }
+
+func (h *registerHandlers) YearSemesterLates(c *gin.Context) {
+
+	mr30Response, err := h.registerServices.GetYearSemesterLatest()
+	if err != nil {
+		c.IndentedJSON(http.StatusUnprocessableEntity, err)
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, mr30Response)
+
+}

@@ -51,6 +51,11 @@ type (
 		RECORD   []registerYearSemesterRecord
 	}
 
+	YearSemesterResponse struct {
+		YEAR     string `json:"year"`
+		SEMESTER string `json:"semester"`
+	}
+
 	registerYearSemesterRecord struct {
 		YEAR     string `json:"year"`
 		SEMESTER string `json:"semester"`
@@ -92,6 +97,8 @@ type (
 		GetListYearSemester(std_code string) (*RegisterYearSemesterResponse, error)
 		GetScheduleYearSemester(std_code string, registerScheduleRequest RegisterScheduleRequest) (*RegisterScheduleResponse, error)
 		GetSchedule(std_code string) (*RegisterScheduleResponse, error)
+
+		GetYearSemesterLatest() (*YearSemesterResponse, error)
 	}
 )
 

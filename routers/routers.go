@@ -20,11 +20,9 @@ import (
 
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/repositories"
-
-	
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB,redis_cache *redis.Client,mysql_db *sqlx.DB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB) {
 
 	router.Use(middlewares.NewCorsAccessControl().CorsAccessControl())
 
@@ -62,7 +60,6 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB,redis_cache *redis.Client,mysq
 
 		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
 		student.GET("/photo/:id", studentHandler.GetPhotoById)
-		
 
 		student.GET("/", studentHandler.GetStudentAll)
 	}
@@ -88,8 +85,9 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB,redis_cache *redis.Client,mysq
 		registerService := services.NewRegisterServices(registerRepo, redis_cache)
 		registerHandler := handlers.NewRegisterHandlers(registerService)
 
-		register.POST("/", middlewares.Authorization(redis_cache), registerHandler.Registers)
+		register.GET("/yearsemesterlates", registerHandler.YearSemesterLates)
 
+		register.POST("/", middlewares.Authorization(redis_cache), registerHandler.Registers)
 		register.GET("/:std_code/year", middlewares.Authorization(redis_cache), registerHandler.Years)
 		register.GET("/:std_code/yearsemester", middlewares.Authorization(redis_cache), registerHandler.YearSemesters)
 		register.POST("/:std_code/schedule", middlewares.Authorization(redis_cache), registerHandler.ScheduleYearSemesters)

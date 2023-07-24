@@ -325,3 +325,40 @@ func (register *registerServices) GetListYearSemester(std_code string) (*Registe
 
 	return &registerYearSemesterResponse, nil
 }
+
+func (register *registerServices) GetYearSemesterLatest() (*YearSemesterResponse, error) {
+
+	yearSemesterResponse := YearSemesterResponse{
+		YEAR:     "",
+		SEMESTER: "",
+	}
+
+	key := "year-semester-latest::"
+	registerCache, err := register.redis_cache.Get(ctx, key).Result()
+	if err == nil {
+		log.Println(err)
+		_ = json.Unmarshal([]byte(registerCache), &yearSemesterResponse)
+		fmt.Println("cache-register")
+		return &yearSemesterResponse, nil
+	}
+
+	fmt.Println("database-register")
+
+	yearSemesterRepo, err := register.registerRepo.GetYearSemesterLatest()
+	if err != nil {
+		log.Println(err.Error())
+		return nil, errs.NewUnExpectedError()
+	}
+
+	yearSemesterResponse = YearSemesterResponse{
+		YEAR:     yearSemesterRepo.YEAR,
+		SEMESTER: yearSemesterRepo.SEMESTER,
+	}
+
+	registerJSON, _ := json.Marshal(&yearSemesterResponse)
+	timeNow := time.Now()
+	redisCacheregister := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
+	_ = register.redis_cache.Set(ctx, key, registerJSON, redisCacheregister.Sub(timeNow)).Err()
+
+	return &yearSemesterResponse, nil
+}
