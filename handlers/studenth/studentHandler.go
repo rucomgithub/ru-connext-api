@@ -194,7 +194,7 @@ func (h *studentHandlers) GetPhoto(c *gin.Context) {
 		return
 	}
 
-	url := "http://10.2.1.155:9100/student/photo"
+	 url := "http://10.2.1.155:9100/student/photo"
 
 	client := &http.Client{
 		Timeout: 60 * time.Second, // Set a higher timeout value

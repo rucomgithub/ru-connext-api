@@ -78,7 +78,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB,redis_cache *redis.Client,mysq
 		mr30.POST("/year", mr30Handler.GetMr30Year)
 		mr30.POST("/data", mr30Handler.GetMr30)
 		mr30.GET("/data/search", mr30Handler.GetMr30Searching)
-		mr30.GET("/data/pagination", mr30Handler.GetMr30Pagination)
+		mr30.POST("/data/pagination", mr30Handler.GetMr30Pagination)
 	}
 
 	register := router.Group("/register")
