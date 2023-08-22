@@ -27,7 +27,7 @@ func (r *gradeRepoDB) GetGradeYear(std_code, year string) (*[]GradeRepo, error) 
 
 func (r *gradeRepoDB) GetGradeAll(std_code string) (*[]GradeRepo, error) {
 	if std_code == "6299999991" {
-		std_code = "4205025259"
+		std_code = "6407501375"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
