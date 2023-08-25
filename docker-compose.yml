@@ -1,21 +1,5 @@
 version: '3.5'
 services:
-  code-server:
-    image: lscr.io/linuxserver/code-server:latest
-    container_name: code-server
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      - PASSWORD=sa78589 #optional
-      - SUDO_PASSWORD=sa78589 #optional
-    volumes:
-      - ./config:/config
-      - ./:/config/workspace
-    ports:
-      - 8443:8443
-    restart: unless-stopped
-
   ru-smart-api:   
     # build: ./
     image: ru-smart-api
