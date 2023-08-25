@@ -36,7 +36,7 @@ pipeline {
                  echo 'testing...'
                 dir('/home/ruconnext/docker/k6') {
                     sh 'ls -a'
-                    sh 'docker-compose run --rm k6 run --summary-export=/scripts/results.json /scripts/testapi-prod/test_spec.js'
+                    sh 'docker-compose run --rm k6 run --summary-export=/scripts/results.json /scripts/testapi/test_spec.js'
                 }
             }
         }
