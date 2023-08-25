@@ -10,8 +10,8 @@ pipeline {
             }
             steps {
                 echo 'building...'
-         				 echo 'ruconnext-dev'        
-									dir('/home/ruconnext/ruconnext-dev') {
+         		echo 'ruconnext-dev'        
+				dir('/home/ruconnext/ruconnext-dev') {
                     sh 'ls -a'
                     sh 'ls /home/ruconnext/ruconnext-dev -a'
                     sh 'docker-compose down'
