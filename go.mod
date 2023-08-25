@@ -8,10 +8,9 @@ require (
 	github.com/go-redis/redis/v8 v8.11.4
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/godror/godror v0.31.0
-	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/google/uuid v1.3.0
 	github.com/jmoiron/sqlx v1.3.4
-	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/viper v1.10.1
 	github.com/stretchr/testify v1.8.2
 	go.uber.org/zap v1.17.0
@@ -44,7 +43,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
@@ -56,7 +54,6 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	golang.org/x/crypto v0.7.0 // indirect
-	golang.org/x/image v0.0.0-20190802002840-cff245a6509b // indirect
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/oauth2 v0.0.0-20220223155221-ee480838109b // indirect
 	golang.org/x/sync v0.1.0 // indirect

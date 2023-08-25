@@ -25,7 +25,7 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/repositories"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB) {
 
 	jsonFileLogger, err := logger.NewJSONFileLogger("./logger/app.log")
 	if err != nil {
@@ -126,6 +126,16 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, my
 		ondemand.POST("/", ondemandHandler.GetOndemandAll)
 
 		ondemand.POST("/subjectcode", ondemandHandler.GetOndemandSubjectCode)
+
+	}
+
+	rotcs := router.Group("/rotcs")
+	{
+		rotcsRepo := repositories.NewRotcsRepo(mysql_db_rotcs)
+		rotcsService := services.NewRotcsServices(rotcsRepo, redis_cache)
+		rotcsHandler := handlers.NewRotcsHandlers(rotcsService)
+		rotcs.GET("/register", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsRegister)
+		rotcs.GET("/extend", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsExtend)
 
 	}
 
