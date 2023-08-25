@@ -14,6 +14,7 @@ func (e AppError) Error() string {
 }
 
 func NewNotFoundError(message string) error {
+
 	return AppError{
 		Code:    http.StatusNotFound,
 		Message: message,

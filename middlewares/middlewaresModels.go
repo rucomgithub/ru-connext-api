@@ -16,6 +16,11 @@ type (
 		Role    string `json:"std_role"`
 	}
 
+	CacheService struct {
+		ServiceId string `json:"service_id"`
+		Role      string `json:"service_role"`
+	}
+
 	TokenResponse struct {
 		AccessToken     string `json:"accessToken"`
 		RefreshToken    string `json:"refreshToken"`

@@ -35,6 +35,10 @@ type (
 		Std_code string `json:"std_code"`
 	}
 
+	AuthenServicePlayload struct {
+		ServiveId string `json:"service_id"`
+	}
+
 	TokenResponse struct {
 		AccessToken  string `json:"accessToken"`
 		RefreshToken string `json:"refreshToken"`
@@ -123,6 +127,7 @@ type (
 
 	StudentServicesInterface interface {
 		Authentication(stdCode string) (*TokenResponse, error)
+		AuthenticationService(service_id string) (*TokenResponse, error)
 		AuthenticationRedirect(stdCode, accessToken string) (*TokenRedirectResponse, error)
 		RefreshAuthentication(refreshToken, stdCode string) (*TokenResponse, error)
 		Unauthorization(token string) bool

@@ -21,12 +21,18 @@ func (h *registerHandlers) Registers(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
 
 	registerResponse, err := h.registerServices.GetRegister(requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
@@ -39,12 +45,16 @@ func (h *registerHandlers) Years(c *gin.Context) {
 	var std_code string = c.Param("std_code")
 
 	if std_code == "" {
+
 		handleError(c, errors.New("โปรดระบุรหัสนักศึกษา"))
 		return
 	}
 
 	registerResponse, err := h.registerServices.GetListYear(std_code)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
@@ -61,6 +71,9 @@ func (h *registerHandlers) YearSemesters(c *gin.Context) {
 
 	registerResponse, err := h.registerServices.GetListYearSemester(std_code)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
@@ -71,6 +84,7 @@ func (h *registerHandlers) ScheduleYearSemesters(c *gin.Context) {
 	var std_code string = c.Param("std_code")
 
 	if std_code == "" {
+		c.Error(errors.New("โปรดระบุรหัสนักศึกษา"))
 		handleError(c, errors.New("โปรดระบุรหัสนักศึกษา"))
 		return
 	}
@@ -79,12 +93,18 @@ func (h *registerHandlers) ScheduleYearSemesters(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
 
 	registerResponse, err := h.registerServices.GetScheduleYearSemester(std_code, requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
@@ -95,12 +115,16 @@ func (h *registerHandlers) Schedules(c *gin.Context) {
 	var std_code string = c.Param("std_code")
 
 	if std_code == "" {
+		c.Error(errors.New("โปรดระบุรหัสนักศึกษา"))
 		handleError(c, errors.New("โปรดระบุรหัสนักศึกษา"))
 		return
 	}
 
 	registerResponse, err := h.registerServices.GetSchedule(std_code)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
@@ -111,6 +135,9 @@ func (h *registerHandlers) YearSemesterLates(c *gin.Context) {
 
 	mr30Response, err := h.registerServices.GetYearSemesterLatest()
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return

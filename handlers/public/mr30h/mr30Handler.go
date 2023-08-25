@@ -1,6 +1,7 @@
 package mr30h
 
 import (
+	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/services/public/mr30s"
 	"net/http"
 
@@ -21,6 +22,9 @@ func (h *mr30Handlers) GetMr30Year(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return
@@ -28,6 +32,9 @@ func (h *mr30Handlers) GetMr30Year(c *gin.Context) {
 
 	mr30Response, err := h.mr30Services.GetMr30Year()
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return
@@ -43,6 +50,9 @@ func (h *mr30Handlers) GetMr30(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return
@@ -50,6 +60,9 @@ func (h *mr30Handlers) GetMr30(c *gin.Context) {
 
 	mr30Response, err := h.mr30Services.GetMr30(requestBody.Course_year, requestBody.Course_semester)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return
@@ -65,6 +78,9 @@ func (h *mr30Handlers) GetMr30Searching(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return
@@ -72,6 +88,9 @@ func (h *mr30Handlers) GetMr30Searching(c *gin.Context) {
 
 	mr30Response, err := h.mr30Services.GetMr30Searching(requestBody["course_year"], requestBody["course_semester"], requestBody["course_no"])
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return
@@ -87,6 +106,9 @@ func (h *mr30Handlers) GetMr30Pagination(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return
@@ -94,6 +116,9 @@ func (h *mr30Handlers) GetMr30Pagination(c *gin.Context) {
 
 	mr30Response, err := h.mr30Services.GetMr30Pagination(requestBody["course_year"], requestBody["course_semester"], requestBody["limit"], requestBody["offset"])
 	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)
 		c.Abort()
 		return

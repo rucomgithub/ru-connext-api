@@ -9,11 +9,9 @@ import (
 	"github.com/go-redis/redis/v8"
 	_ "github.com/godror/godror"
 	"github.com/jmoiron/sqlx"
-
     _ "github.com/go-sql-driver/mysql"
 
 )
-
 var oracle_db *sqlx.DB
 
 var mysql_db *sqlx.DB 
@@ -29,14 +27,12 @@ func init() {
 	mysql_db = databases.NewDatabases().MysqlInit()
 }
 
-func main() {
 
-    
+func main() {
 	defer oracle_db.Close()
 	defer redis_cache.Close()
 	defer mysql_db.Close()
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 	routers.Setup(router, oracle_db, redis_cache,mysql_db)
-
 }

@@ -20,12 +20,18 @@ func (h *ondemandHandlers) GetOndemandAll(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
 
 	ondemandResponse, err := h.ondemandServices.GetOndemandAll(requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
@@ -39,12 +45,18 @@ func (h *ondemandHandlers) GetOndemandSubjectCode(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
 
 	ondemandResponse, err := h.ondemandServices.GetOndemandSubjectCode(requestBody)
 	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
 		handleError(c, err)
 		return
 	}
@@ -52,5 +64,3 @@ func (h *ondemandHandlers) GetOndemandSubjectCode(c *gin.Context) {
 	c.JSON(http.StatusOK, ondemandResponse)
 
 }
-
-

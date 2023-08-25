@@ -1,3 +1,8 @@
+/.vscode
 /environments/config.yaml
 /environments/environments.go
 /redis_data/appendonly.aof
+/config
+/fonts
+/logs
+/docker-compose.yml.old
