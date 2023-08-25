@@ -27,7 +27,7 @@ import (
 
 func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB) {
 
-	jsonFileLogger, err := logger.NewJSONFileLogger("./logger/app.log")
+	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
 		log.Fatal("Failed to open log file:", err)
 	}
