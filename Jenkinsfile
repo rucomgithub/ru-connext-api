@@ -7,7 +7,7 @@ pipeline {
                 node {
                     label 'ruconnext-dev'   
                 }
-            }
+            } 
             steps {
                 echo 'building...'
                  dir('/home/ruconnext/ruconnext-dev') {
