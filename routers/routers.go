@@ -134,8 +134,8 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, my
 		rotcsRepo := repositories.NewRotcsRepo(mysql_db_rotcs)
 		rotcsService := services.NewRotcsServices(rotcsRepo, redis_cache)
 		rotcsHandler := handlers.NewRotcsHandlers(rotcsService)
-		rotcs.GET("/register", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsRegister)
-		rotcs.GET("/extend", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsExtend)
+		rotcs.POST("/register", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsRegister)
+		rotcs.POST("/extend", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsExtend)
 
 	}
 
