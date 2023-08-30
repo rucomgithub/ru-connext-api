@@ -7,3 +7,5 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2023-08-30T07:28:42Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2023-08-30T07:33:28Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2023-08-30T07:39:12Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2023-08-30T07:52:08Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/scholarship/getScholarShip","service":"scholarship","status":200,"time":"2023-08-30T07:52:15Z"}
