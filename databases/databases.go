@@ -82,3 +82,12 @@ func mySqlConnectionRotcs() (*sqlx.DB, error) {
 	return sqlx.Open(driver, dns)
 
 }
+
+func (c *connection) OracleScholarShipInit() *sqlx.DB {
+
+	db, err := oracleScholarShipConnection()
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
