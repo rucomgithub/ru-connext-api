@@ -25,7 +25,7 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/repositories"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
 
 	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
@@ -138,7 +138,14 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, my
 		rotcs.POST("/extend", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsExtend)
 
 	}
+	scholarship := router.Group("/scholarship")
+	{
+		scholarShipRepo := repositories.NewScholarshipRepo(oracleScholar_db)
+		scholarShipService := services.NewScholarShipServices(scholarShipRepo, redis_cache)
+		scholarShipHandler := handlers.NewScholarShipHandlers(scholarShipService)
 
+		scholarship.POST("/getScholarShip", scholarShipHandler.GetScholarshipAll)
+	}
 	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 
