@@ -1,17 +1,5 @@
 version: '3.5'
 services:
-
-  ru-connext-caching:   
-    image: redis:6.0
-    container_name:  ru-connext-caching
-    restart: always    
-    ports:
-      - 6379:6379
-    volumes:
-      - ./redis_data:/data
-      - ./redis_config/redis.conf:/redis.conf
-    command: redis-server /redis.conf --requirepass  admin-ru-connext-caching --appendonly yes
-
   ru-connext-api:
     #build: ./
     image:  ru-connext-api
