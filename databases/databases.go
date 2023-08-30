@@ -91,3 +91,11 @@ func (c *connection) OracleScholarShipInit() *sqlx.DB {
 	}
 	return db
 }
+func oracleScholarShipConnection() (*sqlx.DB, error) {
+
+	dns := fmt.Sprintf("%v", viper.GetString("dbScholarShip.connection"))
+	driver := viper.GetString("dbScholarShip.openDriver")
+
+	return sqlx.Open(driver, dns)
+
+}
