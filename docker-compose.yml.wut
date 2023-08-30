@@ -13,8 +13,7 @@ services:
     command: redis-server /redis.conf --requirepass  admin-ru-connext-caching --appendonly yes
 
   ru-connext-api:
-    build: ./
-    # image:  ru-connext-api
+    image:  ru-connext-api
     container_name:  ru-connext-api
     restart: always
     depends_on:
