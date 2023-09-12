@@ -261,7 +261,7 @@ func (h *studentHandlers) GetRegister(c *gin.Context) {
 }
 
 func (h *studentHandlers) GetPhoto(c *gin.Context) {
-	service_token := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfdG9rZW5fa2V5IjoiZXNlcnZpY2U6OmFjY2Vzczo6OTEzOTAzOWEtYzQ4My00OWRkLTg0NzUtYTgzZDUzNDc5Zjk2IiwiZXhwaXJlc190b2tlbiI6MTc4MDkwNTM3NCwiaXNzdWVyIjoiUnUtY29ubmV4dCIsInJlZnJlc2hfdG9rZW5fa2V5IjoiZXNlcnZpY2U6OnJlZnJlc2g6OmQzYjYyYTYwLTE3YWEtNGI0MC1iYTM5LWY4NzU3YTQ2MTk3OCIsInJvbGUiOiJTZXJ2aWNlIiwic3ViamVjdCI6IlJ1LUNvbm5leHRlc2VydmljZSJ9.i-U2P8xbbsjfu5ub9cqvUUPnug8YPevRTPt1sAy9RGI"
+	service_token := viper.GetString("token.eservice")
 
 	ID_TOKEN, err := middlewares.GetHeaderAuthorization(c)
 	if err != nil {
