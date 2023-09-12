@@ -4,6 +4,7 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/services/students"
+	"github.com/spf13/viper"
 	"bytes"
 	"errors"
 	"fmt"
