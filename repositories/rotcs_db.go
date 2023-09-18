@@ -28,9 +28,9 @@ func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, e
 func (r *rotcsRepoDB) GetRotcsExtend(std_code string) (*RotcsExtendRepo, error) {
 	extend := RotcsExtendRepo{}
 	query := `SELECT studentCode, extendYear,
-	CONCAT("ใบสำคัญ สด.๙ เลขที่ : ",code9) code9,
+	CONCAT("ใบสำคัญ สด.9 เลขที่ : ",code9) code9,
 	CASE 
-	WHEN option1 = "1" THEN "สำเนา สด.2 จำนวน 2 ฉบับ : มี" ELSE "สำเนา สด.๙ จำนวน 2 ฉบับ : ไม่มี" 
+	WHEN option1 = "1" THEN "สำเนา สด.9 จำนวน 2 ฉบับ : มี" ELSE "สำเนา สด.9 จำนวน 2 ฉบับ : ไม่มี" 
 	END option1,
 	CASE 
 	WHEN option2 = "1" THEN "สำเนาทะเบียนบ้าน จำนวน 2 ฉบับ : มี" ELSE "สำเนาทะเบียนบ้าน จำนวน 2 ฉบับ : ไม่มี" 
