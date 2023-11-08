@@ -1,4 +1,4 @@
-package students
+package masterservice
 
 import (
 	"encoding/json"

@@ -13,12 +13,10 @@ import (
 )
 
 var oracle_db *sqlx.DB
-
+var oracle_db_dbg *sqlx.DB
 var mysql_db *sqlx.DB
 var mysql_db_rotcs *sqlx.DB
-
 var redis_cache *redis.Client
-
 var oracleScholar_db *sqlx.DB
 
 func init() {
@@ -26,6 +24,7 @@ func init() {
 	environments.TimeZoneInit()
 	environments.EnvironmentInit()
 	oracle_db = databases.NewDatabases().OracleInit()
+	oracle_db_dbg = databases.NewDatabases().OracleDBGInit()
 	redis_cache = databases.NewDatabases().RedisInint()
 	mysql_db = databases.NewDatabases().MysqlInit()
 	mysql_db_rotcs = databases.NewDatabases().MysqlInitRotcs()
@@ -40,5 +39,5 @@ func main() {
 	defer oracleScholar_db.Close()
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
-	routers.Setup(router, oracle_db, redis_cache, mysql_db, mysql_db_rotcs, oracleScholar_db)
+	routers.Setup(router, oracle_db, oracle_db_dbg, redis_cache, mysql_db, mysql_db_rotcs, oracleScholar_db)
 }

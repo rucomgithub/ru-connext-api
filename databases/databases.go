@@ -25,6 +25,16 @@ func (c *connection) OracleInit() *sqlx.DB {
 	}
 	return db
 }
+
+func (c *connection) OracleDBGInit() *sqlx.DB {
+
+	db, err := oracleConnectionDBG()
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
+
 func (c *connection) MysqlInit() *sqlx.DB {
 	db, err := mySqlConnection()
 	if err != nil {
@@ -57,6 +67,15 @@ func redisConnection() *redis.Client {
 func oracleConnection() (*sqlx.DB, error) {
 
 	dns := fmt.Sprintf("%v", viper.GetString("db.connection"))
+	driver := viper.GetString("db.openDriver")
+
+	return sqlx.Open(driver, dns)
+
+}
+
+func oracleConnectionDBG() (*sqlx.DB, error) {
+
+	dns := fmt.Sprintf("%v", viper.GetString("db.connectionDBG"))
 	driver := viper.GetString("db.openDriver")
 
 	return sqlx.Open(driver, dns)

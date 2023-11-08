@@ -11,13 +11,13 @@ import (
 	"github.com/spf13/viper"
 )
 
-func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, error) {
+func GenerateToken(stdCode, role string, redis_cache *redis.Client) (*TokenResponse, error) {
 
 	generateToken := &TokenResponse{}
 	//expirationAccessToken := time.Now().AddDate(0, 0, 1).Unix()
 	expirationAccessToken := time.Now().Add(time.Minute * 60).Unix()
 	//expirationRefreshToken := time.Now().AddDate(0, 1, 0).Unix()
-	expirationRefreshToken := time.Now().Add(time.Minute * 60 * 6).Unix()
+	expirationRefreshToken := time.Now().Add(time.Minute * 60 * 24).Unix()
 
 	generateToken.IsAuth = true
 	generateToken.AccessTokenKey = stdCode + "::access::" + uuid.New().String()
@@ -26,8 +26,9 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 	// ---------------------  Create Access Token  ----------------------------------------- //
 	accessTokenClaims := jwt.MapClaims{}
 	accessTokenClaims["issuer"] = viper.GetString("token.issuer")
-	accessTokenClaims["subject"] = "Ru-Connext" + stdCode
-	accessTokenClaims["role"] = ""
+	accessTokenClaims["sub"] = "Ru-Connext" + stdCode
+	accessTokenClaims["std_code"] = stdCode
+	accessTokenClaims["role"] = role
 	accessTokenClaims["expires_token"] = expirationAccessToken
 	accessTokenClaims["access_token_key"] = generateToken.AccessTokenKey
 	accessTokenClaims["refresh_token_key"] = generateToken.RefreshTokenKey
@@ -43,8 +44,9 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 	// ---------------------  Create Refresh Token  ----------------------------------------- //
 	refreshTokenClaims := jwt.MapClaims{}
 	refreshTokenClaims["issuer"] = viper.GetString("token.issuer")
-	refreshTokenClaims["subject"] = "Ru-Connext::" + stdCode
-	refreshTokenClaims["role"] = ""
+	refreshTokenClaims["sub"] = "Ru-Connext" + stdCode
+	accessTokenClaims["std_code"] = stdCode
+	refreshTokenClaims["role"] = role
 	refreshTokenClaims["expires_token"] = expirationRefreshToken
 	refreshTokenClaims["access_token_key"] = generateToken.AccessTokenKey
 	refreshTokenClaims["refresh_token_key"] = generateToken.RefreshTokenKey
@@ -63,7 +65,7 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 
 	cacheStudent := CacheStudent{
 		StdCode: stdCode,
-		Role:    "bachelor",
+		Role:    role,
 	}
 
 	cacheDataJson, _ := json.Marshal(cacheStudent)

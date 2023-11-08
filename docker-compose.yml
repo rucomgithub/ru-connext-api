@@ -1,17 +1,17 @@
 version: '3.5'
 services:
-  ru-connext-api:
-    #build: ./
-    image:  ru-connext-api
-    container_name:  ru-connext-api
+  ru-smart-api:   
+    # build: ./
+    image: ru-smart-api
+    container_name: ru-smart-api
     restart: always
-    depends_on:
-      -  ru-connext-caching
     ports:
-      - 8883:8883
+       - 9100:8883
     volumes:
-      - ./logger/app.log:/logger/app.log
-
+       - ./logger:/logger
+       - ./:/app
+    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+    # command: go run main.go
  
 networks:
   default:

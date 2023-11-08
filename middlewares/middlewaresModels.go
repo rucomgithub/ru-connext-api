@@ -33,6 +33,7 @@ type (
 		Issuer          string `json:"issuer"`
 		Subject         string `json:"subject"`
 		Role            string `json:"role"`
+		StudentCode     string `json:"std_code"`
 		ExpiresToken    string `json:"expires_token"`
 		AccessTokenKey  string `json:"access_token_key"`
 		RefreshTokenKey string `json:"refresh_token_key"`
@@ -127,6 +128,12 @@ func GetClaims(encodedToken string) (*ClaimsToken, error) {
 		claimsToken.Role = parseClaims["role"].(string)
 	} else {
 		claimsToken.Role = ""
+	}
+
+	if parseClaims["std_code"] != "" {
+		claimsToken.StudentCode = parseClaims["std_code"].(string)
+	} else {
+		claimsToken.StudentCode = ""
 	}
 
 	if parseClaims["access_token_key"] != nil {
