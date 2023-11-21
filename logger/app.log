@@ -1186,3 +1186,45 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/2555","service":"master","status":200,"time":"2023-11-07T09:18:19Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-07T09:18:32Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-07T09:18:33Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2023-11-09T04:37:16Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"GET","msg":"redis: nil","path":"/master/student/profile","service":"master","status":401,"time":"2023-11-09T04:37:23Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"GET","msg":"redis: nil","path":"/master/student/profile","service":"master","status":401,"time":"2023-11-09T04:37:24Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":41,"method":"GET","msg":"sql: no rows in result set","path":"/master/student/profile","service":"master","status":404,"time":"2023-11-09T04:37:48Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2023-11-09T04:38:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-09T04:38:36Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"GET","msg":"redis: nil","path":"/master/student/profile","service":"master","status":401,"time":"2023-11-09T04:43:44Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-09T04:43:59Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-09T04:44:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-09T04:44:48Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-09T04:44:57Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-09T04:45:01Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2023-11-09T04:45:36Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2023-11-09T04:45:50Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2023-11-09T04:45:54Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"GET","msg":"redis: nil","path":"/master/register/","service":"master","status":401,"time":"2023-11-09T04:46:02Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2023-11-09T04:46:07Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2023-11-09T04:46:09Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2023-11-09T04:46:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2023-11-14T03:11:52Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":89,"method":"GET","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/master/register/2561","service":"master","status":404,"time":"2023-11-14T03:42:51Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":89,"method":"GET","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/master/register/2561","service":"master","status":404,"time":"2023-11-14T03:42:53Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/2555","service":"master","status":200,"time":"2023-11-14T03:42:59Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":89,"method":"GET","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/master/register/2556","service":"master","status":404,"time":"2023-11-14T03:43:04Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/2554","service":"master","status":200,"time":"2023-11-14T03:43:08Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/2554","service":"master","status":200,"time":"2023-11-14T03:49:18Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/2555","service":"master","status":200,"time":"2023-11-14T03:49:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2023-11-16T08:54:26Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:54:27Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:54:27Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:54:27Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:54:30Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:54:35Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:54:53Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:58:17Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:59:28Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T08:59:31Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T09:00:54Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T09:05:25Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2023-11-16T11:16:35Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T11:16:49Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T11:16:50Z"}

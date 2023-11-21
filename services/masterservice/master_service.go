@@ -98,11 +98,11 @@ type (
 	}
 
 	GradeResponse struct {
-		STD_CODE       string              `json:"std_code"`
-		YEAR           string              `json:"year"`
+		STD_CODE       string              `json:"STD_CODE"`
+		YEAR           string              `json:"YEAR"`
 		SUMMARY_CREDIT int                 `json:"SUMMARY_CREDIT"`
 		GPA            float32             `json:"GPA"`
-		GRADE          []GradeResponseRepo `json:"grade"`
+		GRADE          []GradeResponseRepo `json:"GRADEDATA"`
 	}
 
 	StudentResponse struct {
