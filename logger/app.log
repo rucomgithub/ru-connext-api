@@ -1228,3 +1228,27 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2023-11-16T11:16:35Z"}
 {"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T11:16:49Z"}
 {"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":335,"method":"GET","msg":"Invalid image format.","path":"/student/photoprofile","service":"student","status":400,"time":"2023-11-16T11:16:50Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2023-12-01T07:48:33Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:48:44Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:48:45Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:48:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:48:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:48:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:49:00Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:49:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:54Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:55Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:57Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:50:57Z"}
+{"file":"/app/handlers/register.go","level":"error","line":34,"method":"POST","msg":"YEAR: less than min, regular expression mismatch","path":"/register/","service":"register","status":400,"time":"2023-12-01T07:51:02Z"}
+{"file":"/app/handlers/register.go","level":"error","line":34,"method":"POST","msg":"YEAR: less than min, regular expression mismatch","path":"/register/","service":"register","status":400,"time":"2023-12-01T07:51:04Z"}
+{"file":"/app/handlers/register.go","level":"error","line":34,"method":"POST","msg":"YEAR: less than min, regular expression mismatch","path":"/register/","service":"register","status":400,"time":"2023-12-01T07:51:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:51:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:51:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2023-12-01T07:51:54Z"}
