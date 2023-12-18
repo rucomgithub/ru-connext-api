@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - PASSWORD=sa78589 #optional
+      - SUDO_PASSWORD=sa78589 #optional
+    volumes:
+      - ./config:/config
+      - ./:/config/app
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
+  ru-smart-api:   
+    # build: ./
+    image: ru-smart-api
+    container_name: ru-smart-api
+    restart: always
+    ports:
+       - 9100:8883
+    volumes:
+       - ./:/app
+    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+    # command: go run main.go
+ 
+networks:
+  default:
+    external: 
+      name: backend-services

@@ -1,1 +1,3 @@
 /environments/environments.yaml
+/redis_data/appendonly.aof
+/config
