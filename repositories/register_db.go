@@ -4,7 +4,8 @@ import "fmt"
 
 func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo, error) {
 	if std_code == "6299999991" {
-		std_code = "6407501375"
+		std_code = "6202408966"
+		//6407501375
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
