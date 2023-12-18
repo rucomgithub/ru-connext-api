@@ -21,8 +21,8 @@ type (
 	}
 
 	RegisterPlayload struct {
-		Std_code      string `json:"std_code"`
-		Course_year string `json:"course_year"`
+		Std_code        string `json:"std_code"`
+		Course_year     string `json:"course_year"`
 		Course_semester string `json:"course_semester"`
 	}
 
@@ -33,6 +33,10 @@ type (
 
 	AuthenTestPlayload struct {
 		Std_code string `json:"std_code"`
+	}
+
+	AuthenServicePlayload struct {
+		ServiveId string `json:"service_id"`
 	}
 
 	TokenResponse struct {
@@ -94,6 +98,10 @@ type (
 		REGISTER        []RegisterResponseFromDB `json:"register"`
 	}
 
+	StudentResponse struct {
+		STUDENT_CODE string `json:"std_code"`
+	}
+
 	RegisterResponseFromDB struct {
 		ID                   string `json:"id"`
 		COURSE_YEAR          string `json:"course_year"`
@@ -119,11 +127,16 @@ type (
 
 	StudentServicesInterface interface {
 		Authentication(stdCode string) (*TokenResponse, error)
+		AuthenticationService(service_id string) (*TokenResponse, error)
 		AuthenticationRedirect(stdCode, accessToken string) (*TokenRedirectResponse, error)
 		RefreshAuthentication(refreshToken, stdCode string) (*TokenResponse, error)
 		Unauthorization(token string) bool
+		CheckExistsToken(token string) bool
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetRegister(studentCode, courseYear, courseSemester string) (*RegisterResponse, error)
+		GetRegisterAll(studentCode, courseYear string) (*RegisterAllResponse, error)
+
+		GetStudentAll() (*[]StudentResponse, error)
 	}
 )
 

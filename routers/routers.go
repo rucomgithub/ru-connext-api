@@ -1,31 +1,45 @@
 package routers
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	"github.com/jmoiron/sqlx"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
+	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/handlers/studenth"
-	"RU-Smart-Workspace/ru-smart-api/middlewares"
+	"RU-Smart-Workspace/ru-smart-api/logger"
 	"RU-Smart-Workspace/ru-smart-api/repositories/studentr"
+	"RU-Smart-Workspace/ru-smart-api/services"
 	"RU-Smart-Workspace/ru-smart-api/services/students"
 
 	"RU-Smart-Workspace/ru-smart-api/handlers/public/mr30h"
 	"RU-Smart-Workspace/ru-smart-api/repositories/public/mr30r"
 	"RU-Smart-Workspace/ru-smart-api/services/public/mr30s"
+
+	"RU-Smart-Workspace/ru-smart-api/middlewares"
+	"RU-Smart-Workspace/ru-smart-api/repositories"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
+
+	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
+	if err != nil {
+		log.Fatal("Failed to open log file:", err)
+	}
+
+	router.Use(logger.ErrorLogger(jsonFileLogger))
 
 	router.Use(middlewares.NewCorsAccessControl().CorsAccessControl())
 
 	router.GET("/healthz", func(c *gin.Context) {
 		c.IndentedJSON(http.StatusOK, gin.H{
 			"status":  "200",
-			"message": "The service works normally.",
+			"message": "The service works normally...",
 		})
 	})
 
@@ -37,7 +51,9 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 
 		googleAuth.POST("/authorization", middlewares.GoogleAuth, studentHandler.Authentication)
 		googleAuth.POST("/authorization-test", studentHandler.AuthenticationTest)
+		googleAuth.POST("/authorization-service", studentHandler.AuthenticationService)
 		googleAuth.POST("/authorization-redirect", studentHandler.AuthenticationRedirect)
+
 	}
 
 	student := router.Group("/student")
@@ -48,9 +64,15 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 
 		student.POST("/refresh-authentication", studentHandler.RefreshAuthentication)
 		student.POST("/unauthorization", studentHandler.Unauthorization)
+		student.POST("/exists-token", studentHandler.ExistsToken)
 		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
+		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
 
+		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
+		student.GET("/photo/:id", studentHandler.GetPhotoById)
+
+		student.GET("/", studentHandler.GetStudentAll)
 	}
 
 	mr30 := router.Group("/mr30")
@@ -61,12 +83,86 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client) {
 		mr30Handler := mr30h.NewMr30Handlers(mr30Service)
 
 		// mr30.GET("/data", mr30Handler.GetMr30)
+		mr30.POST("/year", mr30Handler.GetMr30Year)
 		mr30.POST("/data", mr30Handler.GetMr30)
 		mr30.GET("/data/search", mr30Handler.GetMr30Searching)
-		mr30.GET("/data/pagination", mr30Handler.GetMr30Pagination)
+		mr30.POST("/data/pagination", mr30Handler.GetMr30Pagination)
 	}
 
+	register := router.Group("/register")
+	{
+
+		registerRepo := repositories.NewRegisterRepo(oracle_db)
+		registerService := services.NewRegisterServices(registerRepo, redis_cache)
+		registerHandler := handlers.NewRegisterHandlers(registerService)
+
+		register.GET("/yearsemesterlates", registerHandler.YearSemesterLates)
+
+		register.POST("/", middlewares.Authorization(redis_cache), registerHandler.Registers)
+		register.GET("/:std_code/year", middlewares.Authorization(redis_cache), registerHandler.Years)
+		register.GET("/:std_code/yearsemester", middlewares.Authorization(redis_cache), registerHandler.YearSemesters)
+		register.POST("/:std_code/schedule", middlewares.Authorization(redis_cache), registerHandler.ScheduleYearSemesters)
+		register.POST("/:std_code/schedulelatest", middlewares.Authorization(redis_cache), registerHandler.Schedules)
+	}
+
+	grade := router.Group("/grade")
+	{
+
+		gradeRepo := repositories.NewGradeRepo(oracle_db)
+		gradeService := services.NewGradeServices(gradeRepo, redis_cache)
+		gradeHandler := handlers.NewgradeHandlers(gradeService)
+
+		grade.POST("/:std_code/year", middlewares.Authorization(redis_cache), gradeHandler.GradeYear)
+		grade.POST("/:std_code", middlewares.Authorization(redis_cache), gradeHandler.Grades)
+	}
+
+	ondemand := router.Group("/ondemand")
+	{
+
+		ondemandRepo := repositories.NewOndemandRepo(mysql_db)
+		ondemandService := services.NewOndemandServices(ondemandRepo, redis_cache)
+		ondemandHandler := handlers.NewOndemandHandlers(ondemandService)
+
+		ondemand.POST("/", ondemandHandler.GetOndemandAll)
+
+		ondemand.POST("/subjectcode", ondemandHandler.GetOndemandSubjectCode)
+
+	}
+
+	rotcs := router.Group("/rotcs")
+	{
+		rotcsRepo := repositories.NewRotcsRepo(mysql_db_rotcs)
+		rotcsService := services.NewRotcsServices(rotcsRepo, redis_cache)
+		rotcsHandler := handlers.NewRotcsHandlers(rotcsService)
+		rotcs.POST("/register", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsRegister)
+		rotcs.POST("/extend", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsExtend)
+
+	}
+	scholarship := router.Group("/scholarship")
+	{
+		scholarShipRepo := repositories.NewScholarshipRepo(oracleScholar_db)
+		scholarShipService := services.NewScholarShipServices(scholarShipRepo, redis_cache)
+		scholarShipHandler := handlers.NewScholarShipHandlers(scholarShipService)
+
+		scholarship.POST("/getScholarShip", scholarShipHandler.GetScholarshipAll)
+	}
 	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 
+}
+
+func errorLogger(log *logrus.Logger) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Continue to the next middleware or route handler
+		c.Next()
+		// Check if any errors occurred during the request handling
+		err := c.Errors.Last()
+		if err != nil {
+			// Log the error
+			log.WithField("status", c.Writer.Status()).
+				WithField("method", c.Request.Method).
+				WithField("path", c.Request.URL.Path).
+				Error(err.Err)
+		}
+	}
 }

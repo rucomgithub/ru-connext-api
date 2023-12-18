@@ -1,26 +1,19 @@
 version: '3.5'
 services:
-  xxxxxxxxxx:   
-    image: redis:6.0
-    container_name:  xxxxxxxxxx
-    restart: always    
+  ru-connext-api:
+    #build: ./
+    image:  ru-connext-api
+    container_name:  ru-connext-api
+    restart: always
+    depends_on:
+      -  ru-connext-caching
     ports:
-      - 6000:6379
+      - 8883:8883
     volumes:
-      - ./redis_data:/data
-      - ./redis_config/redis.conf:/redis.conf
-    command: redis-server /redis.conf --requirepass  xxxxxxxxxx --appendonly yes
+      - ./logger/app.log:/logger/app.log
 
-  #  xxxxxxxxxx:
-  #   image:  xxxxxxxxxx
-  #   # container_name:  xxxxxxxxxx
-  #   restart: always
-  #   depends_on:
-  #     -  xxxxxxxxxx
-  #   # ports:
-  #   #   - 8883:8883
-
+ 
 networks:
   default:
     external: 
-      name:  xxxxxxxxxx
+      name: backend-services

@@ -2,6 +2,7 @@ package mr30s
 
 import (
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -33,8 +34,11 @@ func (mr30 *mr30Services) GetMr30(course_year, course_semester string) (*Mr30Res
 	mr30Cache, err := mr30.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		_ = json.Unmarshal([]byte(mr30Cache), &mr30Response)
+		fmt.Println("cache")
 		return &mr30Response, nil
 	}
+
+	fmt.Println("database")
 
 	mr30Repo, err := mr30.mr30Repo.GetMr30(course_year, course_semester)
 	if err != nil {
@@ -82,6 +86,51 @@ func (mr30 *mr30Services) GetMr30(course_year, course_semester string) (*Mr30Res
 	}
 
 	return &mr30Response, nil
+}
+
+func (mr30 *mr30Services) GetMr30Year() (*Mr30YearResponse, error) {
+
+	mr30YearResponse := Mr30YearResponse{
+		RECORDYEAR: []mr30YearRecord{},
+	}
+
+	key := "mr30::yearall"
+	mr30Cache, err := mr30.redis_cache.Get(ctx, key).Result()
+	if err == nil {
+		_ = json.Unmarshal([]byte(mr30Cache), &mr30YearResponse)
+		fmt.Println("cache")
+		return &mr30YearResponse, nil
+	}
+
+	fmt.Println("database")
+
+	mr30YearRepo, err := mr30.mr30Repo.GetMr30Year()
+	if err != nil {
+		return &mr30YearResponse, err
+	}
+
+	mr30YearRec := []mr30YearRecord{}
+
+	for _, c := range *mr30YearRepo {
+
+		mr30YearRec = append(mr30YearRec, mr30YearRecord{
+			COURSE_YEAR:     c.COURSE_YEAR,
+			COURSE_SEMESTER: c.COURSE_SEMESTER,
+		})
+	}
+
+	mr30YearResponse = Mr30YearResponse{
+		RECORDYEAR: mr30YearRec,
+	}
+
+	if len(mr30YearRec) != 0 {
+		mr30JSON, _ := json.Marshal(&mr30YearResponse)
+		timeNow := time.Now()
+		redisCacheMr30 := time.Unix(timeNow.Add(time.Minute*1).Unix(), 0)
+		_ = mr30.redis_cache.Set(ctx, key, mr30JSON, redisCacheMr30.Sub(timeNow)).Err()
+	}
+
+	return &mr30YearResponse, nil
 }
 
 func (mr30 *mr30Services) GetMr30Searching(course_year, course_semester, course_no string) (*Mr30Response, error) {
@@ -159,7 +208,7 @@ func (mr30 *mr30Services) GetMr30Searching(course_year, course_semester, course_
 
 func (mr30 *mr30Services) GetMr30Pagination(course_year, course_semester, limit, offset string) (*Mr30Response, error) {
 
-	mr30Response := Mr30Response {
+	mr30Response := Mr30Response{
 		COURSE_YEAR:     "",
 		COURSE_SEMESTER: "",
 		RECORD:          []mr30Record{},
@@ -174,11 +223,11 @@ func (mr30 *mr30Services) GetMr30Pagination(course_year, course_semester, limit,
 
 		start, _ := strconv.Atoi(offset)
 		end, _ := strconv.Atoi(limit)
-		for i := start; i < end; i++ {
+		for i := start; i < (start + end); i++ {
 			mr30RecPage = append(mr30RecPage, mr30Response.RECORD[i])
 		}
 
-		mr30ResponseRedisCach := Mr30Response {
+		mr30ResponseRedisCach := Mr30Response{
 			COURSE_YEAR:     mr30Response.COURSE_YEAR,
 			COURSE_SEMESTER: mr30Response.COURSE_SEMESTER,
 			RECORD:          mr30RecPage,
@@ -234,7 +283,7 @@ func (mr30 *mr30Services) GetMr30Pagination(course_year, course_semester, limit,
 
 	start, _ := strconv.Atoi(offset)
 	end, _ := strconv.Atoi(limit)
-	for i := start; i < end; i++ {
+	for i := start; i < (start + end); i++ {
 		mr30RecPage = append(mr30RecPage, mr30Rec[i])
 	}
 

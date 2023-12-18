@@ -30,8 +30,14 @@ type (
 		COURSE_EXAMDATE      string `db:"COURSE_EXAMDATE"`
 	}
 
+	Mr30YearRepo struct {
+		COURSE_YEAR     string `db:"COURSE_YEAR"`
+		COURSE_SEMESTER string `db:"COURSE_SEMESTER"`
+	}
+
 	Mr30RepoInterface interface {
 		GetMr30(course_year, course_semester string) (*[]Mr30Repo, error)
+		GetMr30Year() (*[]Mr30YearRepo, error)
 	}
 )
 

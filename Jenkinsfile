@@ -1,0 +1,78 @@
+pipeline {
+    agent none
+
+    stages {
+        stage("docker build") {
+            agent {
+                node {
+                    label 'ruconnext-dev'   
+                }
+            } 
+            steps {
+                echo 'building...'
+                 dir('/home/ruconnext/ruconnext-dev') {
+                    sh 'ls -a'
+                    sh 'ls /home/ruconnext/ruconnext-dev -a'
+                    sh 'docker-compose down'
+                    sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                 }
+                sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                sh 'docker build -t ru-connext-api .'
+                 dir('/home/ruconnext/ruconnext-dev') {
+                    sh 'ls -a'
+                    sh 'docker-compose up -d'
+                    sh 'docker-compose up --scale ru-connext-api=5 -d'
+                 }
+            }
+        }
+
+        stage("testing") {
+            agent {
+                node {
+                    label 'ruconnext-uat'   
+                }
+            }
+            steps {
+                 echo 'testing...'
+                dir('/home/ruconnext/docker/k6') {
+                    sh 'ls -a'
+                    sh 'docker-compose run --rm k6 run --summary-export=/scripts/results.json /scripts/testapi/test_spec.js'
+                }
+            }
+        }
+
+       stage("deploy") {
+            agent {
+                node {
+                    label 'ruconnext-prod'   
+                }
+            }
+            steps {
+                 echo 'deploying...'
+                 dir('/home/ruconnext/ruconnext-prod') {
+                    sh 'ls -a'
+                    sh 'docker-compose down'
+                    sh 'cp /home/ruconnext/ruconnext-prod/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                 }
+                sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
+                sh 'docker build -t ru-connext-api .'
+                 dir('/home/ruconnext/ruconnext-prod') {
+                    sh 'ls -a'
+                    sh 'docker-compose up -d'
+                    sh 'docker-compose up --scale ru-connext-api=10 -d'
+                 }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo "Release Success"
+            discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Deploy Image Ru ConneXt API  to ruconnext.ru.ac.th', webhookURL: 'https://discord.com/api/webhooks/1106420995797033051/h9hiBSuS_7Tqt56u7YwSG8DpqemtOMc7vWKUrtwYjmq2ICcd0uXokEgvc-A8bT8XmkG6'
+        }
+        failure {
+            echo "Release Failed"
+            discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '', result: 'FAILURE', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Deploy Image Ru ConneXt API  to ruconnext.ru.ac.th', webhookURL: 'https://discord.com/api/webhooks/1106420995797033051/h9hiBSuS_7Tqt56u7YwSG8DpqemtOMc7vWKUrtwYjmq2ICcd0uXokEgvc-A8bT8XmkG6'
+        }
+    }
+}
