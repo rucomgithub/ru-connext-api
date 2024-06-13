@@ -1,7 +1,7 @@
 package studentr
 import "fmt"
 func (r *studentRepoDB) GetStudentProfile(studentCode string) (student *StudentProfileRepo, err error) {
-	if studentCode == "6299999992" {
+	if studentCode == "6299999991" || studentCode == "6299999992"{
 		studentCode = "6202408966"
 		fmt.Printf("register: %s \n", studentCode)
 	}
