@@ -17,7 +17,7 @@ func (r *mr30RepoDB) GetMr30(course_year, course_semester string) (*[]Mr30Repo, 
 func (r *mr30RepoDB) GetMr30Year() (*[]Mr30YearRepo, error) {
 
 	mr30_info := []Mr30YearRepo{}
-	query := "SELECT course_year,course_semester from (select a.study_year course_year, a.study_semester course_semester FROM ugb_ru30_daytime a group by a.study_year, a.study_semester order by 1 desc , 2 desc) where rownum < 6"
+	query := "SELECT course_year,course_semester from (select a.study_year course_year, a.study_semester course_semester FROM ugb_ru30_daytime a group by a.study_year, a.study_semester order by 1 desc , 2 desc) mr30 ,current_mr30 c  where rownum < 6 and (mr30.course_year <= c.mr30_year and mr30.course_semester <= c.mr30_semester)"
 
 	err := r.oracle_db.Select(&mr30_info, query)
 
