@@ -17,4 +17,4 @@ func (r *studentRepoDB) Authentication(studentCode string) (token *PrepareTokenR
 	token = &tempToken
 
 	return token, nil
-}
+} 
