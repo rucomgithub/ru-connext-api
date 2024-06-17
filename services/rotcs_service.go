@@ -57,10 +57,10 @@ func (g *rotcsServices) GetRotcsRegister(requestBody RotcsRequest) (*RotcsRegist
 		Total:       len(detail),
 	}
 
-	if std_code == "6405000982" {
+	if rotcsRec.StudentCode == "6405000982" {
 		rotcsResponse.StudentCode = "6299999991"
 	}
-	if std_code == "6406600012" {
+	if rotcsRec.StudentCode == "6406600012" {
 		rotcsResponse.StudentCode = "6299999992"
 	}
 
