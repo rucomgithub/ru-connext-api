@@ -4,13 +4,14 @@ import "fmt"
 
 func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, error) {
 	if std_code == "6299999991" {
-		std_code = "6401009292"
+		std_code = "6410022734"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
-		std_code = "6406600012"
+		std_code = "6406006293"
 		fmt.Printf("register: %s \n", std_code)
 	}
+	
 	register := []RotcsRegisterRepo{}
 	query := `SELECT report.studentCode,layerArmy,locationArmy, yearReport, layerReport,
 				CASE WHEN typeReport = "P" THEN "เลื่อนชั้น" 
