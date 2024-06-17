@@ -16,6 +16,7 @@ var oracle_db *sqlx.DB
 
 var mysql_db *sqlx.DB
 var mysql_db_rotcs *sqlx.DB
+var mysql_db_stdapps *sqlx.DB
 
 var redis_cache *redis.Client
 
@@ -29,6 +30,7 @@ func init() {
 	redis_cache = databases.NewDatabases().RedisInint()
 	mysql_db = databases.NewDatabases().MysqlInit()
 	mysql_db_rotcs = databases.NewDatabases().MysqlInitRotcs()
+	mysql_db_stdapps = databases.NewDatabases().MysqlInitStdApps()
 	oracleScholar_db = databases.NewDatabases().OracleScholarShipInit()
 }
 
@@ -40,5 +42,5 @@ func main() {
 	defer oracleScholar_db.Close()
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
-	routers.Setup(router, oracle_db, redis_cache, mysql_db, mysql_db_rotcs, oracleScholar_db)
+	routers.Setup(router, oracle_db, redis_cache, mysql_db, mysql_db_stdapps, mysql_db_rotcs, oracleScholar_db)
 }
