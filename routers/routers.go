@@ -28,7 +28,7 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/repositories"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB, mysql_db_stdapps *sqlx.DB, oracleScholar_db *sqlx.DB) {
 
 	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
@@ -141,6 +141,16 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		rotcs.POST("/extend", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsExtend)
 
 	}
+
+	insurance := router.Group("/insurance")
+	{
+		insuranceRepo := repositories.NewInsuranceRepo(mysql_db_stdapps)
+		insuranceService := services.NewInsuranceServices(insuranceRepo, redis_cache)
+		insuranceHandler := handlers.NewInsuranceHandlers(insuranceService)
+		insurance.POST("/", insuranceHandler.GetInsuranceListAll)
+
+	}
+
 	scholarship := router.Group("/scholarship")
 	{
 		scholarShipRepo := repositories.NewScholarshipRepo(oracleScholar_db)

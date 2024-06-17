@@ -49,6 +49,15 @@ func (c *connection) MysqlInitRotcs() *sqlx.DB {
 	}
 	return db
 }
+
+func (c *connection) MysqlInitStdApps() *sqlx.DB {
+	db, err := mySqlConnectionStdApps()
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
+
 func (c *connection) RedisInint() *redis.Client {
 	return redisConnection()
 }
@@ -95,6 +104,16 @@ func mySqlConnection() (*sqlx.DB, error) {
 func mySqlConnectionRotcs() (*sqlx.DB, error) {
 
 	dns := fmt.Sprintf("%v", viper.GetString("mysqlDb.connectionRotcs"))
+
+	driver := viper.GetString("mysqlDb.openDriver")
+
+	return sqlx.Open(driver, dns)
+
+}
+
+func mySqlConnectionStdApps() (*sqlx.DB, error) {
+
+	dns := fmt.Sprintf("%v@%v", viper.GetString("mysqlDb.connection_stdapps_userpass"), viper.GetString("mysqlDb.connection_stdapps"))
 
 	driver := viper.GetString("mysqlDb.openDriver")
 
