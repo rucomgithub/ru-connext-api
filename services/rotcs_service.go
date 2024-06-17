@@ -129,6 +129,13 @@ func (g *rotcsServices) GetRotcsExtend(requestBody RotcsRequest) (*RotcsExtendRe
 		Total:       len(detail),
 	}
 
+	if rotcsExtendResponse.StudentCode == "6401002222" {
+		rotcsExtendResponse.StudentCode = "6299999991"
+	}
+	if rotcsExtendResponse.StudentCode == "6401008344" {
+		rotcsExtendResponse.StudentCode = "6299999992"
+	}
+
 	rotcsJSON, _ := json.Marshal(&rotcsExtendResponse)
 	timeNow := time.Now()
 	redisCacherotcs := time.Unix(timeNow.Add(time.Second*10).Unix(), 0)
