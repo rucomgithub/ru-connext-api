@@ -4,7 +4,7 @@ import "fmt"
 
 func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, error) {
 	if std_code == "6299999991" {
-		std_code = "6405000982"
+		std_code = "6401009292"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
