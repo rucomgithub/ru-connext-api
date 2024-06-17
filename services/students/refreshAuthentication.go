@@ -2,6 +2,7 @@ package students
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
+	"fmt"
 	"net/http"
 )
 
@@ -34,7 +35,9 @@ func (s *studentServices) RefreshAuthentication(refreshToken, stdCode string) (*
 		return &studentTokenResponse, err
 	}
 
-	generateToken, err := middlewares.GenerateToken(prepareToken.STD_CODE, s.redis_cache)
+	fmt.Println(prepareToken.ROLE)
+
+	generateToken, err := middlewares.GenerateToken(prepareToken.STD_CODE, prepareToken.ROLE, s.redis_cache)
 	if err != nil {
 		studentTokenResponse.Message = "Refresh and Generate Token fail."
 		return &studentTokenResponse, err

@@ -21,7 +21,7 @@ func (s *studentServices) Authentication(stdCode string) (*TokenResponse, error)
 		return &studentTokenResponse, err
 	}
 
-	generateToken, err := middlewares.GenerateToken(prepareToken.STD_CODE, s.redis_cache)
+	generateToken, err := middlewares.GenerateToken(prepareToken.STD_CODE, prepareToken.ROLE, s.redis_cache)
 	if err != nil {
 		studentTokenResponse.Message = "Authentication Generate Token fail."
 		return &studentTokenResponse, err

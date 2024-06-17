@@ -11,10 +11,13 @@ import (
 	"github.com/spf13/viper"
 
 	"RU-Smart-Workspace/ru-smart-api/handlers"
+	"RU-Smart-Workspace/ru-smart-api/handlers/masterhandlers"
 	"RU-Smart-Workspace/ru-smart-api/handlers/studenth"
 	"RU-Smart-Workspace/ru-smart-api/logger"
+	"RU-Smart-Workspace/ru-smart-api/repositories/masterrepo"
 	"RU-Smart-Workspace/ru-smart-api/repositories/studentr"
 	"RU-Smart-Workspace/ru-smart-api/services"
+	"RU-Smart-Workspace/ru-smart-api/services/masterservice"
 	"RU-Smart-Workspace/ru-smart-api/services/students"
 
 	"RU-Smart-Workspace/ru-smart-api/handlers/public/mr30h"
@@ -25,7 +28,7 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/repositories"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_rotcs *sqlx.DB, mysql_db_stdapps *sqlx.DB, oracleScholar_db *sqlx.DB) {
 
 	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
@@ -45,7 +48,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, my
 
 	googleAuth := router.Group("/google")
 	{
-		studentRepo := studentr.NewStudentRepo(oracle_db)
+		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
 		studentService := students.NewStudentServices(studentRepo, redis_cache)
 		studentHandler := studenth.NewStudentHandlers(studentService)
 
@@ -58,14 +61,14 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, my
 
 	student := router.Group("/student")
 	{
-		studentRepo := studentr.NewStudentRepo(oracle_db)
+		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
 		studentService := students.NewStudentServices(studentRepo, redis_cache)
 		studentHandler := studenth.NewStudentHandlers(studentService)
 
 		student.POST("/refresh-authentication", studentHandler.RefreshAuthentication)
 		student.POST("/unauthorization", studentHandler.Unauthorization)
 		student.POST("/exists-token", studentHandler.ExistsToken)
-		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
+		student.GET("/profile", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
 
@@ -138,6 +141,16 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, my
 		rotcs.POST("/extend", middlewares.Authorization(redis_cache), rotcsHandler.GetRotcsExtend)
 
 	}
+
+	insurance := router.Group("/insurance")
+	{
+		insuranceRepo := repositories.NewInsuranceRepo(mysql_db_stdapps)
+		insuranceService := services.NewInsuranceServices(insuranceRepo, redis_cache)
+		insuranceHandler := handlers.NewInsuranceHandlers(insuranceService)
+		insurance.POST("/", insuranceHandler.GetInsuranceListAll)
+
+	}
+
 	scholarship := router.Group("/scholarship")
 	{
 		scholarShipRepo := repositories.NewScholarshipRepo(oracleScholar_db)
@@ -146,6 +159,27 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, redis_cache *redis.Client, my
 
 		scholarship.POST("/getScholarShip", scholarShipHandler.GetScholarshipAll)
 	}
+
+	master := router.Group("/master")
+	{
+
+		masterRepo := masterrepo.NewStudentRepo(oracle_db_dbg)
+		masterService := masterservice.NewStudentServices(masterRepo, redis_cache)
+		masterHandler := masterhandlers.NewStudentHandlers(masterService)
+
+		studentMaster := master.Group("/student")
+		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
+
+		registerMaster := master.Group("/register")
+		registerMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetRegisterAll)
+		registerMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetRegisterByYear)
+
+		gradeMaster := master.Group("/grade")
+		gradeMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetGradeAll)
+		gradeMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetGradeByYear)
+
+	}
+
 	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 

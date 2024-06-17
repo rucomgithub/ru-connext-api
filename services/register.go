@@ -17,7 +17,7 @@ type (
 
 	RegisterRequest struct {
 		STD_CODE string `json:"std_code" validate:"min=9,max=10,regexp=^[0-9]"`
-		YEAR     string `json:"year" validate:"min=4,max=4,regexp=^[0-9]"`
+		YEAR     string `json:"year"`
 	}
 
 	RegisterScheduleRequest struct {
