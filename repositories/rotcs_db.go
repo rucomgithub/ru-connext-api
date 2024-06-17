@@ -3,6 +3,14 @@ package repositories
 import "fmt"
 
 func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, error) {
+	if std_code == "6299999991" {
+		std_code = "6405000982"
+		fmt.Printf("register: %s \n", std_code)
+	}
+	if std_code == "6299999992" {
+		std_code = "6406600012"
+		fmt.Printf("register: %s \n", std_code)
+	}
 	register := []RotcsRegisterRepo{}
 	query := `SELECT report.studentCode,layerArmy,locationArmy, yearReport, layerReport,
 				CASE WHEN typeReport = "P" THEN "เลื่อนชั้น" 
@@ -26,6 +34,14 @@ func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, e
 }
 
 func (r *rotcsRepoDB) GetRotcsExtend(std_code string) (*RotcsExtendRepo, error) {
+	if std_code == "6299999991" {
+		std_code = "6401002222"
+		fmt.Printf("register: %s \n", std_code)
+	}
+	if std_code == "6299999992" {
+		std_code = "6401008344"
+		fmt.Printf("register: %s \n", std_code)
+	}
 	extend := RotcsExtendRepo{}
 	query := `SELECT studentCode, extendYear,
 	CONCAT("ใบสำคัญ สด.9 เลขที่ : ",code9) code9,
