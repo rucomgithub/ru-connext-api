@@ -35,7 +35,7 @@ func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, e
 
 func (r *rotcsRepoDB) GetRotcsExtend(std_code string) (*RotcsExtendRepo, error) {
 	if std_code == "6299999991" {
-		std_code = "6401002222"
+		std_code = "6401005803"
 		fmt.Printf("register: %s \n", std_code)
 	}
 	if std_code == "6299999992" {
