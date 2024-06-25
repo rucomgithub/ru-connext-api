@@ -16,13 +16,15 @@ func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo,
 	if year != "" {
 		query := "SELECT YEAR,SEMESTER,COURSE_NO,STD_CODE,CREDIT FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 and YEAR = :param2 ORDER BY YEAR DESC, SEMESTER DESC"
 		err := r.oracle_db.Select(&register, query, std_code, year)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		query := "SELECT YEAR,SEMESTER,COURSE_NO,STD_CODE,CREDIT FROM DBBACH00.UGB_REGIS_RU24 WHERE STD_CODE = :param1 ORDER BY YEAR DESC, SEMESTER DESC"
 		err := r.oracle_db.Select(&register, query, std_code)
-	}
-
-	if err != nil {
-		return nil, err
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	return &register, nil
