@@ -43,7 +43,7 @@ func (r *rotcsRepoDB) GetRotcsExtend(std_code string) (*RotcsExtendRepo, error) 
 		fmt.Printf("register: %s \n", std_code)
 	}
 	extend := RotcsExtendRepo{}
-	query := `SELECT studentCode, extendYear,
+	query := `SELECT  studentCode, extendYear,
 	CONCAT("ใบสำคัญ สด.9 เลขที่ : ",code9) code9,
 	CASE 
 	WHEN option1 = "1" THEN "สำเนา สด.9 จำนวน 2 ฉบับ : มี" ELSE "สำเนา สด.9 จำนวน 2 ฉบับ : ไม่มี" 
