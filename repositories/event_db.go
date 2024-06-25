@@ -9,14 +9,14 @@ func (r *eventRepoDB) GetEventListAll(studentcode string) (*[]EventRepo, error) 
 	// INNER JOIN insurance i on im.insuranceid = i.id
 	// WHERE im.studentcode = ? and i.statusinsurance = 'SUCCESS' ORDER BY i.enddate desc`
 
-	query := `SELECT em.std_id,e.event_title,e.event_time,et.type_name,e.event_club,e.event_semester,e.evnet_year 
+	query := `SELECT em.std_id,e.event_title,e.event_time,et.type_name,e.event_club,e.event_semester,e.event_year 
 	FROM event_member em,event_std e ,event_type et 
 	WHERE em.event_id = e.id and e.event_type = et.id and em.std_id = ? `
 
 	if studentcode == "6299999991" {
-		studentcode = "event"
-		fmt.Printf("event: %s \n", studentcode)
-		query = `SELECT em.std_id,e.event_title,e.event_time,et.type_name,e.event_club,e.event_semester,e.evnet_year 
+		studentcode = "6402011479"
+		fmt.Printf("event--: %s \n", studentcode)
+		query = `SELECT em.std_id,e.event_title,e.event_time,et.type_name,e.event_club,e.event_semester,e.event_year 
 		FROM event_member em,event_std e ,event_type et 
 		WHERE em.event_id = e.id and e.event_type = et.id and em.std_id = ?`
 	}

@@ -16,7 +16,7 @@ type (
 		TypeName string `db:"type_name"`
 		Club     string `db:"event_club"`
 		Semester string `db:"event_semester"`
-		Year     string `db:"evnet_year"`
+		Year     string `db:"event_year"`
 	}
 
 	EventRepoInterface interface {

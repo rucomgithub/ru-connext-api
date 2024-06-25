@@ -10,46 +10,13 @@ import (
 	"gopkg.in/validator.v2"
 )
 
-// type Insurance struct {
-// 	ID    string
-// 	Title string
-// }
-
-// func GetInsuranceByID(id string, data []Insurance) string {
-// 	for _, entry := range data {
-// 		if entry.ID == id {
-// 			return entry.Title
-// 		}
-// 	}
-// 	return "Unknown Title"
-// }
-
-// func ParseDate(dateStr string) time.Time {
-// 	layout := "2006-01-02"
-// 	t, err := time.Parse(layout, dateStr)
-// 	if err != nil {
-// 		fmt.Println("Error parsing date:", err)
-// 	}
-// 	return t
-// }
-
-// func CheckExpiry(typeinsurance, enddate, name string) string {
-// 	today := time.Now()
-// 	EndDate := ParseDate(enddate)
-
-// 	duration := EndDate.Sub(today)
-// 	daysLeft := int(duration.Hours() / 24)
-
-// 	thaiEndDate := EndDate.AddDate(543, 0, 0)
-
-// 	if daysLeft < 0 {
-// 		return fmt.Sprintf("กรมธรรม์ประกันภัยแบบ %s ของ %s วันสิ้นสุด %s ซึ่งหมดอายุผ่านมาแล้ว %d วัน.", typeinsurance, name, thaiEndDate.Format("02/01/2006"), -daysLeft)
-// 	} else if daysLeft == 0 {
-// 		return fmt.Sprintf("กรมธรรม์ประกันภัยแบบ %s ของ %s วันสิ้นสุด %s ซึ่งหมดอายุในวันนี้.", typeinsurance, name, thaiEndDate.Format("02/01/2006"))
-// 	} else {
-// 		return fmt.Sprintf("กรมธรรม์ประกันภัยแบบ %s ของ %s วันสิ้นสุด %s อีก %d วันจะหมดอายุ.", typeinsurance, name, thaiEndDate.Format("02/01/2006"), daysLeft)
-// 	}
-// }
+func ChangeSemester(semester string) string {
+	if semester == "3" {
+		return "ฤดูร้อน"
+	} else {
+		return semester
+	}
+}
 
 func (g *EventServices) GetEventListAll(eventRequest EventRequest) (*EventResponse, error) {
 
@@ -95,7 +62,7 @@ func (g *EventServices) GetEventListAll(eventRequest EventRequest) (*EventRespon
 			Time:     item.Time,
 			TypeName: item.TypeName,
 			Club:     item.Club,
-			Semester: item.Semester,
+			Semester: ChangeSemester(item.Semester),
 			Year:     item.Year,
 		})
 	}
