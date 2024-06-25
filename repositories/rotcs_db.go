@@ -13,7 +13,7 @@ func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, e
 	}
 	
 	register := []RotcsRegisterRepo{}
-	query := `SELECT '6299999991' as report.studentCode,layerArmy,locationArmy, yearReport, layerReport,
+	query := `SELECT report.studentCode,layerArmy,locationArmy, yearReport, layerReport,
 				CASE WHEN typeReport = "P" THEN "เลื่อนชั้น" 
 				WHEN typeReport = "R" THEN "ซ้ำชั้น" 
 				WHEN typeReport = "W" THEN "รอรับสิทธิ" 
@@ -43,7 +43,7 @@ func (r *rotcsRepoDB) GetRotcsExtend(std_code string) (*RotcsExtendRepo, error) 
 		fmt.Printf("register: %s \n", std_code)
 	}
 	extend := RotcsExtendRepo{}
-	query := `SELECT studentCode, extendYear,
+	query := `SELECT  studentCode, extendYear,
 	CONCAT("ใบสำคัญ สด.9 เลขที่ : ",code9) code9,
 	CASE 
 	WHEN option1 = "1" THEN "สำเนา สด.9 จำนวน 2 ฉบับ : มี" ELSE "สำเนา สด.9 จำนวน 2 ฉบับ : ไม่มี" 
