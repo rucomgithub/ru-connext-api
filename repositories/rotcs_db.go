@@ -13,7 +13,7 @@ func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, e
 	}
 	
 	register := []RotcsRegisterRepo{}
-	query := `SELECT report.studentCode,layerArmy,locationArmy, yearReport, layerReport,
+	query := `SELECT '6299999991' as report.studentCode,layerArmy,locationArmy, yearReport, layerReport,
 				CASE WHEN typeReport = "P" THEN "เลื่อนชั้น" 
 				WHEN typeReport = "R" THEN "ซ้ำชั้น" 
 				WHEN typeReport = "W" THEN "รอรับสิทธิ" 
