@@ -66,7 +66,7 @@ func (g *rotcsServices) GetRotcsRegister(requestBody RotcsRequest) (*RotcsRegist
 
 	rotcsJSON, _ := json.Marshal(&rotcsResponse)
 	timeNow := time.Now()
-	redisCacherotcs := time.Unix(timeNow.Add(time.Second*10).Unix(), 0)
+	redisCacherotcs := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, rotcsJSON, redisCacherotcs.Sub(timeNow)).Err()
 
 	return &rotcsResponse, nil
@@ -138,7 +138,7 @@ func (g *rotcsServices) GetRotcsExtend(requestBody RotcsRequest) (*RotcsExtendRe
 
 	rotcsJSON, _ := json.Marshal(&rotcsExtendResponse)
 	timeNow := time.Now()
-	redisCacherotcs := time.Unix(timeNow.Add(time.Second*10).Unix(), 0)
+	redisCacherotcs := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, rotcsJSON, redisCacherotcs.Sub(timeNow)).Err()
 
 	return &rotcsExtendResponse, nil
