@@ -116,7 +116,7 @@ func (g *InsuranceServices) GetInsuranceListAll(insuranceRequest InsuranceReques
 
 	insuranceJSON, _ := json.Marshal(&insuranceResponse)
 	timeNow := time.Now()
-	redisCacheinsurance := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
+	redisCacheinsurance := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, insuranceJSON, redisCacheinsurance.Sub(timeNow)).Err()
 
 	return &insuranceResponse, nil
