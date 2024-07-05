@@ -25,7 +25,7 @@ func (scholarShip *scholarShipServices) GetScholarshipAll(requestBody ScholarShi
 		STD_CODE: requestBody.STD_CODE,
 		RECORD:   []scholarShipRecord{},
 	}
-
+	log.Println(requestBody.STD_CODE)
 	key := "scholarShip::" + requestBody.STD_CODE
 	scholarShipCache, err := scholarShip.redis_cache.Get(ctx, key).Result()
 	if err == nil {

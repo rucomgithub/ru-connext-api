@@ -156,6 +156,15 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB ,oracle_db_dbg *sqlx.DB, redis
 
 		scholarship.POST("/getScholarShip", scholarShipHandler.GetScholarshipAll)
 	}
+
+	event := router.Group("/event")
+	{
+		eventRepo := repositories.NewEventRepo(mysql_db_stdapps)
+		eventService := services.NewEventServices(eventRepo, redis_cache)
+		eventHandler := handlers.NewEventHandlers(eventService)
+		event.POST("/", eventHandler.GetEventListAll)
+
+	}
 	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 

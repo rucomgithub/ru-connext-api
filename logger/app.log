@@ -110,6 +110,7 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-06-17T08:04:10Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-06-17T08:04:31Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-06-17T08:04:32Z"}
+<<<<<<< HEAD
 {"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":46,"method":"POST","msg":"missing destination name ROLE in *studentr.PrepareTokenRepo, 6299999991","path":"/google/authorization-test","service":"google","status":422,"time":"2024-07-02T04:37:56Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-02T04:41:14Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-02T04:41:17Z"}
@@ -167,3 +168,23 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-05T04:22:49Z"}
 {"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":157,"method":"POST","msg":"redis: nil","path":"/student/refresh-authentication","service":"student","status":422,"time":"2024-07-05T04:23:26Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/student/refresh-authentication","service":"student","status":200,"time":"2024-07-05T04:23:31Z"}
+=======
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2024-06-25T04:31:56Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2024-06-25T04:32:04Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2024-06-25T04:32:45Z"}
+{"file":"/app/handlers/event.go","level":"error","line":34,"method":"POST","msg":"StdID: less than min, regular expression mismatch","path":"/event/","service":"event","status":400,"time":"2024-06-25T04:34:00Z"}
+{"file":"/app/handlers/event.go","level":"error","line":34,"method":"POST","msg":"dial tcp 202.41.160.13:3309: connect: connection refused","path":"/event/","service":"event","status":500,"time":"2024-06-25T04:34:14Z"}
+{"file":"/app/handlers/event.go","level":"error","line":34,"method":"POST","msg":"Error 1054: Unknown column 'e.evnet_year' in 'field list'","path":"/event/","service":"event","status":500,"time":"2024-06-25T04:37:30Z"}
+{"file":"/app/handlers/event.go","level":"error","line":34,"method":"POST","msg":"Error 1054: Unknown column 'e.evnet_year' in 'field list'","path":"/event/","service":"event","status":500,"time":"2024-06-25T04:49:32Z"}
+{"file":"/app/handlers/event.go","level":"error","line":34,"method":"POST","msg":"Error 1054: Unknown column 'e.evnet_year' in 'field list'","path":"/event/","service":"event","status":500,"time":"2024-06-25T04:50:15Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/healthz","service":"healthz","status":200,"time":"2024-06-25T04:55:08Z"}
+{"file":"/app/handlers/event.go","level":"error","line":34,"method":"POST","msg":"Error 1054: Unknown column 'e.evnet_year' in 'field list'","path":"/event/","service":"event","status":500,"time":"2024-06-25T04:55:13Z"}
+{"file":"/app/handlers/event.go","level":"error","line":34,"method":"POST","msg":"ไม่พบข้อมูลกิจกรรมนักศึกษา","path":"/event/","service":"event","status":404,"time":"2024-06-25T04:55:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/event/","service":"event","status":200,"time":"2024-06-25T04:57:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/event/","service":"event","status":200,"time":"2024-06-25T06:52:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/event/","service":"event","status":200,"time":"2024-06-25T07:01:47Z"}
+>>>>>>> main
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-05T05:47:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-05T05:47:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-05T05:48:00Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-05T05:48:01Z"}
