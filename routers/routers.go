@@ -13,6 +13,7 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/handlers/studenth"
 	"RU-Smart-Workspace/ru-smart-api/logger"
+
 	"RU-Smart-Workspace/ru-smart-api/repositories/studentr"
 	"RU-Smart-Workspace/ru-smart-api/services"
 	"RU-Smart-Workspace/ru-smart-api/services/students"
@@ -23,6 +24,10 @@ import (
 
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/repositories"
+
+	"RU-Smart-Workspace/ru-smart-api/repositories/masterrepo"
+	"RU-Smart-Workspace/ru-smart-api/services/masterservice"
+	"RU-Smart-Workspace/ru-smart-api/handlers/masterhandlers"
 )
 
 func Setup(router *gin.Engine, oracle_db *sqlx.DB ,oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
@@ -165,6 +170,28 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB ,oracle_db_dbg *sqlx.DB, redis
 		event.POST("/", eventHandler.GetEventListAll)
 
 	}
+
+	master := router.Group("/master")
+	{
+
+		masterRepo := masterrepo.NewStudentRepo(oracle_db_dbg)
+		masterService := masterservice.NewStudentServices(masterRepo, redis_cache)
+		masterHandler := masterhandlers.NewStudentHandlers(masterService)
+
+
+		studentMaster := master.Group("/student")
+		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
+
+		registerMaster := master.Group("/register")
+		registerMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetRegisterAll)
+		registerMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetRegisterByYear)
+
+		gradeMaster := master.Group("/grade")
+		gradeMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetGradeAll)
+		gradeMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetGradeByYear)
+
+	}
+
 	PORT := viper.GetString("ruConnext.port")
 	router.Run(PORT)
 
