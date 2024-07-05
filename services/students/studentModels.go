@@ -129,7 +129,7 @@ type (
 		Authentication(stdCode string) (*TokenResponse, error)
 		AuthenticationService(service_id string) (*TokenResponse, error)
 		AuthenticationRedirect(stdCode, accessToken string) (*TokenRedirectResponse, error)
-		RefreshAuthentication(refreshToken, stdCode string) (*TokenResponse, error)
+		RefreshAuthentication(refreshToken string) (*TokenResponse, error)
 		Unauthorization(token string) bool
 		CheckExistsToken(token string) bool
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)

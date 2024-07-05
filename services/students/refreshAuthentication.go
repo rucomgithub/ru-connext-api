@@ -3,9 +3,10 @@ package students
 import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"net/http"
+	"fmt"
 )
 
-func (s *studentServices) RefreshAuthentication(refreshToken, stdCode string) (*TokenResponse, error) {
+func (s *studentServices) RefreshAuthentication(refreshToken string) (*TokenResponse, error) {
 
 	studentTokenResponse := TokenResponse{
 		AccessToken:  "",
@@ -28,13 +29,23 @@ func (s *studentServices) RefreshAuthentication(refreshToken, stdCode string) (*
 		return &studentTokenResponse, err
 	}
 
-	prepareToken, err := s.studentRepo.Authentication(stdCode)
+	claimsToken, err := middlewares.GetClaims(refreshToken)
+	if err != nil {
+		studentTokenResponse.Message = "Don't claim token becourse Not valid."
+		return &studentTokenResponse, err
+	}
+
+	fmt.Println(claimsToken.StudentCode)
+
+	prepareToken, err := s.studentRepo.Authentication(claimsToken.StudentCode)
 	if err != nil || prepareToken.STATUS != 1 {
 		studentTokenResponse.Message = "Don't Authenticated token becourse Not found student code in database."
 		return &studentTokenResponse, err
 	}
 
-	generateToken, err := middlewares.GenerateToken(prepareToken.STD_CODE, s.redis_cache)
+	fmt.Println(prepareToken.ROLE)
+
+	generateToken, err := middlewares.GenerateToken(prepareToken.STD_CODE,prepareToken.ROLE, s.redis_cache)
 	if err != nil {
 		studentTokenResponse.Message = "Refresh and Generate Token fail."
 		return &studentTokenResponse, err

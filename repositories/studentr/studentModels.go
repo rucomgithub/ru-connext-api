@@ -7,6 +7,7 @@ import (
 type (
 	studentRepoDB struct {
 		oracle_db *sqlx.DB
+		oracle_db_dbg *sqlx.DB
 	}
 
 	StudentProfileRepo struct {
@@ -63,6 +64,7 @@ type (
 	PrepareTokenRepo struct {
 		STD_CODE string `db:"STD_CODE"`
 		STATUS   int    `db:"STATUS"`
+		ROLE     string `db:"ROLE"`
 	}
 
 	StudentRepo struct {
@@ -78,6 +80,6 @@ type (
 	}
 )
 
-func NewStudentRepo(oracle_db *sqlx.DB) StudentRepoInterface {
-	return &studentRepoDB{oracle_db: oracle_db}
+func NewStudentRepo(oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB) StudentRepoInterface {
+	return &studentRepoDB{oracle_db: oracle_db, oracle_db_dbg: oracle_db_dbg}
 }

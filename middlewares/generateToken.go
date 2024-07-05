@@ -9,9 +9,9 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"
 	"github.com/spf13/viper"
-)
+) 
 
-func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, error) {
+func GenerateToken(stdCode,role string, redis_cache *redis.Client) (*TokenResponse, error) {
 
 	generateToken := &TokenResponse{}
 	//expirationAccessToken := time.Now().AddDate(0, 0, 1).Unix()
@@ -26,8 +26,9 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 	// ---------------------  Create Access Token  ----------------------------------------- //
 	accessTokenClaims := jwt.MapClaims{}
 	accessTokenClaims["issuer"] = viper.GetString("token.issuer")
-	accessTokenClaims["subject"] = "Ru-Connext" + stdCode
-	accessTokenClaims["role"] = ""
+	accessTokenClaims["subject"] = "Ru-Connext::" + stdCode
+	accessTokenClaims["role"] = role
+	accessTokenClaims["std_code"] = stdCode
 	accessTokenClaims["expires_token"] = expirationAccessToken
 	accessTokenClaims["access_token_key"] = generateToken.AccessTokenKey
 	accessTokenClaims["refresh_token_key"] = generateToken.RefreshTokenKey
@@ -44,7 +45,8 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 	refreshTokenClaims := jwt.MapClaims{}
 	refreshTokenClaims["issuer"] = viper.GetString("token.issuer")
 	refreshTokenClaims["subject"] = "Ru-Connext::" + stdCode
-	refreshTokenClaims["role"] = ""
+	refreshTokenClaims["role"] = role
+	refreshTokenClaims["std_code"] = stdCode
 	refreshTokenClaims["expires_token"] = expirationRefreshToken
 	refreshTokenClaims["access_token_key"] = generateToken.AccessTokenKey
 	refreshTokenClaims["refresh_token_key"] = generateToken.RefreshTokenKey
@@ -63,7 +65,7 @@ func GenerateToken(stdCode string, redis_cache *redis.Client) (*TokenResponse, e
 
 	cacheStudent := CacheStudent{
 		StdCode: stdCode,
-		Role:    "bachelor",
+		Role:    role,
 	}
 
 	cacheDataJson, _ := json.Marshal(cacheStudent)

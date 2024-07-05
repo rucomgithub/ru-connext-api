@@ -151,7 +151,7 @@ func (h *studentHandlers) RefreshAuthentication(c *gin.Context) {
 		return
 	}
 
-	tokenRespone, err := h.studentService.RefreshAuthentication(requestBody.Refresh_token, requestBody.Std_code)
+	tokenRespone, err := h.studentService.RefreshAuthentication(requestBody.Refresh_token)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
