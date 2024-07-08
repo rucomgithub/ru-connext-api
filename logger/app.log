@@ -1,0 +1,15 @@
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-08T08:31:25Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2024-07-08T08:31:34Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999991/year","service":"register","status":200,"time":"2024-07-08T08:31:34Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999991/yearsemester","service":"register","status":200,"time":"2024-07-08T08:31:34Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2024-07-08T08:32:07Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":44,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/register/","service":"master","status":401,"time":"2024-07-08T08:32:07Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_grade.go","level":"error","line":44,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/grade/","service":"master","status":401,"time":"2024-07-08T08:32:07Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":99,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/register/2555","service":"master","status":401,"time":"2024-07-08T08:32:07Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_grade.go","level":"error","line":99,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/grade/2555","service":"master","status":401,"time":"2024-07-08T08:32:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-08T08:32:20Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/2555","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/2555","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}

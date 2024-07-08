@@ -32,7 +32,7 @@ func (h *studentHandlers) AuthenticationTest(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Authorization fail becourse content type not json format."})
@@ -58,7 +58,7 @@ func (h *studentHandlers) AuthenticationService(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Authorization fail becourse content type not json format."})
@@ -68,7 +68,7 @@ func (h *studentHandlers) AuthenticationService(c *gin.Context) {
 
 	tokenResponse, err := h.studentService.AuthenticationService(requestBody.ServiveId)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, tokenResponse)
@@ -86,7 +86,7 @@ func (h *studentHandlers) Authentication(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Authorization fail becourse content type not json format."})
@@ -96,7 +96,7 @@ func (h *studentHandlers) Authentication(c *gin.Context) {
 
 	tokenResponse, err := h.studentService.Authentication(requestBody.Std_code)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, tokenResponse)
@@ -115,7 +115,7 @@ func (h *studentHandlers) AuthenticationRedirect(c *gin.Context) {
 	err := c.ShouldBindJSON(&requestBody)
 
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Authorization fail becourse content type not json format."})
@@ -125,7 +125,7 @@ func (h *studentHandlers) AuthenticationRedirect(c *gin.Context) {
 
 	tokenResponse, err := h.studentService.AuthenticationRedirect(requestBody.Std_code, requestBody.Access_token)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, tokenResponse)
@@ -143,7 +143,7 @@ func (h *studentHandlers) RefreshAuthentication(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Authorization fail becourse content type not json format."})
@@ -168,7 +168,7 @@ func (h *studentHandlers) RefreshAuthentication(c *gin.Context) {
 func (h *studentHandlers) Unauthorization(c *gin.Context) {
 	token, err := middlewares.GetHeaderAuthorization(c)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Authorization key in header not found"})
@@ -180,7 +180,7 @@ func (h *studentHandlers) Unauthorization(c *gin.Context) {
 	isToken := h.studentService.Unauthorization(token)
 	if !isToken {
 		err := errors.New("Authorization falil because of timeout...")
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Authorization falil because of timeout..."})
@@ -194,7 +194,7 @@ func (h *studentHandlers) Unauthorization(c *gin.Context) {
 func (h *studentHandlers) ExistsToken(c *gin.Context) {
 	token, err := middlewares.GetHeaderAuthorization(c)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Authorization key in header not found"})
@@ -206,7 +206,7 @@ func (h *studentHandlers) ExistsToken(c *gin.Context) {
 	isToken := h.studentService.CheckExistsToken(token)
 	if !isToken {
 		err := errors.New("Authorization falil because of timeout...")
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName()) // Register the error
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Authorization falil because of timeout..."})
@@ -222,7 +222,7 @@ func (h *studentHandlers) GetStudentProfile(c *gin.Context) {
 	STD_CODE := c.Param("std_code")
 	studentProfileResponse, err := h.studentService.GetStudentProfile(STD_CODE)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลประวัตินักศึกษา."})
@@ -239,7 +239,7 @@ func (h *studentHandlers) GetRegister(c *gin.Context) {
 	var payload students.RegisterPlayload
 	err := c.ShouldBindJSON(&payload)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Authorization fail becourse content type not json format."})
@@ -249,7 +249,7 @@ func (h *studentHandlers) GetRegister(c *gin.Context) {
 
 	registerResponse, err := h.studentService.GetRegister(payload.Std_code, payload.Course_year, payload.Course_semester)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNoContent, gin.H{"message": "ไม่พบข้อมูลลงทะเบียนของนักศึกษา."})
@@ -265,7 +265,7 @@ func (h *studentHandlers) GetPhoto(c *gin.Context) {
 
 	ID_TOKEN, err := middlewares.GetHeaderAuthorization(c)
 	if err != nil {
-
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "authorization key in header not found"})
