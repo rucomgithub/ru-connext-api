@@ -15,7 +15,7 @@ func (h *studentHandlers) GetRegisterAll(c *gin.Context) {
 	token, err := middlewares.GetHeaderAuthorization(c)
 
 	if err != nil {
-		c.Error(err)
+		
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบ token login."})
@@ -26,7 +26,7 @@ func (h *studentHandlers) GetRegisterAll(c *gin.Context) {
 	claim, err := middlewares.GetClaims(token)
 
 	if err != nil {
-		c.Error(err)
+		
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบ claims user."})
@@ -38,7 +38,7 @@ func (h *studentHandlers) GetRegisterAll(c *gin.Context) {
 
 	studentProfileResponse, err := h.studentService.GetRegisterAll(STD_CODE)
 	if err != nil {
-		c.Error(err)
+		
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลลงทะเบียนนักศึกษา " + STD_CODE + "."})
@@ -55,7 +55,7 @@ func (h *studentHandlers) GetRegisterByYear(c *gin.Context) {
 	token, err := middlewares.GetHeaderAuthorization(c)
 
 	if err != nil {
-		c.Error(err)
+		
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบ token login."})
@@ -66,7 +66,7 @@ func (h *studentHandlers) GetRegisterByYear(c *gin.Context) {
 	claim, err := middlewares.GetClaims(token)
 
 	if err != nil {
-		c.Error(err)
+		
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบ claims user."})
@@ -85,7 +85,7 @@ func (h *studentHandlers) GetRegisterByYear(c *gin.Context) {
 
 	studentProfileResponse, err := h.studentService.GetRegisterByYear(std_code, year)
 	if err != nil {
-		c.Error(err)
+		
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลลงทะเบียนนักศึกษา " + std_code + " ประจำปีการศึกษา " + year})

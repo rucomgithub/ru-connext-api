@@ -20,7 +20,7 @@ func (h *EventHandlers) GetEventListAll(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -30,7 +30,7 @@ func (h *EventHandlers) GetEventListAll(c *gin.Context) {
 	eventResponse, err := h.eventServices.GetEventListAll(requestBody)
 
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)

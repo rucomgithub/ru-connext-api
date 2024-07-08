@@ -14,7 +14,7 @@ func (h *studentHandlers) GetRegisterAll(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err.Error())
@@ -24,7 +24,7 @@ func (h *studentHandlers) GetRegisterAll(c *gin.Context) {
 
 	registerResponse, err := h.studentService.GetRegisterAll(requestBody.STD_CODE, requestBody.YEAR)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err.Error())

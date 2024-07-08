@@ -11,7 +11,7 @@ func (h *studentHandlers) GetStudentAll(c *gin.Context) {
 
 	studentResponse, err := h.studentService.GetStudentAll()
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err.Error())

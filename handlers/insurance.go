@@ -20,7 +20,7 @@ func (h *InsuranceHandlers) GetInsuranceListAll(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -30,7 +30,7 @@ func (h *InsuranceHandlers) GetInsuranceListAll(c *gin.Context) {
 	insuranceResponse, err := h.insuranceServices.GetInsuranceListAll(requestBody)
 
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)

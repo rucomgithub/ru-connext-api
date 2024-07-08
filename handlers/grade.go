@@ -20,7 +20,7 @@ func (h *gradeHandlers) GradeYear(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -29,7 +29,7 @@ func (h *gradeHandlers) GradeYear(c *gin.Context) {
 
 	gradeResponse, err := h.gradeServices.GradeYear(requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -45,7 +45,7 @@ func (h *gradeHandlers) Grades(c *gin.Context) {
 
 	gradeResponse, err := h.gradeServices.GradeAll(std_code)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)

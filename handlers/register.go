@@ -21,7 +21,7 @@ func (h *registerHandlers) Registers(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -30,7 +30,7 @@ func (h *registerHandlers) Registers(c *gin.Context) {
 
 	registerResponse, err := h.registerServices.GetRegister(requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -52,7 +52,7 @@ func (h *registerHandlers) Years(c *gin.Context) {
 
 	registerResponse, err := h.registerServices.GetListYear(std_code)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -71,7 +71,7 @@ func (h *registerHandlers) YearSemesters(c *gin.Context) {
 
 	registerResponse, err := h.registerServices.GetListYearSemester(std_code)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -93,7 +93,7 @@ func (h *registerHandlers) ScheduleYearSemesters(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -102,7 +102,7 @@ func (h *registerHandlers) ScheduleYearSemesters(c *gin.Context) {
 
 	registerResponse, err := h.registerServices.GetScheduleYearSemester(std_code, requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -122,7 +122,7 @@ func (h *registerHandlers) Schedules(c *gin.Context) {
 
 	registerResponse, err := h.registerServices.GetSchedule(std_code)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -135,7 +135,7 @@ func (h *registerHandlers) YearSemesterLates(c *gin.Context) {
 
 	mr30Response, err := h.registerServices.GetYearSemesterLatest()
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, err)

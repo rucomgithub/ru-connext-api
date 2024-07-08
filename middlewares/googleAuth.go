@@ -17,7 +17,7 @@ func GoogleAuth(c *gin.Context) {
 
 	ID_TOKEN, err := GetHeaderAuthorization(c)
 	if err != nil {
-		c.Error(err)
+		//c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"accessToken": "", "isAuth": false, "message": "authorization key in header not found"})
@@ -27,7 +27,7 @@ func GoogleAuth(c *gin.Context) {
 
 	_, err = verifyGoogleAuth(ID_TOKEN)
 	if err != nil {
-		c.Error(err)
+		//c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"accessToken": "", "isAuth": false, "message": "Google is not authorized"})

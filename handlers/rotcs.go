@@ -20,7 +20,7 @@ func (h *rotcsHandlers) GetRotcsRegister(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -29,7 +29,7 @@ func (h *rotcsHandlers) GetRotcsRegister(c *gin.Context) {
 
 	rotcsResponse, err := h.rotcsServices.GetRotcsRegister(requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -45,7 +45,7 @@ func (h *rotcsHandlers) GetRotcsExtend(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
@@ -54,7 +54,7 @@ func (h *rotcsHandlers) GetRotcsExtend(c *gin.Context) {
 
 	rotcsResponse, err := h.rotcsServices.GetRotcsExtend(requestBody)
 	if err != nil {
-		c.Error(err)
+
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
 		handleError(c, err)
