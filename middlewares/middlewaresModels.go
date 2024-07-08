@@ -124,6 +124,7 @@ func GetClaims(encodedToken string) (*ClaimsToken, error) {
 		claimsToken.Subject = parseClaims["subject"].(string)
 	}
 
+	
 	if parseClaims["role"] != "" {
 		claimsToken.Role = parseClaims["role"].(string)
 	} else {

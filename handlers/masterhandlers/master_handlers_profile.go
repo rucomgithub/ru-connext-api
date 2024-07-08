@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"errors"
 	_ "net/url"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,6 +14,8 @@ import (
 func (h *studentHandlers) GetStudentProfile(c *gin.Context) {
 
 	token, err := middlewares.GetHeaderAuthorization(c)
+
+	fmt.Println(token)
 
 	if err != nil {
 		err = errors.New("ไม่พบ token login.")
