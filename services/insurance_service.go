@@ -111,7 +111,7 @@ func (g *InsuranceServices) GetInsuranceListAll(insuranceRequest InsuranceReques
 	}
 
 	if len(detail) < 1 {
-		return nil, errs.NewNotFoundError("ไม่พบข้อมูลประกันของนักศึกษา")
+		return nil, errs.NewNotFoundError("ไม่พบข้อมูลประกันของนักศึกษา " + insuranceRequest.StudentCode)
 	}
 
 	insuranceJSON, _ := json.Marshal(&insuranceResponse)

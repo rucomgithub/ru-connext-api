@@ -32,8 +32,7 @@ func (h *rotcsHandlers) GetRotcsRegister(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": err.Error()})
-		c.Abort()
+		handleError(c, err)
 		return
 	}
 
@@ -58,8 +57,7 @@ func (h *rotcsHandlers) GetRotcsExtend(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", GetLineNumber())
 		c.Set("file", GetFileName())
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": err.Error()})
-		c.Abort()
+		handleError(c, err)
 		return
 	}
 
