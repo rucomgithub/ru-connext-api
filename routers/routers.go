@@ -149,7 +149,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB ,oracle_db_dbg *sqlx.DB, redis
 		insuranceRepo := repositories.NewInsuranceRepo(mysql_db_stdapps)
 		insuranceService := services.NewInsuranceServices(insuranceRepo, redis_cache)
 		insuranceHandler := handlers.NewInsuranceHandlers(insuranceService)
-		insurance.POST("/", insuranceHandler.GetInsuranceListAll)
+		insurance.POST("/", middlewares.Authorization(redis_cache), insuranceHandler.GetInsuranceListAll)
 
 	}
 

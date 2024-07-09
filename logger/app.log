@@ -398,3 +398,11 @@
 {"file":"/app/handlers/insurance.go","level":"error","line":34,"method":"POST","msg":"ไม่พบข้อมูลประกันของนักศึกษา 6299999993","path":"/insurance/","service":"insurance","status":404,"time":"2024-07-09T08:28:48Z"}
 {"file":"/app/handlers/insurance.go","level":"error","line":34,"method":"POST","msg":"ไม่พบข้อมูลประกันของนักศึกษา 6299999993","path":"/insurance/","service":"insurance","status":404,"time":"2024-07-09T08:28:49Z"}
 {"file":"/app/handlers/insurance.go","level":"error","line":34,"method":"POST","msg":"ไม่พบข้อมูลประกันของนักศึกษา 6299999993","path":"/insurance/","service":"insurance","status":404,"time":"2024-07-09T08:28:50Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/insurance/","service":"insurance","status":200,"time":"2024-07-09T08:34:49Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/insurance/","service":"insurance","status":200,"time":"2024-07-09T08:34:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/insurance/","service":"insurance","status":200,"time":"2024-07-09T08:35:02Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/insurance/","service":"insurance","status":200,"time":"2024-07-09T08:36:22Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:36:25Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:36:27Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:36:28Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:36:29Z"}
