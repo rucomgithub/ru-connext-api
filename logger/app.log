@@ -13,3 +13,341 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/2555","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/2555","service":"master","status":200,"time":"2024-07-08T08:32:23Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:18:49Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:18:50Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:22:16Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:22:17Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:22:18Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:14Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:16Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:17Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:18Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:19Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:19Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:20Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:21Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:23:58Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:24:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":500,"time":"2024-07-09T06:24:17Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:27:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:27:46Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:28:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:28:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:28:16Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:28:17Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:28:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:28:26Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:28:27Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:28:31Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:10Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:13Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:19Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:20Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:45Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:46Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:47Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:29:49Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:31:01Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:31:46Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:31:48Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:32:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:32:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:32:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:32:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:32:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:36:00Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:36:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:36:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:22Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:23Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:25Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:25Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:26Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:27Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:37:50Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:40:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:40:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:48:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:48:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:49:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:49:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:49:21Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:49:48Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:49:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:49:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:49:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:50:01Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:50:13Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:50:14Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:50:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:56:16Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:56:17Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:56:18Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:56:19Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:57:20Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:57:22Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:58:55Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:58:56Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:58:57Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:58:58Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:00Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:01Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T06:59:08Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:11Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:22Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:25Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:44Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:45Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:45Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T06:59:47Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:57Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:58Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T06:59:59Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:00Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:14Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:00:20Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:32Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:33Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:34Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:40Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:41Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:41Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:00:45Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:00:47Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":58,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:00:47Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:50Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:51Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:00:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:01:06Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:01:10Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:01:14Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:01:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:01:16Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูล","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:01:17Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:02:33Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:02:34Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:02:35Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:02:36Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:02:37Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:02:42Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:08Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:10Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:11Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:14Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:46Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:46Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:03:47Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:04:31Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:04:41Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:04:43Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:05:21Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:05:22Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:05:34Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:06:27Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:06:43Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:06:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:06:45Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:07:25Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:07:26Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:07:27Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"redis: nil","path":"/rotcs/register","service":"rotcs","status":401,"time":"2024-07-09T07:07:32Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"redis: nil","path":"/rotcs/register","service":"rotcs","status":401,"time":"2024-07-09T07:07:33Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"redis: nil","path":"/rotcs/register","service":"rotcs","status":401,"time":"2024-07-09T07:07:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-07-09T07:07:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:07:47Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:07:49Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:07:52Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:07:53Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:07:54Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:08:03Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:08:04Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:08:04Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:08:08Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลลงทะเบียนผ่อนผันการเกณฑ์ทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:08:08Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:08:11Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:08:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:10:50Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:10:54Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:10:55Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:10:56Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:10:57Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:13Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:14Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:13:19Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:24Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:25Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:25Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:26Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:27Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:28Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:29Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:13:30Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:13:32Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:13:33Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:14:12Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:14:13Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:14:14Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:14:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:15:22Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:15:51Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:17:56Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:17:58Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:19:59Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:00Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:01Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:02Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:03Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:04Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบ token login.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:05Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:31Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:32Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:33Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:34Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:35Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:35Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:20:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:22:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:22:12Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:22:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:22:14Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:22:28Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:22:29Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999995","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:22:30Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:22:35Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:22:35Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:23:39Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:23:40Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:23:41Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:23:50Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:23:51Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:23:57Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:23:58Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:05Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:07Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:08Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:09Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:10Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:10Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:11Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:15Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:19Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:20Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:22Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:43Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:25:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:26:09Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:26:11Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:26:25Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:26:26Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:26:27Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:30:32Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:30:34Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:30:34Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:30:35Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:30:36Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:30:37Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:30:42Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:30:43Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:30:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:31:39Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:31:40Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:31:41Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : Not found.","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:31:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : Not found.","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:31:45Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : Not found.","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:31:46Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : Not found.","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:31:47Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : Not found.","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:31:48Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:31:52Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:31:53Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : Not found.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:32:17Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : Not found.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:32:18Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":62,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993 : Not found.","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:32:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:33:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:33:32Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:33:33Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:33:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:33:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:33:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:33:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:34:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:34:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:34:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:34:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:34:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:34:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:34:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:34:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:35:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:35:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:42:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:42:20Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:03Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:05Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:06Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":35,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993 : ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:07Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:41Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:42Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:43Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:44Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:44:45Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:45:22Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:46:34Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:46:36Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:46:37Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:46:48Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:46:49Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:46:50Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"sql: no rows in result set","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:48:40Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:50:28Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:50:30Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:50:31Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:50:32Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:50:35Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:50:36Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:50:38Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:04Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:05Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:06Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันการเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:06Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันหรือรักษาสิทธิ์การเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:30Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันหรือรักษาสิทธิ์การเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:32Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันหรือรักษาสิทธิ์การเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:33Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":59,"method":"POST","msg":"ไม่พบข้อมูลผ่อนผันหรือรักษาสิทธิ์การเกณฑ์ทหารของ 6299999993","path":"/rotcs/extend","service":"rotcs","status":404,"time":"2024-07-09T07:53:36Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:53:39Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:53:40Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:53:41Z"}
+{"file":"/app/handlers/rotcs.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ 6299999993","path":"/rotcs/register","service":"rotcs","status":404,"time":"2024-07-09T07:53:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:53:51Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:53:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2024-07-09T07:53:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:53:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2024-07-09T07:53:59Z"}

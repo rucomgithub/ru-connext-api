@@ -120,7 +120,7 @@ func (h *studentHandlers) GetRegisterByYear(c *gin.Context) {
 
 	studentProfileResponse, err := h.studentService.GetRegisterByYear(std_code, year)
 	if err != nil {
-		
+		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลลงทะเบียนนักศึกษา " + std_code + " ประจำปีการศึกษา " + year})

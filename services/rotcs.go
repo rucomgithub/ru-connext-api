@@ -19,10 +19,10 @@ type (
 	RotcsRegisterResponse struct {
 		StudentCode string              `json:"studentCode"`
 		Total       int                 `json:"total"`
-		Detail      []rotcsDetailRecord `json:"detail"`
+		Detail      []RotcsDetailRecord `json:"detail"`
 	}
 
-	rotcsDetailRecord struct {
+	RotcsDetailRecord struct {
 		YearReport   string `json:"yearReport"`
 		LocationArmy string `json:"locationArmy"`
 		LayerArmy    string `json:"layerArmy"`
@@ -31,7 +31,7 @@ type (
 		Status       string `json:"status"`
 	}
 
-	rotcsRegisterRecord struct {
+	RotcsRegisterRecord struct {
 		StudentCode string `json:"studentCode"`
 		FirstName   string `json:"firstName"`
 		LastName    string `json:"lastName"`

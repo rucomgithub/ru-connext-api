@@ -1,6 +1,8 @@
 package repositories
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, error) {
 	if std_code == "6299999991" {
@@ -30,6 +32,7 @@ func (r *rotcsRepoDB) GetRotcsRegister(std_code string) (*[]RotcsRegisterRepo, e
 	if err != nil {
 		return nil, err
 	}
+
 	return &register, nil
 }
 
@@ -79,7 +82,7 @@ func (r *rotcsRepoDB) GetRotcsExtend(std_code string) (*RotcsExtendRepo, error) 
 	WHERE extend.studentCode = ? ORDER BY extend.studentCode ASC`
 	err := r.mysql_db.Get(&extend, query, std_code)
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println("1")
 		return nil, err
 	}
 
@@ -90,7 +93,7 @@ func (r *rotcsRepoDB) GetRotcsExtend(std_code string) (*RotcsExtendRepo, error) 
 	WHERE extendDetail.studentCode = ? ORDER BY extendDetail.registerYear Desc,registerYear,registerSemester Desc`
 	err = r.mysql_db.Select(&detail, query, std_code)
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println("2")
 		return nil, err
 	}
 

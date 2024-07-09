@@ -19,9 +19,11 @@ func (g *rotcsServices) GetRotcsRegister(requestBody RotcsRequest) (*RotcsRegist
 
 	rotcsResponse := RotcsRegisterResponse{
 		StudentCode: requestBody.StudentCode,
+		Detail:      []RotcsDetailRecord{},
+		Total:       0,
 	}
 
-	key := "rotcs-register::" + requestBody.StudentCode
+	key := "rotcs-register:::" + requestBody.StudentCode
 	rotcsCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -30,18 +32,18 @@ func (g *rotcsServices) GetRotcsRegister(requestBody RotcsRequest) (*RotcsRegist
 		return &rotcsResponse, nil
 	}
 
-	fmt.Println("rotcs-database")
+	fmt.Println("rotcs-register-database")
 	rotcsRepo, err := g.rotcsRepo.GetRotcsRegister(requestBody.StudentCode)
 	if err != nil {
 		return &rotcsResponse, err
 	}
 
-	rotcsRec := rotcsRegisterRecord{}
-	detail := []rotcsDetailRecord{}
+	rotcsRec := RotcsRegisterRecord{}
+	detail := []RotcsDetailRecord{}
 
 	for _, item := range *rotcsRepo {
 		rotcsRec.StudentCode = item.StudentCode
-		detail = append(detail, rotcsDetailRecord{
+		detail = append(detail, RotcsDetailRecord{
 			LayerArmy:    item.LayerArmy,
 			LocationArmy: item.LocationArmy,
 			YearReport:   item.YearReport,
@@ -49,6 +51,10 @@ func (g *rotcsServices) GetRotcsRegister(requestBody RotcsRequest) (*RotcsRegist
 			TypeReport:   item.TypeReport,
 			Status:       item.Status,
 		})
+	}
+
+	if len(detail) < 1 {
+		return &rotcsResponse, errs.NewNotFoundError("ไม่พบข้อมูลการฝึกเรียนวิชาทหารของ " + requestBody.StudentCode)
 	}
 
 	rotcsResponse = RotcsRegisterResponse{
@@ -66,7 +72,7 @@ func (g *rotcsServices) GetRotcsRegister(requestBody RotcsRequest) (*RotcsRegist
 
 	rotcsJSON, _ := json.Marshal(&rotcsResponse)
 	timeNow := time.Now()
-	redisCacherotcs := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCacherotcs := time.Unix(timeNow.Add(time.Second*5).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, rotcsJSON, redisCacherotcs.Sub(timeNow)).Err()
 
 	return &rotcsResponse, nil
@@ -81,9 +87,11 @@ func (g *rotcsServices) GetRotcsExtend(requestBody RotcsRequest) (*RotcsExtendRe
 
 	rotcsExtendResponse := RotcsExtendResponse{
 		StudentCode: requestBody.StudentCode,
+		Detail:      []RotcsExtendDetailResponse{},
+		Total:       0,
 	}
 
-	key := "rotcs-extend::" + requestBody.StudentCode
+	key := "rotcs-extend:::" + requestBody.StudentCode
 	rotcsCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -94,8 +102,9 @@ func (g *rotcsServices) GetRotcsExtend(requestBody RotcsRequest) (*RotcsExtendRe
 
 	fmt.Println("rotcs-extend-database")
 	rotcsExtend, err := g.rotcsRepo.GetRotcsExtend(requestBody.StudentCode)
+
 	if err != nil {
-		return &rotcsExtendResponse, err
+		return &rotcsExtendResponse, errs.NewNotFoundError("ไม่พบข้อมูลผ่อนผันหรือรักษาสิทธิ์การเกณฑ์ทหารของ " + requestBody.StudentCode)
 	}
 
 	detail := []RotcsExtendDetailResponse{}
@@ -109,6 +118,10 @@ func (g *rotcsServices) GetRotcsExtend(requestBody RotcsRequest) (*RotcsExtendRe
 			Created:          item.Created,
 			Modified:         item.Modified,
 		})
+	}
+
+	if len(detail) < 1 {
+		return &rotcsExtendResponse, errs.NewNotFoundError("ไม่พบข้อมูลรายละเอียดรายการผ่อนผันหรือรักษาสิทธิ์การเกณฑ์ทหารของ " + requestBody.StudentCode)
 	}
 
 	rotcsExtendResponse = RotcsExtendResponse{
@@ -138,7 +151,7 @@ func (g *rotcsServices) GetRotcsExtend(requestBody RotcsRequest) (*RotcsExtendRe
 
 	rotcsJSON, _ := json.Marshal(&rotcsExtendResponse)
 	timeNow := time.Now()
-	redisCacherotcs := time.Unix(timeNow.Add(time.Minute*30).Unix(), 0)
+	redisCacherotcs := time.Unix(timeNow.Add(time.Second*5).Unix(), 0)
 	_ = g.redis_cache.Set(ctx, key, rotcsJSON, redisCacherotcs.Sub(timeNow)).Err()
 
 	return &rotcsExtendResponse, nil
