@@ -406,3 +406,5 @@
 {"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:36:27Z"}
 {"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:36:28Z"}
 {"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:36:29Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token signature is invalid","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:38:31Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":27,"method":"POST","msg":"token is malformed: token contains an invalid number of segments","path":"/insurance/","service":"insurance","status":401,"time":"2024-07-09T08:38:37Z"}
