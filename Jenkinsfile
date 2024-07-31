@@ -52,6 +52,7 @@ pipeline {
                  dir('/home/ruconnext/ruconnext-prod') {
                     sh 'ls -a'
                     sh 'docker-compose down'
+                    sh 'cat /home/ruconnext/ruconnext-prod/config.yaml'
                     sh 'cp /home/ruconnext/ruconnext-prod/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
                  }
                 sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
