@@ -3,6 +3,7 @@ package middlewares
 import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"net/http"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
@@ -11,6 +12,7 @@ import (
 func Authorization(redis_cache *redis.Client) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token, err := GetHeaderAuthorization(c)
+		fmt.Println(token)
 		if err != nil {
 			c.Error(err)
 			c.Set("line", handlers.GetLineNumber())
