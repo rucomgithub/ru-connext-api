@@ -4,7 +4,6 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/services/students"
-	"github.com/spf13/viper"
 	"bytes"
 	"errors"
 	"fmt"
@@ -14,6 +13,8 @@ import (
 	_ "net/url"
 	"strings"
 	"time"
+
+	"github.com/spf13/viper"
 
 	"github.com/gin-gonic/gin"
 )
@@ -189,6 +190,33 @@ func (h *studentHandlers) Unauthorization(c *gin.Context) {
 	}
 
 	c.IndentedJSON(http.StatusOK, gin.H{"message": "Unauthorization successfuly."})
+}
+
+func (h *studentHandlers) CheckToken(c *gin.Context) {
+	token := c.Param("token")
+	// ส่ง Token ไปตรวจสอบว่าได้รับสิทธิ์เข้าใช้งานหรือไม่
+	tokenRec, err := h.studentService.CheckToken(token)
+	if err != nil {
+		err := errors.New("Authorization falil because of timeout...")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName()) // Register the error
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Authorization falil because of timeout..."})
+		c.Abort()
+		return
+	}
+
+	studentProfileResponse, err := h.studentService.GetStudentProfile(tokenRec.StudentCode)
+	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลประวัตินักศึกษา."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentProfileResponse)
 }
 
 func (h *studentHandlers) ExistsToken(c *gin.Context) {

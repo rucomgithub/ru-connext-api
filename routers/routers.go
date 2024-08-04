@@ -25,12 +25,12 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/repositories"
 
+	"RU-Smart-Workspace/ru-smart-api/handlers/masterhandlers"
 	"RU-Smart-Workspace/ru-smart-api/repositories/masterrepo"
 	"RU-Smart-Workspace/ru-smart-api/services/masterservice"
-	"RU-Smart-Workspace/ru-smart-api/handlers/masterhandlers"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB ,oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
 
 	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
@@ -63,13 +63,14 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB ,oracle_db_dbg *sqlx.DB, redis
 
 	student := router.Group("/student")
 	{
-		studentRepo := studentr.NewStudentRepo(oracle_db,oracle_db_dbg)
+		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
 		studentService := students.NewStudentServices(studentRepo, redis_cache)
 		studentHandler := studenth.NewStudentHandlers(studentService)
 
 		student.POST("/refresh-authentication", studentHandler.RefreshAuthentication)
 		student.POST("/unauthorization", studentHandler.Unauthorization)
 		student.POST("/exists-token", studentHandler.ExistsToken)
+		student.GET("/checktoken/:token", studentHandler.CheckToken)
 		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
@@ -176,7 +177,6 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB ,oracle_db_dbg *sqlx.DB, redis
 		masterRepo := masterrepo.NewStudentRepo(oracle_db_dbg)
 		masterService := masterservice.NewStudentServices(masterRepo, redis_cache)
 		masterHandler := masterhandlers.NewStudentHandlers(masterService)
-
 
 		studentMaster := master.Group("/student")
 		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)

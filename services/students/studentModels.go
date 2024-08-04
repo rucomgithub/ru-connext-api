@@ -1,6 +1,7 @@
 package students
 
 import (
+	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/repositories/studentr"
 	"context"
 
@@ -132,6 +133,7 @@ type (
 		RefreshAuthentication(refreshToken string) (*TokenResponse, error)
 		Unauthorization(token string) bool
 		CheckExistsToken(token string) bool
+		CheckToken(token string) (*middlewares.ClaimsToken, error)
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetRegister(studentCode, courseYear, courseSemester string) (*RegisterResponse, error)
 		GetRegisterAll(studentCode, courseYear string) (*RegisterAllResponse, error)

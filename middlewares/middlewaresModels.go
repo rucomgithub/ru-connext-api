@@ -85,20 +85,20 @@ func VerifyToken(preTokenKey string, token string, redis_cache *redis.Client) (b
 	return true, nil
 }
 
-func CheckExistsToken(token string, redis_cache *redis.Client) (bool, error) {
+func CheckExistsToken(token string, redis_cache *redis.Client) (*ClaimsToken, error) {
 
 	claims, err := GetClaims(token)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 
 	_, err = redis_cache.Get(ctx, claims.AccessTokenKey).Result()
 
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 
-	return true, nil
+	return claims, nil
 }
 
 func GetClaims(encodedToken string) (*ClaimsToken, error) {
@@ -124,7 +124,6 @@ func GetClaims(encodedToken string) (*ClaimsToken, error) {
 		claimsToken.Subject = parseClaims["subject"].(string)
 	}
 
-	
 	if parseClaims["role"] != "" {
 		claimsToken.Role = parseClaims["role"].(string)
 	} else {
