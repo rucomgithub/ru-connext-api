@@ -13,7 +13,7 @@ func (s *studentServices) RefreshAuthentication(refreshToken string) (*TokenResp
 		RefreshToken: "",
 		IsAuth:       false,
 		Message:      "",
-		StatusCode:   422,
+		StatusCode:   403,
 	}
 
 	// ส่ง Token ไปตรวจสอบว่าได้รับสิทธิ์เข้าใช้งานหรือไม่
