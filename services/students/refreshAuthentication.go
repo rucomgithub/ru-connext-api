@@ -10,7 +10,7 @@ func (s *studentServices) RefreshAuthentication(refreshToken string) (*TokenResp
 
 	studentTokenResponse := TokenResponse{
 		AccessToken:  "",
-		RefreshToken: "",
+		RefreshToken: "RefreshToken",
 		IsAuth:       false,
 		Message:      "",
 		StatusCode:   403,
