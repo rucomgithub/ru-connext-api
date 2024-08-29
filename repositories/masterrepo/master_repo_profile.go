@@ -1,11 +1,14 @@
 package masterrepo
 
+import (
+	"fmt"
+)
+
 func (r *studentRepoDB) GetStudentProfile(studentCode string) (student *StudentProfileRepo, err error) {
 
 	student_info := StudentProfileRepo{}
 
-	if studentCode == "5424101212" || studentCode == "5519860048" {
-		query := `SELECT S.STD_CODE,'รักราม เรียนดี' NAME_THAI,'Rakram Reandee' NAME_ENG,
+	query := `SELECT S.STD_CODE,P.PRENAME_THAI_S||S.NAME_THAI NAME_THAI,P.PRENAME_ENG_S||S.NAME_ENG NAME_ENG,
 			TO_CHAR (S.BIRTH_DATE,'FmDD Month YYYY','nls_calendar=''Thai Buddha''') BIRTH_DATE, ST.STATUS_NAME_THAI STD_STATUS_DESC_THAI,
 			S.PERSONAL_ID CITIZEN_ID,S.REGINAL_NO
           || ' = '
@@ -39,9 +42,9 @@ func (r *studentRepoDB) GetStudentProfile(studentCode string) (student *StudentP
          LEFT JOIN DBGRAD00.VM_MAJOR M on S.MAJOR_NO = M.MAJOR_NO
          LEFT JOIN DBGRAD00.VM_STUDENT_S ST on S.STD_CODE = ST.STD_CODE
 			WHERE S.STD_CODE = :param1`
-	} else {
 
-		query := `SELECT S.STD_CODE,P.PRENAME_THAI_S||S.NAME_THAI NAME_THAI,P.PRENAME_ENG_S||S.NAME_ENG NAME_ENG,
+	if studentCode == "5424101212" || studentCode == "5519860048" {
+		query = `SELECT S.STD_CODE,'รักราม เรียนดี' NAME_THAI,'Rakram Reandee' NAME_ENG,
 			TO_CHAR (S.BIRTH_DATE,'FmDD Month YYYY','nls_calendar=''Thai Buddha''') BIRTH_DATE, ST.STATUS_NAME_THAI STD_STATUS_DESC_THAI,
 			S.PERSONAL_ID CITIZEN_ID,S.REGINAL_NO
           || ' = '
