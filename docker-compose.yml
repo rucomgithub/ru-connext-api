@@ -10,7 +10,9 @@ services:
     volumes:
        - ./logger:/logger
        - ./:/app
-    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+    command: 
+       - reflex -r "\.go$$" -s -- sh -c "go run ./"
+       - sysctl vm.overcommit_memory=1
     # command: go run main.go
  
 networks:

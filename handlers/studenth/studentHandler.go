@@ -147,7 +147,7 @@ func (h *studentHandlers) RefreshAuthentication(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Authorization fail becourse content type not json format."})
+		c.IndentedJSON(http.StatusForbidden, gin.H{"message": "Authorization fail becourse content type not json format."})
 		c.Abort()
 		return
 	}
@@ -157,7 +157,7 @@ func (h *studentHandlers) RefreshAuthentication(c *gin.Context) {
 
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnprocessableEntity, tokenRespone)
+		c.IndentedJSON(http.StatusForbidden, tokenRespone)
 		c.Abort()
 		return
 	}
