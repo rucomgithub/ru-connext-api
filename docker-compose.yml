@@ -8,11 +8,9 @@ services:
     ports:
        - 9100:8883
     volumes:
-       - ./logger:/logger
        - ./:/app
-    command: 
-       - reflex -r "\.go$$" -s -- sh -c "go run ./"
-       - sysctl vm.overcommit_memory=1
+       - ./logger:/logger
+    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
     # command: go run main.go
  
 networks:
