@@ -9,5 +9,5 @@
 /logger/app.log
 /docker-compose.yml.old
 /docker-compose.yml.wut
-/docker-compose.yml
+/docker-compose.yml 
 
