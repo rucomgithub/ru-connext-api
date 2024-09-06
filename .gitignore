@@ -5,9 +5,8 @@
 /config
 /fonts
 /logs
-/logger
-/logger/app.log
+/logger/*
 /docker-compose.yml.old
 /docker-compose.yml.wut
-./docker-compose.yml 
+/docker-compose.yml 
 
