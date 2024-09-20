@@ -105,7 +105,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		register.POST("/", middlewares.Authorization(redis_cache), registerHandler.Registers)
 		register.GET("/:std_code/year", middlewares.Authorization(redis_cache), registerHandler.Years)
-		register.GET("/:std_code/yearsemester", middlewares.Authorization(redis_cache), registerHandler.YearSemesters)
+		register.GET("/:std_code/yearsemester", registerHandler.YearSemesters)
 		register.POST("/:std_code/schedule", middlewares.Authorization(redis_cache), registerHandler.ScheduleYearSemesters)
 		register.POST("/:std_code/schedulelatest", middlewares.Authorization(redis_cache), registerHandler.Schedules)
 	}
