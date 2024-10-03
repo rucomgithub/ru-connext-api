@@ -30,6 +30,23 @@ type (
 		EMAIL_ADDRESS        string `db:"EMAIL_ADDRESS"`
 	}
 
+	StudentSuccessRepo struct {
+		STD_CODE             string `db:"STD_CODE"`
+		NAME_THAI            string `db:"NAME_THAI"`
+		NAME_ENG             string `db:"NAME_ENG"`
+		YEAR           string `db:"YEAR"`
+		SEMESTER string `db:"SEMESTER"`
+		CURR_NAME           string `db:"CURR_NAME"`
+		MAJOR_NAME_THAI      string `db:"MAJOR_NAME_THAI"`
+		MAJOR_NAME            string `db:"MAJOR_NAME"`
+		PLAN          string `db:"PLAN"`
+		CONFERENCE_NO  string    `db:"CONFERENCE_NO"`
+		SERIAL_NO   string `db:"SERIAL_NO"`
+		CONFERENCE_DATE      string `db:"CONFERENCE_DATE"`
+		GRADUATED_DATE     string `db:"GRADUATED_DATE"`
+		CONFIRM_DATE        string `db:"CONFIRM_DATE"`
+	}
+
 	RegisterRepo struct {
 		YEAR      string `db:"YEAR"`
 		SEMESTER  string `db:"SEMESTER"`
@@ -58,6 +75,8 @@ type (
 
 	StudentRepoInterface interface {
 		GetStudentProfile(studentCode string) (*StudentProfileRepo, error)
+
+		GetStudentSuccess(studentCode string) (*StudentSuccessRepo, error)
 
 		GetRegisterByYear(std_code, year string) (*[]RegisterRepo, error)
 		GetRegisterAll(std_code string) (*[]RegisterRepo, error)

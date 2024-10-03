@@ -91,6 +91,23 @@ type (
 		EMAIL_ADDRESS        string `json:"EMAIL_ADDRESS"`
 	}
 
+	StudentSuccessService struct {
+		STD_CODE             string `json:"STD_CODE"`
+		NAME_THAI            string `json:"NAME_THAI"`
+		NAME_ENG             string `json:"NAME_ENG"`
+		YEAR           string `json:"YEAR"`
+		SEMESTER string `json:"SEMESTER"`
+		CURR_NAME           string `json:"CURR_NAME"`
+		MAJOR_NAME_THAI      string `json:"MAJOR_NAME_THAI"`
+		MAJOR_NAME            string `json:"MAJOR_NAME"`
+		PLAN          string `json:"PLAN"`
+		CONFERENCE_NO  string    `db:"CONFERENCE_NO"`
+		SERIAL_NO   string `json:"SERIAL_NO"`
+		CONFERENCE_DATE      string `json:"CONFERENCE_DATE"`
+		GRADUATED_DATE     string `json:"GRADUATED_DATE"`
+		CONFIRM_DATE        string `json:"CONFIRM_DATE"`
+	}
+
 	RegisterResponse struct {
 		STD_CODE string                 `json:"std_code"`
 		YEAR     string                 `json:"year"`
@@ -133,6 +150,7 @@ type (
 
 	StudentServicesInterface interface {
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
+		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
 
 		GetRegisterAll(stdCode string) (*RegisterResponse, error)
 		GetRegisterByYear(stdCode, year string) (*RegisterResponse, error)
