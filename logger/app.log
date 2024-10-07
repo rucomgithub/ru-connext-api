@@ -34,3 +34,13 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-10-03T07:54:30Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-10-03T07:54:31Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-10-03T08:37:39Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T08:58:09Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T08:58:15Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T08:58:16Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T08:58:17Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T09:09:22Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T09:09:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T09:10:21Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2024-10-03T09:10:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-10-03T09:15:35Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-10-03T09:15:37Z"}
