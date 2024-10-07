@@ -486,7 +486,7 @@ func (h *studentHandlers) GetPhotoGraduate(c *gin.Context) {
 	c.Data(http.StatusOK, contentType, outputImg.Bytes())
 }
 
-func (h *studentHandlers) GetPhotoGraduateCheck(c *gin.Context) {
+func (h *studentHandlers) GetPhotoGraduateSuccess(c *gin.Context) {
 	service_token := viper.GetString("token.eservice")
 
 	ID_TOKEN := c.Param("id")
