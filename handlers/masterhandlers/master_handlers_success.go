@@ -72,7 +72,7 @@ func (h *studentHandlers) GetStudentSuccess(c *gin.Context) {
 
 }
 
-func (h *studentHandlers) GetStudentCheckSuccess(c *gin.Context) {
+func (h *studentHandlers) GetStudentSuccessCheck(c *gin.Context) {
 	token := c.Param("id")
 
 	if token == "" {
