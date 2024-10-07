@@ -77,6 +77,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
 		student.GET("/photograduate", middlewares.Authorization(redis_cache), studentHandler.GetPhotoGraduate)
+		student.GET("/photograduate/:id", middlewares.Authorization(redis_cache), studentHandler.GetPhotoGraduateById)
 		student.GET("/photo/:id", studentHandler.GetPhotoById)
 		student.GET("/", studentHandler.GetStudentAll)
 	}
@@ -182,6 +183,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		studentMaster := master.Group("/student")
 		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
 		studentMaster.GET("/success", middlewares.Authorization(redis_cache), masterHandler.GetStudentSuccess)
+		studentMaster.GET("/checksuccess/:id", masterHandler.GetStudentCheckSuccess)
 
 		registerMaster := master.Group("/register")
 		registerMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetRegisterAll)
