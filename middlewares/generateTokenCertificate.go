@@ -16,7 +16,7 @@ func GenerateTokenCertificate(stdCode, certificate string, redis_cache *redis.Cl
 	generateToken := &TokenCertificateResponse{}
 	//expirationAccessToken := time.Now().AddDate(0, 0, 1).Unix()
 	timeStart := time.Now()
-	timeExpire := timeStart.Add(time.Second * 10)
+	timeExpire := timeStart.Add(time.Minute * 2)
 	expirationAccessToken := timeExpire.Unix()
 
 	generateToken.AccessTokenKey = stdCode + "::certificate::" + uuid.New().String()
@@ -26,7 +26,7 @@ func GenerateTokenCertificate(stdCode, certificate string, redis_cache *redis.Cl
 
 	// ---------------------  Create Access Token  ----------------------------------------- //
 	accessTokenClaims := jwt.MapClaims{}
-	accessTokenClaims["issuer"] = viper.GetString("token.issuer")
+	accessTokenClaims["issuer"] = viper.GetString("token.issuer") + certificate
 	accessTokenClaims["subject"] = "Certificate::" + stdCode
 	accessTokenClaims["certificate"] = certificate
 	accessTokenClaims["start_date"] = timeStart
