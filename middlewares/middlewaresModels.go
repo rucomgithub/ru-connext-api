@@ -16,6 +16,11 @@ type (
 		Role    string `json:"std_role"`
 	}
 
+	CacheCertificate struct {
+		StdCode     string `json:"std_code"`
+		Certificate string `json:"certificate"`
+	}
+
 	CacheService struct {
 		ServiceId string `json:"service_id"`
 		Role      string `json:"service_role"`
@@ -37,6 +42,25 @@ type (
 		ExpiresToken    string `json:"expires_token"`
 		AccessTokenKey  string `json:"access_token_key"`
 		RefreshTokenKey string `json:"refresh_token_key"`
+	}
+
+	TokenCertificateResponse struct {
+		AccessToken    string `json:"accessToken"`
+		AccessTokenKey string `json:"access_token_key"`
+		ExpireDate     string `json:"expire_date"`
+		StartDate      string `json:"start_date"`
+		Certificate    string `json:"certificate"`
+	}
+
+	ClaimsCertificateToken struct {
+		Issuer         string `json:"issuer"`
+		Subject        string `json:"subject"`
+		StudentCode    string `json:"std_code"`
+		ExpireDate     string `json:"expire_date"`
+		StartDate      string `json:"start_date"`
+		Certificate    string `json:"certificate"`
+		ExpiresToken   string `json:"expires_token"`
+		AccessTokenKey string `json:"access_token_key"`
 	}
 
 	RefreshAuthen struct {
@@ -77,6 +101,22 @@ func VerifyToken(preTokenKey string, token string, redis_cache *redis.Client) (b
 	} else {
 		_, err = redis_cache.Get(ctx, claims.RefreshTokenKey).Result()
 	}
+
+	if err != nil {
+		return false, err
+	}
+
+	return true, nil
+}
+
+func VerifyCertificateToken(preTokenKey string, token string, redis_cache *redis.Client) (bool, error) {
+
+	claims, err := GetCertificateClaims(token)
+	if err != nil {
+		return false, err
+	}
+
+	_, err = redis_cache.Get(ctx, claims.AccessTokenKey).Result()
 
 	if err != nil {
 		return false, err
@@ -149,6 +189,52 @@ func GetClaims(encodedToken string) (*ClaimsToken, error) {
 	}
 
 	return claimsToken, nil
+}
+
+func GetCertificateClaims(encodedToken string) (*ClaimsCertificateToken, error) {
+
+	parseToken, err := jwt.Parse(encodedToken, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+		}
+		return []byte(viper.GetString("token.certificateKey")), nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	claimsCertificateToken := &ClaimsCertificateToken{}
+	parseClaims := parseToken.Claims.(jwt.MapClaims)
+
+	if parseClaims["issuer"] != nil {
+		claimsCertificateToken.Issuer = parseClaims["issuer"].(string)
+	}
+
+	if parseClaims["subject"] != nil {
+		claimsCertificateToken.Subject = parseClaims["subject"].(string)
+	}
+
+	if parseClaims["certificate"] != "" {
+		claimsCertificateToken.Certificate = parseClaims["certificate"].(string)
+	} else {
+		claimsCertificateToken.Certificate = ""
+	}
+
+	if parseClaims["std_code"] != "" {
+		claimsCertificateToken.StudentCode = parseClaims["std_code"].(string)
+	} else {
+		claimsCertificateToken.StudentCode = ""
+	}
+
+	if parseClaims["access_token_key"] != nil {
+		claimsCertificateToken.AccessTokenKey = parseClaims["access_token_key"].(string)
+	}
+
+	if parseClaims["expires_token"] != nil {
+		claimsCertificateToken.ExpiresToken = fmt.Sprintf("%v", parseClaims["expires_token"])
+	}
+
+	return claimsCertificateToken, nil
 }
 
 func RevokeToken(token string, redis_cache *redis.Client) bool {

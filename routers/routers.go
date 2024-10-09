@@ -67,6 +67,8 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		studentService := students.NewStudentServices(studentRepo, redis_cache)
 		studentHandler := studenth.NewStudentHandlers(studentService)
 
+		student.GET("/certificate", studentHandler.Certifiate)
+
 		student.POST("/refresh-authentication", studentHandler.RefreshAuthentication)
 		student.POST("/unauthorization", studentHandler.Unauthorization)
 		student.POST("/exists-token", studentHandler.ExistsToken)
