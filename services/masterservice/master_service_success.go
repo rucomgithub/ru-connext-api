@@ -13,7 +13,7 @@ func (s *studentServices) GetStudentSuccessCheck(token string) (studentSuccessRe
 
 	_, err = middlewares.VerifyCertificateToken("accessToken", token, s.redis_cache)
 	if err != nil {
-		err = errors.New("Certificate falil because of timeout.")
+		err = errors.New("Token Certificate หมดอายุ.")
 		return nil, err
 	}
 
@@ -22,7 +22,7 @@ func (s *studentServices) GetStudentSuccessCheck(token string) (studentSuccessRe
 	claim, err := middlewares.GetCertificateClaims(token)
 
 	if err != nil {
-		err = errors.New("ไม่พบ claims certificate.")
+		err = errors.New("Token Certificate ไม่ดูกต้อง.")
 		return nil, err
 	}
 
@@ -31,6 +31,7 @@ func (s *studentServices) GetStudentSuccessCheck(token string) (studentSuccessRe
 	sp, err := s.studentRepo.GetStudentSuccess(studentCode)
 
 	if err != nil {
+		err = errors.New("ไม่พบข้อมูล Certificate.")
 		return &student, err
 	}
 
