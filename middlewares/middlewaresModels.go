@@ -45,7 +45,6 @@ type (
 	}
 
 	TokenCertificateResponse struct {
-		AccessToken      string `json:"accessToken"`
 		CertificateToken string `json:"certificateToken"`
 		AccessTokenKey   string `json:"access_token_key"`
 		ExpireDate       string `json:"expire_date"`

@@ -42,8 +42,6 @@ func GenerateTokenCertificate(ID_TOKEN, stdCode, certificate string, redis_cache
 		return nil, err
 	}
 
-	generateToken.AccessToken = ID_TOKEN
-
 	generateToken.CertificateToken = NEW_ACCESS_TOKEN
 
 	// ---------------------------  redis cache database  ------------------------------------ //

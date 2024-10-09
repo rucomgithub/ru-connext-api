@@ -9,7 +9,6 @@ import (
 func (s *studentServices) Certificate(ID_TOKEN string) (*TokenCertificateResponse, error) {
 
 	certificateTokenResponse := TokenCertificateResponse{
-		AccessToken:      "",
 		CertificateToken: "",
 		StartDate:        "",
 		ExpireDate:       "",
@@ -32,7 +31,6 @@ func (s *studentServices) Certificate(ID_TOKEN string) (*TokenCertificateRespons
 		return &certificateTokenResponse, err
 	}
 
-	certificateTokenResponse.AccessToken = generateToken.AccessToken
 	certificateTokenResponse.CertificateToken = generateToken.CertificateToken
 	certificateTokenResponse.StartDate = generateToken.StartDate
 	certificateTokenResponse.ExpireDate = generateToken.ExpireDate

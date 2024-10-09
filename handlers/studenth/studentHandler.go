@@ -508,7 +508,7 @@ func (h *studentHandlers) GetPhotoGraduateSuccess(c *gin.Context) {
 		return
 	}
 
-	fmt.Println(claimsToken.Certificate)
+	fmt.Println(claimsToken.AccessToken)
 
 	url := "http://10.2.1.155:9100/student/photograduate"
 
