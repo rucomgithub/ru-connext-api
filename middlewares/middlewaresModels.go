@@ -45,11 +45,12 @@ type (
 	}
 
 	TokenCertificateResponse struct {
-		AccessToken    string `json:"accessToken"`
-		AccessTokenKey string `json:"access_token_key"`
-		ExpireDate     string `json:"expire_date"`
-		StartDate      string `json:"start_date"`
-		Certificate    string `json:"certificate"`
+		AccessToken      string `json:"accessToken"`
+		CertificateToken string `json:"certificateToken"`
+		AccessTokenKey   string `json:"access_token_key"`
+		ExpireDate       string `json:"expire_date"`
+		StartDate        string `json:"start_date"`
+		Certificate      string `json:"certificate"`
 	}
 
 	ClaimsCertificateToken struct {
@@ -61,6 +62,7 @@ type (
 		Certificate    string `json:"certificate"`
 		ExpiresToken   string `json:"expires_token"`
 		AccessTokenKey string `json:"access_token_key"`
+		AccessToken    string `json:"access_token"`
 	}
 
 	RefreshAuthen struct {
@@ -228,6 +230,10 @@ func GetCertificateClaims(encodedToken string) (*ClaimsCertificateToken, error) 
 
 	if parseClaims["access_token_key"] != nil {
 		claimsCertificateToken.AccessTokenKey = parseClaims["access_token_key"].(string)
+	}
+
+	if parseClaims["access_token"] != nil {
+		claimsCertificateToken.AccessToken = parseClaims["access_token"].(string)
 	}
 
 	if parseClaims["expires_token"] != nil {

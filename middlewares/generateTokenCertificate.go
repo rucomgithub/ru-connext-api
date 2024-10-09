@@ -11,12 +11,12 @@ import (
 	"github.com/spf13/viper"
 )
 
-func GenerateTokenCertificate(stdCode, certificate string, redis_cache *redis.Client) (*TokenCertificateResponse, error) {
+func GenerateTokenCertificate(ID_TOKEN, stdCode, certificate string, redis_cache *redis.Client) (*TokenCertificateResponse, error) {
 
 	generateToken := &TokenCertificateResponse{}
 	//expirationAccessToken := time.Now().AddDate(0, 0, 1).Unix()
 	timeStart := time.Now()
-	timeExpire := timeStart.Add(time.Minute * 2)
+	timeExpire := timeStart.Add(time.Minute * 60)
 	expirationAccessToken := timeExpire.Unix()
 
 	generateToken.AccessTokenKey = stdCode + "::certificate::" + uuid.New().String()
@@ -32,6 +32,7 @@ func GenerateTokenCertificate(stdCode, certificate string, redis_cache *redis.Cl
 	accessTokenClaims["start_date"] = timeStart
 	accessTokenClaims["expire_date"] = timeExpire
 	accessTokenClaims["std_code"] = stdCode
+	accessTokenClaims["access_token"] = ID_TOKEN
 	accessTokenClaims["expires_token"] = expirationAccessToken
 	accessTokenClaims["access_token_key"] = generateToken.AccessTokenKey
 
@@ -41,7 +42,9 @@ func GenerateTokenCertificate(stdCode, certificate string, redis_cache *redis.Cl
 		return nil, err
 	}
 
-	generateToken.AccessToken = NEW_ACCESS_TOKEN
+	generateToken.AccessToken = ID_TOKEN
+
+	generateToken.CertificateToken = NEW_ACCESS_TOKEN
 
 	// ---------------------------  redis cache database  ------------------------------------ //
 	// เริ่มนับเวลา ณ ตอนนี้

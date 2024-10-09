@@ -2,27 +2,38 @@ package students
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
+	"fmt"
 	"net/http"
 )
 
-func (s *studentServices) Certificate(stdCode, certificate string) (*TokenCertificateResponse, error) {
+func (s *studentServices) Certificate(ID_TOKEN string) (*TokenCertificateResponse, error) {
 
 	certificateTokenResponse := TokenCertificateResponse{
-		AccessToken: "",
-		StartDate:   "",
-		ExpireDate:  "",
-		Certificate: "",
-		Message:     "",
-		StatusCode:  422,
+		AccessToken:      "",
+		CertificateToken: "",
+		StartDate:        "",
+		ExpireDate:       "",
+		Certificate:      "",
+		Message:          "",
+		StatusCode:       422,
 	}
 
-	generateToken, err := middlewares.GenerateTokenCertificate(stdCode, certificate, s.redis_cache)
+	claimsToken, err := middlewares.GetClaims(ID_TOKEN)
+	if err != nil {
+		certificateTokenResponse.Message = "Don't claim token becourse Not valid."
+		return &certificateTokenResponse, err
+	}
+
+	fmt.Println(claimsToken.StudentCode)
+
+	generateToken, err := middlewares.GenerateTokenCertificate(ID_TOKEN, claimsToken.StudentCode, "egraduate", s.redis_cache)
 	if err != nil {
 		certificateTokenResponse.Message = "Certificate Generate Certificate fail."
 		return &certificateTokenResponse, err
 	}
 
 	certificateTokenResponse.AccessToken = generateToken.AccessToken
+	certificateTokenResponse.CertificateToken = generateToken.CertificateToken
 	certificateTokenResponse.StartDate = generateToken.StartDate
 	certificateTokenResponse.ExpireDate = generateToken.ExpireDate
 	certificateTokenResponse.Certificate = generateToken.Certificate

@@ -499,6 +499,17 @@ func (h *studentHandlers) GetPhotoGraduateSuccess(c *gin.Context) {
 		return
 	}
 
+	claimsToken, err := middlewares.GetCertificateClaims(ID_TOKEN)
+	if err != nil {
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "Don't claim token certificate becourse Not valid."})
+		c.Abort()
+		return
+	}
+
+	fmt.Println(claimsToken.Certificate)
+
 	url := "http://10.2.1.155:9100/student/photograduate"
 
 	client := &http.Client{
@@ -507,7 +518,7 @@ func (h *studentHandlers) GetPhotoGraduateSuccess(c *gin.Context) {
 
 	req, err := http.NewRequest("GET", url, nil)
 	q := req.URL.Query()
-	q.Add("id_token", ID_TOKEN)
+	q.Add("id_token", claimsToken.AccessToken)
 	req.URL.RawQuery = q.Encode()
 	fmt.Println(req.URL.String())
 	if err != nil {

@@ -36,11 +36,6 @@ type (
 		Std_code string `json:"std_code"`
 	}
 
-	CertifiatePlayload struct {
-		Std_code   string `json:"std_code" binding:"required,len=10"`
-		Certifiate string `json:"certificate" binding:"required"`
-	}
-
 	AuthenServicePlayload struct {
 		ServiveId string `json:"service_id"`
 	}
@@ -54,12 +49,13 @@ type (
 	}
 
 	TokenCertificateResponse struct {
-		AccessToken string `json:"accessToken"`
-		StartDate   string `json:"startDate"`
-		ExpireDate  string `json:"expireDate"`
-		Certificate string `json:"certificate"`
-		Message     string `json:"message"`
-		StatusCode  int    `json:"status_code"`
+		AccessToken      string `json:"accessToken"`
+		CertificateToken string `json:"certificateToken"`
+		StartDate        string `json:"startDate"`
+		ExpireDate       string `json:"expireDate"`
+		Certificate      string `json:"certificate"`
+		Message          string `json:"message"`
+		StatusCode       int    `json:"status_code"`
 	}
 
 	TokenRedirectResponse struct {
@@ -141,7 +137,7 @@ type (
 	}
 
 	StudentServicesInterface interface {
-		Certificate(stdCode, certificate string) (*TokenCertificateResponse, error)
+		Certificate(token string) (*TokenCertificateResponse, error)
 		Authentication(stdCode string) (*TokenResponse, error)
 		AuthenticationService(service_id string) (*TokenResponse, error)
 		AuthenticationRedirect(stdCode, accessToken string) (*TokenRedirectResponse, error)

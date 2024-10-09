@@ -2,7 +2,7 @@ package studenth
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
-	"RU-Smart-Workspace/ru-smart-api/services/students"
+	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"errors"
 	"net/http"
 
@@ -11,21 +11,19 @@ import (
 
 func (h *studentHandlers) Certifiate(c *gin.Context) {
 
-	var requestBody students.CertifiatePlayload
-
-	err := c.ShouldBindJSON(&requestBody)
+	ID_TOKEN, err := middlewares.GetHeaderAuthorization(c)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "Certificate fail becourse content type not json format."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "authorization key in header not found"})
 		c.Abort()
 		return
 	}
 
-	tokenResponse, err := h.studentService.Certificate(requestBody.Std_code, requestBody.Certifiate)
+	tokenResponse, err := h.studentService.Certificate(ID_TOKEN)
 	if err != nil {
-		c.Error(errors.New(err.Error() + ", " + requestBody.Std_code))
+		c.Error(errors.New(err.Error() + ", " + ID_TOKEN))
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		c.IndentedJSON(http.StatusUnprocessableEntity, tokenResponse)
