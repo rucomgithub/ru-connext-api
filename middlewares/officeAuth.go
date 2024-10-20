@@ -2,7 +2,6 @@ package middlewares
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
-	"context"
 	"net/http"
 	"time"
 
@@ -11,9 +10,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-var ctx = context.Background()
-
-func GoogleAuth(c *gin.Context) {
+func OfficeAuth(c *gin.Context) {
 
 	ID_TOKEN, err := GetHeaderAuthorization(c)
 	if err != nil {
@@ -30,7 +27,7 @@ func GoogleAuth(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"accessToken": "", "isAuth": false, "message": "Google is not authorized"})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"accessToken": "", "isAuth": false, "message": "Office is not authorized"})
 		c.Abort()
 		return
 	}
@@ -38,7 +35,7 @@ func GoogleAuth(c *gin.Context) {
 
 }
 
-func verifyGoogleAuth(id_token string) (*oauth2.Tokeninfo, error) {
+func verifyOfficeAuth(id_token string) (*oauth2.Tokeninfo, error) {
 
 	timeout := time.Duration(5 * time.Second)
 	httpClient := &http.Client{Timeout: timeout}
@@ -49,7 +46,7 @@ func verifyGoogleAuth(id_token string) (*oauth2.Tokeninfo, error) {
 	}
 
 	tokenInfoCall := oauth2Service.Tokeninfo()
-	tokenInfoCall.AccessToken(id_token)
+	tokenInfoCall.IdToken(id_token)
 	tokenInfo, err := tokenInfoCall.Do()
 	if err != nil {
 		return nil, err

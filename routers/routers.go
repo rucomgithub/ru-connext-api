@@ -48,6 +48,16 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		})
 	})
 
+	officeAuth := router.Group("/office")
+	{
+		officeAuth.POST("/authorization", middlewares.OfficeAuth, func(c *gin.Context) {
+			c.IndentedJSON(http.StatusOK, gin.H{
+				"status":  "200",
+				"message": "The authenticaton office.",
+			})
+		})
+	}
+
 	googleAuth := router.Group("/google")
 	{
 		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
