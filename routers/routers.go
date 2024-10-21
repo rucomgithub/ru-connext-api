@@ -28,6 +28,10 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/handlers/masterhandlers"
 	"RU-Smart-Workspace/ru-smart-api/repositories/masterrepo"
 	"RU-Smart-Workspace/ru-smart-api/services/masterservice"
+
+	"RU-Smart-Workspace/ru-smart-api/handlers/officerhandlers"
+	"RU-Smart-Workspace/ru-smart-api/repositories/officerrepos"
+	"RU-Smart-Workspace/ru-smart-api/services/officerservices"
 )
 
 func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
@@ -48,14 +52,14 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		})
 	})
 
-	officeAuth := router.Group("/office")
+	officeAuth := router.Group("/officer")
 	{
-		officeAuth.POST("/authorization", middlewares.OfficeAuth, func(c *gin.Context) {
-			c.IndentedJSON(http.StatusOK, gin.H{
-				"status":  "200",
-				"message": "The authenticaton office.",
-			})
-		})
+		officeRepo := officerrepos.NewOfficerRepo(oracle_db_dbg)
+		officerService := officerservices.NewOfficerServices(officeRepo, redis_cache)
+		officeHandler := officerhandlers.NewOfficerHandlers(officerService)
+
+		officeAuth.POST("/authorization", officeHandler.Authentication)
+		officeAuth.POST("/refresh-authentication", officeHandler.RefreshAuthentication)
 	}
 
 	googleAuth := router.Group("/google")
