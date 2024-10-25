@@ -750,3 +750,180 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/refresh-authentication","service":"officer","status":200,"time":"2024-10-21T08:42:37Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2024-10-21T08:45:59Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2024-10-21T08:47:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T04:51:44Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"POST","msg":"redis: nil","path":"/master/student/privacy","service":"master","status":401,"time":"2024-10-25T04:55:20Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"POST","msg":"redis: nil","path":"/master/student/privacy","service":"master","status":401,"time":"2024-10-25T04:55:23Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T04:55:31Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T04:55:32Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T04:55:34Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T04:55:35Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T04:55:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:01:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:01:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:02:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:02:32Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:02:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:04:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:14:27Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:21:23Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:22:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:26:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:26:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:28:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:28:14Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:30:23Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:41:00Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:42:50Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:43:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:43:51Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:48:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:48:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:48:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:48:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:48:26Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:48:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:50:50Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:50:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:51:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T05:52:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:03:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:06:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:09:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:13:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:15:23Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:15:44Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:15:53Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:15:58Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:13Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:15Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:16Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:17Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:18Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:19Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:52Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":19,"method":"POST","msg":"EOF","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:17:53Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: no rows in result set","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:18:29Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: no rows in result set","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:18:35Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: no rows in result set","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:18:46Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: no rows in result set","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:18:47Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:07Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:08Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:09Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:10Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:11Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:12Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:13Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: Scan error on column index 2, name \"CREATED\": converting driver.Value type time.Time (\"2022-06-05 15:06:49 +0700 +07:00\") to a int: invalid syntax","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T06:19:14Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:19:31Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:12Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:20:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:20:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:21:23Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:21:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:21:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:21:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:22:02Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:22:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T06:22:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:22:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:22:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2024-10-25T06:22:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:22:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:22:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:22:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:22:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:22:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:22:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T06:22:41Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00942: table or view does not exist","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:25:03Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:25:20Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"LastInsertId is not supported by this driver","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:26:01Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:26:03Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:26:04Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:26:09Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"LastInsertId is not supported by this driver","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:26:14Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:26:18Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:30:08Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T07:30:16Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"LastInsertId is not supported by this driver","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:30:41Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:31:12Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:31:16Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.B_PERSONAL_PK) violated","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:31:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:39:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:39:13Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"sql: no rows in result set","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:39:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T07:47:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:44Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:48Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:49Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:47:49Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:48:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:48:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:48:08Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:48:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:48:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:48:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:50:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:50:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:50:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:50:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:50:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T07:53:22Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:53:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:54:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:54:06Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:54:06Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:54:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:54:08Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:54:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T07:58:10Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00933: SQL command not properly ended","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:58:23Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00933: SQL command not properly ended","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:58:27Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":29,"method":"POST","msg":"ORA-00933: SQL command not properly ended","path":"/master/student/privacy","service":"master","status":422,"time":"2024-10-25T07:58:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:59:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:59:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:59:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:59:26Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:59:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:59:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T07:59:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T08:02:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:55Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:57Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:02:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:02Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:22Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2024-10-25T08:03:23Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"redis: nil","path":"/master/student/success","service":"master","status":401,"time":"2024-10-25T08:04:14Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T08:04:21Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/student/success","service":"master","status":401,"time":"2024-10-25T08:04:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T08:05:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T08:05:44Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T08:06:57Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-10-25T08:07:19Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-10-25T08:16:14Z"}

@@ -31,20 +31,20 @@ type (
 	}
 
 	StudentSuccessRepo struct {
-		STD_CODE             string `db:"STD_CODE"`
-		NAME_THAI            string `db:"NAME_THAI"`
-		NAME_ENG             string `db:"NAME_ENG"`
-		YEAR           string `db:"YEAR"`
-		SEMESTER string `db:"SEMESTER"`
-		CURR_NAME           string `db:"CURR_NAME"`
-		MAJOR_NAME_THAI      string `db:"MAJOR_NAME_THAI"`
-		MAJOR_NAME            string `db:"MAJOR_NAME"`
-		PLAN          string `db:"PLAN"`
-		CONFERENCE_NO  string    `db:"CONFERENCE_NO"`
-		SERIAL_NO   string `db:"SERIAL_NO"`
-		CONFERENCE_DATE      string `db:"CONFERENCE_DATE"`
-		GRADUATED_DATE     string `db:"GRADUATED_DATE"`
-		CONFIRM_DATE        string `db:"CONFIRM_DATE"`
+		STD_CODE        string `db:"STD_CODE"`
+		NAME_THAI       string `db:"NAME_THAI"`
+		NAME_ENG        string `db:"NAME_ENG"`
+		YEAR            string `db:"YEAR"`
+		SEMESTER        string `db:"SEMESTER"`
+		CURR_NAME       string `db:"CURR_NAME"`
+		MAJOR_NAME_THAI string `db:"MAJOR_NAME_THAI"`
+		MAJOR_NAME      string `db:"MAJOR_NAME"`
+		PLAN            string `db:"PLAN"`
+		CONFERENCE_NO   string `db:"CONFERENCE_NO"`
+		SERIAL_NO       string `db:"SERIAL_NO"`
+		CONFERENCE_DATE string `db:"CONFERENCE_DATE"`
+		GRADUATED_DATE  string `db:"GRADUATED_DATE"`
+		CONFIRM_DATE    string `db:"CONFIRM_DATE"`
 	}
 
 	RegisterRepo struct {
@@ -73,6 +73,13 @@ type (
 		GPA            float32 `db:"GPA"`
 	}
 
+	PrivacyPolicy struct {
+		STD_CODE string `db:"STD_CODE"`
+		VERSION  string `db:"VERSION"`
+		CREATED  string `db:"CREATED"`
+		MODIFIED string `db:"MODIFIED"`
+	}
+
 	StudentRepoInterface interface {
 		GetStudentProfile(studentCode string) (*StudentProfileRepo, error)
 
@@ -86,6 +93,10 @@ type (
 
 		GetGpaAll(std_code string) (*GPARepo, error)
 		GetGpaByYear(std_code, year string) (*GPARepo, error)
+
+		AddPrivacyPolicy(std_code, version string) error
+		UpdatePrivacyPolicy(std_code, version string) error
+		GetPrivacyPolicy(std_code string) (*PrivacyPolicy, error)
 	}
 )
 

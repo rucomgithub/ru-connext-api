@@ -197,6 +197,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		masterHandler := masterhandlers.NewStudentHandlers(masterService)
 
 		studentMaster := master.Group("/student")
+		studentMaster.POST("/privacy", middlewares.Authorization(redis_cache), masterHandler.AcceptPrivacyPolicy)
 		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
 		studentMaster.GET("/success", middlewares.Authorization(redis_cache), masterHandler.GetStudentSuccess)
 		studentMaster.GET("/successcheck/:id", masterHandler.GetStudentSuccessCheck)

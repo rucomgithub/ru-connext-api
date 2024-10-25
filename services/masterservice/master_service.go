@@ -148,6 +148,18 @@ type (
 		YEAR     string `json:"year" validate:"min=4,max=4,regexp=^[0-9]"`
 	}
 
+	PrivacyPolicyResponse struct {
+		STD_CODE string `db:"STD_CODE"`
+		VERSION  string `db:"VERSION"`
+		CREATED  string `db:"CREATED"`
+		MODIFIED string `db:"MODIFIED"`
+	}
+
+	PrivacyPolicyRequest struct {
+		STD_CODE string `json:"std_code" validate:"min=9,max=10,regexp=^[0-9]"`
+		VERSION  string `json:"version" validate:"regexp=^[0-9]"`
+	}
+
 	StudentServicesInterface interface {
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
@@ -158,6 +170,8 @@ type (
 
 		GetGradeAll(stdCode string) (*GradeResponse, error)
 		GetGradeByYear(stdCode, year string) (*GradeResponse, error)
+
+		SetPrivacyPolicy(privacyPolicyRequest PrivacyPolicyRequest) (*PrivacyPolicyResponse, error)
 	}
 )
 
