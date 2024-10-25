@@ -156,8 +156,7 @@ type (
 	}
 
 	PrivacyPolicyRequest struct {
-		STD_CODE string `json:"std_code" validate:"min=9,max=10,regexp=^[0-9]"`
-		VERSION  string `json:"version" validate:"regexp=^[0-9]"`
+		VERSION string `json:"version" validate:"regexp=^[0-9]"`
 	}
 
 	StudentServicesInterface interface {
@@ -171,7 +170,7 @@ type (
 		GetGradeAll(stdCode string) (*GradeResponse, error)
 		GetGradeByYear(stdCode, year string) (*GradeResponse, error)
 
-		SetPrivacyPolicy(privacyPolicyRequest PrivacyPolicyRequest) (*PrivacyPolicyResponse, error)
+		SetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error)
 	}
 )
 
