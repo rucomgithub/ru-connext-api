@@ -4290,3 +4290,34 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/refresh-authentication","service":"officer","status":200,"time":"2024-11-04T06:53:25Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/refresh-authentication","service":"officer","status":200,"time":"2024-11-04T06:53:26Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/refresh-authentication","service":"officer","status":200,"time":"2024-11-04T06:53:28Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_qualification.go","level":"error","line":85,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.SYS_C00290967) violated","path":"/master/student/qualification","service":"master","status":409,"time":"2024-11-04T07:44:12Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_qualification.go","level":"error","line":85,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.SYS_C00290967) violated","path":"/master/student/qualification","service":"master","status":409,"time":"2024-11-04T07:50:33Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"PUT","msg":"token signature is invalid","path":"/officer/qualification/5312740208","service":"officer","status":401,"time":"2024-11-04T07:51:35Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"PUT","msg":"token signature is invalid","path":"/officer/qualification/5312740208","service":"officer","status":401,"time":"2024-11-04T07:51:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T07:59:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:04:02Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/qualification/5312740208","service":"officer","status":200,"time":"2024-11-04T08:04:18Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/qualification","service":"officer","status":200,"time":"2024-11-04T08:04:54Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-11-04T08:08:00Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-11-04T08:09:38Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/qualification","service":"officer","status":200,"time":"2024-11-04T08:10:29Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/qualification/5312740208","service":"officer","status":200,"time":"2024-11-04T08:12:09Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_qualification.go","level":"error","line":85,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.SYS_C00290967) violated","path":"/master/student/qualification","service":"master","status":409,"time":"2024-11-04T08:13:18Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_qualification.go","level":"error","line":85,"method":"POST","msg":"ORA-00001: unique constraint (DBGMIS00.SYS_C00290967) violated","path":"/master/student/qualification","service":"master","status":409,"time":"2024-11-04T08:14:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:17:14Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token signature is invalid","path":"/master/student/qualification","service":"master","status":401,"time":"2024-11-04T08:22:12Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token signature is invalid","path":"/master/student/qualification","service":"master","status":401,"time":"2024-11-04T08:22:28Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token signature is invalid","path":"/master/student/qualification","service":"master","status":401,"time":"2024-11-04T08:22:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:24:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:24:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:29:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:30:06Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/qualification","service":"master","status":200,"time":"2024-11-04T08:30:37Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/qualification","service":"master","status":200,"time":"2024-11-04T08:31:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:34:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:40:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:42:59Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/success","service":"master","status":200,"time":"2024-11-04T08:43:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:44:45Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:45:33Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-04T08:45:40Z"}

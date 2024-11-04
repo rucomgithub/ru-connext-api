@@ -48,7 +48,7 @@ func (h *studentHandlers) GetQualification(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, gin.H{"data": qf, "message": "พบข้อมูลยื่นขอเอกสารของนักศึกษารหัส " + STD_CODE + " ในระบบ."})
+	c.IndentedJSON(http.StatusOK, gin.H{"qualification": qf, "message": "พบข้อมูลยื่นขอเอกสารของนักศึกษารหัส " + STD_CODE + " ในระบบ."})
 
 }
 
@@ -89,6 +89,6 @@ func (h *studentHandlers) AddQualification(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, gin.H{"data": qf, "message": "รหัสนักศึกษา " + STD_CODE + " ยื่นขอเอกสารสำเร็จ."})
+	c.IndentedJSON(http.StatusOK, gin.H{"qualification": qf, "message": "รหัสนักศึกษา " + STD_CODE + " ยื่นขอเอกสารสำเร็จ."})
 
 }
