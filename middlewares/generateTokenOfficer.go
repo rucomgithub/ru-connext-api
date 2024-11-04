@@ -14,9 +14,9 @@ import (
 func GenerateTokenOfficer(username, role string, redis_cache *redis.Client) (*TokenResponse, error) {
 	generateToken := &TokenResponse{}
 	//expirationAccessToken := time.Now().AddDate(0, 0, 1).Unix()
-	expirationAccessToken := time.Now().Add(time.Minute * 1).Unix()
+	expirationAccessToken := time.Now().Add(time.Hour * 24).Unix()
 	//expirationRefreshToken := time.Now().AddDate(0, 1, 0).Unix()
-	expirationRefreshToken := time.Now().Add(time.Minute * 10).Unix()
+	expirationRefreshToken := time.Now().Add(time.Hour * 24 * 30).Unix()
 
 	generateToken.IsAuth = true
 	generateToken.AccessTokenKey = username + "::access::" + uuid.New().String()

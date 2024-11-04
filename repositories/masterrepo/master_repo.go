@@ -80,6 +80,18 @@ type (
 		MODIFIED string `db:"MODIFIED"`
 	}
 
+	Qualification struct {
+		STD_CODE     string `db:"STD_CODE"`
+		REQUEST_DATE string `db:"REQUEST_DATE"`
+		OPERATE_DATE string `db:"OPERATE_DATE"`
+		CONFIRM_DATE string `db:"CONFIRM_DATE"`
+		CANCEL_DATE  string `db:"CANCEL_DATE"`
+		STATUS       string `db:"STATUS"`
+		CREATED      string `db:"CREATED"`
+		MODIFIED     string `db:"MODIFIED"`
+		DESCRIPTION  string `db:"DESCRIPTION"`
+	}
+
 	StudentRepoInterface interface {
 		GetStudentProfile(studentCode string) (*StudentProfileRepo, error)
 
@@ -97,6 +109,9 @@ type (
 		AddPrivacyPolicy(std_code, version string) error
 		UpdatePrivacyPolicy(std_code, version string) error
 		GetPrivacyPolicy(std_code string) (*PrivacyPolicy, error)
+
+		GetQualification(std_code string) (*Qualification, error)
+		AddQualification(std_code string) error
 	}
 )
 

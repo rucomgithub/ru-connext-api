@@ -60,6 +60,10 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		officeAuth.POST("/authorization", officeHandler.Authentication)
 		officeAuth.POST("/refresh-authentication", officeHandler.RefreshAuthentication)
+
+		officeAuth.GET("/qualification", middlewares.AuthorizationOfficer(redis_cache), officeHandler.GetQualificationAll)
+		officeAuth.GET("/qualification/:id", middlewares.AuthorizationOfficer(redis_cache), officeHandler.GetQualification)
+		officeAuth.PUT("/qualification/:id", middlewares.AuthorizationOfficer(redis_cache), officeHandler.UpdateQualification)
 	}
 
 	googleAuth := router.Group("/google")
@@ -197,6 +201,9 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		masterHandler := masterhandlers.NewStudentHandlers(masterService)
 
 		studentMaster := master.Group("/student")
+		studentMaster.POST("/qualification", middlewares.Authorization(redis_cache), masterHandler.AddQualification)
+		studentMaster.GET("/qualification", middlewares.Authorization(redis_cache), masterHandler.GetQualification)
+
 		studentMaster.POST("/privacy", middlewares.Authorization(redis_cache), masterHandler.AcceptPrivacyPolicy)
 		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
 		studentMaster.GET("/success", middlewares.Authorization(redis_cache), masterHandler.GetStudentSuccess)

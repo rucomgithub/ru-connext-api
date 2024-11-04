@@ -75,10 +75,31 @@ type (
 		Status   string `json:"status"`
 	}
 
+	QualificationRequest struct {
+		STATUS      string `json:"status" validate:"required"`
+		DESCRIPTION string `json:"description"`
+	}
+
+	QualificationResponse struct {
+		STD_CODE     string `json:"std_code"`
+		REQUEST_DATE string `json:"request_date"`
+		OPERATE_DATE string `json:"operate_date"`
+		CONFIRM_DATE string `json:"confirm_date"`
+		CANCEL_DATE  string `json:"cancel_date"`
+		STATUS       string `json:"status"`
+		CREATED      string `json:"created"`
+		MODIFIED     string `json:"modified"`
+		DESCRIPTION  string `json:"description"`
+	}
+
 	OfficerServiceInterface interface {
 		AuthenticationOfficer(authenRequest AuthenRequest) (*AuthenResponse, error)
 		RefreshAuthenticationOfficer(refreshToken string) (*AuthenResponse, error)
 		VerifyAuthentication(Username string, Password string) (TokenOffice, error)
+
+		GetQualificationAll() (*[]QualificationResponse, error)
+		GetQualification(std_code string) (*QualificationResponse, error)
+		UpdateQualification(std_code, status, description string) (*QualificationResponse, int64, error)
 	}
 )
 

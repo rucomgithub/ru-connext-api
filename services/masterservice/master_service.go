@@ -159,6 +159,23 @@ type (
 		VERSION string `json:"version" validate:"regexp=^[0-9]"`
 	}
 
+	QualificationRequest struct {
+		STATUS      string `json:"status" validate:"required"`
+		DESCRIPTION string `json:"description"`
+	}
+
+	QualificationResponse struct {
+		STD_CODE     string `json:"std_code"`
+		REQUEST_DATE string `json:"request_date"`
+		OPERATE_DATE string `json:"operate_date"`
+		CONFIRM_DATE string `json:"confirm_date"`
+		CANCEL_DATE  string `json:"cancel_date"`
+		STATUS       string `json:"status"`
+		CREATED      string `json:"created"`
+		MODIFIED     string `json:"modified"`
+		DESCRIPTION  string `json:"description"`
+	}
+
 	StudentServicesInterface interface {
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
@@ -171,6 +188,9 @@ type (
 		GetGradeByYear(stdCode, year string) (*GradeResponse, error)
 
 		SetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error)
+
+		GetQualification(std_code string) (*QualificationResponse, error)
+		AddQualification(std_code string) (*QualificationResponse, error)
 	}
 )
 

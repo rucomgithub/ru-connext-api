@@ -18,8 +18,25 @@ type (
 		Status   int    `db:"STATUS"`
 	}
 
+	Qualification struct {
+		STD_CODE     string `db:"STD_CODE"`
+		REQUEST_DATE string `db:"REQUEST_DATE"`
+		OPERATE_DATE string `db:"OPERATE_DATE"`
+		CONFIRM_DATE string `db:"CONFIRM_DATE"`
+		CANCEL_DATE  string `db:"CANCEL_DATE"`
+		STATUS       string `db:"STATUS"`
+		CREATED      string `db:"CREATED"`
+		MODIFIED     string `db:"MODIFIED"`
+		DESCRIPTION  string `db:"DESCRIPTION"`
+	}
+
 	OfficerRepoInterface interface {
 		GetUserLogin(username string) (*UserLoginRepo, error)
+
+		GetQualificationAll() (*[]Qualification, error)
+		GetQualification(std_code string) (*Qualification, error)
+		AddQualification(std_code string) error
+		UpdateQualification(std_code, status, description string) (int64, error)
 	}
 )
 
