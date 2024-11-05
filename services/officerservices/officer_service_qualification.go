@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, error) {
+func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, int, error) {
 
 	qualificationResponses := []QualificationResponse{}
 
@@ -19,7 +19,7 @@ func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, error
 		log.Println(err)
 		_ = json.Unmarshal([]byte(qualificationCache), &qualificationResponses)
 		fmt.Println("cache-qualification")
-		return &qualificationResponses, nil
+		return &qualificationResponses, 0, nil
 	}
 
 	fmt.Println("database-qualification")
@@ -28,7 +28,7 @@ func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, error
 
 	if err != nil {
 		log.Println(err.Error())
-		return &qualificationResponses, errs.NewUnExpectedError()
+		return &qualificationResponses, 0, errs.NewUnExpectedError()
 	}
 
 	qualificationRec := []QualificationResponse{}
@@ -48,7 +48,7 @@ func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, error
 	}
 
 	if len(qualificationRec) < 1 {
-		return nil, errs.NewNotFoundError("ไม่พบข้อมูลการยื่นขอเอกสาร")
+		return nil, 0, errs.NewNotFoundError("ไม่พบข้อมูลการยื่นขอเอกสาร")
 	}
 
 	qualificationJSON, _ := json.Marshal(&qualificationRec)
@@ -56,7 +56,7 @@ func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, error
 	redisCacheregister := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
 	_ = s.redis_cache.Set(ctx, key, qualificationJSON, redisCacheregister.Sub(timeNow)).Err()
 
-	return &qualificationRec, nil
+	return &qualificationRec, len(qualificationRec), nil
 }
 
 func (s *officerServices) GetQualification(std_code string) (*QualificationResponse, error) {

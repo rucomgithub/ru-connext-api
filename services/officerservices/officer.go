@@ -97,7 +97,7 @@ type (
 		RefreshAuthenticationOfficer(refreshToken string) (*AuthenResponse, error)
 		VerifyAuthentication(Username string, Password string) (TokenOffice, error)
 
-		GetQualificationAll() (*[]QualificationResponse, error)
+		GetQualificationAll() (*[]QualificationResponse, int, error)
 		GetQualification(std_code string) (*QualificationResponse, error)
 		UpdateQualification(std_code, status, description string) (*QualificationResponse, int64, error)
 	}

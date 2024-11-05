@@ -35,7 +35,7 @@ func (h *officerHandlers) GetQualificationAll(c *gin.Context) {
 		return
 	}
 
-	qualificationResponse, err := h.officerServices.GetQualificationAll()
+	qualificationResponse, total, err := h.officerServices.GetQualificationAll()
 	if err != nil {
 		err = errors.New("ไม่พบข้อมูลการยื่นขอเอกสาร.")
 		c.Error(err)
@@ -46,7 +46,7 @@ func (h *officerHandlers) GetQualificationAll(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, qualificationResponse)
+	c.IndentedJSON(http.StatusOK, gin.H{"qualifications": qualificationResponse, "total": total, "message": "พบรายการข้อมูลยื่นขอเอกสารของนักศึกษาในระบบ."})
 
 }
 
