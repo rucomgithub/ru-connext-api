@@ -46,7 +46,7 @@ func (h *officerHandlers) GetQualificationAll(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, gin.H{"qualifications": qualificationResponse, "total": total, "message": "พบรายการข้อมูลยื่นขอเอกสารของนักศึกษาในระบบ."})
+	c.IndentedJSON(http.StatusOK, gin.H{"status": "all", "qualifications": qualificationResponse, "total": total, "message": "พบรายการข้อมูลยื่นขอเอกสารของนักศึกษาในระบบ."})
 
 }
 
