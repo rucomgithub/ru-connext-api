@@ -204,6 +204,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		studentMaster.POST("/qualification", middlewares.Authorization(redis_cache), masterHandler.AddQualification)
 		studentMaster.GET("/qualification", middlewares.Authorization(redis_cache), masterHandler.GetQualification)
 
+		studentMaster.GET("/privacy", middlewares.Authorization(redis_cache), masterHandler.GetPrivacyPolicy)
 		studentMaster.POST("/privacy", middlewares.Authorization(redis_cache), masterHandler.AcceptPrivacyPolicy)
 		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
 		studentMaster.GET("/success", middlewares.Authorization(redis_cache), masterHandler.GetStudentSuccess)

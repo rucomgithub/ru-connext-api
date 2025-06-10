@@ -42,3 +42,24 @@ func (s *studentServices) SetPrivacyPolicy(std_code, version, status string) (*P
 
 	return &privacy, nil
 }
+
+func (s *studentServices) GetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error) {
+
+	privacy := PrivacyPolicyResponse{}
+
+	sp, err := s.studentRepo.GetPrivacyPolicy(std_code, version)
+
+	if err != nil {
+		return nil, err
+	}
+
+	privacy = PrivacyPolicyResponse{
+		STD_CODE: sp.STD_CODE,
+		VERSION:  sp.VERSION,
+		STATUS:   sp.STATUS,
+		CREATED:  sp.CREATED,
+		MODIFIED: sp.MODIFIED,
+	}
+
+	return &privacy, nil
+}

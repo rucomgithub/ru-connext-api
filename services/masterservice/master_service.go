@@ -189,6 +189,7 @@ type (
 		GetGradeAll(stdCode string) (*GradeResponse, error)
 		GetGradeByYear(stdCode, year string) (*GradeResponse, error)
 
+		GetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error)
 		SetPrivacyPolicy(std_code, version, status string) (*PrivacyPolicyResponse, error)
 
 		GetQualification(std_code string) (*QualificationResponse, error)
