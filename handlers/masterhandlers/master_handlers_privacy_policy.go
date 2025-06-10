@@ -81,18 +81,10 @@ func (h *studentHandlers) AcceptPrivacyPolicy(c *gin.Context) {
 }
 
 func (h *studentHandlers) GetPrivacyPolicy(c *gin.Context) {
+	var version string = c.Param("version")
 
-	var requestBody masterservice.PrivacyPolicyRequest
+	fmt.Println(version)
 
-	err := c.ShouldBindJSON(&requestBody)
-	if err != nil {
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnprocessableEntity, err.Error())
-		c.Abort()
-		return
-	}
 
 	token, err := middlewares.GetHeaderAuthorization(c)
 
@@ -134,7 +126,7 @@ func (h *studentHandlers) GetPrivacyPolicy(c *gin.Context) {
 
 	fmt.Println(claim.StudentCode)
 
-	privacyResponse, err := h.studentService.GetPrivacyPolicy(STD_CODE, requestBody.VERSION)
+	privacyResponse, err := h.studentService.GetPrivacyPolicy(STD_CODE,version)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())

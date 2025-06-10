@@ -4640,3 +4640,26 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:58:52Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:58:53Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:58:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-06-10T07:05:20Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T07:05:30Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T07:05:32Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:17Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:19Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:20Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:21Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:22Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:22Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/2","service":"master","status":200,"time":"2025-06-10T07:09:28Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/2","service":"master","status":200,"time":"2025-06-10T07:09:29Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/2","service":"master","status":200,"time":"2025-06-10T07:09:30Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/3","service":"master","status":200,"time":"2025-06-10T07:09:34Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/3","service":"master","status":200,"time":"2025-06-10T07:09:35Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/3","service":"master","status":200,"time":"2025-06-10T07:09:35Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/3","service":"master","status":200,"time":"2025-06-10T07:09:36Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":132,"method":"GET","msg":"sql: no rows in result set","path":"/master/student/privacy/4","service":"master","status":422,"time":"2025-06-10T07:09:39Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":132,"method":"GET","msg":"sql: no rows in result set","path":"/master/student/privacy/4","service":"master","status":422,"time":"2025-06-10T07:09:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:46Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:47Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:48Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/privacy/1","service":"master","status":200,"time":"2025-06-10T07:09:48Z"}
