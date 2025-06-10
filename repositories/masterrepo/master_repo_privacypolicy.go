@@ -23,9 +23,9 @@ func (r *studentRepoDB) AddPrivacyPolicy(std_code, version string) error {
 	return nil
 }
 
-func (r *studentRepoDB) UpdatePrivacyPolicy(std_code, version string) error {
+func (r *studentRepoDB) UpdatePrivacyPolicy(std_code, version, status string) error {
 
-	result, err := r.oracle_db_dbg.Exec("update b_personal set version = :1, modified = sysdate where std_code = :2", version, std_code)
+	result, err := r.oracle_db_dbg.Exec("update b_personal set status = :1, modified = sysdate where std_code = :2 and version = :3", status, std_code, version)
 	if err != nil {
 		return err
 	}
@@ -44,13 +44,13 @@ func (r *studentRepoDB) UpdatePrivacyPolicy(std_code, version string) error {
 	return nil
 }
 
-func (r *studentRepoDB) GetPrivacyPolicy(std_code string) (*PrivacyPolicy, error) {
+func (r *studentRepoDB) GetPrivacyPolicy(std_code, version string) (*PrivacyPolicy, error) {
 
 	privacy := PrivacyPolicy{}
 
-	query := "SELECT STD_CODE,VERSION,CREATED,MODIFIED FROM dbgmis00.B_PERSONAL WHERE STD_CODE = :param1"
+	query := "SELECT STD_CODE,VERSION,STATUS,CREATED,MODIFIED FROM dbgmis00.B_PERSONAL WHERE STD_CODE = :param1 and VERSION = :param2"
 
-	err := r.oracle_db_dbg.Get(&privacy, query, std_code)
+	err := r.oracle_db_dbg.Get(&privacy, query, std_code, version)
 
 	if err != nil {
 		return nil, err

@@ -66,7 +66,7 @@ func (h *studentHandlers) AcceptPrivacyPolicy(c *gin.Context) {
 
 	fmt.Println(claim.StudentCode)
 
-	privacyResponse, err := h.studentService.SetPrivacyPolicy(STD_CODE, requestBody.VERSION)
+	privacyResponse, err := h.studentService.SetPrivacyPolicy(STD_CODE, requestBody.VERSION, requestBody.STATUS)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())

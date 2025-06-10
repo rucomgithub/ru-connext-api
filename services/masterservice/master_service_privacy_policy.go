@@ -2,11 +2,11 @@ package masterservice
 
 import "fmt"
 
-func (s *studentServices) SetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error) {
+func (s *studentServices) SetPrivacyPolicy(std_code, version, status string) (*PrivacyPolicyResponse, error) {
 
 	privacy := PrivacyPolicyResponse{}
 
-	_, err := s.studentRepo.GetPrivacyPolicy(std_code)
+	_, err := s.studentRepo.GetPrivacyPolicy(std_code, version)
 
 	if err != nil {
 		if err.Error() == "sql: no rows in result set" {
@@ -20,13 +20,13 @@ func (s *studentServices) SetPrivacyPolicy(std_code, version string) (*PrivacyPo
 		}
 	}
 
-	fmt.Println("พบข้อมูล ทำการปรับค่าข้อมูล version ใหม่")
-	err = s.studentRepo.UpdatePrivacyPolicy(std_code, version)
+	fmt.Println("พบข้อมูลและทำการปรับค่าข้อมูลสถานะ")
+	err = s.studentRepo.UpdatePrivacyPolicy(std_code, version, status)
 	if err != nil {
 		return nil, err
 	}
 
-	sp, err := s.studentRepo.GetPrivacyPolicy(std_code)
+	sp, err := s.studentRepo.GetPrivacyPolicy(std_code, version)
 
 	if err != nil {
 		return nil, err
@@ -35,6 +35,7 @@ func (s *studentServices) SetPrivacyPolicy(std_code, version string) (*PrivacyPo
 	privacy = PrivacyPolicyResponse{
 		STD_CODE: sp.STD_CODE,
 		VERSION:  sp.VERSION,
+		STATUS:   sp.STATUS,
 		CREATED:  sp.CREATED,
 		MODIFIED: sp.MODIFIED,
 	}

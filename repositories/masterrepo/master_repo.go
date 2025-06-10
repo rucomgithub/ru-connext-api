@@ -76,6 +76,7 @@ type (
 	PrivacyPolicy struct {
 		STD_CODE string `db:"STD_CODE"`
 		VERSION  string `db:"VERSION"`
+		STATUS   string `db:"STATUS"`
 		CREATED  string `db:"CREATED"`
 		MODIFIED string `db:"MODIFIED"`
 	}
@@ -107,8 +108,8 @@ type (
 		GetGpaByYear(std_code, year string) (*GPARepo, error)
 
 		AddPrivacyPolicy(std_code, version string) error
-		UpdatePrivacyPolicy(std_code, version string) error
-		GetPrivacyPolicy(std_code string) (*PrivacyPolicy, error)
+		UpdatePrivacyPolicy(std_code, version, status string) error
+		GetPrivacyPolicy(std_code, version string) (*PrivacyPolicy, error)
 
 		GetQualification(std_code string) (*Qualification, error)
 		AddQualification(std_code string) error

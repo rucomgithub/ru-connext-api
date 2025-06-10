@@ -4538,3 +4538,87 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-05T07:33:01Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-05T07:33:10Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2024-11-05T07:33:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-06-10T03:49:38Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:09Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:10Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:11Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:11Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:16Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:17Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:17Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:18Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:19Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:22Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:51:22Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:52:19Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:52:20Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:52:40Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:53:10Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:54:27Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:54:30Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:54:31Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:54:32Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:54:33Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:55:34Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:55:36Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:55:37Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_privacy_policy.go","level":"error","line":72,"method":"POST","msg":"dpiStmt_execute: ORA-00904: \"STATUS\": invalid identifier","path":"/master/student/privacy","service":"master","status":422,"time":"2025-06-10T03:55:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:32Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:33Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:00:44Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:02:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:02:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:02:54Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:00Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:03Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:27Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:31Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:50Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:50Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:51Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:54Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:57Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:04:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:08:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:09:03Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:09:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:09:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:10:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:10:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:10:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:10:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:10:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:10:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:10:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/master/student/privacy","service":"master","status":200,"time":"2025-06-10T04:11:38Z"}

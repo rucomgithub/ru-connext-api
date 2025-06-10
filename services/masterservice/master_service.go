@@ -151,12 +151,14 @@ type (
 	PrivacyPolicyResponse struct {
 		STD_CODE string `db:"STD_CODE"`
 		VERSION  string `db:"VERSION"`
+		STATUS   string `db:"STATUS"`
 		CREATED  string `db:"CREATED"`
 		MODIFIED string `db:"MODIFIED"`
 	}
 
 	PrivacyPolicyRequest struct {
 		VERSION string `json:"version" validate:"regexp=^[0-9]"`
+		STATUS  string `json:"status" validate:"regexp=^[0-1]"`
 	}
 
 	QualificationRequest struct {
@@ -187,7 +189,7 @@ type (
 		GetGradeAll(stdCode string) (*GradeResponse, error)
 		GetGradeByYear(stdCode, year string) (*GradeResponse, error)
 
-		SetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error)
+		SetPrivacyPolicy(std_code, version, status string) (*PrivacyPolicyResponse, error)
 
 		GetQualification(std_code string) (*QualificationResponse, error)
 		AddQualification(std_code string) (*QualificationResponse, error)
