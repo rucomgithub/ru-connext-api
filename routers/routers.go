@@ -201,7 +201,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		masterHandler := masterhandlers.NewStudentHandlers(masterService)
 
 		studentMaster := master.Group("/student")
-		studentMaster.GET("/qr/:id", masterHandler.GenerateStudentPDF)
+		studentMaster.GET("/qr/:id", masterHandler.GeneratePDFWithQR)
 		studentMaster.POST("/qualification", middlewares.Authorization(redis_cache), masterHandler.AddQualification)
 		studentMaster.GET("/qualification", middlewares.Authorization(redis_cache), masterHandler.GetQualification)
 
