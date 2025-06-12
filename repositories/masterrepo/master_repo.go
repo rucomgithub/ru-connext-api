@@ -37,12 +37,16 @@ type (
 		YEAR            string `db:"YEAR"`
 		SEMESTER        string `db:"SEMESTER"`
 		CURR_NAME       string `db:"CURR_NAME"`
+		CURR_NAME_ENG   string `db:"CURR_NAME_ENG"`
+		THAI_NAME       string `db:"THAI_NAME"`
+		ENG_NAME        string `db:"ENG_NAME"`
 		MAJOR_NAME_THAI string `db:"MAJOR_NAME_THAI"`
 		MAJOR_NAME      string `db:"MAJOR_NAME"`
 		PLAN            string `db:"PLAN"`
 		CONFERENCE_NO   string `db:"CONFERENCE_NO"`
 		SERIAL_NO       string `db:"SERIAL_NO"`
 		CONFERENCE_DATE string `db:"CONFERENCE_DATE"`
+		ADMIT_DATE  	string `db:"ADMIT_DATE"`
 		GRADUATED_DATE  string `db:"GRADUATED_DATE"`
 		CONFIRM_DATE    string `db:"CONFIRM_DATE"`
 	}

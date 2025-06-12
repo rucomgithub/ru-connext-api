@@ -98,12 +98,16 @@ type (
 		YEAR            string `json:"YEAR"`
 		SEMESTER        string `json:"SEMESTER"`
 		CURR_NAME       string `json:"CURR_NAME"`
+		CURR_NAME_ENG   string `json:"CURR_NAME_ENG"`
+		THAI_NAME       string `json:"THAI_NAME"`
+		ENG_NAME        string `json:"ENG_NAME"`
 		MAJOR_NAME_THAI string `json:"MAJOR_NAME_THAI"`
 		MAJOR_NAME      string `json:"MAJOR_NAME"`
 		PLAN            string `json:"PLAN"`
 		CONFERENCE_NO   string `db:"CONFERENCE_NO"`
 		SERIAL_NO       string `json:"SERIAL_NO"`
 		CONFERENCE_DATE string `json:"CONFERENCE_DATE"`
+		ADMIT_DATE  	string `json:"ADMIT_DATE"`
 		GRADUATED_DATE  string `json:"GRADUATED_DATE"`
 		CONFIRM_DATE    string `json:"CONFIRM_DATE"`
 	}
@@ -178,7 +182,17 @@ type (
 		DESCRIPTION  string `json:"description"`
 	}
 
+	TokenCertificateResponse struct {
+		CertificateToken string `json:"certificateToken"`
+		StartDate        string `json:"startDate"`
+		ExpireDate       string `json:"expireDate"`
+		Certificate      string `json:"certificate"`
+		Message          string `json:"message"`
+		StatusCode       int    `json:"status_code"`
+	}
+
 	StudentServicesInterface interface {
+		Certificate(token string) (*TokenCertificateResponse, error)
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
 		GetStudentSuccessCheck(stdCode string) (*StudentSuccessService, error)
@@ -192,7 +206,7 @@ type (
 		GetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error)
 		SetPrivacyPolicy(std_code, version, status string) (*PrivacyPolicyResponse, error)
 
-		GetQualification(std_code string) (*QualificationResponse, error)
+		GetQualification(std_code string) (*QualificationResponse, error) 
 		AddQualification(std_code string) (*QualificationResponse, error)
 	}
 )
