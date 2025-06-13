@@ -61,11 +61,11 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 
 	studentSuccessResponse, err := h.studentService.GetStudentSuccess(std_code)
 	if err != nil {
-		err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + ".")
+		err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "." + err.Error())
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "."})
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "." + err.Error()})
 		c.Abort()
 		return
 	}
@@ -98,6 +98,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
     // 3. เตรียม PDF
 	pdf := gofpdf.New("P", "mm", "A4", "")
 	pdf.AddUTF8Font("THSarabun", "", "fonts/THSarabunNew.ttf")
+	pdf.AddUTF8Font("THSarabunBold", "", "fonts/THSarabunNew Bold.ttf")
 	pdf.AddPage()
 	pdf.SetFont("THSarabun", "", 16) // อย่าลืม register font ด้วย
 
@@ -108,10 +109,10 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 		ReadDpi:               false,
 		AllowNegativePosition: false,
 	}
-	pdf.ImageOptions("images/logo.png", 20, 10, 25, 0, false, logoOpt, 0, "")
+	pdf.ImageOptions("images/logo.png", 10, 10, 25, 0, false, logoOpt, 0, "")
 
-	pdf.SetFontSize(20)
-	pdf.SetXY(55, 10)
+	pdf.SetFont("THSarabunBold", "", 20)
+	pdf.SetXY(45, 10)
 	pdf.Cell(0, 10, "แบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ ระดับบัณฑิตศึกษา")
 	pdf.Ln(12)
 
@@ -120,7 +121,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	pdf.CellFormat(0, 10, "ข้อมูลผู้สำเร็จการศึกษา (Graduate Information)", "", 1, "", false, 0, "")
 	pdf.Ln(3)
 
-	pdf.SetFont("THSarabun", "", 16)
+	pdf.SetFont("THSarabunBold", "", 16)
 	pdf.SetXY(100, 40)
 	pdf.Cell(0, 6, fmt.Sprintf("ชื่อ - สกุล: %s", studentSuccessResponse.NAME_THAI))
 	pdf.SetXY(100, 50)
@@ -130,9 +131,9 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	pdf.SetXY(100, 70)
 	pdf.Cell(0, 6, fmt.Sprintf("Student Code: %s", studentSuccessResponse.STD_CODE))
 	pdf.SetXY(100, 80)
-	pdf.MultiCell(0, 6, fmt.Sprintf("ปริญญาที่สำเร็จการศึกษา: %s (%s)", studentSuccessResponse.CURR_NAME,studentSuccessResponse.MAJOR_NAME), "", "L", false)
+	pdf.MultiCell(0, 6, fmt.Sprintf("ปริญญาที่สำเร็จการศึกษา: %s", studentSuccessResponse.THAI_NAME), "", "L", false)
 	pdf.SetXY(100, 95)
-	pdf.MultiCell(0, 6, fmt.Sprintf("Degree Awarded: %s (%s)", studentSuccessResponse.CURR_NAME,studentSuccessResponse.MAJOR_NAME), "", "L", false)
+	pdf.MultiCell(0, 6, fmt.Sprintf("Degree Awarded: %s", studentSuccessResponse.ENG_NAME), "", "L", false)
 
     // 4. Register image จาก memory
     opt := gofpdf.ImageOptions{
@@ -158,15 +159,15 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 และขอหนังสือรับรองคุณวุฒิการศึกษาโดยตรงกับ มหาวิทยาลัยเป็นไปด้วยความถูกต้องรวดเร็ว
 
 หน่วยงานภาครัฐหรือภาคเอกชน 
-สามารถตรวจสอบและขอหนังสือรับรองคุณวุฒิการศึกษาออนไลน์ระดับบัณฑิตศึกษา(ปริญญาโท-ปริญญาเอก) ของมหาวิทยาลัยรามคำแหง โดยดำเนินการ ดังนี้
+สามารถตรวจสอบและขอหนังสือรับรองคุณวุฒิการศึกษาออนไลน์ระดับบัณฑิตศึกษา (ปริญญาโท-ปริญญาเอก) ของมหาวิทยาลัยรามคำแหง โดยดำเนินการ ดังนี้
 1.Scan QR-code ในแบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ของผู้สำเร็จการศึกษารายบุคคลข้างต้น 
 2.กรอกข้อมูลที่เกี่ยวข้องในเว็บไซต์ ..................(E-Mail,ชื่อบริษัท/หน่วยงาน,ชื่อผู้รับผิดชอบในการตรวจสอบคุณวุฒิการศึกษา)
 3.ระบบจะแสดงผลการตรวจสอบและรับรองคุณวุฒิการศึกษาซึ่งหน่วยงานสามารถสั่งพิมพ์หนังสือรับรองคุณวุฒิการศึกษา ได้ผ่านทางเว็บไซต์ www.e-regis.ru.ac.th 
 
 หมายเหตุ : 
 1.ระบบนี้จัดทำขึ้นเพื่อให้หน่วยงานภายนอกสามารถตรวจสอบคุณวุฒิการศึกษาของผู้สำเร็จการศึกษาจากมหาวิทยาลัยรามคำแหง ระดับปริญญาโทและปริญญาเอก 
-2.QR-code มีอายุการใช้งานไม่เกิน 120 วันนับจากวันที่ออกหนังสือ
-3.หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏหรือมีปัญหาข้อสงสัยโปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษาฝ่ายบริการการศึกษา บัณฑิตวิทยาลัยมหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
+2.QR-code มีอายุการใช้งานไม่เกิน 120 วัน นับจากวันที่ออกหนังสือ
+3.หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏหรือมีปัญหาข้อสงสัยโปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัยมหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
 
 	pdf.AddPage()
@@ -174,7 +175,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	// แทรกโลโก้ที่มุมบนซ้าย
 
 	pdf.ImageOptions("images/logo.png", 10, 10, 25, 0, false, logoOpt, 0, "")
-	pdf.SetFontSize(16)
+	pdf.SetFont("THSarabunBold", "", 16)
 	pdf.SetXY(72, 10)
 	pdf.Cell(0, 8, "รายงานผลการตรวจสอบและรับรองคุณวุฒิการศึกษา")
 	pdf.SetXY(40, 20)
@@ -184,16 +185,18 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	pdf.SetXY(90, 40)
 	pdf.Cell(0, 8, "ประเทศไทย (Thailand)")
 
+	gpa := fmt.Sprintf("%.2f", studentSuccessResponse.GPA)
+
 	headers := []string{"ข้อมูลผู้สำเร็จการศึกษา Graduate Information Inquiry ", "THAI", "ENGLISH "}
 	rows := [][]string{
         {"ชื่อ-สกุล (Name-Surname)", studentSuccessResponse.NAME_THAI, studentSuccessResponse.NAME_ENG},
         {"รหัสประจำตัวนักศึกษา (Student Code)", studentSuccessResponse.STD_CODE, studentSuccessResponse.STD_CODE},
         {"วันที่เข้าศึกษา (Date of Admission)", studentSuccessResponse.ADMIT_DATE, studentSuccessResponse.ADMIT_DATE},
         {"วันที่สำเร็จการศึกษา (Date of Graduation)", studentSuccessResponse.GRADUATED_DATE, studentSuccessResponse.GRADUATED_DATE},
-        {"คุณวุฒิที่สำเร็จการศึกษา (Degree Awarded)", studentSuccessResponse.CURR_NAME, studentSuccessResponse.CURR_NAME_ENG},
-        {"สาขาวิชา (Field of Study)", studentSuccessResponse.THAI_NAME, studentSuccessResponse.ENG_NAME},
-        {"วิชาเอก (Major)", "-", "-"},
-        {"เกรดเฉลี่ยสะสม (GPA)", "3.5", "3.5"},
+        {"คุณวุฒิที่สำเร็จการศึกษา (Degree Awarded)", studentSuccessResponse.CURR_NAME, studentSuccessResponse.CURR_ENG},
+        {"สาขาวิชา (Field of Study)", studentSuccessResponse.MAJOR_NAME , studentSuccessResponse.MAJOR_ENG},
+        {"วิชาเอก (Major)", studentSuccessResponse.MAIN_MAJOR_THAI, studentSuccessResponse.MAIN_MAJOR_ENG},
+        {"เกรดเฉลี่ยสะสม (GPA)", gpa, gpa},
     }
 
 	pdf.SetXY(10, 60)

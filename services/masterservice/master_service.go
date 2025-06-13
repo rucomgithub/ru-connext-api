@@ -98,13 +98,16 @@ type (
 		YEAR            string `json:"YEAR"`
 		SEMESTER        string `json:"SEMESTER"`
 		CURR_NAME       string `json:"CURR_NAME"`
-		CURR_NAME_ENG   string `json:"CURR_NAME_ENG"`
+		CURR_ENG   		string `json:"CURR_ENG"`
 		THAI_NAME       string `json:"THAI_NAME"`
 		ENG_NAME        string `json:"ENG_NAME"`
-		MAJOR_NAME_THAI string `json:"MAJOR_NAME_THAI"`
 		MAJOR_NAME      string `json:"MAJOR_NAME"`
+		MAJOR_ENG       string `json:"MAJOR_ENG"`
+		MAIN_MAJOR_THAI string `json:"MAIN_MAJOR_THAI"`
+		MAIN_MAJOR_ENG  string `json:"MAIN_MAJOR_ENG"`
 		PLAN            string `json:"PLAN"`
-		CONFERENCE_NO   string `db:"CONFERENCE_NO"`
+		GPA             float32 `json:"GPA"`
+		CONFERENCE_NO   string `json:"CONFERENCE_NO"`
 		SERIAL_NO       string `json:"SERIAL_NO"`
 		CONFERENCE_DATE string `json:"CONFERENCE_DATE"`
 		ADMIT_DATE  	string `json:"ADMIT_DATE"`
