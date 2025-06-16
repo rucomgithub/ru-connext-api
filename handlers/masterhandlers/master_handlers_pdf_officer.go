@@ -4,7 +4,6 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"errors"
 	"fmt"
-	"net/http"
     "bytes"
 	"github.com/gin-gonic/gin"
     "github.com/jung-kurt/gofpdf"
@@ -21,8 +20,9 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "." + err.Error()})
-		c.Abort()
+		//c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "." + err.Error()})
+		//c.Abort()
+		PDFContentError("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + ".", c)
 		return
 	}
 
@@ -46,8 +46,21 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 	pdf.AddUTF8Font("THSarabun", "", "fonts/THSarabunNew.ttf")
 	pdf.AddUTF8Font("THSarabunBold", "", "fonts/THSarabunNew Bold.ttf")
 	pdf.AddPage()
-	pdf.SetFont("THSarabun", "", 16) // อย่าลืม register font ด้วย
 
+	// ตั้งค่าสำหรับ Watermark
+    pdf.SetFont("THSarabun", "", 50)
+    pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
+    pdf.SetXY(30, 140)
+
+    // บิดหมุนข้อความ 45 องศา
+    pdf.TransformBegin()
+    pdf.TransformRotate(45, 105, 148)
+    pdf.Text(10, 150, "สำเนาเอกสารใช้เพื่อตรวจสอบเอกสารเท่านั้น") // หรือ "CONFIDENTIAL"
+    pdf.TransformEnd()
+
+    // คืนค่า Text และ Font ปกติ
+    pdf.SetTextColor(0, 0, 0)
+    pdf.SetFont("THSarabun", "", 16)
 	// ส่วนหัว
 	// แทรกโลโก้ที่มุมบนซ้าย
 	logoOpt := gofpdf.ImageOptions{
@@ -117,8 +130,22 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 
 	pdf.AddPage()
 	// ส่วนหัว
-	// แทรกโลโก้ที่มุมบนซ้าย
+		// ตั้งค่าสำหรับ Watermark
+		pdf.SetFont("THSarabun", "", 50)
+		pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
+		pdf.SetXY(30, 140)
+	
+		// บิดหมุนข้อความ 45 องศา
+		pdf.TransformBegin()
+		pdf.TransformRotate(45, 105, 148)
+		pdf.Text(10, 150, "สำเนาเอกสารใช้เพื่อตรวจสอบเอกสารเท่านั้น") // หรือ "CONFIDENTIAL"
+		pdf.TransformEnd()
 
+	// แทรกโลโก้ที่มุมบนซ้าย
+    // คืนค่า Text และ Font ปกติ
+    pdf.SetTextColor(0, 0, 0)
+    pdf.SetFont("THSarabun", "", 16)
+	
 	pdf.ImageOptions("images/logo.png", 10, 10, 15, 0, false, logoOpt, 0, "")
 	pdf.SetFont("THSarabunBold", "", 16)
 	pdf.SetXY(72, 10)
@@ -164,10 +191,10 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 	}
 	pdf.SetXY(90, 160)
 	pdf.Cell(0, 8, "ลงชื่อ (Signature)……………………………………………………ผู้รับรอง(Certifier)")
-	pdf.SetXY(105, 170)
-	pdf.Cell(0, 8, "(……………………………………………………………………)")
-	pdf.SetXY(100, 180)
-	pdf.Cell(0, 8, "ตำแหน่ง (Position)……………………………………………………………")
+	pdf.SetXY(120, 170)
+	pdf.Cell(0, 8, "( รศ.ดร.กฤษดา ตั้งชัยศักดิ์ )")
+	pdf.SetXY(110, 180)
+	pdf.Cell(0, 8, "ตำแหน่ง (Position) คณบดีบัณฑิตวิทยาลัย")
 	pdf.SetXY(10, 190)
 	pdf.MultiCell(0, 6, `หมายเหตุ
 1.ระบบนี้จัดทำขึ้นเพื่อให้หน่วยงานภายนอกสามารถตรวจสอบคุณวุฒิการศึกษาของผู้สำเร็จการศึกษาจาก มหาวิทยาลัยรามคำแหง ระดับปริญญาโทและปริญญาเอก

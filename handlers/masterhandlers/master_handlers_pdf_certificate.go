@@ -2,10 +2,7 @@ package masterhandlers
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
-	"RU-Smart-Workspace/ru-smart-api/middlewares"
-	"errors"
 	"fmt"
-
     "bytes"
 	"github.com/gin-gonic/gin"
     "github.com/jung-kurt/gofpdf"
@@ -13,102 +10,29 @@ import (
     "image/png"
 )
 
-func PDFContentError(strerr string, c *gin.Context) {
-	pdf := gofpdf.New("P", "mm", "A4", "")
-	pdf.AddUTF8Font("THSarabun", "", "fonts/THSarabunNew.ttf")
-	pdf.AddUTF8Font("THSarabunBold", "", "fonts/THSarabunNew Bold.ttf")
-	pdf.AddPage()
-	// ตั้งค่าสำหรับ Watermark
-    pdf.SetFont("THSarabun", "", 45)
-    pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
-    pdf.SetXY(30, 140)
+func (h *studentHandlers) GeneratePDFWithQRCertificate(c *gin.Context) {
+	token := c.Param("id")
 
-    // บิดหมุนข้อความ 45 องศา
-    pdf.TransformBegin()
-    pdf.TransformRotate(45, 105, 148)
-    pdf.Text(10, 150, strerr) // หรือ "CONFIDENTIAL"
-    pdf.TransformEnd()
+	if token == "" {
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		PDFContentError("ไม่พบ token certificate.", c)
+		return
+	}
 
-	    // 6. ส่ง PDF กลับไป
-	c.Header("Content-Type", "application/pdf")
-	c.Header("Content-Disposition", `attachment; filename=student_error.pdf`)
-	_ = pdf.Output(c.Writer)
-
-}
-
-func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
-
-	token, err := middlewares.GetHeaderAuthorization(c)
-
-	fmt.Println(token)
-
+	studentSuccessResponse, err := h.studentService.GetStudentSuccessCheck(token)
 	if err != nil {
-		err = errors.New("ไม่พบ token login.")
+		//err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + err.Error() + std_code + ".")
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		//c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ token login."})
-		//c.Abort()
-		PDFContentError("ไม่พบ token login.", c)
+		PDFContentError("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + studentSuccessResponse.STD_CODE + ".", c)
 		return
 	}
 
-	fmt.Println(token)
+	std_code := studentSuccessResponse.STD_CODE
 
-	claim, err := middlewares.GetClaims(token)
-
-	if err != nil {
-		err = errors.New("ไม่พบ claims user." + err.Error())
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		//c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ claims user."})
-		//c.Abort()
-		PDFContentError("ไม่พบ claims user.", c)
-		return
-	}
-
-	role := claim.Role
-
-	fmt.Println(role)
-
-	if role == "Bachelor" {
-		err = errors.New("สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้...")
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		//c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
-		//c.Abort()
-		PDFContentError("สิทธิ์ " + role + " ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.", c)
-		return
-	}
-
-	std_code := claim.StudentCode
-
-	studentSuccessResponse, err := h.studentService.GetStudentSuccess(std_code)
-	if err != nil {
-		err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + ".")
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		//c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "."})
-		//c.Abort()
-		PDFContentError("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code , c)
-		return
-	}
-
-	tokenResponse, err := h.studentService.Certificate(token) 
-	if err != nil {
-		c.Error(errors.New(err.Error() + ", " + token))
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		//c.IndentedJSON(http.StatusUnprocessableEntity, tokenResponse)
-		//c.Abort()
-		PDFContentError("ไม่สามารถสร้าง Certificate ของ " + std_code, c)
-		return
-	}
-
-	verifyURL := fmt.Sprintf("https://ruconnext-dev.ru.ac.th/ru-connext-api/master/certificate/successpdf/%s" , tokenResponse.CertificateToken)
+	verifyURL := fmt.Sprintf("%s" ,std_code)
 
     // 1. สร้าง QR Code เป็น image.Image
     qrImg, err := qrcode.New(verifyURL, qrcode.Medium)
@@ -128,8 +52,21 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	pdf.AddUTF8Font("THSarabun", "", "fonts/THSarabunNew.ttf")
 	pdf.AddUTF8Font("THSarabunBold", "", "fonts/THSarabunNew Bold.ttf")
 	pdf.AddPage()
-	pdf.SetFont("THSarabun", "", 16) // อย่าลืม register font ด้วย
 
+	// ตั้งค่าสำหรับ Watermark
+    pdf.SetFont("THSarabun", "", 50)
+    pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
+    pdf.SetXY(30, 140)
+
+    // บิดหมุนข้อความ 45 องศา
+    pdf.TransformBegin()
+    pdf.TransformRotate(45, 105, 148)
+    pdf.Text(10, 150, "สำเนาเอกสารใช้เพื่อตรวจสอบเอกสารเท่านั้น") // หรือ "CONFIDENTIAL"
+    pdf.TransformEnd()
+
+    // คืนค่า Text และ Font ปกติ
+    pdf.SetTextColor(0, 0, 0)
+    pdf.SetFont("THSarabun", "", 16)
 	// ส่วนหัว
 	// แทรกโลโก้ที่มุมบนซ้าย
 	logoOpt := gofpdf.ImageOptions{
@@ -199,8 +136,22 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 
 	pdf.AddPage()
 	// ส่วนหัว
-	// แทรกโลโก้ที่มุมบนซ้าย
+		// ตั้งค่าสำหรับ Watermark
+		pdf.SetFont("THSarabun", "", 50)
+		pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
+		pdf.SetXY(30, 140)
+	
+		// บิดหมุนข้อความ 45 องศา
+		pdf.TransformBegin()
+		pdf.TransformRotate(45, 105, 148)
+		pdf.Text(10, 150, "สำเนาเอกสารใช้เพื่อตรวจสอบเอกสารเท่านั้น") // หรือ "CONFIDENTIAL"
+		pdf.TransformEnd()
 
+	// แทรกโลโก้ที่มุมบนซ้าย
+    // คืนค่า Text และ Font ปกติ
+    pdf.SetTextColor(0, 0, 0)
+    pdf.SetFont("THSarabun", "", 16)
+	
 	pdf.ImageOptions("images/logo.png", 10, 10, 15, 0, false, logoOpt, 0, "")
 	pdf.SetFont("THSarabunBold", "", 16)
 	pdf.SetXY(72, 10)
