@@ -2,7 +2,6 @@ package masterhandlers
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
-	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"errors"
 	"fmt"
 	"net/http"
@@ -13,51 +12,8 @@ import (
     "image/png"
 )
 
-func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
-
-	token, err := middlewares.GetHeaderAuthorization(c)
-
-	fmt.Println(token)
-
-	if err != nil {
-		err = errors.New("ไม่พบ token login.")
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ token login."})
-		c.Abort()
-		return
-	}
-
-	fmt.Println(token)
-
-	claim, err := middlewares.GetClaims(token)
-
-	if err != nil {
-		err = errors.New("ไม่พบ claims user." + err.Error())
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ claims user."})
-		c.Abort()
-		return
-	}
-
-	role := claim.Role
-
-	fmt.Println(role)
-
-	if role == "Bachelor" {
-		err = errors.New("สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้...")
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
-		c.Abort()
-		return
-	}
-
-	std_code := claim.StudentCode
+func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
+	std_code := c.Param("id")
 
 	studentSuccessResponse, err := h.studentService.GetStudentSuccess(std_code)
 	if err != nil {
@@ -70,17 +26,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 		return
 	}
 
-	tokenResponse, err := h.studentService.Certificate(token) 
-	if err != nil {
-		c.Error(errors.New(err.Error() + ", " + token))
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnprocessableEntity, tokenResponse)
-		c.Abort()
-		return
-	}
-
-	verifyURL := fmt.Sprintf("https://ruconnext-dev.ru.ac.th/ru-connext-api/master/student/successcheck/%s" , tokenResponse.CertificateToken)
+	verifyURL := fmt.Sprintf("%s" ,std_code)
 
     // 1. สร้าง QR Code เป็น image.Image
     qrImg, err := qrcode.New(verifyURL, qrcode.Medium)
