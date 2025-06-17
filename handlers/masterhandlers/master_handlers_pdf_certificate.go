@@ -12,7 +12,7 @@ import (
 
 func (h *studentHandlers) GeneratePDFWithQRCertificate(c *gin.Context) {
 	token := c.Param("id")
-
+	fmt.Println(token)
 	if token == "" {
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
@@ -22,11 +22,10 @@ func (h *studentHandlers) GeneratePDFWithQRCertificate(c *gin.Context) {
 
 	studentSuccessResponse, err := h.studentService.GetStudentSuccessCheck(token)
 	if err != nil {
-		//err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + err.Error() + std_code + ".")
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		PDFContentError("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + studentSuccessResponse.STD_CODE + ".", c)
+		PDFContentError(err.Error() + " โปรดติดต่อนักศึกษาให้สร้างเอกสารสารใหม่.", c)
 		return
 	}
 

@@ -13,7 +13,7 @@ func (s *studentServices) GetStudentSuccessCheck(token string) (studentSuccessRe
 
 	_, err = middlewares.VerifyCertificateToken("accessToken", token, s.redis_cache)
 	if err != nil {
-		err = errors.New("Token Certificate หมดอายุ.")
+		err = errors.New("ข้อมูลตรวจสอบ Certificate หมดอายุ.")
 		return nil, err
 	}
 
@@ -22,7 +22,7 @@ func (s *studentServices) GetStudentSuccessCheck(token string) (studentSuccessRe
 	claim, err := middlewares.GetCertificateClaims(token)
 
 	if err != nil {
-		err = errors.New("Token Certificate ไม่ดูกต้อง.")
+		err = errors.New("ข้อมูลตรวจสอบ Certificate ไม่ถูกต้อง.")
 		return nil, err
 	}
 

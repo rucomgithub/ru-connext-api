@@ -19,7 +19,7 @@ func PDFContentError(strerr string, c *gin.Context) {
 	pdf.AddUTF8Font("THSarabunBold", "", "fonts/THSarabunNew Bold.ttf")
 	pdf.AddPage()
 	// ตั้งค่าสำหรับ Watermark
-    pdf.SetFont("THSarabun", "", 45)
+    pdf.SetFont("THSarabun", "", 25)
     pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
     pdf.SetXY(30, 140)
 
@@ -29,11 +29,23 @@ func PDFContentError(strerr string, c *gin.Context) {
     pdf.Text(10, 150, strerr) // หรือ "CONFIDENTIAL"
     pdf.TransformEnd()
 
+		// แทรกโลโก้ที่มุมบนซ้าย
+	logoOpt := gofpdf.ImageOptions{
+		ImageType:             "PNG",
+		ReadDpi:               false,
+		AllowNegativePosition: false,
+	}
+	pdf.ImageOptions("images/logo.png", 10, 10, 15, 0, false, logoOpt, 0, "")
+
+	pdf.SetFont("THSarabunBold", "", 20)
+	pdf.SetXY(45, 10)
+	pdf.Cell(0, 10, "แบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ ระดับบัณฑิตศึกษา")
+	pdf.Ln(12)
+
 	    // 6. ส่ง PDF กลับไป
 	c.Header("Content-Type", "application/pdf")
 	c.Header("Content-Disposition", `attachment; filename=student_error.pdf`)
 	_ = pdf.Output(c.Writer)
-
 }
 
 func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {

@@ -129,12 +129,14 @@ func VerifyCertificateToken(preTokenKey string, token string, redis_cache *redis
 
 	claims, err := GetCertificateClaims(token)
 	if err != nil {
+		fmt.Println(err.Error())
 		return false, err
 	}
 
 	_, err = redis_cache.Get(ctx, claims.AccessTokenKey).Result()
 
 	if err != nil {
+		fmt.Println(err.Error())
 		return false, err
 	}
 
