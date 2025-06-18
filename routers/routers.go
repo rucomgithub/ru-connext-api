@@ -216,7 +216,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officerMaster.GET("/successpdf/:id",middlewares.AuthorizationOfficer(redis_cache),masterHandler.GeneratePDFWithQROfficer)
 
 		certificateMaster := master.Group("/certificate")
-		certificateMaster.POST("/compay",masterHandler.AddCommpany)
+		certificateMaster.POST("/company",masterHandler.AddCommpany)
 		certificateMaster.GET("/successpdf/:id",masterHandler.GeneratePDFWithQRCertificate)
 
 		registerMaster := master.Group("/register") 
