@@ -106,27 +106,26 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 	pdf.RegisterImageOptionsReader(qrFile, opt, &buf)
 	pdf.ImageOptions(qrFile, 10, 30, 80, 80, false, opt, 0, "")
 	pdf.SetXY(30, 110)
-	pdf.Cell(0, 8, "QR-code เฉพาะบุคคล")
+	pdf.Cell(0, 8, "QR-code ข้อมูลนักศึกษา")
 	// คำอธิบายท้ายกระดาษ
 	pdf.SetFont("THSarabun", "", 14)
 	pdf.SetXY(10, 120)
 	pdf.MultiCell(0, 6, `ผู้สำเร็จการศึกษา
 โปรดนำส่งแบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ระดับบัณฑิตศึกษามหาวิทยาลัยรามคำแหงฉบับนี้พร้อมสำเนาหนังสือสำคัญ
-แสดงคุณวุฒิ(ใบรับรองสภามหาวิทยาลัยฯ,ใบปริญญาบัตรหรือใบรับรองผลการศึกษา(Transcript) ยังหน่วยงานภาครัฐ
-หรือภาคเอกชนที่ท่านประสงค์ ปรับคุณวุฒิการศึกษาสมัครงานศึกษาต่ออื่นๆเพื่อให้หน่วยงานของท่านสามารถตรวจสอบ 
-และขอหนังสือรับรองคุณวุฒิการศึกษาโดยตรงกับ มหาวิทยาลัยเป็นไปด้วยความถูกต้องรวดเร็ว
+แสดงคุณวุฒิ (ใบรับรองสภามหาวิทยาลัยฯ, ใบปริญญาบัตรหรือใบรับรองผลการศึกษา(Transcript) ยังหน่วยงานภาครัฐ
+หรือภาคเอกชนที่ท่านประสงค์ปรับคุณวุฒิการศึกษา สมัครงาน ศึกษาต่อ หรืออื่นๆ เพื่อให้หน่วยงานของท่านสามารถตรวจสอบ 
+และขอหนังสือรับรองคุณวุฒิการศึกษาโดยตรงกับมหาวิทยาลัยด้วยความถูกต้องรวดเร็ว
 
 หน่วยงานภาครัฐหรือภาคเอกชน 
 สามารถตรวจสอบและขอหนังสือรับรองคุณวุฒิการศึกษาออนไลน์ระดับบัณฑิตศึกษา (ปริญญาโท-ปริญญาเอก) ของมหาวิทยาลัยรามคำแหง โดยดำเนินการ ดังนี้
 1.Scan QR-code ในแบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ของผู้สำเร็จการศึกษารายบุคคลข้างต้น 
-2.กรอกข้อมูลที่เกี่ยวข้องในเว็บไซต์ ..................(E-Mail,ชื่อบริษัท/หน่วยงาน,ชื่อผู้รับผิดชอบในการตรวจสอบคุณวุฒิการศึกษา)
-3.ระบบจะแสดงผลการตรวจสอบและรับรองคุณวุฒิการศึกษาซึ่งหน่วยงานสามารถสั่งพิมพ์หนังสือรับรองคุณวุฒิการศึกษา ได้ผ่านทางเว็บไซต์ www.e-regis.ru.ac.th 
+2.กรอกข้อมูลที่เกี่ยวข้องในเว็บไซต์ ..................(E-Mail, ชื่อบริษัท/หน่วยงาน, ชื่อผู้รับผิดชอบในการตรวจสอบคุณวุฒิการศึกษา)
+3.ระบบจะแสดงผลการตรวจสอบและรับรองคุณวุฒิการศึกษาซึ่งหน่วยงานสามารถสั่งพิมพ์หนังสือรับรองคุณวุฒิการศึกษาได้ผ่านทางเว็บไซต์ www.e-regis.ru.ac.th 
 
 หมายเหตุ : 
 1.ระบบนี้จัดทำขึ้นเพื่อให้หน่วยงานภายนอกสามารถตรวจสอบคุณวุฒิการศึกษาของผู้สำเร็จการศึกษาจากมหาวิทยาลัยรามคำแหง ระดับปริญญาโทและปริญญาเอก 
 2.QR-code มีอายุการใช้งานไม่เกิน 120 วัน นับจากวันที่ออกหนังสือ
 3.หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏหรือมีปัญหาข้อสงสัยโปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัยมหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
-
 
 	pdf.AddPage()
 	// ส่วนหัว
@@ -150,8 +149,8 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 	pdf.SetFont("THSarabunBold", "", 16)
 	pdf.SetXY(72, 10)
 	pdf.Cell(0, 8, "รายงานผลการตรวจสอบและรับรองคุณวุฒิการศึกษา")
-	pdf.SetXY(40, 20)
-	pdf.Cell(0, 8, "(Report on the Results of Inspection and Certification of Educational Qualifications)")
+	pdf.SetXY(60, 20)
+	pdf.Cell(0, 8, "(Report on the Educational Qualification and Certification)")
 	pdf.SetXY(70, 30)
 	pdf.Cell(0, 8, "มหาวิทยาลัยรามคำแหง (Ramkhamhaeng University)")
 	pdf.SetXY(90, 40)
@@ -189,17 +188,31 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 		}
 		pdf.Ln(-1)
 	}
+	signOpt := gofpdf.ImageOptions{
+		ImageType:             "JPG",
+		ReadDpi:               false,
+		AllowNegativePosition: false,
+	}
+	pdf.ImageOptions("images/sign_long.jpg", 130, 158, 25, 0, false, signOpt, 0, "")
 	pdf.SetXY(90, 160)
-	pdf.Cell(0, 8, "ลงชื่อ (Signature)……………………………………………………ผู้รับรอง(Certifier)")
+	pdf.Cell(0, 8, "ลงชื่อ (Signature)……………………………………………………ผู้รับรอง (Certifier)")
 	pdf.SetXY(120, 170)
 	pdf.Cell(0, 8, "( รศ.ดร.กฤษดา ตั้งชัยศักดิ์ )")
-	pdf.SetXY(110, 180)
-	pdf.Cell(0, 8, "ตำแหน่ง (Position) คณบดีบัณฑิตวิทยาลัย")
+	pdf.SetXY(90, 180)
+	pdf.Cell(0, 8, "ตำแหน่ง (Position) คณบดีบัณฑิตวิทยาลัย (Dean of Graduate School)")
 	pdf.SetXY(10, 190)
+	pdf.SetFontSize(12)
+	pdf.MultiCell(0, 6, `*** เอกสารฉบับนี้ใช้ลายมือชื่ออิเล็กทรอนิกส์ตามพระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ.2544 พระราชบัญญัตินี้กำหนดให้ ลายมือชื่ออิเล็กทรอนิกส์มีผลทางกฎหมายเทียบเท่ากับการลงลายมือชื่อ บนเอกสารราชการ`, "", "L", false)
+	pdf.SetXY(10, 210)
+	pdf.SetFontSize(12)
 	pdf.MultiCell(0, 6, `หมายเหตุ
 1.ระบบนี้จัดทำขึ้นเพื่อให้หน่วยงานภายนอกสามารถตรวจสอบคุณวุฒิการศึกษาของผู้สำเร็จการศึกษาจาก มหาวิทยาลัยรามคำแหง ระดับปริญญาโทและปริญญาเอก
 2. หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏ หรือมีปัญหา ข้อสงสัย โปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัย มหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 
 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
+pdf.SetXY(10, 240)
+pdf.MultiCell(0, 6, `Note 
+1.This system designed to allow external agencies to verify the education qualifications of graduates from Ramkhamhaeng University Master's and Doctoarate level
+2.If you want to check information other than waht is shown or have any questions or problem, please contact the Graduation Verification Unit, Educational Service Division, Graduate School, Ramkhamhaeng University Tel. 02310-8000 ext 3708 or 0-2310-8561 or E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
 
     // 6. ส่ง PDF กลับไป
