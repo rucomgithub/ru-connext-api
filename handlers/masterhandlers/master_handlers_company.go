@@ -2,9 +2,7 @@ package masterhandlers
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/handlers"
-	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/services/masterservice"
-	"fmt"
 	"net/http"
 	_ "net/url"
 
