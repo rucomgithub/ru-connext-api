@@ -194,6 +194,22 @@ type (
 		StatusCode       int    `json:"status_code"`
 	}
 
+	CompanyRequest struct {
+		STD_CODE      	string `json:"std_code" validate:"required"`
+		EMAIL 			string `json:"email" validate:"required"`
+		FULLNAME      	string `json:"fullname" validate:"required"`
+		COMPANY      	string `json:"company" validate:"required"`
+	}
+
+	CompanyResponse struct {
+		STD_CODE      	string `json:"std_code"`
+		EMAIL 			string `json:"email"`
+		FULLNAME      	string `json:"fullname"`
+		COMPANY      	string `json:"company"`
+		CREATED      	string `json:"created"`
+		MODIFIED     	string `json:"modified"`
+	}
+
 	StudentServicesInterface interface {
 		Certificate(token string) (*TokenCertificateResponse, error)
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
@@ -211,6 +227,9 @@ type (
 
 		GetQualification(std_code string) (*QualificationResponse, error) 
 		AddQualification(std_code string) (*QualificationResponse, error)
+
+		GetCommpany(std_code,email string) (*CompanyResponse, error)
+		AddCommpany(request CompanyRequest) (*CompanyResponse, error)
 	}
 )
 
