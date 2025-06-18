@@ -35,3 +35,28 @@ func (h *studentHandlers) AddCommpany(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"companys": qf, "message": "บันทึกผู้ขอตรวจสอบข้อมูล รหัสนักศึกษา " + requestBody.STD_CODE + " สำเร็จ."})
 
 }
+
+func (h *studentHandlers) GetCommpanyByEmail(c *gin.Context) {
+	email := c.Param("email")
+
+	if email == "" {
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnprocessableEntity, gin.H{"message": "โปรดระบุอีเมลของท่าน"})
+		c.Abort()
+		return
+	}
+
+	qf, err := h.studentService.GetCommpanyByEmail(email)
+	if err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusConflict, gin.H{"message": "ไม่พบผู้ขอตรวจสอบข้อมูล อีเมล: " + email + " ในระบบ."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, gin.H{"companys": qf, "message": "พบผู้ขอตรวจสอบข้อมูล อีเมล: " + email + " ในระบบ."})
+
+}

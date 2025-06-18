@@ -1,6 +1,26 @@
 package masterservice
 
-func (s *studentServices) GetCommpany(std_code,email string) (*CompanyResponse, error) {
+func (s *studentServices) GetCommpanyByEmail(email string) (*CompanyResponse, error) {
+
+	qf, err := s.studentRepo.GetCommpanyByEmail(email)
+
+	if err != nil {
+		return nil, err
+	}
+
+	company := CompanyResponse{
+		STD_CODE: qf.STD_CODE,
+		EMAIL:    qf.EMAIL,
+		FULLNAME: qf.FULLNAME,
+		COMPANY:  qf.COMPANY,
+		CREATED:  qf.CREATED,
+		MODIFIED: qf.MODIFIED,
+	}
+
+	return &company, nil
+}
+
+func (s *studentServices) GetCommpany(std_code, email string) (*CompanyResponse, error) {
 
 	qf, err := s.studentRepo.GetCommpany(std_code, email)
 
@@ -9,12 +29,12 @@ func (s *studentServices) GetCommpany(std_code,email string) (*CompanyResponse, 
 	}
 
 	company := CompanyResponse{
-		STD_CODE:     qf.STD_CODE,
-		EMAIL:     		qf.EMAIL,
-		FULLNAME:     qf.FULLNAME,
-		COMPANY:     qf.COMPANY,
-		CREATED:      qf.CREATED,
-		MODIFIED:     qf.MODIFIED,
+		STD_CODE: qf.STD_CODE,
+		EMAIL:    qf.EMAIL,
+		FULLNAME: qf.FULLNAME,
+		COMPANY:  qf.COMPANY,
+		CREATED:  qf.CREATED,
+		MODIFIED: qf.MODIFIED,
 	}
 
 	return &company, nil
@@ -28,12 +48,12 @@ func (s *studentServices) AddCommpany(request CompanyRequest) (*CompanyResponse,
 		qf, err := s.GetCommpany(request.STD_CODE, request.EMAIL)
 		if err == nil {
 			company = CompanyResponse{
-				STD_CODE:     qf.STD_CODE,
-				EMAIL:     		qf.EMAIL,
-				FULLNAME:     qf.FULLNAME,
-				COMPANY:     qf.COMPANY,
-				CREATED:      qf.CREATED,
-				MODIFIED:     qf.MODIFIED,
+				STD_CODE: qf.STD_CODE,
+				EMAIL:    qf.EMAIL,
+				FULLNAME: qf.FULLNAME,
+				COMPANY:  qf.COMPANY,
+				CREATED:  qf.CREATED,
+				MODIFIED: qf.MODIFIED,
 			}
 
 			return &company, err
@@ -47,12 +67,12 @@ func (s *studentServices) AddCommpany(request CompanyRequest) (*CompanyResponse,
 	}
 
 	company = CompanyResponse{
-		STD_CODE:     qf.STD_CODE,
-		EMAIL:     		qf.EMAIL,
-		FULLNAME:     qf.FULLNAME,
-		COMPANY:     qf.COMPANY,
-		CREATED:      qf.CREATED,
-		MODIFIED:     qf.MODIFIED,
+		STD_CODE: qf.STD_CODE,
+		EMAIL:    qf.EMAIL,
+		FULLNAME: qf.FULLNAME,
+		COMPANY:  qf.COMPANY,
+		CREATED:  qf.CREATED,
+		MODIFIED: qf.MODIFIED,
 	}
 
 	return &company, nil

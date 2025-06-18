@@ -92,27 +92,27 @@ type (
 	}
 
 	StudentSuccessService struct {
-		STD_CODE        string `json:"STD_CODE"`
-		NAME_THAI       string `json:"NAME_THAI"`
-		NAME_ENG        string `json:"NAME_ENG"`
-		YEAR            string `json:"YEAR"`
-		SEMESTER        string `json:"SEMESTER"`
-		CURR_NAME       string `json:"CURR_NAME"`
-		CURR_ENG   		string `json:"CURR_ENG"`
-		THAI_NAME       string `json:"THAI_NAME"`
-		ENG_NAME        string `json:"ENG_NAME"`
-		MAJOR_NAME      string `json:"MAJOR_NAME"`
-		MAJOR_ENG       string `json:"MAJOR_ENG"`
-		MAIN_MAJOR_THAI string `json:"MAIN_MAJOR_THAI"`
-		MAIN_MAJOR_ENG  string `json:"MAIN_MAJOR_ENG"`
-		PLAN            string `json:"PLAN"`
+		STD_CODE        string  `json:"STD_CODE"`
+		NAME_THAI       string  `json:"NAME_THAI"`
+		NAME_ENG        string  `json:"NAME_ENG"`
+		YEAR            string  `json:"YEAR"`
+		SEMESTER        string  `json:"SEMESTER"`
+		CURR_NAME       string  `json:"CURR_NAME"`
+		CURR_ENG        string  `json:"CURR_ENG"`
+		THAI_NAME       string  `json:"THAI_NAME"`
+		ENG_NAME        string  `json:"ENG_NAME"`
+		MAJOR_NAME      string  `json:"MAJOR_NAME"`
+		MAJOR_ENG       string  `json:"MAJOR_ENG"`
+		MAIN_MAJOR_THAI string  `json:"MAIN_MAJOR_THAI"`
+		MAIN_MAJOR_ENG  string  `json:"MAIN_MAJOR_ENG"`
+		PLAN            string  `json:"PLAN"`
 		GPA             float32 `json:"GPA"`
-		CONFERENCE_NO   string `json:"CONFERENCE_NO"`
-		SERIAL_NO       string `json:"SERIAL_NO"`
-		CONFERENCE_DATE string `json:"CONFERENCE_DATE"`
-		ADMIT_DATE  	string `json:"ADMIT_DATE"`
-		GRADUATED_DATE  string `json:"GRADUATED_DATE"`
-		CONFIRM_DATE    string `json:"CONFIRM_DATE"`
+		CONFERENCE_NO   string  `json:"CONFERENCE_NO"`
+		SERIAL_NO       string  `json:"SERIAL_NO"`
+		CONFERENCE_DATE string  `json:"CONFERENCE_DATE"`
+		ADMIT_DATE      string  `json:"ADMIT_DATE"`
+		GRADUATED_DATE  string  `json:"GRADUATED_DATE"`
+		CONFIRM_DATE    string  `json:"CONFIRM_DATE"`
 	}
 
 	RegisterResponse struct {
@@ -195,19 +195,19 @@ type (
 	}
 
 	CompanyRequest struct {
-		STD_CODE      	string `json:"std_code" validate:"required"`
-		EMAIL 			string `json:"email" validate:"required"`
-		FULLNAME      	string `json:"fullname" validate:"required"`
-		COMPANY      	string `json:"company" validate:"required"`
+		STD_CODE string `json:"std_code" validate:"required"`
+		EMAIL    string `json:"email" validate:"required"`
+		FULLNAME string `json:"fullname" validate:"required"`
+		COMPANY  string `json:"company" validate:"required"`
 	}
 
 	CompanyResponse struct {
-		STD_CODE      	string `json:"std_code"`
-		EMAIL 			string `json:"email"`
-		FULLNAME      	string `json:"fullname"`
-		COMPANY      	string `json:"company"`
-		CREATED      	string `json:"created"`
-		MODIFIED     	string `json:"modified"`
+		STD_CODE string `json:"std_code"`
+		EMAIL    string `json:"email"`
+		FULLNAME string `json:"fullname"`
+		COMPANY  string `json:"company"`
+		CREATED  string `json:"created"`
+		MODIFIED string `json:"modified"`
 	}
 
 	StudentServicesInterface interface {
@@ -225,10 +225,11 @@ type (
 		GetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error)
 		SetPrivacyPolicy(std_code, version, status string) (*PrivacyPolicyResponse, error)
 
-		GetQualification(std_code string) (*QualificationResponse, error) 
+		GetQualification(std_code string) (*QualificationResponse, error)
 		AddQualification(std_code string) (*QualificationResponse, error)
 
-		GetCommpany(std_code,email string) (*CompanyResponse, error)
+		GetCommpanyByEmail(email string) (*CompanyResponse, error)
+		GetCommpany(std_code, email string) (*CompanyResponse, error)
 		AddCommpany(request CompanyRequest) (*CompanyResponse, error)
 	}
 )

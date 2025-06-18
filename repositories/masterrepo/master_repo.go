@@ -31,27 +31,27 @@ type (
 	}
 
 	StudentSuccessRepo struct {
-		STD_CODE        string `db:"STD_CODE"`
-		NAME_THAI       string `db:"NAME_THAI"`
-		NAME_ENG        string `db:"NAME_ENG"`
-		YEAR            string `db:"YEAR"`
-		SEMESTER        string `db:"SEMESTER"`
-		CURR_NAME       string `db:"CURR_NAME"`
-		CURR_ENG   		string `db:"CURR_ENG"`
-		THAI_NAME       string `db:"THAI_NAME"`
-		ENG_NAME        string `db:"ENG_NAME"`
-		MAJOR_NAME      string `db:"MAJOR_NAME"`
-		MAJOR_ENG       string `db:"MAJOR_ENG"`
-		MAIN_MAJOR_THAI string `db:"MAIN_MAJOR_THAI"`
-		MAIN_MAJOR_ENG  string `db:"MAIN_MAJOR_ENG"`
-		PLAN            string `db:"PLAN"`
+		STD_CODE        string  `db:"STD_CODE"`
+		NAME_THAI       string  `db:"NAME_THAI"`
+		NAME_ENG        string  `db:"NAME_ENG"`
+		YEAR            string  `db:"YEAR"`
+		SEMESTER        string  `db:"SEMESTER"`
+		CURR_NAME       string  `db:"CURR_NAME"`
+		CURR_ENG        string  `db:"CURR_ENG"`
+		THAI_NAME       string  `db:"THAI_NAME"`
+		ENG_NAME        string  `db:"ENG_NAME"`
+		MAJOR_NAME      string  `db:"MAJOR_NAME"`
+		MAJOR_ENG       string  `db:"MAJOR_ENG"`
+		MAIN_MAJOR_THAI string  `db:"MAIN_MAJOR_THAI"`
+		MAIN_MAJOR_ENG  string  `db:"MAIN_MAJOR_ENG"`
+		PLAN            string  `db:"PLAN"`
 		GPA             float32 `db:"GPA"`
-		CONFERENCE_NO   string `db:"CONFERENCE_NO"`
-		SERIAL_NO       string `db:"SERIAL_NO"`
-		CONFERENCE_DATE string `db:"CONFERENCE_DATE"`
-		ADMIT_DATE  	string `db:"ADMIT_DATE"`
-		GRADUATED_DATE  string `db:"GRADUATED_DATE"`
-		CONFIRM_DATE    string `db:"CONFIRM_DATE"`
+		CONFERENCE_NO   string  `db:"CONFERENCE_NO"`
+		SERIAL_NO       string  `db:"SERIAL_NO"`
+		CONFERENCE_DATE string  `db:"CONFERENCE_DATE"`
+		ADMIT_DATE      string  `db:"ADMIT_DATE"`
+		GRADUATED_DATE  string  `db:"GRADUATED_DATE"`
+		CONFIRM_DATE    string  `db:"CONFIRM_DATE"`
 	}
 
 	RegisterRepo struct {
@@ -101,12 +101,12 @@ type (
 	}
 
 	Company struct {
-		STD_CODE     string `db:"STD_CODE"`
-		EMAIL string `db:"EMAIL"`
+		STD_CODE string `db:"STD_CODE"`
+		EMAIL    string `db:"EMAIL"`
 		FULLNAME string `db:"FULLNAME"`
-		COMPANY string `db:"COMPANY"`
-		CREATED      string `db:"CREATED"`
-		MODIFIED     string `db:"MODIFIED"`
+		COMPANY  string `db:"COMPANY"`
+		CREATED  string `db:"CREATED"`
+		MODIFIED string `db:"MODIFIED"`
 	}
 
 	StudentRepoInterface interface {
@@ -130,8 +130,9 @@ type (
 		GetQualification(std_code string) (*Qualification, error)
 		AddQualification(std_code string) error
 
-		GetCommpany(std_code,email string) (*Company, error)
-		AddCommpany(std_code,email,fullname,company string) error
+		GetCommpanyByEmail(email string) (*Company, error)
+		GetCommpany(std_code, email string) (*Company, error)
+		AddCommpany(std_code, email, fullname, company string) error
 	}
 )
 
