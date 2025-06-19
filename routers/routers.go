@@ -64,6 +64,8 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officeAuth.GET("/qualification", middlewares.AuthorizationOfficer(redis_cache), officeHandler.GetQualificationAll)
 		officeAuth.GET("/qualification/:id", middlewares.AuthorizationOfficer(redis_cache), officeHandler.GetQualification)
 		officeAuth.PUT("/qualification/:id", middlewares.AuthorizationOfficer(redis_cache), officeHandler.UpdateQualification)
+
+		officeAuth.POST("/report-qualification", middlewares.AuthorizationOfficer(redis_cache), officeHandler.GetReport)
 	}
 
 	googleAuth := router.Group("/google")

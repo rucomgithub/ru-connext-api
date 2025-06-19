@@ -92,6 +92,18 @@ type (
 		DESCRIPTION  string `json:"description"`
 	}
 
+	ReportRequest struct {
+		StartDate string `json:"start_date" validate:"required"`
+		EndDate   string `json:"end_date" validate:"required"`
+	}
+
+	ReportResponse struct {
+		StartDate string `json:"start_date"`
+		EndDate   string `json:"end_date"`
+		Count      int  `json:"count"`
+		Reports []map[string]interface{} `json:"reports"`
+	}
+
 	OfficerServiceInterface interface {
 		AuthenticationOfficer(authenRequest AuthenRequest) (*AuthenResponse, error)
 		RefreshAuthenticationOfficer(refreshToken string) (*AuthenResponse, error)
@@ -100,6 +112,8 @@ type (
 		GetQualificationAll() (*[]QualificationResponse, int, error)
 		GetQualification(std_code string) (*QualificationResponse, error)
 		UpdateQualification(std_code, status, description string) (*QualificationResponse, int64, error)
+
+		GetReport(reportRequest *ReportRequest) (*ReportResponse, error) 
 	}
 )
 

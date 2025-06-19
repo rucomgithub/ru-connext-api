@@ -5728,3 +5728,33 @@
 {"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"redis: nil","path":"/master/student/successpdf","service":"master","status":401,"time":"2025-06-18T08:38:58Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-06-18T08:39:04Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/successpdf","service":"master","status":200,"time":"2025-06-18T08:39:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2025-06-19T08:20:19Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/qualification","service":"officer","status":200,"time":"2025-06-19T08:20:27Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":63,"method":"POST","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/report","service":"officer","status":422,"time":"2025-06-19T08:21:44Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":63,"method":"POST","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/report","service":"officer","status":422,"time":"2025-06-19T08:21:46Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_report.go","level":"error","line":25,"method":"POST","msg":"ไม่พบข้อมูลรายงาน.","path":"/officer/report","service":"officer","status":404,"time":"2025-06-19T08:22:06Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_report.go","level":"error","line":25,"method":"POST","msg":"ไม่พบข้อมูลรายงาน.","path":"/officer/report","service":"officer","status":404,"time":"2025-06-19T08:22:08Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_report.go","level":"error","line":25,"method":"POST","msg":"ไม่พบข้อมูลรายงาน.","path":"/officer/report","service":"officer","status":404,"time":"2025-06-19T08:22:26Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_report.go","level":"error","line":25,"method":"POST","msg":"ไม่พบข้อมูลรายงาน.","path":"/officer/report","service":"officer","status":404,"time":"2025-06-19T08:22:39Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_report.go","level":"error","line":25,"method":"POST","msg":"ไม่พบข้อมูลรายงาน.","path":"/officer/report","service":"officer","status":404,"time":"2025-06-19T08:22:41Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_report.go","level":"error","line":25,"method":"POST","msg":"ไม่พบข้อมูลรายงาน.","path":"/officer/report","service":"officer","status":404,"time":"2025-06-19T08:22:42Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_report.go","level":"error","line":25,"method":"POST","msg":"ไม่พบข้อมูลรายงาน.","path":"/officer/report","service":"officer","status":404,"time":"2025-06-19T08:22:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:23:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:23:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:23:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:23:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:23:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:23:45Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:23:48Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:24:06Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:24:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:24:08Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:24:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:24:22Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report","service":"officer","status":200,"time":"2025-06-19T08:24:23Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report-qualification","service":"officer","status":200,"time":"2025-06-19T08:25:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report-qualification","service":"officer","status":200,"time":"2025-06-19T08:25:36Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report-qualification","service":"officer","status":200,"time":"2025-06-19T08:25:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report-qualification","service":"officer","status":200,"time":"2025-06-19T08:25:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report-qualification","service":"officer","status":200,"time":"2025-06-19T08:25:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/report-qualification","service":"officer","status":200,"time":"2025-06-19T08:25:39Z"}

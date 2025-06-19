@@ -54,7 +54,7 @@ func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, int, 
 	qualificationJSON, _ := json.Marshal(&qualificationRec)
 	timeNow := time.Now()
 	redisCacheregister := time.Unix(timeNow.Add(time.Second*30).Unix(), 0)
-	_ = s.redis_cache.Set(ctx, key, qualificationJSON, redisCacheregister.Sub(timeNow)).Err()
+	_ = s.redis_cache.Set(ctx, key, qualificationJSON, redisCacheregister.Sub(timeNow)).Err() 
 
 	return &qualificationRec, len(qualificationRec), nil
 }

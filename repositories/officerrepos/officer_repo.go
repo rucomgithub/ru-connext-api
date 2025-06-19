@@ -37,6 +37,8 @@ type (
 		GetQualification(std_code string) (*Qualification, error)
 		AddQualification(std_code string) error
 		UpdateQualification(std_code, status, description string) (int64, error)
+
+		FindReport(startdate,enddate string) ([]map[string]interface{},error)
 	}
 )
 
