@@ -29,6 +29,6 @@ func (h *officerHandlers) GetReport(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, gin.H{"report": reportResponse, "message": "พบข้อมูลรายงาน."})
+	c.IndentedJSON(http.StatusOK, &reportResponse)
 
 }
