@@ -120,7 +120,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 		return
 	}
 
-	verifyURL := fmt.Sprintf("http://10.3.65.186:4300/certificate/?id=%s" , tokenResponse.CertificateToken)
+	verifyURL := fmt.Sprintf("https://backend.ru.ac.th/egraduate/certificate/?id=%s" , tokenResponse.CertificateToken)
 
     // 1. สร้าง QR Code เป็น image.Image
     qrImg, err := qrcode.New(verifyURL, qrcode.Medium)
