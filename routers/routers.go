@@ -56,7 +56,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 	{
 		officeRepo := officerrepos.NewOfficerRepo(oracle_db_dbg)
 		officerService := officerservices.NewOfficerServices(officeRepo, redis_cache)
-		officeHandler := officerhandlers.NewOfficerHandlers(officerService)
+		officeHandler := officerhandlers.NewOfficerHandlers(officerService, oracle_db_dbg)
 
 		officeAuth.POST("/authorization", officeHandler.Authentication)
 		officeAuth.POST("/refresh-authentication", officeHandler.RefreshAuthentication)
@@ -66,6 +66,10 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officeAuth.PUT("/qualification/:id", middlewares.AuthorizationOfficer(redis_cache), officeHandler.UpdateQualification)
 
 		officeAuth.POST("/report-qualification", middlewares.AuthorizationOfficer(redis_cache), officeHandler.GetReport)
+
+		officeAuth.POST("/logs", middlewares.AuthorizationOfficer(redis_cache), officeHandler.CreateLogs)
+		officeAuth.GET("/logs", middlewares.AuthorizationOfficer(redis_cache), officeHandler.FindLogs)
+
 	}
 
 	googleAuth := router.Group("/google")

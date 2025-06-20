@@ -8,14 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type officerHandlers struct {
-	officerServices officerservices.OfficerServiceInterface
-}
-
-func NewOfficerHandlers(officerServices officerservices.OfficerServiceInterface) officerHandlers {
-	return officerHandlers{officerServices: officerServices}
-}
-
 func (h *officerHandlers) Authentication(c *gin.Context) {
 	var requestBody officerservices.AuthenRequest
 

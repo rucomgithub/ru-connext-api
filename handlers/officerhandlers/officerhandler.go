@@ -3,12 +3,23 @@ package officerhandlers
 import (
 	"RU-Smart-Workspace/ru-smart-api/errs"
 	"RU-Smart-Workspace/ru-smart-api/handlers"
+	"RU-Smart-Workspace/ru-smart-api/services/officerservices"
 	"errors"
 	"net/http"
 	"runtime"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jmoiron/sqlx"
 )
+
+type officerHandlers struct {
+	officerServices officerservices.OfficerServiceInterface
+	oracle_db_dbg   *sqlx.DB
+}
+
+func NewOfficerHandlers(officerServices officerservices.OfficerServiceInterface, oracle_db_dbg *sqlx.DB) officerHandlers {
+	return officerHandlers{officerServices: officerServices, oracle_db_dbg: oracle_db_dbg}
+}
 
 func handleError(c *gin.Context, err error) {
 	switch e := err.(type) {
