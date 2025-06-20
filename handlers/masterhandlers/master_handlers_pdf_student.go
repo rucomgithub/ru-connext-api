@@ -266,11 +266,14 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 
 	pdf.RegisterImageOptionsReader(qrFile, opt, &buf)
 	pdf.ImageOptions(qrFile, 10, 30, 80, 80, false, opt, 0, "")
-	pdf.SetXY(30, 110)
-	pdf.Cell(0, 8, "QR-code ข้อมูลนักศึกษา")
+	pdf.SetXY(27, 110)
+	pdf.Cell(0, 8, "QR Code ข้อมูลนักศึกษา")
+	pdf.SetXY(30, 115)
+	pdf.SetFont("THSarabun", "", 12)
+	pdf.Cell(0, 8, "(อายุการใช้งานไม่เกิน 120 วัน)")
 	// คำอธิบายท้ายกระดาษ
 	pdf.SetFont("THSarabun", "", 14)
-	pdf.SetXY(10, 120)
+	pdf.SetXY(10, 130)
 	pdf.MultiCell(0, 6, `ผู้สำเร็จการศึกษา
 โปรดนำส่งแบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ระดับบัณฑิตศึกษามหาวิทยาลัยรามคำแหงฉบับนี้พร้อมสำเนาหนังสือสำคัญ
 แสดงคุณวุฒิ (ใบรับรองสภามหาวิทยาลัยฯ, ใบปริญญาบัตรหรือใบรับรองผลการศึกษา(Transcript) ยังหน่วยงานภาครัฐ
@@ -346,12 +349,13 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	}
 
 	pdf.SetXY(10, 65)
-	pdf.SetFontSize(14)
+	pdf.SetFont("THSarabun", "", 14)
 	// ความกว้างของแต่ละ column (หน่วย: mm)
 	colWidths := []float64{80, 55, 55}
 
 	// Header
 	for i, header := range headers {
+		pdf.SetFont("THSarabunBold", "", 12)
 		pdf.CellFormat(colWidths[i], 10, header, "1", 0, "C", false, 0, "")
 	}
 	pdf.Ln(-1) // ขึ้นบรรทัดใหม่
@@ -359,6 +363,11 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	// Rows
 	for _, row := range rows {
 		for i, col := range row {
+			if i == 0 {
+				pdf.SetFont("THSarabunBold", "", 12)
+			} else {
+				pdf.SetFont("THSarabun", "", 12)
+			}
 			pdf.CellFormat(colWidths[i], 10, col, "1", 0, "L", false, 0, "")
 		}
 		pdf.Ln(-1)
@@ -368,6 +377,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 		ReadDpi:               false,
 		AllowNegativePosition: false,
 	}
+	pdf.SetFont("THSarabun", "", 14)
 	pdf.ImageOptions("images/sign_long.jpg", 130, 158, 25, 0, false, signOpt, 0, "")
 	pdf.SetXY(90, 160)
 	pdf.Cell(0, 8, "ลงชื่อ (Signature)……………………………………………………ผู้รับรอง (Certifier)")

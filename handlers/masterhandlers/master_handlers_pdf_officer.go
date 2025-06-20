@@ -207,6 +207,7 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 
 	// Header
 	for i, header := range headers {
+		pdf.SetFont("THSarabunBold", "", 12)
 		pdf.CellFormat(colWidths[i], 10, header, "1", 0, "C", false, 0, "")
 	}
 	pdf.Ln(-1) // ขึ้นบรรทัดใหม่
@@ -214,6 +215,11 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 	// Rows
 	for _, row := range rows {
 		for i, col := range row {
+			if i == 0 {
+				pdf.SetFont("THSarabunBold", "", 12)
+			} else {
+				pdf.SetFont("THSarabun", "", 12)
+			}
 			pdf.CellFormat(colWidths[i], 10, col, "1", 0, "L", false, 0, "")
 		}
 		pdf.Ln(-1)
@@ -223,6 +229,7 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 		ReadDpi:               false,
 		AllowNegativePosition: false,
 	}
+	pdf.SetFont("THSarabun", "", 14)
 	pdf.ImageOptions("images/sign_long.jpg", 130, 158, 25, 0, false, signOpt, 0, "")
 	pdf.SetXY(90, 160)
 	pdf.Cell(0, 8, "ลงชื่อ (Signature)……………………………………………………ผู้รับรอง (Certifier)")
