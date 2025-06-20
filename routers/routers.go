@@ -200,10 +200,10 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		masterRepo := masterrepo.NewStudentRepo(oracle_db_dbg)
 		masterService := masterservice.NewStudentServices(masterRepo, redis_cache)
-		masterHandler := masterhandlers.NewStudentHandlers(masterService)
+		masterHandler := masterhandlers.NewStudentHandlers(masterService, redis_cache)
 
 		studentMaster := master.Group("/student")
-		
+
 		studentMaster.POST("/qualification", middlewares.Authorization(redis_cache), masterHandler.AddQualification)
 		studentMaster.GET("/qualification", middlewares.Authorization(redis_cache), masterHandler.GetQualification)
 
@@ -212,17 +212,17 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
 		studentMaster.GET("/success", middlewares.Authorization(redis_cache), masterHandler.GetStudentSuccess)
 		studentMaster.GET("/successcheck/:id", masterHandler.GetStudentSuccessCheck)
-		studentMaster.GET("/successpdf",middlewares.Authorization(redis_cache),masterHandler.GeneratePDFWithQR)
+		studentMaster.GET("/successpdf", middlewares.Authorization(redis_cache), masterHandler.GeneratePDFWithQR)
 
 		officerMaster := master.Group("/officer")
-		officerMaster.GET("/successpdf/:id",middlewares.AuthorizationOfficer(redis_cache),masterHandler.GeneratePDFWithQROfficer)
+		officerMaster.GET("/successpdf/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GeneratePDFWithQROfficer)
 
 		certificateMaster := master.Group("/certificate")
-		certificateMaster.POST("/company",masterHandler.AddCommpany)
-		certificateMaster.GET("/company/:email",masterHandler.GetCommpanyByEmail)
-		certificateMaster.GET("/successpdf/:id",masterHandler.GeneratePDFWithQRCertificate)
+		certificateMaster.POST("/company", masterHandler.AddCommpany)
+		certificateMaster.GET("/company/:email", masterHandler.GetCommpanyByEmail)
+		certificateMaster.GET("/successpdf/:id", masterHandler.GeneratePDFWithQRCertificate)
 
-		registerMaster := master.Group("/register") 
+		registerMaster := master.Group("/register")
 		registerMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetRegisterAll)
 		registerMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetRegisterByYear)
 

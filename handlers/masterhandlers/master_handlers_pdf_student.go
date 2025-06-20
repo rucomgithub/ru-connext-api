@@ -5,12 +5,22 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"errors"
 	"fmt"
+	"image"
+	"io"
+	"net/http"
+	"os"
+	"strings"
+	"time"
 
-    "bytes"
+	"github.com/spf13/viper"
+
+	"bytes"
+	"image/jpeg"
+	"image/png"
+
 	"github.com/gin-gonic/gin"
-    "github.com/jung-kurt/gofpdf"
-    qrcode "github.com/skip2/go-qrcode" 
-    "image/png"
+	"github.com/jung-kurt/gofpdf"
+	qrcode "github.com/skip2/go-qrcode"
 )
 
 func PDFContentError(strerr string, c *gin.Context) {
@@ -19,17 +29,17 @@ func PDFContentError(strerr string, c *gin.Context) {
 	pdf.AddUTF8Font("THSarabunBold", "", "fonts/THSarabunNew Bold.ttf")
 	pdf.AddPage()
 	// ตั้งค่าสำหรับ Watermark
-    pdf.SetFont("THSarabun", "", 25)
-    pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
-    pdf.SetXY(30, 140)
+	pdf.SetFont("THSarabun", "", 25)
+	pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
+	pdf.SetXY(30, 140)
 
-    // บิดหมุนข้อความ 45 องศา
-    pdf.TransformBegin()
-    pdf.TransformRotate(45, 105, 148)
-    pdf.Text(10, 150, strerr) // หรือ "CONFIDENTIAL"
-    pdf.TransformEnd()
+	// บิดหมุนข้อความ 45 องศา
+	pdf.TransformBegin()
+	pdf.TransformRotate(45, 105, 148)
+	pdf.Text(10, 150, strerr) // หรือ "CONFIDENTIAL"
+	pdf.TransformEnd()
 
-		// แทรกโลโก้ที่มุมบนซ้าย
+	// แทรกโลโก้ที่มุมบนซ้าย
 	logoOpt := gofpdf.ImageOptions{
 		ImageType:             "PNG",
 		ReadDpi:               false,
@@ -42,10 +52,81 @@ func PDFContentError(strerr string, c *gin.Context) {
 	pdf.Cell(0, 10, "แบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ ระดับบัณฑิตศึกษา")
 	pdf.Ln(12)
 
-	    // 6. ส่ง PDF กลับไป
+	// 6. ส่ง PDF กลับไป
 	c.Header("Content-Type", "application/pdf")
 	c.Header("Content-Disposition", `attachment; filename=student_error.pdf`)
 	_ = pdf.Output(c.Writer)
+}
+
+func (h *studentHandlers) GeneratePicture(std_code string) (*bytes.Buffer, error) {
+
+	token, err := middlewares.GenerateToken(std_code, "admin", h.redis_cache)
+
+	if err != nil {
+		return nil, err
+	}
+
+	service_token := viper.GetString("token.eservice")
+	url := "http://10.2.1.155:9100/student/photograduate"
+
+	client := &http.Client{
+		Timeout: 60 * time.Second, // Set a higher timeout value
+	}
+
+	req, err := http.NewRequest("GET", url, nil)
+	q := req.URL.Query()
+	q.Add("id_token", token.AccessToken)
+	req.URL.RawQuery = q.Encode()
+	fmt.Println(req.URL.String())
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Authorization", "Bearer "+service_token)
+
+	response, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer response.Body.Close()
+
+	contentType := response.Header.Get("Content-Type")
+	if !strings.HasPrefix(contentType, "image/") {
+		err = errors.New("Invalid image format.")
+		return nil, err
+	}
+
+	fmt.Println(contentType)
+
+	// Decode the image
+	var img image.Image
+	switch contentType {
+	case "image/jpeg":
+		img, err = jpeg.Decode(response.Body)
+		if err != nil {
+			err = errors.New("Get decode jpeg error.")
+			return nil, err
+		}
+	case "image/png":
+		img, err = jpeg.Decode(response.Body)
+		if err != nil {
+			err = errors.New("Get decode png error.")
+			return nil, err
+		}
+	default:
+		err = errors.New("Unsupported image format.")
+		return nil, err
+	}
+
+	// outputImg := new(bytes.Buffer)
+	outputImg := bytes.NewBuffer(nil)
+
+	if err := jpeg.Encode(outputImg, img, nil); err != nil {
+		err = errors.New("Get resize error" + err.Error())
+		return nil, err
+	}
+
+	return outputImg, nil
 }
 
 func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
@@ -91,7 +172,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 		c.Set("file", handlers.GetFileName())
 		//c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
 		//c.Abort()
-		PDFContentError("สิทธิ์ " + role + " ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.", c)
+		PDFContentError("สิทธิ์ "+role+" ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.", c)
 		return
 	}
 
@@ -105,37 +186,37 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 		c.Set("file", handlers.GetFileName())
 		//c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "."})
 		//c.Abort()
-		PDFContentError("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code , c)
+		PDFContentError("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา "+std_code, c)
 		return
 	}
 
-	tokenResponse, err := h.studentService.Certificate(token) 
+	tokenResponse, err := h.studentService.Certificate(token)
 	if err != nil {
 		c.Error(errors.New(err.Error() + ", " + token))
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		//c.IndentedJSON(http.StatusUnprocessableEntity, tokenResponse)
 		//c.Abort()
-		PDFContentError("ไม่สามารถสร้าง Certificate ของ " + std_code, c)
+		PDFContentError("ไม่สามารถสร้าง Certificate ของ "+std_code, c)
 		return
 	}
 
-	verifyURL := fmt.Sprintf("https://backend.ru.ac.th/egraduate/certificate/?id=%s" , tokenResponse.CertificateToken)
+	verifyURL := fmt.Sprintf("https://backend.ru.ac.th/egraduate/certificate/?id=%s", tokenResponse.CertificateToken)
 
-    // 1. สร้าง QR Code เป็น image.Image
-    qrImg, err := qrcode.New(verifyURL, qrcode.Medium)
-    if err != nil {
-        panic(err)
-    }
+	// 1. สร้าง QR Code เป็น image.Image
+	qrImg, err := qrcode.New(verifyURL, qrcode.Medium)
+	if err != nil {
+		panic(err)
+	}
 
-    // 2. แปลงเป็น []byte ผ่าน io.Reader (PNG ในหน่วยความจำ)
-    var buf bytes.Buffer
-    err = png.Encode(&buf, qrImg.Image(400)) // 256 คือขนาด
-    if err != nil {
-        panic(err)
-    }
+	// 2. แปลงเป็น []byte ผ่าน io.Reader (PNG ในหน่วยความจำ)
+	var buf bytes.Buffer
+	err = png.Encode(&buf, qrImg.Image(400)) // 256 คือขนาด
+	if err != nil {
+		panic(err)
+	}
 
-    // 3. เตรียม PDF
+	// 3. เตรียม PDF
 	pdf := gofpdf.New("P", "mm", "A4", "")
 	pdf.AddUTF8Font("THSarabun", "", "fonts/THSarabunNew.ttf")
 	pdf.AddUTF8Font("THSarabunBold", "", "fonts/THSarabunNew Bold.ttf")
@@ -174,15 +255,14 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 	pdf.SetXY(100, 95)
 	pdf.MultiCell(0, 6, fmt.Sprintf("Degree Awarded: %s", studentSuccessResponse.ENG_NAME), "", "L", false)
 
-    // 4. Register image จาก memory
-    opt := gofpdf.ImageOptions{
-        ImageType:             "PNG",
-        ReadDpi:               false,
-        AllowNegativePosition: false,
-    }
+	// 4. Register image จาก memory
+	opt := gofpdf.ImageOptions{
+		ImageType:             "PNG",
+		ReadDpi:               false,
+		AllowNegativePosition: false,
+	}
 
 	qrFile := fmt.Sprintf("tmp_qr_%s.png", std_code)
-
 
 	pdf.RegisterImageOptionsReader(qrFile, opt, &buf)
 	pdf.ImageOptions(qrFile, 10, 30, 80, 80, false, opt, 0, "")
@@ -208,37 +288,64 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 2.QR-code มีอายุการใช้งานไม่เกิน 120 วัน นับจากวันที่ออกหนังสือ
 3.หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏหรือมีปัญหาข้อสงสัยโปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัยมหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
-
 	pdf.AddPage()
 	// ส่วนหัว
 	// แทรกโลโก้ที่มุมบนซ้าย
 
 	pdf.ImageOptions("images/logo.png", 10, 10, 15, 0, false, logoOpt, 0, "")
 	pdf.SetFont("THSarabunBold", "", 16)
-	pdf.SetXY(72, 10)
+	pdf.SetXY(50, 10)
 	pdf.Cell(0, 8, "รายงานผลการตรวจสอบและรับรองคุณวุฒิการศึกษา")
-	pdf.SetXY(60, 20)
+	pdf.SetXY(40, 20)
 	pdf.Cell(0, 8, "(Report on the Educational Qualification and Certification)")
-	pdf.SetXY(70, 30)
+	pdf.SetXY(50, 30)
 	pdf.Cell(0, 8, "มหาวิทยาลัยรามคำแหง (Ramkhamhaeng University)")
-	pdf.SetXY(90, 40)
+	pdf.SetXY(70, 40)
 	pdf.Cell(0, 8, "ประเทศไทย (Thailand)")
+
+	// ต้องตั้งชื่อให้ภาพแม้จะไม่ใช่ไฟล์ (ชื่อสมมติ)
+	// ระบุว่าเป็นภาพ JPEG จาก memory
+	imageOpts := gofpdf.ImageOptions{
+		ImageType:             "JPEG",
+		ReadDpi:               false,
+		AllowNegativePosition: false,
+	}
+
+	var imgReader io.Reader
+	var imgName string
+	mainImg, err := h.GeneratePicture(std_code)
+	if err != nil {
+		// แสดงรูปสำรองแทน
+		fallbackImgFile, err2 := os.Open("images/person.jpg")
+		if err2 != nil {
+			panic("ไม่สามารถโหลด fallback image ได้")
+		}
+		defer fallbackImgFile.Close()
+		imgReader = fallbackImgFile
+		imgName = "person.jpg"
+	} else {
+		imgReader = mainImg
+		imgName = "main.jpg"
+	}
+
+	pdf.RegisterImageOptionsReader(imgName, imageOpts, imgReader)
+	pdf.ImageOptions(imgName, 160, 10, 25, 30, false, imageOpts, 0, "")
 
 	gpa := fmt.Sprintf("%.2f", studentSuccessResponse.GPA)
 
 	headers := []string{"ข้อมูลผู้สำเร็จการศึกษา Graduate Information Inquiry ", "THAI", "ENGLISH "}
 	rows := [][]string{
-        {"ชื่อ-สกุล (Name-Surname)", studentSuccessResponse.NAME_THAI, studentSuccessResponse.NAME_ENG},
-        {"รหัสประจำตัวนักศึกษา (Student Code)", studentSuccessResponse.STD_CODE, studentSuccessResponse.STD_CODE},
-        {"วันที่เข้าศึกษา (Date of Admission)", studentSuccessResponse.ADMIT_DATE, studentSuccessResponse.ADMIT_DATE},
-        {"วันที่สำเร็จการศึกษา (Date of Graduation)", studentSuccessResponse.GRADUATED_DATE, studentSuccessResponse.GRADUATED_DATE},
-        {"คุณวุฒิที่สำเร็จการศึกษา (Degree Awarded)", studentSuccessResponse.CURR_NAME, studentSuccessResponse.CURR_ENG},
-        {"สาขาวิชา (Field of Study)", studentSuccessResponse.MAJOR_NAME , studentSuccessResponse.MAJOR_ENG},
-        {"วิชาเอก (Major)", studentSuccessResponse.MAIN_MAJOR_THAI, studentSuccessResponse.MAIN_MAJOR_ENG},
-        {"เกรดเฉลี่ยสะสม (GPA)", gpa, gpa},
-    }
+		{"ชื่อ-สกุล (Name-Surname)", studentSuccessResponse.NAME_THAI, studentSuccessResponse.NAME_ENG},
+		{"รหัสประจำตัวนักศึกษา (Student Code)", studentSuccessResponse.STD_CODE, studentSuccessResponse.STD_CODE},
+		{"วันที่เข้าศึกษา (Date of Admission)", studentSuccessResponse.ADMIT_DATE, studentSuccessResponse.ADMIT_DATE},
+		{"วันที่สำเร็จการศึกษา (Date of Graduation)", studentSuccessResponse.GRADUATED_DATE, studentSuccessResponse.GRADUATED_DATE},
+		{"คุณวุฒิที่สำเร็จการศึกษา (Degree Awarded)", studentSuccessResponse.CURR_NAME, studentSuccessResponse.CURR_ENG},
+		{"สาขาวิชา (Field of Study)", studentSuccessResponse.MAJOR_NAME, studentSuccessResponse.MAJOR_ENG},
+		{"วิชาเอก (Major)", studentSuccessResponse.MAIN_MAJOR_THAI, studentSuccessResponse.MAIN_MAJOR_ENG},
+		{"เกรดเฉลี่ยสะสม (GPA)", gpa, gpa},
+	}
 
-	pdf.SetXY(10, 60)
+	pdf.SetXY(10, 65)
 	pdf.SetFontSize(14)
 	// ความกว้างของแต่ละ column (หน่วย: mm)
 	colWidths := []float64{80, 55, 55}
@@ -277,13 +384,13 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 1.ระบบนี้จัดทำขึ้นเพื่อให้หน่วยงานภายนอกสามารถตรวจสอบคุณวุฒิการศึกษาของผู้สำเร็จการศึกษาจาก มหาวิทยาลัยรามคำแหง ระดับปริญญาโทและปริญญาเอก
 2. หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏ หรือมีปัญหา ข้อสงสัย โปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัย มหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 
 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
-pdf.SetXY(10, 240)
-pdf.MultiCell(0, 6, `Note 
+	pdf.SetXY(10, 240)
+	pdf.MultiCell(0, 6, `Note 
 1.This system designed to allow external agencies to verify the education qualifications of graduates from Ramkhamhaeng University Master's and Doctoarate level
 2.If you want to check information other than waht is shown or have any questions or problem, please contact the Graduation Verification Unit, Educational Service Division, Graduate School, Ramkhamhaeng University Tel. 02310-8000 ext 3708 or 0-2310-8561 or E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
-    // 6. ส่ง PDF กลับไป
-    c.Header("Content-Type", "application/pdf")
+	// 6. ส่ง PDF กลับไป
+	c.Header("Content-Type", "application/pdf")
 	c.Header("Content-Disposition", `attachment; filename=student_`+std_code+`.pdf`)
-    _ = pdf.Output(c.Writer)
+	_ = pdf.Output(c.Writer)
 }

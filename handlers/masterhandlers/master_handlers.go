@@ -9,14 +9,16 @@ import (
 	"runtime"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis/v8"
 )
 
 type studentHandlers struct {
 	studentService masterservice.StudentServicesInterface
+	redis_cache    *redis.Client
 }
 
-func NewStudentHandlers(studentService masterservice.StudentServicesInterface) studentHandlers {
-	return studentHandlers{studentService: studentService}
+func NewStudentHandlers(studentService masterservice.StudentServicesInterface, redis_cache *redis.Client) studentHandlers {
+	return studentHandlers{studentService: studentService, redis_cache: redis_cache}
 }
 
 func handleError(c *gin.Context, err error) {
