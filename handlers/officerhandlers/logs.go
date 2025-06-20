@@ -118,12 +118,12 @@ func (h *officerHandlers) FindLogs(c *gin.Context) {
 		return
 	}
 
-	err := c.ShouldBindJSON(&form)
-	if err != nil {
-		ErrValidateRequest(c)
-		c.Abort()
-		return
-	}
+	// err := c.ShouldBindJSON(&form)
+	// if err != nil {
+	// 	ErrValidateRequest(c)
+	// 	c.Abort()
+	// 	return
+	// }
 
 	sql := `select * from egrad_logs where code = :1 and module = :2 order by id desc `
 

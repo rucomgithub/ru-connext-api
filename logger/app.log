@@ -5907,3 +5907,22 @@
 {"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token signature is invalid","path":"/master/officer/successpdf/6427952036","service":"master","status":401,"time":"2025-06-20T05:08:12Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2025-06-20T05:08:23Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/successpdf/6427952036","service":"master","status":200,"time":"2025-06-20T05:08:31Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2025-06-20T07:15:42Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:16:46Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:16:49Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:16:50Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:16:51Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:16:52Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:16:52Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:19Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:21Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:22Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:23Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:24Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:24Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:25Z"}
+{"file":"/app/handlers/officerhandlers/officerhandler.go","level":"error","line":74,"method":"GET","msg":"โปรดระบุค่าให้ถูกต้อง","path":"/officer/logs","service":"officer","status":422,"time":"2025-06-20T07:17:26Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/logs","service":"officer","status":200,"time":"2025-06-20T07:18:18Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/logs","service":"officer","status":200,"time":"2025-06-20T07:18:39Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/logs","service":"officer","status":200,"time":"2025-06-20T07:18:41Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/logs","service":"officer","status":200,"time":"2025-06-20T07:19:00Z"}
