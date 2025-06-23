@@ -30,6 +30,15 @@ type (
 		DESCRIPTION  string `db:"DESCRIPTION"`
 	}
 
+	Company struct {
+		STD_CODE string `db:"STD_CODE"`
+		EMAIL    string `db:"EMAIL"`
+		FULLNAME string `db:"FULLNAME"`
+		COMPANY  string `db:"COMPANY"`
+		CREATED  string `db:"CREATED"`
+		MODIFIED string `db:"MODIFIED"`
+	}
+
 	OfficerRepoInterface interface {
 		GetUserLogin(username string) (*UserLoginRepo, error)
 
@@ -37,6 +46,8 @@ type (
 		GetQualification(std_code string) (*Qualification, error)
 		AddQualification(std_code string) error
 		UpdateQualification(std_code, status, description string) (int64, error)
+
+		GetCompanyList(std_code string) (*[]Company, error)
 
 		FindReport(startdate,enddate string) ([]map[string]interface{},error)
 	}

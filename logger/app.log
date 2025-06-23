@@ -5971,3 +5971,38 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/photograduate/5312740208","service":"master","status":200,"time":"2025-06-23T04:07:57Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/photograduate/5312740208","service":"master","status":200,"time":"2025-06-23T04:07:59Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/photograduate/5312740208","service":"master","status":200,"time":"2025-06-23T04:08:00Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"sql: no rows in result set","path":"/officer/companys/5519860048","service":"officer","status":409,"time":"2025-06-23T07:43:03Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:43:27Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:43:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:43:41Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:43:42Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:43:43Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:43:44Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:46:30Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:46:33Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:46:36Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:48:59Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:49:02Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:49:54Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:49:55Z"}
+{"file":"/app/handlers/officerhandlers/officer_handlers_company.go","level":"error","line":22,"method":"GET","msg":"Un Expected Error.","path":"/officer/companys/5312740208","service":"officer","status":409,"time":"2025-06-23T07:49:56Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:51:36Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:53:38Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:53:41Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:53:43Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:53:44Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:53:45Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:53:46Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:53:47Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:54:00Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:54:15Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:54:25Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:54:36Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:55:36Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:56:03Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:56:34Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:56:35Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:56:36Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:56:37Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:57:07Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/companys/5312740208","service":"officer","status":200,"time":"2025-06-23T07:57:29Z"}

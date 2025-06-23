@@ -104,6 +104,15 @@ type (
 		Reports []map[string]interface{} `json:"reports"`
 	}
 
+	CompanyResponse struct {
+		STD_CODE string `json:"std_code"`
+		EMAIL    string `json:"email"`
+		FULLNAME string `json:"fullname"`
+		COMPANY  string `json:"company"`
+		CREATED  string `json:"created"`
+		MODIFIED string `json:"modified"`
+	}
+
 	OfficerServiceInterface interface {
 		AuthenticationOfficer(authenRequest AuthenRequest) (*AuthenResponse, error)
 		RefreshAuthenticationOfficer(refreshToken string) (*AuthenResponse, error)
@@ -112,6 +121,8 @@ type (
 		GetQualificationAll() (*[]QualificationResponse, int, error)
 		GetQualification(std_code string) (*QualificationResponse, error)
 		UpdateQualification(std_code, status, description string) (*QualificationResponse, int64, error)
+
+		GetCommpanyList(std_code string) (*[]CompanyResponse,int, error)
 
 		GetReport(reportRequest *ReportRequest) (*ReportResponse, error) 
 	}
