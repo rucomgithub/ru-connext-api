@@ -220,6 +220,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		officerMaster := master.Group("/officer")
 		officerMaster.GET("/successpdf/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GeneratePDFWithQROfficer)
+		officerMaster.GET("/success/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetStudentSuccessById)
 
 		certificateMaster := master.Group("/certificate")
 		certificateMaster.POST("/company", masterHandler.AddCommpany)

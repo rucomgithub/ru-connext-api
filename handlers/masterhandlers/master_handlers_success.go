@@ -72,6 +72,33 @@ func (h *studentHandlers) GetStudentSuccess(c *gin.Context) {
 
 }
 
+func (h *studentHandlers) GetStudentSuccessById(c *gin.Context) {
+
+	std_code := c.Param("id")
+
+	if std_code == "" {
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบรหัสนักศึกษา."})
+		c.Abort()
+		return
+	}
+
+	studentSuccessResponse, err := h.studentService.GetStudentSuccess(std_code)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + ".")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentSuccessResponse)
+
+}
+
 func (h *studentHandlers) GetStudentSuccessCheck(c *gin.Context) {
 	token := c.Param("id")
 
@@ -82,6 +109,7 @@ func (h *studentHandlers) GetStudentSuccessCheck(c *gin.Context) {
 		c.Abort()
 		return
 	}
+
 	studentSuccessResponse, err := h.studentService.GetStudentSuccessCheck(token)
 	if err != nil {
 		//err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + err.Error() + std_code + ".")
