@@ -234,7 +234,7 @@ func (h *studentHandlers) GeneratePDFWithQR(c *gin.Context) {
 
 	pdf.SetFont("THSarabunBold", "", 20)
 	pdf.SetXY(45, 10)
-	pdf.Cell(0, 10, "แบบตรวจสอบคุณวุฒิการศึกษาออนไลน์ ระดับบัณฑิตศึกษา")
+	pdf.Cell(0, 10, "แบบคำร้องขอรับรองคุณวุฒิการศึกษาแบบออนไลน์ ระดับบัณฑิตศึกษา")
 	pdf.Ln(12)
 
 	pdf.SetFontSize(18)
