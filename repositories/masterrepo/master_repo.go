@@ -50,7 +50,9 @@ type (
 		SERIAL_NO       string  `db:"SERIAL_NO"`
 		CONFERENCE_DATE string  `db:"CONFERENCE_DATE"`
 		ADMIT_DATE      string  `db:"ADMIT_DATE"`
+		ADMIT_DATE_EN      string  `db:"ADMIT_DATE_EN"`
 		GRADUATED_DATE  string  `db:"GRADUATED_DATE"`
+		GRADUATED_DATE_EN  string  `db:"GRADUATED_DATE_EN"`
 		CONFIRM_DATE    string  `db:"CONFIRM_DATE"`
 	}
 

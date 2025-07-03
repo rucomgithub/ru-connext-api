@@ -55,7 +55,9 @@ func (s *studentServices) GetStudentSuccessCheck(token string) (studentSuccessRe
 		SERIAL_NO       : sp.SERIAL_NO,
 		CONFERENCE_DATE : sp.CONFERENCE_DATE,
 		ADMIT_DATE  	: sp.ADMIT_DATE,
+		ADMIT_DATE_EN  	: sp.ADMIT_DATE_EN,
 		GRADUATED_DATE  : sp.GRADUATED_DATE,
+		GRADUATED_DATE_EN  : sp.GRADUATED_DATE_EN,
 		CONFIRM_DATE    : sp.CONFIRM_DATE,
 	}
 
@@ -99,7 +101,9 @@ func (s *studentServices) GetStudentSuccess(studentCode string) (studentSuccessR
 		SERIAL_NO       : sp.SERIAL_NO,
 		CONFERENCE_DATE : sp.CONFERENCE_DATE,
 		ADMIT_DATE  	: sp.ADMIT_DATE,
+		ADMIT_DATE_EN  	: sp.ADMIT_DATE_EN,
 		GRADUATED_DATE  : sp.GRADUATED_DATE,
+		GRADUATED_DATE_EN  : sp.GRADUATED_DATE_EN,
 		CONFIRM_DATE    : sp.CONFIRM_DATE,
 	}
 

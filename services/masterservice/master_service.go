@@ -111,7 +111,9 @@ type (
 		SERIAL_NO       string  `json:"SERIAL_NO"`
 		CONFERENCE_DATE string  `json:"CONFERENCE_DATE"`
 		ADMIT_DATE      string  `json:"ADMIT_DATE"`
+		ADMIT_DATE_EN   string  `json:"ADMIT_DATE_EN"`
 		GRADUATED_DATE  string  `json:"GRADUATED_DATE"`
+		GRADUATED_DATE_EN  string  `json:"GRADUATED_DATE_EN"`
 		CONFIRM_DATE    string  `json:"CONFIRM_DATE"`
 	}
 
