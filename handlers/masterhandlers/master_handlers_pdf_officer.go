@@ -129,8 +129,10 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 2.QR-code มีอายุการใช้งานไม่เกิน 120 วัน นับจากวันที่ออกหนังสือ
 3.หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏหรือมีปัญหาข้อสงสัยโปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัยมหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
-	pdf.AddPage()
-	// ส่วนหัว
+pdf.AddPage()
+// ส่วนหัว
+// แทรกโลโก้ที่มุมบนซ้าย
+	
 	// ตั้งค่าสำหรับ Watermark
 	pdf.SetFont("THSarabun", "", 50)
 	pdf.SetTextColor(200, 200, 200) // สีเทาอ่อน
@@ -142,121 +144,129 @@ func (h *studentHandlers) GeneratePDFWithQROfficer(c *gin.Context) {
 	pdf.Text(10, 150, "สำเนาเอกสารใช้เพื่อตรวจสอบเอกสารเท่านั้น") // หรือ "CONFIDENTIAL"
 	pdf.TransformEnd()
 
-	// แทรกโลโก้ที่มุมบนซ้าย
 	// คืนค่า Text และ Font ปกติ
 	pdf.SetTextColor(0, 0, 0)
-	pdf.SetFont("THSarabun", "", 16)
 
-	pdf.ImageOptions("images/logo.png", 10, 10, 15, 0, false, logoOpt, 0, "")
-	pdf.SetFont("THSarabunBold", "", 16)
-	pdf.SetXY(50, 10)
-	pdf.Cell(0, 8, "รายงานผลการตรวจสอบและรับรองคุณวุฒิการศึกษา")
-	pdf.SetXY(40, 20)
-	pdf.Cell(0, 8, "(Report on the Educational Qualification and Certification)")
-	pdf.SetXY(50, 30)
-	pdf.Cell(0, 8, "มหาวิทยาลัยรามคำแหง (Ramkhamhaeng University)")
-	pdf.SetXY(70, 40)
-	pdf.Cell(0, 8, "ประเทศไทย (Thailand)")
+pdf.ImageOptions("images/logo.png", 10, 10, 15, 0, false, logoOpt, 0, "")
+pdf.SetFont("THSarabunBold", "", 16)
+pdf.SetXY(50, 10)
+pdf.Cell(0, 8, "รายงานผลการตรวจสอบและรับรองคุณวุฒิการศึกษา")
+pdf.SetXY(40, 15)
+pdf.Cell(0, 8, "(Report on the Educational Qualification and Certification)")
+pdf.SetXY(50, 20)
+pdf.Cell(0, 8, "มหาวิทยาลัยรามคำแหง (Ramkhamhaeng University)")
+pdf.SetXY(70, 25)
+pdf.Cell(0, 8, "ประเทศไทย (Thailand)")
 
-	// ต้องตั้งชื่อให้ภาพแม้จะไม่ใช่ไฟล์ (ชื่อสมมติ)
-	// ระบุว่าเป็นภาพ JPEG จาก memory
-	imageOpts := gofpdf.ImageOptions{
-		ImageType:             "JPEG",
-		ReadDpi:               false,
-		AllowNegativePosition: false,
+// ต้องตั้งชื่อให้ภาพแม้จะไม่ใช่ไฟล์ (ชื่อสมมติ)
+// ระบุว่าเป็นภาพ JPEG จาก memory
+imageOpts := gofpdf.ImageOptions{
+	ImageType:             "JPEG",
+	ReadDpi:               false,
+	AllowNegativePosition: false,
+}
+
+var imgReader io.Reader
+var imgName string
+mainImg, err := h.GeneratePicture(std_code)
+if err != nil {
+	// แสดงรูปสำรองแทน
+	fallbackImgFile, err2 := os.Open("images/person.jpg")
+	if err2 != nil {
+		panic("ไม่สามารถโหลด fallback image ได้")
 	}
+	defer fallbackImgFile.Close()
+	imgReader = fallbackImgFile
+	imgName = "person.jpg"
+} else {
+	imgReader = mainImg
+	imgName = "main.jpg"
+}
 
-	var imgReader io.Reader
-	var imgName string
-	mainImg, err := h.GeneratePicture(std_code)
-	if err != nil {
-		// แสดงรูปสำรองแทน
-		fallbackImgFile, err2 := os.Open("images/person.jpg")
-		if err2 != nil {
-			panic("ไม่สามารถโหลด fallback image ได้")
+pdf.RegisterImageOptionsReader(imgName, imageOpts, imgReader)
+pdf.ImageOptions(imgName, 160, 10, 30, 30, false, imageOpts, 0, "")
+
+gpa := fmt.Sprintf("%.2f", studentSuccessResponse.GPA)
+
+headers := []string{"ข้อมูลผู้สำเร็จการศึกษา (Graduate Information Inquiry)", "คำอธิบาย (DESCRIPTION)",}
+
+rows := [][]string{
+	{"1.รหัสประจำตัวนักศึกษา (Student Code)", studentSuccessResponse.STD_CODE},
+	{"2.ชื่อ-สกุล", studentSuccessResponse.NAME_THAI},
+	{"  Name-Surname", studentSuccessResponse.NAME_ENG},
+	{"3.วันที่เข้าศึกษา", studentSuccessResponse.ADMIT_DATE},
+	{"  Date of Admission", studentSuccessResponse.ADMIT_DATE},
+	{"4.วันที่สำเร็จการศึกษา", studentSuccessResponse.GRADUATED_DATE},
+	{"  Date of Graduation)",studentSuccessResponse.GRADUATED_DATE},
+	{"5.คุณวุฒิที่สำเร็จการศึกษา", studentSuccessResponse.CURR_NAME},
+	{"  Degree Awarded", studentSuccessResponse.CURR_ENG},
+	{"6.สาขาวิชา", studentSuccessResponse.MAJOR_NAME},
+	{"  Field of Study", studentSuccessResponse.MAJOR_ENG},
+	{"7.วิชาเอก", studentSuccessResponse.MAIN_MAJOR_THAI},
+	{"  Major", studentSuccessResponse.MAIN_MAJOR_ENG},
+	{"8.เกรดเฉลี่ยสะสม (GPA)", gpa},
+}
+
+pdf.SetXY(10, 45)
+pdf.SetFont("THSarabun", "", 14)
+// ความกว้างของแต่ละ column (หน่วย: mm)
+colWidths := []float64{85, 105} 
+
+// Header
+for i, header := range headers {
+	pdf.SetFont("THSarabunBold", "", 14)
+	pdf.CellFormat(colWidths[i], 14, header, "1", 0, "C", false, 0, "")
+}
+pdf.Ln(-1) // ขึ้นบรรทัดใหม่
+
+// Rows
+for _, row := range rows {
+	for i, col := range row {
+		if i == 0 {
+			pdf.SetFont("THSarabunBold", "", 14)
+		} else {
+			pdf.SetFont("THSarabun", "", 14)
 		}
-		defer fallbackImgFile.Close()
-		imgReader = fallbackImgFile
-		imgName = "person.jpg"
-	} else {
-		imgReader = mainImg
-		imgName = "main.jpg"
+		pdf.CellFormat(colWidths[i], 10, col, "1", 0, "L", false, 0, "")
 	}
+	pdf.Ln(-1)
+}
+signOpt := gofpdf.ImageOptions{
+	ImageType:             "JPG",
+	ReadDpi:               false,
+	AllowNegativePosition: false,
+}
+pdf.SetFont("THSarabun", "", 14)
+pdf.ImageOptions("images/sign_long.jpg", 120, 205, 25, 0, false, signOpt, 0, "")
+pdf.SetXY(90, 205)
+pdf.Cell(0, 8, "ลงชื่อ (Signature)……………………………………………………ผู้รับรอง (Certifier)")
+pdf.SetXY(110, 210)
+pdf.Cell(0, 8, "( รองศาสตราจารย์กฤษดา ตั้งชัยศักดิ์ )")
+pdf.SetXY(110, 215)
+pdf.Cell(0, 8, "( Assoc.Prof. Krisda Tanchaisak )")
+pdf.SetXY(90, 220)
+pdf.Cell(0, 8, "คณบดีบัณฑิตวิทยาลัย ปฏิบัติราชการแทนอธิการบดีมหาวิทยาลัยรามคำแหง")
+pdf.SetXY(85, 225)
+pdf.Cell(0, 8, "Dean of Graduate School for the President of Ramkhamhaeng University")
 
-	pdf.RegisterImageOptionsReader(imgName, imageOpts, imgReader)
-	pdf.ImageOptions(imgName, 160, 10, 25, 30, false, imageOpts, 0, "")
+pdf.SetXY(10, 235)
+pdf.SetFont("THSarabunBold", "", 12)
+pdf.MultiCell(0, 6, `*** เอกสารฉบับนี้ใช้ลายมือชื่ออิเล็กทรอนิกส์ตามพระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ.2544 พระราชบัญญัตินี้กำหนดให้ลายมือชื่ออิเล็กทรอนิกส์ มีผลทางกฎหมายเทียบเท่ากับการลงลายมือชื่อ บนเอกสารราชการ ***`, "", "L", false)
 
-	gpa := fmt.Sprintf("%.2f", studentSuccessResponse.GPA)
-
-	headers := []string{"ข้อมูลผู้สำเร็จการศึกษา Graduate Information Inquiry ", "THAI", "ENGLISH "}
-	rows := [][]string{
-		{"ชื่อ-สกุล (Name-Surname)", studentSuccessResponse.NAME_THAI, studentSuccessResponse.NAME_ENG},
-		{"รหัสประจำตัวนักศึกษา (Student Code)", studentSuccessResponse.STD_CODE, studentSuccessResponse.STD_CODE},
-		{"วันที่เข้าศึกษา (Date of Admission)", studentSuccessResponse.ADMIT_DATE, studentSuccessResponse.ADMIT_DATE},
-		{"วันที่สำเร็จการศึกษา (Date of Graduation)", studentSuccessResponse.GRADUATED_DATE, studentSuccessResponse.GRADUATED_DATE},
-		{"คุณวุฒิที่สำเร็จการศึกษา (Degree Awarded)", studentSuccessResponse.CURR_NAME, studentSuccessResponse.CURR_ENG},
-		{"สาขาวิชา (Field of Study)", studentSuccessResponse.MAJOR_NAME, studentSuccessResponse.MAJOR_ENG},
-		{"วิชาเอก (Major)", studentSuccessResponse.MAIN_MAJOR_THAI, studentSuccessResponse.MAIN_MAJOR_ENG},
-		{"เกรดเฉลี่ยสะสม (GPA)", gpa, gpa},
-	}
-
-	pdf.SetXY(10, 60)
-	pdf.SetFontSize(14)
-	// ความกว้างของแต่ละ column (หน่วย: mm)
-	colWidths := []float64{80, 55, 55}
-
-	// Header
-	for i, header := range headers {
-		pdf.SetFont("THSarabunBold", "", 12)
-		pdf.CellFormat(colWidths[i], 10, header, "1", 0, "C", false, 0, "")
-	}
-	pdf.Ln(-1) // ขึ้นบรรทัดใหม่
-
-	// Rows
-	for _, row := range rows {
-		for i, col := range row {
-			if i == 0 {
-				pdf.SetFont("THSarabunBold", "", 12)
-			} else {
-				pdf.SetFont("THSarabun", "", 12)
-			}
-			pdf.CellFormat(colWidths[i], 10, col, "1", 0, "L", false, 0, "")
-		}
-		pdf.Ln(-1)
-	}
-	signOpt := gofpdf.ImageOptions{
-		ImageType:             "JPG",
-		ReadDpi:               false,
-		AllowNegativePosition: false,
-	}
-	pdf.SetFont("THSarabun", "", 14)
-	pdf.ImageOptions("images/sign_long.jpg", 120, 158, 25, 0, false, signOpt, 0, "")
-	pdf.SetXY(90, 160)
-	pdf.Cell(0, 8, "ลงชื่อ (Signature)……………………………………………………ผู้รับรอง (Certifier)")
-	pdf.SetXY(110, 165)
-	pdf.Cell(0, 8, "( รองศาสตราจารย์กฤษดา ตั้งชัยศักดิ์ )")
-	pdf.SetXY(110, 170)
-	pdf.Cell(0, 8, "( Assoc.Prof. Krisda Tanchaisak )")
-	pdf.SetXY(90, 175)
-	pdf.Cell(0, 8, "(คณบดีบัณฑิตวิทยาลัย ปฏิบัติราชการแทนอธิการบดีมหาวิทยาลัยรามคำแหง)")
-	pdf.SetXY(85, 180)
-	pdf.Cell(0, 8, "(Dean of Graduate School for the President of Ramkhamhaeng University)")
-	pdf.SetXY(10, 195)
-	pdf.SetFontSize(12)
-	pdf.MultiCell(0, 6, `*** เอกสารฉบับนี้ใช้ลายมือชื่ออิเล็กทรอนิกส์ตามพระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ.2544 พระราชบัญญัตินี้กำหนดให้ ลายมือชื่ออิเล็กทรอนิกส์มีผลทางกฎหมายเทียบเท่ากับการลงลายมือชื่อ บนเอกสารราชการ`, "", "L", false)
-	pdf.SetXY(10, 210)
-	pdf.SetFontSize(12)
-	pdf.MultiCell(0, 6, `หมายเหตุ
+pdf.SetXY(10, 248)
+pdf.SetFontSize(12)
+pdf.MultiCell(0, 6, `หมายเหตุ
 1.ระบบนี้จัดทำขึ้นเพื่อให้หน่วยงานภายนอกสามารถตรวจสอบคุณวุฒิการศึกษาของผู้สำเร็จการศึกษาจาก มหาวิทยาลัยรามคำแหง ระดับปริญญาโทและปริญญาเอก
-2. หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏ หรือมีปัญหา ข้อสงสัย โปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัย มหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 
-หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
-	pdf.SetXY(10, 240)
-	pdf.MultiCell(0, 6, `Note 
+2.หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏ หรือมีปัญหา ข้อสงสัย โปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัย มหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
+
+pdf.AddPage()
+pdf.SetXY(10, 10)
+pdf.MultiCell(0, 6, `Note 
 1.This system designed to allow external agencies to verify the education qualifications of graduates from Ramkhamhaeng University Master's and Doctoarate level
 2.If you want to check information other than waht is shown or have any questions or problem, please contact the Graduation Verification Unit, Educational Service Division, Graduate School, Ramkhamhaeng University Tel. 02310-8000 ext 3708 or 0-2310-8561 or E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
-	// 6. ส่ง PDF กลับไป
-	c.Header("Content-Type", "application/pdf")
-	c.Header("Content-Disposition", `attachment; filename=student_`+std_code+`.pdf`)
-	_ = pdf.Output(c.Writer)
+// 6. ส่ง PDF กลับไป
+c.Header("Content-Type", "application/pdf")
+c.Header("Content-Disposition", `attachment; filename=student_`+std_code+`.pdf`)
+_ = pdf.Output(c.Writer)
 }
