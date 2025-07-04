@@ -89,9 +89,9 @@ func (h *studentHandlers) GeneratePDFWithQRCertificate(c *gin.Context) {
 
 	pdf.SetFont("THSarabunBold", "", 16)
 	pdf.SetXY(100, 40)
-	pdf.Cell(0, 6, fmt.Sprintf("ชื่อ - สกุล: %s", studentSuccessResponse.NAME_THAI))
+	pdf.Cell(0, 6, fmt.Sprintf("ชื่อ สกุล: %s", studentSuccessResponse.NAME_THAI))
 	pdf.SetXY(100, 50)
-	pdf.Cell(0, 6, fmt.Sprintf("Name - Surname: %s", studentSuccessResponse.NAME_ENG))
+	pdf.Cell(0, 6, fmt.Sprintf("Name Surname: %s", studentSuccessResponse.NAME_ENG))
 	pdf.SetXY(100, 60)
 	pdf.Cell(0, 6, fmt.Sprintf("รหัสประจำตัวนักศึกษา: %s", studentSuccessResponse.STD_CODE))
 	pdf.SetXY(100, 70)
@@ -193,12 +193,12 @@ pdf.ImageOptions(imgName, 160, 10, 30, 30, false, imageOpts, 0, "")
 
 gpa := fmt.Sprintf("%.2f", studentSuccessResponse.GPA)
 
-headers := []string{"ข้อมูลผู้สำเร็จการศึกษา (Graduate Information Inquiry)", "คำอธิบาย (DESCRIPTION)",}
+headers := []string{"ข้อมูลผู้สำเร็จการศึกษา (Graduate Information Inquiry)",}
 
 rows := [][]string{
 	{"1.รหัสประจำตัวนักศึกษา (Student Code)", studentSuccessResponse.STD_CODE},
-	{"2.ชื่อ-สกุล", studentSuccessResponse.NAME_THAI},
-	{"  Name-Surname", studentSuccessResponse.NAME_ENG},
+	{"2.ชื่อ สกุล", studentSuccessResponse.NAME_THAI},
+	{"  Name Surname", studentSuccessResponse.NAME_ENG},
 	{"3.วันที่เข้าศึกษา", studentSuccessResponse.ADMIT_DATE},
 	{"  Date of Admission", studentSuccessResponse.ADMIT_DATE_EN},
 	{"4.วันที่สำเร็จการศึกษา", studentSuccessResponse.GRADUATED_DATE},
@@ -215,7 +215,8 @@ rows := [][]string{
 pdf.SetXY(10, 45)
 pdf.SetFont("THSarabun", "", 14)
 // ความกว้างของแต่ละ column (หน่วย: mm)
-colWidths := []float64{85, 105} 
+colWidths := []float64{190} 
+
 
 // Header
 for i, header := range headers {
@@ -224,6 +225,7 @@ for i, header := range headers {
 }
 pdf.Ln(-1) // ขึ้นบรรทัดใหม่
 
+colWidths = []float64{85, 105} 
 // Rows
 for _, row := range rows {
 	for i, col := range row {
@@ -253,22 +255,27 @@ pdf.SetXY(90, 220)
 pdf.Cell(0, 8, "คณบดีบัณฑิตวิทยาลัย ปฏิบัติราชการแทนอธิการบดีมหาวิทยาลัยรามคำแหง")
 pdf.SetXY(85, 225)
 pdf.Cell(0, 8, "Dean of Graduate School for the President of Ramkhamhaeng University")
-
+	
 pdf.SetXY(10, 235)
 pdf.SetFont("THSarabunBold", "", 12)
-pdf.MultiCell(0, 6, `*** เอกสารฉบับนี้ใช้ลายมือชื่ออิเล็กทรอนิกส์ตามพระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ.2544 พระราชบัญญัตินี้กำหนดให้ลายมือชื่ออิเล็กทรอนิกส์ มีผลทางกฎหมายเทียบเท่ากับการลงลายมือชื่อ บนเอกสารราชการ ***`, "", "L", false)
+pdf.MultiCell(0, 6, `เอกสารฉบับนี้ใช้ลายมือชื่ออิเล็กทรอนิกส์ตามพระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ.2544 พระราชบัญญัตินี้กำหนดให้ลายมือชื่ออิเล็กทรอนิกส์ มีผลทางกฎหมายเทียบเท่ากับการลงลายมือชื่อ บนเอกสารราชการ`, "", "L", false)
 
-pdf.SetXY(10, 248)
+pdf.SetXY(10, 250)
+pdf.SetFont("THSarabunBold", "", 12)
+pdf.MultiCell(0, 6, `This document is signed using an electronic signature in accordance with the Electronic Transactions Act B.E.2544 (2001), which recognizes electronic signatures as having the same legal effect as handwritten signatures on official documents.`, "", "L", false)
+
+
+pdf.AddPage()
+pdf.SetXY(10, 10)
 pdf.SetFontSize(12)
 pdf.MultiCell(0, 6, `หมายเหตุ
 1.ระบบนี้จัดทำขึ้นเพื่อให้หน่วยงานภายนอกสามารถตรวจสอบคุณวุฒิการศึกษาของผู้สำเร็จการศึกษาจาก มหาวิทยาลัยรามคำแหง ระดับปริญญาโทและปริญญาเอก
 2.หากต้องการตรวจสอบข้อมูลนอกเหนือจากที่ปรากฏ หรือมีปัญหา ข้อสงสัย โปรดติดต่อหน่วยตรวจสอบการสำเร็จการศึกษา ฝ่ายบริการการศึกษา บัณฑิตวิทยาลัย มหาวิทยาลัยรามคำแหง โทร.0-2310-8000 ต่อ 3708 หรือ 0-2310-8561 หรือ E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
-pdf.AddPage()
-pdf.SetXY(10, 10)
+pdf.SetXY(10, 35)
 pdf.MultiCell(0, 6, `Note 
-1.This system designed to allow external agencies to verify the education qualifications of graduates from Ramkhamhaeng University Master's and Doctoarate level
-2.If you want to check information other than waht is shown or have any questions or problem, please contact the Graduation Verification Unit, Educational Service Division, Graduate School, Ramkhamhaeng University Tel. 02310-8000 ext 3708 or 0-2310-8561 or E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
+1.This system designed to allow external agencies to verify the education qualifications of graduates from Ramkhamhaeng University Master’s and Doctoarate level.
+2.If you want to check information other than want is shown or have any questions of problem, please contact the Graduation Verification Unit, Educational Service Division, Graduate School, Ramkhamhaeng University Tel. 0-2310-8000 ext 3708 or 0-2310-8561 or E-Mail: rugrad_verify@ru.ac.th`, "", "L", false)
 
 // 6. ส่ง PDF กลับไป
 c.Header("Content-Type", "application/pdf")

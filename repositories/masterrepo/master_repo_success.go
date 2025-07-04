@@ -28,9 +28,9 @@ func (r *studentRepoDB) GetStudentSuccess(studentCode string) (student *StudentS
     g.SERIAL_NO,
     TO_CHAR(TO_DATE(g.conference_date,'DD/MM/YYYY'),'FMDD MONTH YYYY','NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') conference_date,
     TO_CHAR(TO_DATE(g.admit_date,'DD/MM/YYYY'),'FMDD MONTH YYYY','NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') admit_date,
-    TO_CHAR(TO_DATE(g.admit_date,'DD/MM/YYYY'),'FMDD MONTH YYYY') admit_date_en,
+    UPPER(TO_CHAR(TO_DATE(g.admit_date, 'DD/MM/YYYY'), 'Month')) || TO_CHAR(TO_DATE(g.admit_date, 'DD/MM/YYYY'), 'DD, YYYY') AS admit_date_en,
     TO_CHAR(TO_DATE(g.graduated_date,'DD/MM/YYYY'),'FMDD MONTH YYYY','NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') graduated_date,
-    TO_CHAR(TO_DATE(g.graduated_date,'DD/MM/YYYY'),'FMDD MONTH YYYY') graduated_date_en,
+    UPPER(TO_CHAR(TO_DATE(g.graduated_date, 'DD/MM/YYYY'), 'Month')) || TO_CHAR(TO_DATE(g.graduated_date, 'DD/MM/YYYY'), 'DD, YYYY') AS graduated_date_en,
     TO_CHAR(TO_DATE(g.conference_date,'DD/MM/YYYY')+7,'FMDD MONTH YYYY','NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') confirm_date
     from  vm_graduate g 
     where  std_code = :param1`
