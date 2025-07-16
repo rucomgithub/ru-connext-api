@@ -32,9 +32,14 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/handlers/officerhandlers"
 	"RU-Smart-Workspace/ru-smart-api/repositories/officerrepos"
 	"RU-Smart-Workspace/ru-smart-api/services/officerservices"
+
+	_services "RU-Smart-Workspace/ru-smart-api/application/services"
+	_usecases "RU-Smart-Workspace/ru-smart-api/application/usecases"
+	_db "RU-Smart-Workspace/ru-smart-api/infrastructure/db"
+	_handlers "RU-Smart-Workspace/ru-smart-api/infrastructure/handlers"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB, database *_db.OracleDB) {
 
 	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
@@ -72,6 +77,24 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officeAuth.POST("/logs", middlewares.AuthorizationOfficer(redis_cache), officeHandler.CreateLogs)
 		officeAuth.GET("/logs", middlewares.AuthorizationOfficer(redis_cache), officeHandler.FindLogs)
 
+	}
+
+	publications := officeAuth.Group("/publications")
+	{
+		// Repository
+		publicationRepo := _db.NewPublicationRepository(database)
+		// Services
+		publicationService := _services.NewPublicationService(publicationRepo)
+		// Use cases
+		publicationUseCase := _usecases.NewPublicationUseCase(publicationService)
+		// REST handlers
+		publicationHandler := _handlers.NewPublicationHandler(publicationUseCase)
+
+		publications.POST("/", publicationHandler.CreatePublication)
+		publications.GET("/:id", publicationHandler.GetPublication)
+		publications.PUT("/:id", publicationHandler.UpdatePublication)
+		publications.DELETE("/:id", publicationHandler.DeletePublication)
+		publications.GET("/", publicationHandler.ListPublications)
 	}
 
 	googleAuth := router.Group("/google")
@@ -223,8 +246,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officerMaster := master.Group("/officer")
 		officerMaster.GET("/successpdf/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GeneratePDFWithQROfficer)
 		officerMaster.GET("/success/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetStudentSuccessById)
-		officerMaster.GET("/photograduate/:id",middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetPhotoGraduateByStudentCode) 
-		
+		officerMaster.GET("/photograduate/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetPhotoGraduateByStudentCode)
 
 		certificateMaster := master.Group("/certificate")
 		certificateMaster.POST("/company", masterHandler.AddCommpany)
