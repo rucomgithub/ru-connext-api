@@ -97,6 +97,25 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		publications.GET("/", publicationHandler.ListPublications)
 	}
 
+	journals := officeAuth.Group("/journals")
+	{
+		// Initialize repository
+		journalRepo := _db.NewThesisJournalRepository(oracle_db_dbg)
+
+		// Initialize service
+		journalService := _services.NewThesisJournalService(journalRepo)
+
+		// Initialize HTTP handler
+		journalHandler := _handlers.NewJournalHandler(journalService)
+
+		journals.POST("/", journalHandler.CreateJournal)
+		journals.GET("/:id", journalHandler.GetJournal)
+		journals.GET("/student-id/:studentId", journalHandler.GetJournalByStudentID)
+		journals.PUT("/:id", journalHandler.UpdateStudent)
+		journals.DELETE("/:id", journalHandler.DeleteJoural)
+		journals.GET("/", journalHandler.ListJournals)
+	}
+
 	googleAuth := router.Group("/google")
 	{
 		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
