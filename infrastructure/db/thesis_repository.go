@@ -6,6 +6,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"log"
 
 	_ "github.com/godror/godror"
 	"github.com/jmoiron/sqlx"
@@ -121,7 +122,7 @@ func (r *thesisJournalRepository) GetByID(ctx context.Context, id string) (*enti
 	// Load publications
 	publications := []entities.JournalPublication{}
 	pubQuery := `
-        SELECT STD_CODE, TYPE, ARTICLE_TITLE, JOURNAL_NAME, COUNTRY, STATUS,
+        SELECT ID,STD_CODE, TYPE, ARTICLE_TITLE, JOURNAL_NAME, COUNTRY, STATUS,
                YEAR, VOLUME, ISSUE, MONTH, PUBLISH_YEAR, PAGE_FROM, PAGE_TO,
                PUBLISH_LEVEL, TCI_GROUP, CREATED_AT
         FROM EGRAD_PUBLICATIONS WHERE STD_CODE = :1`
@@ -185,23 +186,101 @@ func (r *thesisJournalRepository) GetByStudentID(ctx context.Context, studentID 
 }
 
 func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *entities.ThesisJournal) error {
-	query := `
-        UPDATE EGRAD_THESIS SET 
-            PROGRAM = :PROGRAM,
-            MAJOR = :MAJOR,
-            FACULTY = :FACULTY,
-            THESIS_TYPE = :THESIS_TYPE,
-            THESIS_TITLE_THAI = :THESIS_TITLE_THAI,
-            THESIS_TITLE_ENGLISH = :THESIS_TITLE_ENGLISH,
-            UPDATED_AT = :UPDATED_AT
-        WHERE STD_CODE = :STD_CODE`
+	tx, err := r.db.BeginTxx(ctx, nil)
+	if err != nil {
+		return fmt.Errorf("failed to begin transaction: %w", err)
+	}
+	defer tx.Rollback()
 
-	_, err := r.db.NamedExecContext(ctx, query, thesisJournal)
+	// Update Thesis Journal
+	thesisQuery := `UPDATE EGRAD_THESIS SET 
+						PROGRAM = :PROGRAM,
+						MAJOR = :MAJOR,
+						FACULTY = :FACULTY,
+						THESIS_TYPE = :THESIS_TYPE,
+						THESIS_TITLE_THAI = :THESIS_TITLE_THAI,
+						THESIS_TITLE_ENGLISH = :THESIS_TITLE_ENGLISH,
+						UPDATED_AT = :UPDATED_AT
+					WHERE STD_CODE = :STD_CODE`
+
+	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
 	if err != nil {
 		return fmt.Errorf("failed to update thesis journal: %w", err)
 	}
 
-	return nil
+	// Insert publications
+	log.Print(len(thesisJournal.JournalPublication))
+	if len(thesisJournal.JournalPublication) > 0 {
+		publicationQuery := `
+            UPDATE EGRAD_PUBLICATIONS 
+			SET 
+				TYPE = :TYPE, 
+				ARTICLE_TITLE= :ARTICLE_TITLE, 
+				JOURNAL_NAME= :JOURNAL_NAME, 
+				COUNTRY= :COUNTRY, 
+				STATUS= :STATUS,
+                YEAR=:YEAR, 
+				VOLUME= :VOLUME, 
+				ISSUE= :ISSUE, 
+				MONTH= :MONTH, 
+				PUBLISH_YEAR= :PUBLISH_YEAR, 
+				PAGE_FROM= :PAGE_FROM, 
+				PAGE_TO= :PAGE_TO,
+                PUBLISH_LEVEL=:PUBLISH_LEVEL, 
+				TCI_GROUP= :TCI_GROUP
+			WHERE ID = :ID`
+
+		for _, pub := range thesisJournal.JournalPublication {
+			log.Print(pub.Id)
+			_, err = tx.NamedExecContext(ctx, publicationQuery, pub)
+			if err != nil {
+				return fmt.Errorf("failed to update publication: %w", err.Error())
+			}
+		}
+	}
+
+	// Insert conference presentation
+	if thesisJournal.ConferencePresentation != nil {
+		confQuery := `UPDATE EGRAD_CONFERENCE_PRESENTATIONS
+					SET
+						TYPE = :TYPE,
+						ARTICLE_TITLE = :ARTICLE_TITLE,
+						CONFERENCE_NAME = :CONFERENCE_NAME,
+						CONFERENCE_DATE = :CONFERENCE_DATE,
+						ORGANIZER = :ORGANIZER,
+						LOCATION = :LOCATION,
+						COUNTRY = :COUNTRY,
+						STATUS = :STATUS,
+						PAGE_FROM = :PAGE_FROM,
+						PAGE_TO = :PAGE_TO,
+						CREATED_AT = :CREATED_AT
+					WHERE
+						STD_CODE = :STD_CODE`
+
+		_, err = tx.NamedExecContext(ctx, confQuery, thesisJournal.ConferencePresentation)
+		if err != nil {
+			return fmt.Errorf("failed to update conference presentation: %w", err)
+		}
+	}
+
+	// Insert other publication
+	if thesisJournal.OtherPublication != nil {
+		otherQuery := `UPDATE EGRAD_OTHER_PUBLICATIONS
+						SET
+							ARTICLE_TITLE = :ARTICLE_TITLE,
+							SOURCE_TYPE = :SOURCE_TYPE,
+							SOURCE_DETAIL = :SOURCE_DETAIL,
+							CREATED_AT = :CREATED_AT
+						WHERE
+							STD_CODE = :STD_CODE`
+
+		_, err = tx.NamedExecContext(ctx, otherQuery, thesisJournal.OtherPublication)
+		if err != nil {
+			return fmt.Errorf("failed to update other publication: %w", err)
+		}
+	}
+
+	return tx.Commit()
 }
 
 func (r *thesisJournalRepository) Delete(ctx context.Context, id string) error {

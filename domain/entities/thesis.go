@@ -12,7 +12,7 @@ type ThesisJournal struct {
 	ThesisType             string                  `json:"thesisType" db:"THESIS_TYPE"`
 	ThesisTitleThai        string                  `json:"thesisTitleThai" db:"THESIS_TITLE_THAI"`
 	ThesisTitleEnglish     string                  `json:"thesisTitleEnglish" db:"THESIS_TITLE_ENGLISH"`
-	JournalPublication     []JournalPublication    `json:"journalPublication"`
+	JournalPublication     []JournalPublication    `json:"publications"`
 	ConferencePresentation *ConferencePresentation `json:"conferencePresentation"`
 	OtherPublication       *OtherPublication       `json:"otherPublication"`
 	CreatedAt              time.Time               `json:"createdAt" db:"CREATED_AT"`
@@ -22,6 +22,7 @@ type ThesisJournal struct {
 }
 
 type JournalPublication struct {
+	Id    		 string    	`json:"id" db:"ID"`
 	StudentID    string    `json:"studentId" db:"STD_CODE"`
 	Type         string    `json:"type" db:"TYPE"`
 	ArticleTitle string    `json:"articleTitle" db:"ARTICLE_TITLE"`

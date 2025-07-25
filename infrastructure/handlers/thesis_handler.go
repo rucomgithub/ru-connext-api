@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 	"strconv"
+	"log"
 
 	"RU-Smart-Workspace/ru-smart-api/domain/entities"
 	"RU-Smart-Workspace/ru-smart-api/domain/services"
@@ -67,6 +68,7 @@ func (h *journalHandler) GetJournalByStudentID(c *gin.Context) {
 	studentID := c.Param("studentId")
 
 	thesisJournal, err := h.thesisJournalService.GetThesisJournalByStudentID(c.Request.Context(), studentID)
+
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 		return
@@ -88,6 +90,7 @@ func (h *journalHandler) UpdateStudent(c *gin.Context) {
 	}
 
 	thesisJournal.StudentID = id
+	log.Print(thesisJournal.JournalPublication)
 	if err := h.thesisJournalService.UpdateThesisJournal(c.Request.Context(), &thesisJournal); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
