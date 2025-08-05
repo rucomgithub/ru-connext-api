@@ -142,7 +142,7 @@ func (r *thesisJournalRepository) GetByID(ctx context.Context, id string) (*enti
 
 	err = r.db.GetContext(ctx, confPres, confQuery, id)
 	if err != nil && err != sql.ErrNoRows {
-		return nil, fmt.Errorf("failed to get conference presentation: %w", err)
+		return nil, fmt.Errorf("failed to get conference presentation:::::::: %w", err)
 	}
 	if err != sql.ErrNoRows {
 		thesisJournal.ConferencePresentation = confPres
@@ -252,8 +252,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 						COUNTRY = :COUNTRY,
 						STATUS = :STATUS,
 						PAGE_FROM = :PAGE_FROM,
-						PAGE_TO = :PAGE_TO,
-						CREATED_AT = :CREATED_AT
+						PAGE_TO = :PAGE_TO
 					WHERE
 						STD_CODE = :STD_CODE`
 
@@ -269,8 +268,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 						SET
 							ARTICLE_TITLE = :ARTICLE_TITLE,
 							SOURCE_TYPE = :SOURCE_TYPE,
-							SOURCE_DETAIL = :SOURCE_DETAIL,
-							CREATED_AT = :CREATED_AT
+							SOURCE_DETAIL = :SOURCE_DETAIL
 						WHERE
 							STD_CODE = :STD_CODE`
 

@@ -6596,3 +6596,16 @@
 {"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/5312740208","service":"officer","status":200,"time":"2025-07-25T08:42:22Z"}
 {"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/5312740208","service":"officer","status":200,"time":"2025-07-25T08:42:22Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/","service":"officer","status":200,"time":"2025-07-25T08:42:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/","service":"officer","status":200,"time":"2025-07-25T11:17:25Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token signature is invalid","path":"/master/officer/success/6427952036","service":"master","status":401,"time":"2025-08-05T06:47:14Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token signature is invalid","path":"/master/officer/success/6427952036","service":"master","status":401,"time":"2025-08-05T06:47:15Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token signature is invalid","path":"/master/officer/success/6427952036","service":"master","status":401,"time":"2025-08-05T06:47:16Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token signature is invalid","path":"/master/officer/success/6427952036","service":"master","status":401,"time":"2025-08-05T06:47:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2025-08-05T06:47:44Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/success/6427952036","service":"master","status":200,"time":"2025-08-05T06:47:49Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/success/6427952036","service":"master","status":200,"time":"2025-08-05T06:47:52Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/success/6427952036","service":"master","status":200,"time":"2025-08-05T06:47:53Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/success/6427952036","service":"master","status":200,"time":"2025-08-05T06:48:06Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/success/6427952036","service":"master","status":200,"time":"2025-08-05T06:48:07Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/success/6427952036","service":"master","status":200,"time":"2025-08-05T06:48:08Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/success/6427952036","service":"master","status":200,"time":"2025-08-05T06:48:09Z"}

@@ -54,6 +54,8 @@ type (
 		GRADUATED_DATE  string  `db:"GRADUATED_DATE"`
 		GRADUATED_DATE_EN  string  `db:"GRADUATED_DATE_EN"`
 		CONFIRM_DATE    string  `db:"CONFIRM_DATE"`
+		MOBILE     		string `db:"MOBILE"`
+		EMAIL  			string `db:"EMAIL"`
 	}
 
 	RegisterRepo struct {

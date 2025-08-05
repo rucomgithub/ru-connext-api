@@ -59,11 +59,11 @@ func (h *studentHandlers) GetStudentSuccess(c *gin.Context) {
 
 	studentSuccessResponse, err := h.studentService.GetStudentSuccess(std_code)
 	if err != nil {
-		err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + ".")
+		err = errors.New("ไม่พบข้อมูลสำเร็จการศึกษา " + std_code + ".")
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "."})
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลสำเร็จการศึกษา " + std_code + "."})
 		c.Abort()
 		return
 	}
@@ -86,11 +86,11 @@ func (h *studentHandlers) GetStudentSuccessById(c *gin.Context) {
 
 	studentSuccessResponse, err := h.studentService.GetStudentSuccess(std_code)
 	if err != nil {
-		err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + ".")
+		err = errors.New("ไม่พบข้อมูลสำเร็จการศึกษา " + std_code + ".")
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + std_code + "."})
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลสำเร็จการศึกษา " + std_code + "."})
 		c.Abort()
 		return
 	}
@@ -112,7 +112,7 @@ func (h *studentHandlers) GetStudentSuccessCheck(c *gin.Context) {
 
 	studentSuccessResponse, err := h.studentService.GetStudentSuccessCheck(token)
 	if err != nil {
-		//err = errors.New("ไม่พบข้อมูลรับรองคุณวุฒิการศึกษา " + err.Error() + std_code + ".")
+		//err = errors.New("ไม่พบข้อมูลสำเร็จการศึกษา " + err.Error() + std_code + ".")
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())

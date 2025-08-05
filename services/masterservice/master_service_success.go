@@ -59,6 +59,8 @@ func (s *studentServices) GetStudentSuccessCheck(token string) (studentSuccessRe
 		GRADUATED_DATE  : sp.GRADUATED_DATE,
 		GRADUATED_DATE_EN  : sp.GRADUATED_DATE_EN,
 		CONFIRM_DATE    : sp.CONFIRM_DATE,
+		MOBILE    : sp.MOBILE,
+		EMAIL    : sp.EMAIL,
 	}
 
 	return &student, nil
@@ -105,6 +107,8 @@ func (s *studentServices) GetStudentSuccess(studentCode string) (studentSuccessR
 		GRADUATED_DATE  : sp.GRADUATED_DATE,
 		GRADUATED_DATE_EN  : sp.GRADUATED_DATE_EN,
 		CONFIRM_DATE    : sp.CONFIRM_DATE,
+		MOBILE    : sp.MOBILE,
+		EMAIL    : sp.EMAIL,
 	}
 
 	studentSuccessResponse = &student

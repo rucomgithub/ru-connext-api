@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func (r *studentRepoDB) GetStudentSuccess(studentCode string) (student *StudentSuccessRepo, err error) {
+func (r *studentRepoDB) GetStudentSuccess(studentCode string) (student *StudentSuccessRepo, err error) { 
 
 	student_info := StudentSuccessRepo{}
 
@@ -31,9 +31,12 @@ func (r *studentRepoDB) GetStudentSuccess(studentCode string) (student *StudentS
     UPPER(TO_CHAR(TO_DATE(g.admit_date, 'DD/MM/YYYY'), 'Month')) || TO_CHAR(TO_DATE(g.admit_date, 'DD/MM/YYYY'), 'DD, YYYY') AS admit_date_en,
     TO_CHAR(TO_DATE(g.graduated_date,'DD/MM/YYYY'),'FMDD MONTH YYYY','NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') graduated_date,
     UPPER(TO_CHAR(TO_DATE(g.graduated_date, 'DD/MM/YYYY'), 'Month')) || TO_CHAR(TO_DATE(g.graduated_date, 'DD/MM/YYYY'), 'DD, YYYY') AS graduated_date_en,
-    TO_CHAR(TO_DATE(g.conference_date,'DD/MM/YYYY')+7,'FMDD MONTH YYYY','NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') confirm_date
-    from  vm_graduate g 
-    where  std_code = :param1`
+    TO_CHAR(TO_DATE(g.conference_date,'DD/MM/YYYY')+7,'FMDD MONTH YYYY','NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') confirm_date,
+    NVL(a.E_MAIL,'-') EMAIL,
+    NVL(a.MOBILE_TELEPHONE,'-') MOBILE
+    from  vm_graduate g
+    left join vm_student_address a on g.std_code = a.std_code 
+    where  g.std_code = :param1`
 
 	fmt.Printf("success: %s \n", studentCode)
 

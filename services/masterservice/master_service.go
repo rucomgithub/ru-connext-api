@@ -115,6 +115,8 @@ type (
 		GRADUATED_DATE  string  `json:"GRADUATED_DATE"`
 		GRADUATED_DATE_EN  string  `json:"GRADUATED_DATE_EN"`
 		CONFIRM_DATE    string  `json:"CONFIRM_DATE"`
+		MOBILE     string `json:"MOBILE"`
+		EMAIL        string `json:"EMAIL"`
 	}
 
 	RegisterResponse struct {

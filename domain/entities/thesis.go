@@ -6,6 +6,8 @@ import (
 
 type ThesisJournal struct {
 	StudentID              string                  `json:"studentId" db:"STD_CODE"`
+	Email                	string                  `json:"program" db:"EMAIL"`
+	Mobile                  string                  `json:"major" db:"MOBILE"`
 	Program                string                  `json:"program" db:"PROGRAM"`
 	Major                  string                  `json:"major" db:"MAJOR"`
 	Faculty                string                  `json:"faculty" db:"FACULTY"`
@@ -22,7 +24,7 @@ type ThesisJournal struct {
 }
 
 type JournalPublication struct {
-	Id    		 string    	`json:"id" db:"ID"`
+	Id           string    `json:"id" db:"ID"`
 	StudentID    string    `json:"studentId" db:"STD_CODE"`
 	Type         string    `json:"type" db:"TYPE"`
 	ArticleTitle string    `json:"articleTitle" db:"ARTICLE_TITLE"`
