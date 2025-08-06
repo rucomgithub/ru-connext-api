@@ -6,8 +6,6 @@ import (
 
 type ThesisJournal struct {
 	StudentID              string                  `json:"studentId" db:"STD_CODE"`
-	Email                	string                  `json:"program" db:"EMAIL"`
-	Mobile                  string                  `json:"major" db:"MOBILE"`
 	Program                string                  `json:"program" db:"PROGRAM"`
 	Major                  string                  `json:"major" db:"MAJOR"`
 	Faculty                string                  `json:"faculty" db:"FACULTY"`
