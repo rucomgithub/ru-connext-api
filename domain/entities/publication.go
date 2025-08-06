@@ -14,6 +14,7 @@ const (
 )
 
 type Publication struct {
+	Id            string    `json:"id" db:"ID"`
 	StudentCode            string    `json:"std_code" db:"STD_CODE" validate:"min=10,max=10,regexp=^[0-9]{10}$"`
 	ThesisTitle            string    `json:"thesis_title" db:"THESIS_TITLE" validate:"nonzero"`
 	ThesisTitleEng         string    `json:"thesis_title_eng" db:"THESIS_TITLE_ENG" validate:"nonzero"`

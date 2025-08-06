@@ -34,7 +34,7 @@ import (
 	"RU-Smart-Workspace/ru-smart-api/services/officerservices"
 
 	_services "RU-Smart-Workspace/ru-smart-api/application/services"
-	_usecases "RU-Smart-Workspace/ru-smart-api/application/usecases"
+	//_usecases "RU-Smart-Workspace/ru-smart-api/application/usecases"
 	_db "RU-Smart-Workspace/ru-smart-api/infrastructure/db"
 	_handlers "RU-Smart-Workspace/ru-smart-api/infrastructure/handlers"
 )
@@ -79,23 +79,23 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 	}
 
-	publications := officeAuth.Group("/publications")
-	{
-		// Repository
-		publicationRepo := _db.NewPublicationRepository(database)
-		// Services
-		publicationService := _services.NewPublicationService(publicationRepo)
-		// Use cases
-		publicationUseCase := _usecases.NewPublicationUseCase(publicationService)
-		// REST handlers
-		publicationHandler := _handlers.NewPublicationHandler(publicationUseCase)
+	// publications := officeAuth.Group("/publications")
+	// {
+	// 	// Repository
+	// 	publicationRepo := _db.NewPublicationRepository(database)
+	// 	// Services
+	// 	publicationService := _services.NewPublicationService(publicationRepo)
+	// 	// Use cases
+	// 	publicationUseCase := _usecases.NewPublicationUseCase(publicationService)
+	// 	// REST handlers
+	// 	publicationHandler := _handlers.NewPublicationHandler(publicationUseCase)
 
-		publications.POST("/", publicationHandler.CreatePublication)
-		publications.GET("/:id", publicationHandler.GetPublication)
-		publications.PUT("/:id", publicationHandler.UpdatePublication)
-		publications.DELETE("/:id", publicationHandler.DeletePublication)
-		publications.GET("/", publicationHandler.ListPublications)
-	}
+	// 	publications.POST("/", publicationHandler.CreatePublication)
+	// 	publications.GET("/:id", publicationHandler.GetPublication)
+	// 	publications.PUT("/:id", publicationHandler.UpdatePublication)
+	// 	publications.DELETE("/:id", publicationHandler.DeletePublication)
+	// 	publications.GET("/", publicationHandler.ListPublications)
+	// }
 
 	journals := officeAuth.Group("/journals")
 	{
@@ -280,6 +280,21 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		gradeMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetGradeAll)
 		gradeMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetGradeByYear)
 
+	}
+
+	journal := master.Group("/journal")
+	{
+		// Initialize repository
+		journalRepo := _db.NewThesisJournalRepository(oracle_db_dbg)
+
+		// Initialize service
+		journalService := _services.NewThesisJournalService(journalRepo)
+
+		// Initialize HTTP handler
+		journalHandler := _handlers.NewJournalHandler(journalService)
+
+		journal.POST("/", middlewares.Authorization(redis_cache), journalHandler.CreateJournal)
+		journal.GET("/", middlewares.Authorization(redis_cache), journalHandler.GetJournalMaster)
 	}
 
 	PORT := viper.GetString("ruConnext.port")
