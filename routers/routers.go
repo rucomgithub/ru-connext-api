@@ -111,7 +111,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		journals.POST("/", journalHandler.CreateJournal)
 		journals.GET("/:id", journalHandler.GetJournal)
 		journals.GET("/student-id/:studentId", journalHandler.GetJournalByStudentID)
-		journals.PUT("/:id", journalHandler.UpdateStudent)
+		journals.PUT("/:id", journalHandler.UpdateJournal)
 		journals.DELETE("/:id", journalHandler.DeleteJoural)
 		journals.GET("/", journalHandler.ListJournals)
 	}
@@ -295,6 +295,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		journal.POST("/", middlewares.Authorization(redis_cache), journalHandler.CreateJournal)
 		journal.GET("/", middlewares.Authorization(redis_cache), journalHandler.GetJournalMaster)
+		journal.PUT("/", middlewares.Authorization(redis_cache), journalHandler.UpdateJournalMaster)
 	}
 
 	PORT := viper.GetString("ruConnext.port")

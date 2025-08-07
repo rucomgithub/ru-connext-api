@@ -140,7 +140,7 @@ func (h *journalHandler) GetJournalByStudentID(c *gin.Context) {
 	})
 }
 
-func (h *journalHandler) UpdateStudent(c *gin.Context) {
+func (h *journalHandler) UpdateJournal(c *gin.Context) {
 	id := c.Param("id")
 
 	var thesisJournal entities.ThesisJournal
@@ -150,6 +150,68 @@ func (h *journalHandler) UpdateStudent(c *gin.Context) {
 	}
 
 	thesisJournal.StudentID = id
+	log.Print(thesisJournal.JournalPublication)
+	if err := h.thesisJournalService.UpdateThesisJournal(c.Request.Context(), &thesisJournal); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Journal updated successfully",
+		"data":    thesisJournal,
+	})
+}
+
+func (h *journalHandler) UpdateJournalMaster(c *gin.Context) {
+	token, err := middlewares.GetHeaderAuthorization(c)
+
+	fmt.Println(token)
+
+	if err != nil {
+		err = errors.New("ไม่พบ token login.")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ token login."})
+		c.Abort()
+		return
+	}
+
+	fmt.Println(token)
+
+	claim, err := middlewares.GetClaims(token)
+
+	if err != nil {
+		err = errors.New("ไม่พบ claims user." + err.Error())
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ claims user."})
+		c.Abort()
+		return
+	}
+
+	role := claim.Role
+
+	fmt.Println(role)
+
+	if role == "Bachelor" {
+		err = errors.New("สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้...")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
+		c.Abort()
+		return
+	}
+	
+	var thesisJournal entities.ThesisJournal
+	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	thesisJournal.StudentID = claim.StudentCode
 	log.Print(thesisJournal.JournalPublication)
 	if err := h.thesisJournalService.UpdateThesisJournal(c.Request.Context(), &thesisJournal); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
