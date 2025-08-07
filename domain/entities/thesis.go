@@ -19,6 +19,7 @@ type ThesisJournal struct {
 	UpdatedAt              time.Time               `json:"updatedAt" db:"UPDATED_AT"`
 	CreatedBy              string                  `json:"createdBy" db:"CREATED_BY"`
 	UpdatedBy              string                  `json:"updatedBy" db:"UPDATED_BY"`
+	Similarity             float64                 `json:"similarity" db:"SIMILARITY"`
 }
 
 type JournalPublication struct {

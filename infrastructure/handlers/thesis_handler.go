@@ -31,16 +31,6 @@ func (h *journalHandler) CreateJournal(c *gin.Context) {
 		return
 	}
 
-	// // Parse conference date if present
-	// if thesisJournal.ConferencePresentation != nil {
-	// 	// The JSON might have the date as string, convert it
-	// 	if dateStr, ok := c.GetPostForm("conferencePresentation.conferenceDate"); ok {
-	// 		if date, err := time.Parse("2006-01-02", dateStr); err == nil {
-	// 			thesisJournal.ConferencePresentation.ConferenceDate = date
-	// 		}
-	// 	}
-	// }
-
 	if err := h.thesisJournalService.CreateThesisJournal(c.Request.Context(), &thesisJournal); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

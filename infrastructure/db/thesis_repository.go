@@ -34,11 +34,13 @@ func (r *thesisJournalRepository) Create(ctx context.Context, thesisJournal *ent
         INSERT INTO EGRAD_THESIS (
             STD_CODE, PROGRAM, MAJOR, FACULTY,
             THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-            CREATED_AT, UPDATED_AT
+            CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
+			SIMILARITY
         ) VALUES (
             :STD_CODE, :PROGRAM, :MAJOR, :FACULTY,
             :THESIS_TYPE, :THESIS_TITLE_THAI, :THESIS_TITLE_ENGLISH,
-            :CREATED_AT, :UPDATED_AT
+            :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY,
+			:SIMILARITY
         )`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
@@ -108,7 +110,8 @@ func (r *thesisJournalRepository) GetByID(ctx context.Context, id string) (*enti
 	query := `
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-               CREATED_AT, UPDATED_AT
+               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
+			   SIMILARITY
         FROM EGRAD_THESIS WHERE STD_CODE = :1`
 
 	err := r.db.GetContext(ctx, thesisJournal, query, id)
@@ -171,7 +174,8 @@ func (r *thesisJournalRepository) GetByStudentID(ctx context.Context, studentID 
 	query := `
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-               CREATED_AT, UPDATED_AT
+               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
+			   SIMILARITY
         FROM EGRAD_THESIS WHERE STD_CODE = :1`
 
 	err := r.db.GetContext(ctx, thesisJournal, query, studentID)
@@ -200,7 +204,10 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 						THESIS_TYPE = :THESIS_TYPE,
 						THESIS_TITLE_THAI = :THESIS_TITLE_THAI,
 						THESIS_TITLE_ENGLISH = :THESIS_TITLE_ENGLISH,
-						UPDATED_AT = :UPDATED_AT
+						UPDATED_AT = :UPDATED_AT,
+						CREATED_BY = :CREATED_BY, 
+						UPDATED_BY = :UPDATED_BY,
+						SIMILARITY = :SIMILARITY
 					WHERE STD_CODE = :STD_CODE`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
@@ -318,7 +325,8 @@ func (r *thesisJournalRepository) List(ctx context.Context, limit, offset int) (
 	query := `
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-               CREATED_AT, UPDATED_AT
+               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
+			   SIMILARITY
         FROM EGRAD_THESIS
         ORDER BY CREATED_AT DESC
         OFFSET :1 ROWS FETCH NEXT :2 ROWS ONLY`
