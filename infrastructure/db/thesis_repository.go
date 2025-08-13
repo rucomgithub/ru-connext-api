@@ -197,6 +197,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 	defer tx.Rollback()
 
 	// Update Thesis Journal
+	log.Print("Updating thesis journal: ", thesisJournal.StudentID)
 	thesisQuery := `UPDATE EGRAD_THESIS SET 
 						PROGRAM = :PROGRAM,
 						MAJOR = :MAJOR,
@@ -216,7 +217,10 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 	}
 
 	// Insert publications
-	log.Print(len(thesisJournal.JournalPublication))
+	log.Print(
+		"Updating thesis journal publications for student ID: ", thesisJournal.StudentID,
+		" with ", len(thesisJournal.JournalPublication), " publications",
+	)
 	if len(thesisJournal.JournalPublication) > 0 {
 		publicationQuery := `
             UPDATE EGRAD_PUBLICATIONS 
@@ -246,7 +250,11 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 		}
 	}
 
-	// Insert conference presentation
+	// update conference presentation
+	log.Print(
+		"Updating thesis journal conference presentation for student ID: ", thesisJournal.ConferencePresentation.StudentID,
+		" with ", len(thesisJournal.ConferencePresentation.ArticleTitle), " ConferencePresentation",
+	)
 	if thesisJournal.ConferencePresentation != nil {
 		confQuery := `UPDATE EGRAD_CONFERENCE_PRESENTATIONS
 					SET
@@ -263,13 +271,36 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 					WHERE
 						STD_CODE = :STD_CODE`
 
-		_, err = tx.NamedExecContext(ctx, confQuery, thesisJournal.ConferencePresentation)
+		res, err := tx.NamedExecContext(ctx, confQuery, thesisJournal.ConferencePresentation)
 		if err != nil {
+
 			return fmt.Errorf("failed to update conference presentation: %w", err)
+		}
+
+		rows, err := res.RowsAffected()
+
+		if rows < 1 {
+			confQuery := `
+				INSERT INTO EGRAD_CONFERENCE_PRESENTATIONS (
+					STD_CODE, TYPE, ARTICLE_TITLE, CONFERENCE_NAME, CONFERENCE_DATE,
+					ORGANIZER, LOCATION, COUNTRY, STATUS, PAGE_FROM, PAGE_TO, CREATED_AT
+				) VALUES (
+					:STD_CODE, :TYPE, :ARTICLE_TITLE, :CONFERENCE_NAME, :CONFERENCE_DATE,
+					:ORGANIZER, :LOCATION, :COUNTRY, :STATUS, :PAGE_FROM, :PAGE_TO, :CREATED_AT
+				)`
+
+			_, err = tx.NamedExecContext(ctx, confQuery, thesisJournal.ConferencePresentation)
+			if err != nil {
+				return fmt.Errorf("failed to insert conference presentation: %w", err)
+			}
 		}
 	}
 
-	// Insert other publication
+	// update other publication
+	log.Print(
+		"Updating thesis journal other publication for student ID: ", thesisJournal.OtherPublication.StudentID,
+		" with ", len(thesisJournal.OtherPublication.ArticleTitle), " OtherPublication",
+	)
 	if thesisJournal.OtherPublication != nil {
 		otherQuery := `UPDATE EGRAD_OTHER_PUBLICATIONS
 						SET
@@ -279,9 +310,25 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 						WHERE
 							STD_CODE = :STD_CODE`
 
-		_, err = tx.NamedExecContext(ctx, otherQuery, thesisJournal.OtherPublication)
+		res, err := tx.NamedExecContext(ctx, otherQuery, thesisJournal.OtherPublication)
 		if err != nil {
 			return fmt.Errorf("failed to update other publication: %w", err)
+		}
+
+		rows, err := res.RowsAffected()
+
+		if rows < 1 {
+			otherQuery := `
+				INSERT INTO EGRAD_OTHER_PUBLICATIONS (
+					STD_CODE, ARTICLE_TITLE, SOURCE_TYPE, SOURCE_DETAIL, CREATED_AT
+				) VALUES (
+					:STD_CODE, :ARTICLE_TITLE, :SOURCE_TYPE, :SOURCE_DETAIL, :CREATED_AT
+				)`
+
+			_, err = tx.NamedExecContext(ctx, otherQuery, thesisJournal.OtherPublication)
+			if err != nil {
+				return fmt.Errorf("failed to insert other publication: %w", err)
+			}
 		}
 	}
 
