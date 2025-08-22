@@ -144,7 +144,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
-
+		
 		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
 		student.GET("/photograduate", middlewares.Authorization(redis_cache), studentHandler.GetPhotoGraduate)
 		student.GET("/photograduatesuccess/:id", studentHandler.GetPhotoGraduateSuccess)
@@ -174,6 +174,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		registerHandler := handlers.NewRegisterHandlers(registerService)
 
 		register.GET("/yearsemesterlates", registerHandler.YearSemesterLates)
+		register.GET("/course", registerHandler.GetRegisterCourse)
 
 		register.POST("/", middlewares.Authorization(redis_cache), registerHandler.Registers)
 		register.GET("/:std_code/year", middlewares.Authorization(redis_cache), registerHandler.Years)

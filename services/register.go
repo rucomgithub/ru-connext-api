@@ -91,6 +91,22 @@ type (
 		CREDIT    string `json:"credit"`
 	}
 
+	
+	RegisterCourseRequest struct {
+		YEAR          string `json:"year"`
+		SEMESTER      string `json:"semester"`
+		COURSE_NO            string `json:"course_no"`
+	}
+
+	RegisterCourseResponse struct {
+		YEAR          string `json:"YEAR"`
+		SEMESTER      string `json:"SEMESTER"`
+		STD_CODE            string `json:"STD_CODE"`
+		COURSE_NO            string `json:"COURSE_NO"`
+		MOBILE_TELEPHONE     string `json:"MOBILE_TELEPHONE"`
+		EMAIL_ADDRESS 		 string `json:"EMAIL_ADDRESS"`
+	}
+
 	RegisterServiceInterface interface {
 		GetRegister(registerRequest RegisterRequest) (*RegisterResponse, error)
 		GetListYear(std_code string) (*RegisterYearResponse, error)
@@ -99,6 +115,7 @@ type (
 		GetSchedule(std_code string) (*RegisterScheduleResponse, error)
 
 		GetYearSemesterLatest() (*YearSemesterResponse, error)
+		GetRegisterCourse(year,semester,courseno string) (*[]RegisterCourseResponse, error)
 	}
 )
 

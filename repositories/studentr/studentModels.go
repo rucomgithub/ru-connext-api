@@ -77,6 +77,7 @@ type (
 		GetRegister(studentCode, courseYear, courseSemester string) (*[]RegisterRepo, error)
 		Authentication(studentCode string) (*PrepareTokenRepo, error)
 		GetStudentAll() (*[]StudentRepo, error)
+		
 	}
 )
 
