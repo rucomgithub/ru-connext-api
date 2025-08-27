@@ -242,7 +242,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 			WHERE ID = :ID`
 
 		for _, pub := range thesisJournal.JournalPublication {
-			log.Print(pub.Id)
+			//log.Print(pub.Id)
 			_, err = tx.NamedExecContext(ctx, publicationQuery, pub)
 			if err != nil {
 				return fmt.Errorf("failed to update publication: %w", err.Error())
@@ -251,11 +251,11 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 	}
 
 	// update conference presentation
-	log.Print(
-		"Updating thesis journal conference presentation for student ID: ", thesisJournal.ConferencePresentation.StudentID,
-		" with ", len(thesisJournal.ConferencePresentation.ArticleTitle), " ConferencePresentation",
-	)
+
 	if thesisJournal.ConferencePresentation != nil {
+		log.Print(
+			"Updating thesis journal conference presentation for student ID: ", thesisJournal.StudentID,thesisJournal.ConferencePresentation,
+		)
 		confQuery := `UPDATE EGRAD_CONFERENCE_PRESENTATIONS
 					SET
 						TYPE = :TYPE,
@@ -294,14 +294,23 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 				return fmt.Errorf("failed to insert conference presentation: %w", err)
 			}
 		}
+	} else {
+		log.Print(
+			"Updating thesis journal delete conference presentation for student ID: ", thesisJournal.StudentID,
+		)
+		_, err = tx.ExecContext(ctx, "DELETE FROM egrad_conference_presentations WHERE STD_CODE = :1", thesisJournal.StudentID)
+		if err != nil {
+			return fmt.Errorf("failed to delete conference presentations: %w", err)
+		}
 	}
 
 	// update other publication
-	log.Print(
-		"Updating thesis journal other publication for student ID: ", thesisJournal.OtherPublication.StudentID,
-		" with ", len(thesisJournal.OtherPublication.ArticleTitle), " OtherPublication",
-	)
+	
 	if thesisJournal.OtherPublication != nil {
+		log.Print(
+			"Updating thesis journal other publication for student ID: ", thesisJournal.OtherPublication.StudentID,
+			" with ", len(thesisJournal.OtherPublication.ArticleTitle), " OtherPublication",
+		)
 		otherQuery := `UPDATE EGRAD_OTHER_PUBLICATIONS
 						SET
 							ARTICLE_TITLE = :ARTICLE_TITLE,
@@ -329,6 +338,14 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 			if err != nil {
 				return fmt.Errorf("failed to insert other publication: %w", err)
 			}
+		}
+	} else {
+		log.Print(
+			"Updating thesis journal delete other publication for student ID: ", thesisJournal.StudentID,
+		)
+		_, err = tx.ExecContext(ctx, "DELETE FROM egrad_other_publications WHERE STD_CODE = :1", thesisJournal.StudentID)
+		if err != nil {
+			return fmt.Errorf("failed to delete other publications: %w", err)
 		}
 	}
 
