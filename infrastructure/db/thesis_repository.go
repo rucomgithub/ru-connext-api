@@ -171,7 +171,7 @@ func (r *thesisJournalRepository) GetByID(ctx context.Context, id string) (*enti
 func (r *thesisJournalRepository) GetByStudentID(ctx context.Context, studentID string) (*entities.ThesisJournal, error) {
 	thesisJournal := &entities.ThesisJournal{}
 
-	query := `
+	query := ` 
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
                CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
@@ -283,10 +283,10 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 			confQuery := `
 				INSERT INTO EGRAD_CONFERENCE_PRESENTATIONS (
 					STD_CODE, TYPE, ARTICLE_TITLE, CONFERENCE_NAME, CONFERENCE_DATE,
-					ORGANIZER, LOCATION, COUNTRY, STATUS, PAGE_FROM, PAGE_TO, CREATED_AT
+					ORGANIZER, LOCATION, COUNTRY, STATUS, PAGE_FROM, PAGE_TO
 				) VALUES (
 					:STD_CODE, :TYPE, :ARTICLE_TITLE, :CONFERENCE_NAME, :CONFERENCE_DATE,
-					:ORGANIZER, :LOCATION, :COUNTRY, :STATUS, :PAGE_FROM, :PAGE_TO, :CREATED_AT
+					:ORGANIZER, :LOCATION, :COUNTRY, :STATUS, :PAGE_FROM, :PAGE_TO
 				)`
 
 			_, err = tx.NamedExecContext(ctx, confQuery, thesisJournal.ConferencePresentation)
@@ -320,9 +320,9 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 		if rows < 1 {
 			otherQuery := `
 				INSERT INTO EGRAD_OTHER_PUBLICATIONS (
-					STD_CODE, ARTICLE_TITLE, SOURCE_TYPE, SOURCE_DETAIL, CREATED_AT
+					STD_CODE, ARTICLE_TITLE, SOURCE_TYPE, SOURCE_DETAIL
 				) VALUES (
-					:STD_CODE, :ARTICLE_TITLE, :SOURCE_TYPE, :SOURCE_DETAIL, :CREATED_AT
+					:STD_CODE, :ARTICLE_TITLE, :SOURCE_TYPE, :SOURCE_DETAIL
 				)`
 
 			_, err = tx.NamedExecContext(ctx, otherQuery, thesisJournal.OtherPublication)

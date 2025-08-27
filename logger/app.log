@@ -6855,3 +6855,10 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/course","service":"register","status":200,"time":"2025-08-22T08:07:16Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/course","service":"register","status":200,"time":"2025-08-22T08:07:17Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/course","service":"register","status":200,"time":"2025-08-22T08:07:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-08-25T03:01:15Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/6012345679","service":"officer","status":200,"time":"2025-08-27T06:25:01Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/6012345679","service":"officer","status":200,"time":"2025-08-27T06:25:02Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/6427952036","service":"officer","status":200,"time":"2025-08-27T06:40:30Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/6427952036","service":"officer","status":200,"time":"2025-08-27T06:40:31Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/6012345679","service":"officer","status":200,"time":"2025-08-27T07:19:12Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/6012345679","service":"officer","status":200,"time":"2025-08-27T07:19:23Z"}
