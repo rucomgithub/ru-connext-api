@@ -253,6 +253,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 					"Updating thesis journal publications for insert publication null ID: ", thesisJournal.StudentID, len(thesis.JournalPublication),
 					" with ", len(thesisJournal.JournalPublication), " publications",
 				)
+				pub.StudentID = thesisJournal.StudentID
 				publicationQuery := `
 				INSERT INTO EGRAD_PUBLICATIONS (
 					STD_CODE, TYPE, ARTICLE_TITLE, JOURNAL_NAME, COUNTRY, STATUS,
