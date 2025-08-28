@@ -196,6 +196,11 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 	}
 	defer tx.Rollback()
 
+	thesis , err := r.GetByID(ctx, thesisJournal.StudentID)
+	if err != nil {
+		log.Print("Updating thesis journal error get Thesis: ", thesisJournal.StudentID)
+	}
+
 	// Update Thesis Journal
 	log.Print("Updating thesis journal: ", thesisJournal.StudentID)
 	thesisQuery := `UPDATE EGRAD_THESIS SET 
@@ -243,9 +248,9 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 
 		for _, pub := range thesisJournal.JournalPublication {
 			log.Print(pub.Id)
-			if pub.Id == "" {
+			if (pub.Id == "" && len(thesis.JournalPublication) < 2) {
 				log.Print(
-					"Updating thesis journal publications for insert publication null ID: ", thesisJournal.StudentID,
+					"Updating thesis journal publications for insert publication null ID: ", thesisJournal.StudentID, len(thesis.JournalPublication),
 					" with ", len(thesisJournal.JournalPublication), " publications",
 				)
 				publicationQuery := `
