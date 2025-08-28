@@ -242,7 +242,28 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 			WHERE ID = :ID`
 
 		for _, pub := range thesisJournal.JournalPublication {
-			//log.Print(pub.Id)
+			log.Print(pub.Id)
+			if pub.Id == "" {
+				log.Print(
+					"Updating thesis journal publications for insert publication null ID: ", thesisJournal.StudentID,
+					" with ", len(thesisJournal.JournalPublication), " publications",
+				)
+				publicationQuery := `
+				INSERT INTO EGRAD_PUBLICATIONS (
+					STD_CODE, TYPE, ARTICLE_TITLE, JOURNAL_NAME, COUNTRY, STATUS,
+					YEAR, VOLUME, ISSUE, MONTH, PUBLISH_YEAR, PAGE_FROM, PAGE_TO,
+					PUBLISH_LEVEL, TCI_GROUP
+				) VALUES (
+					:STD_CODE, :TYPE, :ARTICLE_TITLE, :JOURNAL_NAME, :COUNTRY, :STATUS,
+					:YEAR, :VOLUME, :ISSUE, :MONTH, :PUBLISH_YEAR, :PAGE_FROM, :PAGE_TO,
+					:PUBLISH_LEVEL, :TCI_GROUP
+				)`
+				_, err = tx.NamedExecContext(ctx, publicationQuery, pub)
+				if err != nil {
+					return fmt.Errorf("failed update publication to insert publication: %w", err)
+				}
+			}
+
 			_, err = tx.NamedExecContext(ctx, publicationQuery, pub)
 			if err != nil {
 				return fmt.Errorf("failed to update publication: %w", err.Error())
