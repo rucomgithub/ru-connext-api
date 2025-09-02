@@ -264,8 +264,9 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		studentMaster.GET("/successpdf", middlewares.Authorization(redis_cache), masterHandler.GeneratePDFWithQR)
 
 		officerMaster := master.Group("/officer")
+		officerMaster.GET("/student/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetStudenProfiletById)
 		officerMaster.GET("/successpdf/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GeneratePDFWithQROfficer)
-		officerMaster.GET("/success/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetStudentSuccessById) 
+		officerMaster.GET("/success/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetStudentSuccessById)
 		officerMaster.GET("/photograduate/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetPhotoGraduateByStudentCode)
 
 		certificateMaster := master.Group("/certificate")

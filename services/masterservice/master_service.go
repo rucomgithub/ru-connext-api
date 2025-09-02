@@ -89,6 +89,11 @@ type (
 		PENAL_NAME_THAI      string `json:"PENAL_NAME_THAI"`
 		MOBILE_TELEPHONE     string `json:"MOBILE_TELEPHONE"`
 		EMAIL_ADDRESS        string `json:"EMAIL_ADDRESS"`
+		THAI_NAME            string `json:"THAI_NAME"`
+		ENG_NAME             string `json:"ENG_NAME"`
+		THAI_DEGREE          string `json:"THAI_DEGREE"`
+		ENG_DEGREE           string `json:"ENG_DEGREE"`
+		THAI_MAJOR           string `json:"THAI_MAJOR"`
 	}
 
 	StudentSuccessService struct {

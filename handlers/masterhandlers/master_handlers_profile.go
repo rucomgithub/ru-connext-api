@@ -67,3 +67,30 @@ func (h *studentHandlers) GetStudentProfile(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, studentProfileResponse)
 
 }
+
+func (h *studentHandlers) GetStudenProfiletById(c *gin.Context) {
+
+	std_code := c.Param("id")
+
+	if std_code == "" {
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบรหัสนักศึกษา."})
+		c.Abort()
+		return
+	}
+
+	studentResponse, err := h.studentService.GetStudentProfile(std_code)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลนักศึกษา " + std_code + ".")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลนักศึกษา " + std_code + "."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentResponse) 
+
+}

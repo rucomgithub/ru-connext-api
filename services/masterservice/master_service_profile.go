@@ -41,6 +41,11 @@ func (s *studentServices) GetStudentProfile(studentCode string) (studentProfileR
 		PENAL_NAME_THAI:      sp.PENAL_NAME_THAI,
 		MOBILE_TELEPHONE:     sp.MOBILE_TELEPHONE,
 		EMAIL_ADDRESS:        sp.EMAIL_ADDRESS,
+		THAI_NAME:             sp.THAI_NAME,
+		ENG_NAME:              sp.ENG_NAME,
+		THAI_DEGREE:           sp.THAI_DEGREE,
+		ENG_DEGREE:            sp.ENG_DEGREE,
+		THAI_MAJOR:            sp.THAI_MAJOR,
 	}
 
 	studentProfileResponse = &student

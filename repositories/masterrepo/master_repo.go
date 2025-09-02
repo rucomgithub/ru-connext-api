@@ -28,6 +28,11 @@ type (
 		PENAL_NAME_THAI      string `db:"PENAL_NAME_THAI"`
 		MOBILE_TELEPHONE     string `db:"MOBILE_TELEPHONE"`
 		EMAIL_ADDRESS        string `db:"EMAIL_ADDRESS"`
+		THAI_NAME            string  `db:"THAI_NAME"`
+		ENG_NAME             string  `db:"ENG_NAME"`
+		THAI_DEGREE          string  `db:"THAI_DEGREE"`
+		ENG_DEGREE           string  `db:"ENG_DEGREE"`
+		THAI_MAJOR           string  `db:"THAI_MAJOR"`
 	}
 
 	StudentSuccessRepo struct {
