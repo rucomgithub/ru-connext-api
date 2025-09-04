@@ -275,6 +275,14 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 				return fmt.Errorf("failed to update publication: %w", err.Error())
 			}
 		}
+	} else {
+		log.Print(
+			"Updating thesis publications for delete publications for student ID: ", thesisJournal.StudentID,
+		)
+		_, err = tx.ExecContext(ctx, "DELETE FROM EGRAD_PUBLICATIONS WHERE STD_CODE = :1", thesisJournal.StudentID)
+		if err != nil {
+			return fmt.Errorf("failed to delete publications: %w", err)
+		}
 	}
 
 	// update conference presentation
