@@ -6970,3 +6970,7 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/student/6614113001","service":"master","status":200,"time":"2025-09-02T08:28:06Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/student/6614113001","service":"master","status":200,"time":"2025-09-02T08:28:07Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/student/6614113001","service":"master","status":200,"time":"2025-09-02T08:28:07Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/student/6614113001","service":"master","status":401,"time":"2025-09-02T08:31:25Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/student/6614113001","service":"master","status":401,"time":"2025-09-02T08:31:26Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/student/6614113001","service":"master","status":401,"time":"2025-09-02T08:31:26Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-09-03T07:27:44Z"}

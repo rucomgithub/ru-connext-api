@@ -233,7 +233,7 @@ func (h *journalHandler) ListJournals(c *gin.Context) {
 
 	limit, err := strconv.Atoi(limitStr)
 	if err != nil {
-		limit = 10
+		limit = 10000
 	}
 
 	offset, err := strconv.Atoi(offsetStr)
