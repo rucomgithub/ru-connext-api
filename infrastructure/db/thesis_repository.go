@@ -49,7 +49,7 @@ func (r *thesisJournalRepository) Create(ctx context.Context, thesisJournal *ent
 	}
 
 	// Insert publications
-	if len(thesisJournal.JournalPublication) > 0 {
+	if (thesisJournal.JournalPublication != nil && len(thesisJournal.JournalPublication) > 0) {
 		publicationQuery := `
             INSERT INTO EGRAD_PUBLICATIONS (
                 STD_CODE, TYPE, ARTICLE_TITLE, JOURNAL_NAME, COUNTRY, STATUS,
