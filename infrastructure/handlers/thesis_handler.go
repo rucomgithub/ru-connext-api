@@ -228,7 +228,7 @@ func (h *journalHandler) DeleteJoural(c *gin.Context) {
 }
 
 func (h *journalHandler) ListJournals(c *gin.Context) {
-	limitStr := c.DefaultQuery("limit", "10")
+	limitStr := c.DefaultQuery("limit", "10000")
 	offsetStr := c.DefaultQuery("offset", "0")
 
 	limit, err := strconv.Atoi(limitStr)
