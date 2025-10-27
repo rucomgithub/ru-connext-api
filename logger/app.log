@@ -7073,3 +7073,5 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-10-27T06:57:53Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-10-27T07:03:21Z"}
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-10-27T07:03:52Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/similarity/6012345674","service":"officer","status":200,"time":"2025-10-27T07:34:29Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/similarity/6012345675","service":"officer","status":200,"time":"2025-10-27T07:34:52Z"}

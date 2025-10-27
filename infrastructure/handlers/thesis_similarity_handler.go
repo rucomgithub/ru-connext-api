@@ -11,16 +11,23 @@ import (
 func (h *journalHandler) CreateSimilarity(c *gin.Context) {
 	var thesisJournal entities.ThesisSimilarity
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success" : false,
+			"message": "check error" + err.Error()
+		})
 		return
 	}
 
 	if err := h.thesisJournalService.CreateThesisSimilarity(c.Request.Context(), &thesisJournal); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success" : false,
+			"message": "check error" + err.Error()
+		})
 		return
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
+		"success" : true,
 		"message": "Similarity created successfully",
 		"data":    thesisJournal,
 	})
@@ -31,7 +38,10 @@ func (h *journalHandler) UpdateSimilarity(c *gin.Context) {
 
 	var thesisJournal entities.ThesisSimilarity
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success" : false,
+			"message": "check error" + err.Error()
+		})
 		return
 	}
 
@@ -43,6 +53,7 @@ func (h *journalHandler) UpdateSimilarity(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"success" : true,
 		"message": "Similarity updated successfully.",
 		"data":    thesisJournal,
 	})
@@ -54,11 +65,15 @@ func (h *journalHandler) GetSimilarityByID(c *gin.Context) {
 	thesisJournal, err := h.thesisJournalService.GetSimilarityByStudentID(c.Request.Context(), studentID)
 
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success" : false,
+			"message": "check error" + err.Error()
+		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"success" : true,
 		"message": "Journal retrieved successfully",
 		"data":    thesisJournal,
 	})
@@ -80,11 +95,15 @@ func (h *journalHandler) ListSimilaritys(c *gin.Context) {
 
 	students, err := h.thesisJournalService.ListThesisSimilaritys(c.Request.Context(), limit, offset)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success" : false,
+			"message": "check error" + err.Error()
+		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"success" : true,
 		"message": "list similarity retrieved successfully",
 		"data":    students,
 	})
@@ -94,11 +113,15 @@ func (h *journalHandler) DeleteThesisSimilarity(c *gin.Context) {
 	id := c.Param("id")
 
 	if err := h.thesisJournalService.DeleteThesisSimilarity(c.Request.Context(), id); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "check error" + err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success" : false,
+			"message": "check error" + err.Error()
+		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"success" : true,
 		"message": "Similarity deleted successfully",
 	})
 }
