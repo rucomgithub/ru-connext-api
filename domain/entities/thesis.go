@@ -4,6 +4,21 @@ import (
 	"time"
 )
 
+type ThesisSimilarity struct {
+	StudentID              string                  `json:"studentId" db:"STD_CODE"`
+	Program                string                  `json:"program" db:"PROGRAM"`
+	Major                  string                  `json:"major" db:"MAJOR"`
+	Faculty                string                  `json:"faculty" db:"FACULTY"`
+	ThesisType             string                  `json:"thesisType" db:"THESIS_TYPE"`
+	ThesisTitleThai        string                  `json:"thesisTitleThai" db:"THESIS_TITLE_THAI"`
+	ThesisTitleEnglish     string                  `json:"thesisTitleEnglish" db:"THESIS_TITLE_ENGLISH"`
+	Similarity             float64                 `json:"similarity" db:"SIMILARITY"`
+	CreatedAt              time.Time               `json:"createdAt" db:"CREATED_AT"`
+	UpdatedAt              time.Time               `json:"updatedAt" db:"UPDATED_AT"`
+	CreatedBy              string                  `json:"createdBy" db:"CREATED_BY"`
+	UpdatedBy              string                  `json:"updatedBy" db:"UPDATED_BY"`
+}
+
 type ThesisJournal struct {
 	StudentID              string                  `json:"studentId" db:"STD_CODE"`
 	Program                string                  `json:"program" db:"PROGRAM"`

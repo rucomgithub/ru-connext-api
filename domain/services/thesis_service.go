@@ -12,4 +12,10 @@ type ThesisJournalService interface {
 	UpdateThesisJournal(ctx context.Context, thesisjournal *entities.ThesisJournal) error
 	DeleteThesisJournal(ctx context.Context, id string) error
 	ListThesisJournals(ctx context.Context, limit, offset int) ([]*entities.ThesisJournal, error)
+
+	CreateThesisSimilarity(ctx context.Context, thesisjournal *entities.ThesisSimilarity) error
+	UpdateThesisSimilarity(ctx context.Context, thesisjournal *entities.ThesisSimilarity) error
+	GetSimilarityByStudentID(ctx context.Context, studentID string) (*entities.ThesisSimilarity, error)
+	ListThesisSimilaritys(ctx context.Context, limit, offset int) ([]*entities.ThesisSimilarity, error)
+	DeleteThesisSimilarity(ctx context.Context, id string) error
 }

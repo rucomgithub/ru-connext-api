@@ -114,6 +114,12 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		journals.PUT("/:id", journalHandler.UpdateJournal)
 		journals.DELETE("/:id", journalHandler.DeleteJoural)
 		journals.GET("/", journalHandler.ListJournals)
+
+		journals.POST("/similarity", journalHandler.CreateSimilarity)
+		journals.PUT("/similarity/:studentId", journalHandler.UpdateSimilarity)
+		journals.GET("/similarity/:studentId", journalHandler.GetSimilarityByID)
+		journals.GET("/similarity", journalHandler.ListSimilaritys)
+		journals.DELETE("/similarity/:id", journalHandler.DeleteThesisSimilarity)
 	}
 
 	googleAuth := router.Group("/google")

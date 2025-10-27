@@ -12,4 +12,10 @@ type ThesisJournalRepository interface {
 	Update(ctx context.Context, thesisjournal *entities.ThesisJournal) error
 	Delete(ctx context.Context, id string) error
 	List(ctx context.Context, limit, offset int) ([]*entities.ThesisJournal, error)
+
+	CreateSimilarity(ctx context.Context, thesisjournal *entities.ThesisSimilarity) error
+	UpdateSimilarity(ctx context.Context, thesisjournal *entities.ThesisSimilarity) error
+	GetSimilarityByID(ctx context.Context, studentID string) (*entities.ThesisSimilarity, error)
+	ListSimilarity(ctx context.Context, limit, offset int) ([]*entities.ThesisSimilarity, error)
+	DeleteSimilarity(ctx context.Context, id string) error
 }
