@@ -13,7 +13,7 @@ func (h *journalHandler) CreateSimilarity(c *gin.Context) {
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"success" : false,
-			"message": "check error" + err.Error()
+			"message": "check error" + err.Error(),
 		})
 		return
 	}
@@ -21,7 +21,7 @@ func (h *journalHandler) CreateSimilarity(c *gin.Context) {
 	if err := h.thesisJournalService.CreateThesisSimilarity(c.Request.Context(), &thesisJournal); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success" : false,
-			"message": "check error" + err.Error()
+			"message": "check error" + err.Error(),
 		})
 		return
 	}
@@ -40,7 +40,7 @@ func (h *journalHandler) UpdateSimilarity(c *gin.Context) {
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"success" : false,
-			"message": "check error" + err.Error()
+			"message": "check error" + err.Error(),
 		})
 		return
 	}
@@ -67,7 +67,7 @@ func (h *journalHandler) GetSimilarityByID(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success" : false,
-			"message": "check error" + err.Error()
+			"message": "check error" + err.Error(),
 		})
 		return
 	}
@@ -97,7 +97,7 @@ func (h *journalHandler) ListSimilaritys(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success" : false,
-			"message": "check error" + err.Error()
+			"message": "check error" + err.Error(),
 		})
 		return
 	}
@@ -115,7 +115,7 @@ func (h *journalHandler) DeleteThesisSimilarity(c *gin.Context) {
 	if err := h.thesisJournalService.DeleteThesisSimilarity(c.Request.Context(), id); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success" : false,
-			"message": "check error" + err.Error()
+			"message": "check error" + err.Error(),
 		})
 		return
 	}
