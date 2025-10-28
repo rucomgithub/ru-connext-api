@@ -24,7 +24,7 @@ func NewJournalHandler(thesisJournalService services.ThesisJournalService) *jour
 	}
 }
 
-func (h *journalHandler) CreateJournal(c *gin.Context) {
+func (h *journalHandler) CreateJournal(c *gin.Context) { 
 	var thesisJournal entities.ThesisJournal
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -33,7 +33,7 @@ func (h *journalHandler) CreateJournal(c *gin.Context) {
 
 	if err := h.thesisJournalService.CreateThesisJournal(c.Request.Context(), &thesisJournal); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		return 
 	}
 
 	c.JSON(http.StatusCreated, gin.H{

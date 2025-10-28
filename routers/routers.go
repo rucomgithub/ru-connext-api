@@ -290,7 +290,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 	}
 
-	journal := master.Group("/journal")
+	journal := master.Group("/journal") 
 	{
 		// Initialize repository
 		journalRepo := _db.NewThesisJournalRepository(oracle_db_dbg)
@@ -304,6 +304,10 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		journal.POST("/", middlewares.Authorization(redis_cache), journalHandler.CreateJournal)
 		journal.GET("/", middlewares.Authorization(redis_cache), journalHandler.GetJournalMaster)
 		journal.PUT("/", middlewares.Authorization(redis_cache), journalHandler.UpdateJournalMaster)
+
+		journal.POST("/similarity",middlewares.Authorization(redis_cache), journalHandler.CreateSimilarityMaster)
+		journal.PUT("/similarity",middlewares.Authorization(redis_cache), journalHandler.UpdateSimilarityMaster)
+		journal.GET("/similarity",middlewares.Authorization(redis_cache), journalHandler.GetSimilarityMaster)
 	}
 
 	PORT := viper.GetString("ruConnext.port")
