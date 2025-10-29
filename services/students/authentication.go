@@ -3,6 +3,13 @@ package students
 import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"net/http"
+
+	"context"
+    "encoding/json"
+    "errors"
+    "fmt"
+    "io/ioutil"
+    "strings"
 )
 
 func (s *studentServices) Authentication(stdCode string) (*TokenResponse, error) {
@@ -65,4 +72,46 @@ func (s *studentServices) AuthenticationService(service_id string) (*TokenRespon
 	studentTokenResponse.StatusCode = http.StatusOK
 
 	return &studentTokenResponse, nil
+}
+
+
+func (s *studentServices) VerifyToken(ctx context.Context, token string) (*GoogleTokenInfo, error) {
+    url := fmt.Sprintf("https://oauth2.googleapis.com/tokeninfo?id_token=%s", token)
+
+    resp, err := http.Get(url)
+    if err != nil {
+        return nil, fmt.Errorf("failed to verify token: %w", err)
+    }
+    defer resp.Body.Close()
+
+    if resp.StatusCode != http.StatusOK {
+        body, _ := ioutil.ReadAll(resp.Body)
+        return nil, fmt.Errorf("token verification failed: %s", string(body))
+    }
+
+    var tokenInfo GoogleTokenInfo
+    if err := json.NewDecoder(resp.Body).Decode(&tokenInfo); err != nil {
+        return nil, fmt.Errorf("failed to decode token info: %w", err)
+    }
+
+    // Verify email domain
+    if !strings.HasSuffix(tokenInfo.Email, "@rumail.ru.ac.th") {
+        return nil, errors.New("invalid email domain")
+    }
+
+    // Verify email is verified
+    if !tokenInfo.EmailVerified {
+        return nil, errors.New("email not verified")
+    }
+
+    return &tokenInfo, nil
+}
+
+// ExtractStudentID extracts student ID from email
+func (s *studentServices) ExtractStudentID(email string) string {
+    parts := strings.Split(email, "@")
+    if len(parts) > 0 {
+        return parts[0]
+    }
+    return ""
 }

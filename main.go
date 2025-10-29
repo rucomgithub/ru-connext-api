@@ -26,13 +26,14 @@ var redis_cache *redis.Client
 
 var oracleScholar_db *sqlx.DB
 
+var clientID string
+
 func init() {
 	//logger.LoggerInit()
 	environments.TimeZoneInit()
 	environments.EnvironmentInit()
 	oracle_db = databases.NewDatabases().OracleInit()
 	oracle_db_dbg = databases.NewDatabases().OracleDBGInit()
-
 	redis_cache = databases.NewDatabases().RedisInint()
 	mysql_db = databases.NewDatabases().MysqlInit()
 	mysql_db_rotcs = databases.NewDatabases().MysqlInitRotcs()
@@ -42,6 +43,7 @@ func init() {
 
 func main() {
 	dns := fmt.Sprintf("%v", viper.GetString("db.connectionDBG"))
+	clientID := fmt.Sprintf("%v", viper.GetString("google_client_id"))
 	database, err := db.NewOracleDB(dns)
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
@@ -55,5 +57,5 @@ func main() {
 	defer oracleScholar_db.Close()
 	gin.SetMode(gin.ReleaseMode) 
 	router := gin.Default()
-	routers.Setup(router, oracle_db,oracle_db_dbg, redis_cache, mysql_db, mysql_db_stdapps, mysql_db_rotcs, oracleScholar_db, database)
+	routers.Setup(router, oracle_db,oracle_db_dbg, redis_cache, mysql_db, mysql_db_stdapps, mysql_db_rotcs, oracleScholar_db, database , clientID)
 }

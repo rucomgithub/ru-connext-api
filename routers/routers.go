@@ -39,7 +39,7 @@ import (
 	_handlers "RU-Smart-Workspace/ru-smart-api/infrastructure/handlers"
 )
 
-func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB, database *_db.OracleDB) {
+func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB, database *_db.OracleDB, clientID string) {
 
 	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
@@ -125,8 +125,11 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 	googleAuth := router.Group("/google")
 	{
 		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
-		studentService := students.NewStudentServices(studentRepo, redis_cache)
+		studentService := students.NewStudentServices(studentRepo, redis_cache,clientID )
 		studentHandler := studenth.NewStudentHandlers(studentService)
+
+		
+		googleAuth.POST("/authorization-google", studentHandler.AuthorizationGoogle)
 
 		googleAuth.POST("/authorization", middlewares.GoogleAuth, studentHandler.Authentication)
 		googleAuth.POST("/authorization-test", studentHandler.AuthenticationTest)
@@ -138,7 +141,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 	student := router.Group("/student")
 	{
 		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
-		studentService := students.NewStudentServices(studentRepo, redis_cache)
+		studentService := students.NewStudentServices(studentRepo, redis_cache, clientID)
 		studentHandler := studenth.NewStudentHandlers(studentService)
 
 		student.POST("/certificate", middlewares.Authorization(redis_cache), studentHandler.Certifiate)
