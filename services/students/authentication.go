@@ -104,7 +104,7 @@ func (s *studentServices) VerifyToken(ctx context.Context, token string) (*Googl
     }
 
     // Verify email is verified
-    if tokenInfo.EmailVerified == "true" {
+    if tokenInfo.EmailVerified != "true" {
         return nil, errors.New("email not verified")
     }
 
