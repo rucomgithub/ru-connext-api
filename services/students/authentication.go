@@ -3,7 +3,7 @@ package students
 import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"net/http"
-
+	"log"
 	"context"
     "encoding/json"
     "errors"
@@ -84,6 +84,8 @@ func (s *studentServices) VerifyToken(ctx context.Context, token string) (*Googl
     }
     defer resp.Body.Close()
 
+	log.Println(resp)
+
     if resp.StatusCode != http.StatusOK {
         body, _ := ioutil.ReadAll(resp.Body)
         return nil, fmt.Errorf("token verification failed: %s", string(body))
@@ -93,6 +95,8 @@ func (s *studentServices) VerifyToken(ctx context.Context, token string) (*Googl
     if err := json.NewDecoder(resp.Body).Decode(&tokenInfo); err != nil {
         return nil, fmt.Errorf("failed to decode token info: %w", err)
     }
+
+	log.Println(tokenInfo)
 
     // Verify email domain
     if !strings.HasSuffix(tokenInfo.Email, "@rumail.ru.ac.th") {
@@ -108,7 +112,7 @@ func (s *studentServices) VerifyToken(ctx context.Context, token string) (*Googl
 }
 
 // ExtractStudentID extracts student ID from email
-func (s *studentServices) ExtractStudentID(email string) string {
+func (s *studentServices) ExtractStudentID(email string) string { 
     parts := strings.Split(email, "@")
     if len(parts) > 0 {
         return parts[0]

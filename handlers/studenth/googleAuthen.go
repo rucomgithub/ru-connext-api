@@ -11,7 +11,7 @@ import (
 func (h *studentHandlers) AuthorizationGoogle(c *gin.Context) {
     var req students.AuthenPlayload
 
-    if err := c.ShouldBindJSON(&req); err != nil {
+    if err := c.ShouldBindJSON(&req); err != nil { 
         c.JSON(http.StatusBadRequest, gin.H{
             "error":   "Invalid request",
             "message": "กรุณาระบุข้อมูลให้ครบถ้วน",
