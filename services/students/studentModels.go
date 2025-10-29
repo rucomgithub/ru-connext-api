@@ -23,11 +23,24 @@ type (
 	}
 
 	GoogleTokenInfo struct {
-		Email         string `json:"email"` 
-		EmailVerified bool   `json:"email_verified"`
+		Iss           string `json:"iss"`
+		Azp           string `json:"azp"`
+		Aud           string `json:"aud"`
+		Sub           string `json:"sub"`
+		Hd            string `json:"hd"`
+		Email         string `json:"email"`
+		EmailVerified string `json:"email_verified"`
+		Nbf           string `json:"nbf"`
 		Name          string `json:"name"`
 		Picture       string `json:"picture"`
-		Sub           string `json:"sub"`
+		GivenName     string `json:"given_name"`
+		FamilyName    string `json:"family_name"`
+		Iat           string `json:"iat"`
+		Exp           string `json:"exp"`
+		Jti           string `json:"jti"`
+		Alg           string `json:"alg"`
+		Kid           string `json:"kid"`
+		Typ           string `json:"typ"`
 	}
 
 	RegisterPlayload struct {
