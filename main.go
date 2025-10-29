@@ -43,7 +43,7 @@ func init() {
 
 func main() {
 	dns := fmt.Sprintf("%v", viper.GetString("db.connectionDBG"))
-	clientID := fmt.Sprintf("%v", viper.GetString("google_client_id"))
+	clientID := fmt.Sprintf("%v", viper.GetString("google.google_client_id"))
 	database, err := db.NewOracleDB(dns)
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
