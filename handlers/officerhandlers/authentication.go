@@ -65,6 +65,9 @@ func (h *officerHandlers) RefreshAuthentication(c *gin.Context) {
 }
 
 func (h *officerHandlers) GetPhoto(c *gin.Context) {
+
+	var accessToken string = c.Param("id")
+
 	timeout := 10 * time.Second
 	client := &http.Client{
 		Timeout: timeout,
@@ -82,7 +85,6 @@ func (h *officerHandlers) GetPhoto(c *gin.Context) {
 		return
 	}
 
-	accessToken := c.Request.Header.Get("Authorization")
 	fmt.Println("AccessToken:", accessToken)
 	req.Header.Set("Authorization", accessToken)
 
