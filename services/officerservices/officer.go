@@ -23,6 +23,7 @@ type (
 		IsAuth       bool   `json:"isAuth"`
 		Message      string `json:"message"`
 		StatusCode   int    `json:"status_code"`
+		OfficeToken  string `json:"officeToken"`
 	}
 
 	TokenOffice struct {

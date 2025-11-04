@@ -3,6 +3,7 @@ package officerservices
 import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"bytes"
+	"log"
 	"context"
 	"encoding/json"
 	"errors"
@@ -19,18 +20,29 @@ var ctx = context.Background()
 func (s *officerServices) AuthenticationOfficer(authenRequest AuthenRequest) (*AuthenResponse, error) {
 
 	authenTokenResponse := AuthenResponse{
-		AccessToken:  "",
+		AccessToken:  "", 
 		RefreshToken: "",
 		IsAuth:       false,
 		Message:      "",
 		StatusCode:   422,
-	}
+		OfficeToken: "",
+	} 
 
-	_, err := s.VerifyAuthentication(authenRequest.Username, authenRequest.Password)
+	tokenOffice, err := s.VerifyAuthentication(authenRequest.Username, authenRequest.Password)
 
 	if err != nil {
 		return nil, err
 	}
+
+	log.Println(tokenOffice)
+
+	userOffice, err := s.VerifyUser(tokenOffice)
+
+	if err != nil {
+		return nil, err
+	}
+
+	log.Println(userOffice)
 
 	userrole, err := s.officerRepo.GetUserLogin(authenRequest.Username)
 	if err != nil {
@@ -53,6 +65,7 @@ func (s *officerServices) AuthenticationOfficer(authenRequest AuthenRequest) (*A
 	authenTokenResponse.IsAuth = generateToken.IsAuth
 	authenTokenResponse.Message = "Authentication Generate token officer success."
 	authenTokenResponse.StatusCode = http.StatusOK
+	authenTokenResponse.OfficeToken = tokenOffice.AccessToken
 
 	return &authenTokenResponse, nil
 }

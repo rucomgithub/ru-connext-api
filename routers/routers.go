@@ -64,6 +64,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officeHandler := officerhandlers.NewOfficerHandlers(officerService, oracle_db_dbg)
 
 		officeAuth.POST("/authorization", officeHandler.Authentication)
+		officeAuth.GET("/photo", officeHandler.GetPhoto)
 		officeAuth.POST("/refresh-authentication", officeHandler.RefreshAuthentication)
 
 		officeAuth.GET("/qualification", middlewares.AuthorizationOfficer(redis_cache), officeHandler.GetQualificationAll)
