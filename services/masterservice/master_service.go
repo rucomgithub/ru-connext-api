@@ -124,6 +124,58 @@ type (
 		EMAIL        string `json:"EMAIL"`
 	}
 
+	StudentRequestSuccessService struct {
+		ENROLL_YEAR             string `json:"ENROLL_YEAR"`
+		ENROLL_SEMESTER         string `json:"ENROLL_SEMESTER"`
+		STD_CODE                string `json:"STD_CODE"`
+		PRENAME_THAI_S          string `json:"PRENAME_THAI_S"`
+		PRENAME_ENG_S           string `json:"PRENAME_ENG_S"`
+		FIRST_NAME              string `json:"FIRST_NAME"`
+		LAST_NAME               string `json:"LAST_NAME"`
+		FIRST_NAME_ENG          string `json:"FIRST_NAME_ENG"`
+		LAST_NAME_ENG           string `json:"LAST_NAME_ENG"`
+		THAI_NAME               string `json:"THAI_NAME"`
+		PLAN_NO                 string `json:"PLAN_NO"`
+		SEX                     string `json:"SEX"`
+		REGINAL_NAME            string `json:"REGINAL_NAME"`
+		SUBSIDY_NAME            string `json:"SUBSIDY_NAME"`
+		STATUS_NAME_THAI        string `json:"STATUS_NAME_THAI"`
+		BIRTH_DATE              string `json:"BIRTH_DATE"`
+		STD_ADDR                string `json:"STD_ADDR"`
+		ADDR_TEL                string `json:"ADDR_TEL"`
+		JOB_POSITION            string `json:"JOB_POSITION"`
+		STD_OFFICE              string `json:"STD_OFFICE"`
+		OFFICE_TEL              string `json:"OFFICE_TEL"`
+		DEGREE_NAME             string `json:"DEGREE_NAME"`
+		BSC_DEGREE_NO           string 	`json:"BSC_DEGREE_NO"`
+		BSC_DEGREE_THAI_NAME    string `json:"BSC_DEGREE_THAI_NAME"`
+		BSC_INSTITUTE_NO        string `json:"BSC_INSTITUTE_NO"`
+		INSTITUTE_THAI_NAME     string `json:"INSTITUTE_THAI_NAME"`
+		CK_CERT_NO              string `json:"CK_CERT_NO"`
+		CHK_CERT_NAME_THAI      string `json:"CHK_CERT_NAME_THAI"`
+		ID                      string 	`json:"ID"`
+		SUCCESS_YEAR            string `json:"SUCCESS_YEAR"`
+		SUCCESS_SEMESTER        string `json:"SUCCESS_SEMESTER"`
+		NAME_THAI_CONFIRM       string `json:"NAME_THAI_CONFIRM"`
+		NAME_ENG_CONFIRM        string `json:"NAME_ENG_CONFIRM"`
+		THESIS_THAI_CONFIRM     string `json:"THESIS_THAI_CONFIRM"`
+		THESIS_ENG_CONFIRM      string `json:"THESIS_ENG_CONFIRM"`
+		DEGREE_CONFIRM          string `json:"DEGREE_CONFIRM"`
+		CHECKDEGREE             string `json:"CHECKDEGREE"`
+		CHECKREGISTER           string `json:"CHECKREGISTER"`
+		CHECKGPA                string `json:"CHECKGPA"`
+		CHECKEXAM               string `json:"CHECKEXAM"`
+		CREATED                 string `json:"CREATED"`
+		MODIFIED                string `json:"MODIFIED"`
+		SUCCESS_CONFIRM         string `json:"SUCCESS_CONFIRM"`
+		MAJOR_CONFIRM           string `json:"MAJOR_CONFIRM"`
+		BIRTHDATE_CONFIRM       string `json:"BIRTHDATE_CONFIRM"`
+		THESIS_THAI_TITLE       string `json:"THESIS_THAI_TITLE"`
+		THESIS_ENG_TITLE        string `json:"THESIS_ENG_TITLE"`
+		THESIS_THESIS_NAME      string `json:"THESIS_THESIS_NAME"`
+		THESIS_THESIS_TYPE      string `json:"THESIS_THESIS_TYPE"`
+	}	
+
 	RegisterResponse struct {
 		STD_CODE string                 `json:"std_code"`
 		YEAR     string                 `json:"year"`
@@ -223,6 +275,8 @@ type (
 		Certificate(token string) (*TokenCertificateResponse, error)
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
+		GetStudentRequestSuccess(stdCode string) (*StudentRequestSuccessService, error)
+
 		GetStudentSuccessCheck(stdCode string) (*StudentSuccessService, error)
 
 		GetRegisterAll(stdCode string) (*RegisterResponse, error)

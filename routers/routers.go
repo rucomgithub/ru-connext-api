@@ -270,6 +270,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		studentMaster.POST("/privacy", middlewares.Authorization(redis_cache), masterHandler.AcceptPrivacyPolicy)
 		studentMaster.GET("/profile", middlewares.Authorization(redis_cache), masterHandler.GetStudentProfile)
 		studentMaster.GET("/success", middlewares.Authorization(redis_cache), masterHandler.GetStudentSuccess)
+		studentMaster.GET("/requestsuccess", middlewares.Authorization(redis_cache), masterHandler.GetStudentRequestSuccess)
 		studentMaster.GET("/successcheck/:id", masterHandler.GetStudentSuccessCheck)
 		studentMaster.GET("/successpdf", middlewares.Authorization(redis_cache), masterHandler.GeneratePDFWithQR)
 
@@ -291,6 +292,8 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		gradeMaster := master.Group("/grade") 
 		gradeMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetGradeAll)
 		gradeMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetGradeByYear)
+
+
 
 	}
 
