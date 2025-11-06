@@ -123,6 +123,15 @@ type (
 		CREDIT    int    `db:"CREDIT"`
 	}
 
+	RegisterFeeRepo struct {
+		STD_CODE      string `db:"STD_CODE"`
+		YEAR  		  string `db:"YEAR"`
+		SEMESTER  	  string `db:"SEMESTER"`
+		TOTAL_AMOUNT  int    `db:"TOTAL_AMOUNT"`
+		REGIS_TYPE    string    `db:"REGIS_TYPE"`
+		REGIS_NAME    string    `db:"REGIS_NAME"`
+	}
+
 	GradeRepo struct {
 		YEAR      string `db:"YEAR"`
 		SEMESTER  string `db:"SEMESTER"`
@@ -178,6 +187,7 @@ type (
 
 		GetRegisterByYear(std_code, year string) (*[]RegisterRepo, error)
 		GetRegisterAll(std_code string) (*[]RegisterRepo, error)
+		GetRegisterFeeAll(std_code,role string) (*[]RegisterFeeRepo, error)
 
 		GetGradeByYear(std_code, year string) (*[]GradeRepo, error)
 		GetGradeAll(std_code string) (*[]GradeRepo, error)

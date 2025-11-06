@@ -287,6 +287,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		registerMaster := master.Group("/register")
 		registerMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetRegisterAll)
+		registerMaster.GET("/fee", middlewares.Authorization(redis_cache), masterHandler.GetRegisterFeeAll)
 		registerMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetRegisterByYear)
 
 		gradeMaster := master.Group("/grade") 

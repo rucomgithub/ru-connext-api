@@ -50,7 +50,7 @@ func (h *studentHandlers) GetRegisterAll(c *gin.Context) {
 
 	std_code := claim.StudentCode
 
-	studentProfileResponse, err := h.studentService.GetRegisterAll(std_code)
+	studentRegisterResponse, err := h.studentService.GetRegisterAll(std_code)
 	if err != nil {
 		err = errors.New("ไม่พบข้อมูลลงทะเบียนนักศึกษา " + std_code + ".")
 		c.Error(err)
@@ -61,7 +61,62 @@ func (h *studentHandlers) GetRegisterAll(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, studentProfileResponse)
+	c.IndentedJSON(http.StatusOK, studentRegisterResponse)
+
+}
+
+func (h *studentHandlers) GetRegisterFeeAll(c *gin.Context) {
+
+	token, err := middlewares.GetHeaderAuthorization(c)
+
+	if err != nil {
+		err = errors.New("ไม่พบ token login.")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ token login."})
+		c.Abort()
+		return
+	}
+
+	claim, err := middlewares.GetClaims(token)
+
+	if err != nil {
+		err = errors.New("ไม่พบ claims user.")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ claims user."})
+		c.Abort()
+		return
+	}
+
+	role := claim.Role
+
+	if role == "Bachelor" {
+		err = errors.New("สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
+		c.Abort()
+		return
+	}
+
+	std_code := claim.StudentCode
+
+	studentRegisterFeeResponse, err := h.studentService.GetRegisterFeeAll(std_code,role)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลค่าธรรมเนียมการลงทะเบียนนักศึกษา " + std_code + ".")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลค่าธรรมเนียมการลงทะเบียนนักศึกษา " + std_code + "."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentRegisterFeeResponse)
 
 }
 

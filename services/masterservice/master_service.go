@@ -182,6 +182,20 @@ type (
 		REGISTER []RegisterResponseRepo `json:"register"`
 	}
 
+	RegisterFeeResponse struct {
+		STD_CODE string  `json:"std_code"`
+		FEE []RegisterFeeResponseRepo `json:"fee"`
+	}
+
+	RegisterFeeResponseRepo struct {
+		STD_CODE      string `json:"STD_CODE"`
+		YEAR  		  string `json:"YEAR"`
+		SEMESTER  	  string `json:"SEMESTER"`
+		TOTAL_AMOUNT  int    `json:"TOTAL_AMOUNT"`
+		REGIS_TYPE    string    `json:"REGIS_TYPE"`
+		REGIS_NAME    string    `json:"REGIS_NAME"`
+	}
+
 	GradeResponse struct {
 		STD_CODE       string              `json:"STD_CODE"`
 		YEAR           string              `json:"YEAR"`
@@ -280,6 +294,7 @@ type (
 		GetStudentSuccessCheck(stdCode string) (*StudentSuccessService, error)
 
 		GetRegisterAll(stdCode string) (*RegisterResponse, error)
+		GetRegisterFeeAll(stdCode,role string) (*RegisterFeeResponse, error)
 		GetRegisterByYear(stdCode, year string) (*RegisterResponse, error)
 
 		GetGradeAll(stdCode string) (*GradeResponse, error)
