@@ -139,6 +139,8 @@ type (
 		COURSE_NO string `db:"COURSE_NO"`
 		CREDIT    int    `db:"CREDIT"`
 		GRADE     string `db:"GRADE"`
+		COURSE_TYPE_NO string `db:"COURSE_TYPE_NO"`
+		THAI_DESCRIPTION string `db:"THAI_DESCRIPTION"`
 	}
 
 	StudentRepo struct {

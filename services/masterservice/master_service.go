@@ -223,6 +223,8 @@ type (
 		COURSE_NO string `json:"COURSE_NO"`
 		CREDIT    int    `json:"CREDIT"`
 		GRADE     string `json:"GRADE"`
+		COURSE_TYPE_NO string `json:"COURSE_TYPE_NO"`
+		THAI_DESCRIPTION string `json:"THAI_DESCRIPTION"`
 	}
 
 	RegisterRequest struct {
@@ -231,11 +233,11 @@ type (
 	}
 
 	PrivacyPolicyResponse struct {
-		STD_CODE string `db:"STD_CODE"`
-		VERSION  string `db:"VERSION"`
-		STATUS   string `db:"STATUS"`
-		CREATED  string `db:"CREATED"`
-		MODIFIED string `db:"MODIFIED"`
+		STD_CODE string `json:"STD_CODE"`
+		VERSION  string `json:"VERSION"`
+		STATUS   string `json:"STATUS"`
+		CREATED  string `json:"CREATED"`
+		MODIFIED string `json:"MODIFIED"`
 	}
 
 	PrivacyPolicyRequest struct {
