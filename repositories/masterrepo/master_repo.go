@@ -2,6 +2,7 @@ package masterrepo
 
 import (
 	"github.com/jmoiron/sqlx"
+	"RU-Smart-Workspace/ru-smart-api/domain/entities"
 )
 
 type (
@@ -42,20 +43,16 @@ type (
 		ID                      string `db:"ID"`
 		SUCCESS_YEAR            string `db:"SUCCESS_YEAR"`
 		SUCCESS_SEMESTER        string `db:"SUCCESS_SEMESTER"`
-		NAME_THAI_CONFIRM       string `db:"NAME_THAI_CONFIRM"`
-		NAME_ENG_CONFIRM        string `db:"NAME_ENG_CONFIRM"`
-		THESIS_THAI_CONFIRM     string `db:"THESIS_THAI_CONFIRM"`
-		THESIS_ENG_CONFIRM      string `db:"THESIS_ENG_CONFIRM"`
-		DEGREE_CONFIRM          string `db:"DEGREE_CONFIRM"`
-		CHECKDEGREE             string `db:"CHECKDEGREE"`
-		CHECKREGISTER           string `db:"CHECKREGISTER"`
-		CHECKGPA                string `db:"CHECKGPA"`
-		CHECKEXAM               string `db:"CHECKEXAM"`
+		NAME_THAI       		string `db:"NAME_THAI"`
+		NAME_ENG        		string `db:"NAME_ENG"`
+		THESIS_THAI     		string `db:"THESIS_THAI"`
+		THESIS_ENG      		string `db:"THESIS_ENG"`
+		DEGREE          		string `db:"DEGREE"`
+		REGISTRATION           	string `db:"REGISTRATION"`
+		GRADES                	string `db:"GRADES"`
+		ADDRESS               	string `db:"ADDRESS"`
 		CREATED                 string `db:"CREATED"`
 		MODIFIED                string `db:"MODIFIED"`
-		SUCCESS_CONFIRM         string `db:"SUCCESS_CONFIRM"`
-		MAJOR_CONFIRM           string `db:"MAJOR_CONFIRM"`
-		BIRTHDATE_CONFIRM       string `db:"BIRTHDATE_CONFIRM"`
 		THESIS_THAI_TITLE       string `db:"THESIS_THAI_TITLE"`
 		THESIS_ENG_TITLE        string `db:"THESIS_ENG_TITLE"`
 		THESIS_THESIS_NAME      string `db:"THESIS_THESIS_NAME"`
@@ -180,12 +177,14 @@ type (
 		CREATED  string `db:"CREATED"`
 		MODIFIED string `db:"MODIFIED"`
 	}
+	
 
 	StudentRepoInterface interface {
 		GetStudentProfile(studentCode string) (*StudentProfileRepo, error)
 
 		GetStudentSuccess(studentCode string) (*StudentSuccessRepo, error)
 		GetStudentRequestSuccess(studentCode string) (*StudentRequestSuccessRepo, error)
+		AddRequestSuccess(row *entities.RequestSuccess) error
 
 		GetRegisterByYear(std_code, year string) (*[]RegisterRepo, error)
 		GetRegisterAll(std_code string) (*[]RegisterRepo, error)

@@ -2,6 +2,7 @@ package masterservice
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
+	"RU-Smart-Workspace/ru-smart-api/domain/entities"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -170,20 +171,16 @@ func (s *studentServices) GetStudentRequestSuccess(studentCode string) (studentS
 		ID                     : sp.ID,
 		SUCCESS_YEAR           : sp.SUCCESS_YEAR,
 		SUCCESS_SEMESTER       : sp.SUCCESS_SEMESTER,
-		NAME_THAI_CONFIRM      : sp.NAME_THAI_CONFIRM,
-		NAME_ENG_CONFIRM       : sp.NAME_ENG_CONFIRM,
-		THESIS_THAI_CONFIRM    : sp.THESIS_THAI_CONFIRM,
-		THESIS_ENG_CONFIRM     : sp.THESIS_ENG_CONFIRM,
-		DEGREE_CONFIRM         : sp.DEGREE_CONFIRM,
-		CHECKDEGREE            : sp.CHECKDEGREE,
-		CHECKREGISTER          : sp.CHECKREGISTER,
-		CHECKGPA               : sp.CHECKGPA,
-		CHECKEXAM              : sp.CHECKEXAM,
+		NAME_THAI      			: sp.NAME_THAI,
+		NAME_ENG       			: sp.NAME_ENG,
+		THESIS_THAI    			: sp.THESIS_THAI,
+		THESIS_ENG     			: sp.THESIS_ENG,
+		DEGREE         			: sp.DEGREE,
+		GRADES            		: sp.GRADES,
+		REGISTRATION          	: sp.REGISTRATION,
+		ADDRESS               	: sp.ADDRESS,
 		CREATED                : sp.CREATED,
 		MODIFIED               : sp.MODIFIED,
-		SUCCESS_CONFIRM        : sp.SUCCESS_CONFIRM,
-		MAJOR_CONFIRM          : sp.MAJOR_CONFIRM,
-		BIRTHDATE_CONFIRM      : sp.BIRTHDATE_CONFIRM,
 		THESIS_THAI_TITLE      : sp.THESIS_THAI_TITLE,
 		THESIS_ENG_TITLE       : sp.THESIS_ENG_TITLE,
 		THESIS_THESIS_NAME     : sp.THESIS_THESIS_NAME,
@@ -199,3 +196,15 @@ func (s *studentServices) GetStudentRequestSuccess(studentCode string) (studentS
 
 	return studentSuccessResponse, nil
 }
+
+func (s *studentServices) AddRequestSuccess(request *entities.RequestSuccess) error {
+
+	err := s.studentRepo.AddRequestSuccess(request)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+

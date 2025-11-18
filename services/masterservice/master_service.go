@@ -2,6 +2,7 @@ package masterservice
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/repositories/masterrepo"
+	"RU-Smart-Workspace/ru-smart-api/domain/entities"
 	"context"
 
 	"github.com/go-redis/redis/v8"
@@ -153,28 +154,24 @@ type (
 		INSTITUTE_THAI_NAME     string `json:"INSTITUTE_THAI_NAME"`
 		CK_CERT_NO              string `json:"CK_CERT_NO"`
 		CHK_CERT_NAME_THAI      string `json:"CHK_CERT_NAME_THAI"`
-		ID                      string 	`json:"ID"`
+		ID                      string `json:"ID"`
 		SUCCESS_YEAR            string `json:"SUCCESS_YEAR"`
 		SUCCESS_SEMESTER        string `json:"SUCCESS_SEMESTER"`
-		NAME_THAI_CONFIRM       string `json:"NAME_THAI_CONFIRM"`
-		NAME_ENG_CONFIRM        string `json:"NAME_ENG_CONFIRM"`
-		THESIS_THAI_CONFIRM     string `json:"THESIS_THAI_CONFIRM"`
-		THESIS_ENG_CONFIRM      string `json:"THESIS_ENG_CONFIRM"`
-		DEGREE_CONFIRM          string `json:"DEGREE_CONFIRM"`
-		CHECKDEGREE             string `json:"CHECKDEGREE"`
-		CHECKREGISTER           string `json:"CHECKREGISTER"`
-		CHECKGPA                string `json:"CHECKGPA"`
-		CHECKEXAM               string `json:"CHECKEXAM"`
+		NAME_THAI       		string `json:"NAME_THAI"`
+		NAME_ENG        		string `json:"NAME_ENG"`
+		THESIS_THAI     		string `json:"THESIS_THAI"`
+		THESIS_ENG      		string `json:"THESIS_ENG"`
+		DEGREE          		string `json:"DEGREE"`
+		REGISTRATION           	string `json:"REGISTRATION"`
+		GRADES                	string `json:"GRADES"`
+		ADDRESS               	string `json:"ADDRESS"`
 		CREATED                 string `json:"CREATED"`
 		MODIFIED                string `json:"MODIFIED"`
-		SUCCESS_CONFIRM         string `json:"SUCCESS_CONFIRM"`
-		MAJOR_CONFIRM           string `json:"MAJOR_CONFIRM"`
-		BIRTHDATE_CONFIRM       string `json:"BIRTHDATE_CONFIRM"`
 		THESIS_THAI_TITLE       string `json:"THESIS_THAI_TITLE"`
 		THESIS_ENG_TITLE        string `json:"THESIS_ENG_TITLE"`
 		THESIS_THESIS_NAME      string `json:"THESIS_THESIS_NAME"`
 		THESIS_THESIS_TYPE      string `json:"THESIS_THESIS_TYPE"`
-	}	
+	}
 
 	RegisterResponse struct {
 		STD_CODE string                 `json:"std_code"`
@@ -292,6 +289,7 @@ type (
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
 		GetStudentRequestSuccess(stdCode string) (*StudentRequestSuccessService, error)
+		AddRequestSuccess(request *entities.RequestSuccess) error
 
 		GetStudentSuccessCheck(stdCode string) (*StudentSuccessService, error)
 

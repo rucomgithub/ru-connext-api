@@ -15,7 +15,7 @@ import (
 )
 
 type journalHandler struct {
-	thesisJournalService services.ThesisJournalService
+	thesisJournalService services.ThesisJournalService 
 }
 
 func NewJournalHandler(thesisJournalService services.ThesisJournalService) *journalHandler {
