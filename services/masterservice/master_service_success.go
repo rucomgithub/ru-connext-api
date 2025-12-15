@@ -168,7 +168,6 @@ func (s *studentServices) GetStudentRequestSuccess(studentCode string) (studentS
 		INSTITUTE_THAI_NAME    : sp.INSTITUTE_THAI_NAME,
 		CK_CERT_NO             : sp.CK_CERT_NO,
 		CHK_CERT_NAME_THAI     : sp.CHK_CERT_NAME_THAI,
-		ID                     : sp.ID,
 		SUCCESS_YEAR           : sp.SUCCESS_YEAR,
 		SUCCESS_SEMESTER       : sp.SUCCESS_SEMESTER,
 		NAME_THAI      			: sp.NAME_THAI,
@@ -183,8 +182,8 @@ func (s *studentServices) GetStudentRequestSuccess(studentCode string) (studentS
 		MODIFIED               : sp.MODIFIED,
 		THESIS_THAI_TITLE      : sp.THESIS_THAI_TITLE,
 		THESIS_ENG_TITLE       : sp.THESIS_ENG_TITLE,
-		THESIS_THESIS_NAME     : sp.THESIS_THESIS_NAME,
-		THESIS_THESIS_TYPE     : sp.THESIS_THESIS_TYPE,
+		THESIS_TYPE     		: sp.THESIS_TYPE,
+		SIMILARITY     			: sp.SIMILARITY,
 	}	
 
 	studentSuccessResponse = &student
@@ -199,7 +198,18 @@ func (s *studentServices) GetStudentRequestSuccess(studentCode string) (studentS
 
 func (s *studentServices) AddRequestSuccess(request *entities.RequestSuccess) error {
 
-	err := s.studentRepo.AddRequestSuccess(request)
+	err := s.studentRepo.CreateRequestSuccess(request)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (s *studentServices) EditRequestSuccess(request *entities.RequestSuccess) error {
+
+	err := s.studentRepo.UpdateRequestSuccess(request)
 
 	if err != nil {
 		return err

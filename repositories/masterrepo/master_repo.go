@@ -40,7 +40,6 @@ type (
 		INSTITUTE_THAI_NAME     string `db:"INSTITUTE_THAI_NAME"`
 		CK_CERT_NO              string `db:"CK_CERT_NO"`
 		CHK_CERT_NAME_THAI      string `db:"CHK_CERT_NAME_THAI"`
-		ID                      string `db:"ID"`
 		SUCCESS_YEAR            string `db:"SUCCESS_YEAR"`
 		SUCCESS_SEMESTER        string `db:"SUCCESS_SEMESTER"`
 		NAME_THAI       		string `db:"NAME_THAI"`
@@ -55,8 +54,8 @@ type (
 		MODIFIED                string `db:"MODIFIED"`
 		THESIS_THAI_TITLE       string `db:"THESIS_THAI_TITLE"`
 		THESIS_ENG_TITLE        string `db:"THESIS_ENG_TITLE"`
-		THESIS_THESIS_NAME      string `db:"THESIS_THESIS_NAME"`
-		THESIS_THESIS_TYPE      string `db:"THESIS_THESIS_TYPE"`
+		THESIS_TYPE      		string `db:"THESIS_TYPE"`
+		SIMILARITY      		string `db:"SIMILARITY"`
 	}	
 
 	StudentProfileRepo struct {
@@ -184,7 +183,8 @@ type (
 
 		GetStudentSuccess(studentCode string) (*StudentSuccessRepo, error)
 		GetStudentRequestSuccess(studentCode string) (*StudentRequestSuccessRepo, error)
-		AddRequestSuccess(row *entities.RequestSuccess) error
+		CreateRequestSuccess(row *entities.RequestSuccess) error
+		UpdateRequestSuccess(row *entities.RequestSuccess) error
 
 		GetRegisterByYear(std_code, year string) (*[]RegisterRepo, error)
 		GetRegisterAll(std_code string) (*[]RegisterRepo, error)

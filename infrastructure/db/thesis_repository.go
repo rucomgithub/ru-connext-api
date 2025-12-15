@@ -35,12 +35,12 @@ func (r *thesisJournalRepository) Create(ctx context.Context, thesisJournal *ent
             STD_CODE, PROGRAM, MAJOR, FACULTY,
             THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
             CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			SIMILARITY
+			SIMILARITY,STATUS
         ) VALUES (
             :STD_CODE, :PROGRAM, :MAJOR, :FACULTY,
             :THESIS_TYPE, :THESIS_TITLE_THAI, :THESIS_TITLE_ENGLISH,
             :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY,
-			:SIMILARITY
+			:SIMILARITY,:STATUS
         )`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
@@ -49,7 +49,7 @@ func (r *thesisJournalRepository) Create(ctx context.Context, thesisJournal *ent
 	}
 
 	// Insert publications
-	if (thesisJournal.JournalPublication != nil && len(thesisJournal.JournalPublication) > 0) {
+	if thesisJournal.JournalPublication != nil && len(thesisJournal.JournalPublication) > 0 {
 		publicationQuery := `
             INSERT INTO EGRAD_PUBLICATIONS (
                 STD_CODE, TYPE, ARTICLE_TITLE, JOURNAL_NAME, COUNTRY, STATUS,
@@ -111,7 +111,7 @@ func (r *thesisJournalRepository) GetByID(ctx context.Context, id string) (*enti
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
                CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY
+			   SIMILARITY,STATUS
         FROM EGRAD_THESIS WHERE STD_CODE = :1`
 
 	err := r.db.GetContext(ctx, thesisJournal, query, id)
@@ -175,7 +175,7 @@ func (r *thesisJournalRepository) GetByStudentID(ctx context.Context, studentID 
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
                CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY
+			   SIMILARITY,STATUS
         FROM EGRAD_THESIS WHERE STD_CODE = :1`
 
 	err := r.db.GetContext(ctx, thesisJournal, query, studentID)
@@ -196,7 +196,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 	}
 	defer tx.Rollback()
 
-	thesis , err := r.GetByID(ctx, thesisJournal.StudentID)
+	thesis, err := r.GetByID(ctx, thesisJournal.StudentID)
 	if err != nil {
 		log.Print("Updating thesis journal error get Thesis: ", thesisJournal.StudentID)
 	}
@@ -213,7 +213,8 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 						UPDATED_AT = :UPDATED_AT,
 						CREATED_BY = :CREATED_BY, 
 						UPDATED_BY = :UPDATED_BY,
-						SIMILARITY = :SIMILARITY
+						SIMILARITY = :SIMILARITY,
+						STATUS = :STATUS
 					WHERE STD_CODE = :STD_CODE`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
@@ -248,7 +249,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 
 		for _, pub := range thesisJournal.JournalPublication {
 			log.Print(pub.Id)
-			if (pub.Id == "" && len(thesis.JournalPublication) < 2) {
+			if pub.Id == "" && len(thesis.JournalPublication) < 2 {
 				log.Print(
 					"Updating thesis journal publications for insert publication null ID: ", thesisJournal.StudentID, len(thesis.JournalPublication),
 					" with ", len(thesisJournal.JournalPublication), " publications",
@@ -289,7 +290,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 
 	if thesisJournal.ConferencePresentation != nil {
 		log.Print(
-			"Updating thesis journal conference presentation for student ID: ", thesisJournal.StudentID,thesisJournal.ConferencePresentation,
+			"Updating thesis journal conference presentation for student ID: ", thesisJournal.StudentID, thesisJournal.ConferencePresentation,
 		)
 		confQuery := `UPDATE EGRAD_CONFERENCE_PRESENTATIONS
 					SET
@@ -340,7 +341,7 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 	}
 
 	// update other publication
-	
+
 	if thesisJournal.OtherPublication != nil {
 		log.Print(
 			"Updating thesis journal other publication for student ID: ", thesisJournal.OtherPublication.StudentID,
@@ -425,7 +426,7 @@ func (r *thesisJournalRepository) List(ctx context.Context, limit, offset int) (
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
                CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY
+			   SIMILARITY,STATUS
         FROM EGRAD_THESIS
         ORDER BY CREATED_AT DESC
         OFFSET :1 ROWS FETCH NEXT :2 ROWS ONLY`

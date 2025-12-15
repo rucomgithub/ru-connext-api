@@ -110,6 +110,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		journalHandler := _handlers.NewJournalHandler(journalService)
 
 		journals.POST("/", journalHandler.CreateJournal)
+
 		journals.GET("/:id", journalHandler.GetJournal)
 		journals.GET("/student-id/:studentId", journalHandler.GetJournalByStudentID)
 		journals.PUT("/:id", journalHandler.UpdateJournal)
@@ -126,10 +127,9 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 	googleAuth := router.Group("/google")
 	{
 		studentRepo := studentr.NewStudentRepo(oracle_db, oracle_db_dbg)
-		studentService := students.NewStudentServices(studentRepo, redis_cache,clientID )
+		studentService := students.NewStudentServices(studentRepo, redis_cache, clientID)
 		studentHandler := studenth.NewStudentHandlers(studentService)
 
-		
 		googleAuth.POST("/authorization-google", studentHandler.AuthorizationGoogle)
 
 		googleAuth.POST("/authorization", middlewares.GoogleAuth, studentHandler.Authentication)
@@ -154,7 +154,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		student.GET("/profile/:std_code", middlewares.Authorization(redis_cache), studentHandler.GetStudentProfile)
 		student.GET("/register", middlewares.Authorization(redis_cache), studentHandler.GetRegister)
 		student.GET("/registers", middlewares.Authorization(redis_cache), studentHandler.GetRegisterAll)
-		
+
 		student.GET("/photoprofile", middlewares.Authorization(redis_cache), studentHandler.GetPhoto)
 		student.GET("/photograduate", middlewares.Authorization(redis_cache), studentHandler.GetPhotoGraduate)
 		student.GET("/photograduatesuccess/:id", studentHandler.GetPhotoGraduateSuccess)
@@ -273,6 +273,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		studentMaster.GET("/requestsuccess", middlewares.Authorization(redis_cache), masterHandler.GetStudentRequestSuccess)
 		studentMaster.POST("/requestsuccess", middlewares.Authorization(redis_cache), masterHandler.AddRequestSuccess)
+		studentMaster.PUT("/requestsuccess", middlewares.Authorization(redis_cache), masterHandler.EditRequestSuccess)
 
 		studentMaster.GET("/successcheck/:id", masterHandler.GetStudentSuccessCheck)
 		studentMaster.GET("/successpdf", middlewares.Authorization(redis_cache), masterHandler.GeneratePDFWithQR)
@@ -293,15 +294,13 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		registerMaster.GET("/fee", middlewares.Authorization(redis_cache), masterHandler.GetRegisterFeeAll)
 		registerMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetRegisterByYear)
 
-		gradeMaster := master.Group("/grade") 
+		gradeMaster := master.Group("/grade")
 		gradeMaster.GET("/", middlewares.Authorization(redis_cache), masterHandler.GetGradeAll)
 		gradeMaster.GET("/:year", middlewares.Authorization(redis_cache), masterHandler.GetGradeByYear)
 
-
-
 	}
 
-	journal := master.Group("/journal") 
+	journal := master.Group("/journal")
 	{
 		// Initialize repository
 		journalRepo := _db.NewThesisJournalRepository(oracle_db_dbg)
@@ -316,9 +315,9 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		journal.GET("/", middlewares.Authorization(redis_cache), journalHandler.GetJournalMaster)
 		journal.PUT("/", middlewares.Authorization(redis_cache), journalHandler.UpdateJournalMaster)
 
-		journal.POST("/similarity",middlewares.Authorization(redis_cache), journalHandler.CreateSimilarityMaster)
-		journal.PUT("/similarity",middlewares.Authorization(redis_cache), journalHandler.UpdateSimilarityMaster)
-		journal.GET("/similarity",middlewares.Authorization(redis_cache), journalHandler.GetSimilarityMaster)
+		journal.POST("/similarity", middlewares.Authorization(redis_cache), journalHandler.CreateSimilarityMaster)
+		journal.PUT("/similarity", middlewares.Authorization(redis_cache), journalHandler.UpdateSimilarityMaster)
+		journal.GET("/similarity", middlewares.Authorization(redis_cache), journalHandler.GetSimilarityMaster)
 	}
 
 	PORT := viper.GetString("ruConnext.port")

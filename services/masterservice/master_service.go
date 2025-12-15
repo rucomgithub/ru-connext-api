@@ -154,7 +154,6 @@ type (
 		INSTITUTE_THAI_NAME     string `json:"INSTITUTE_THAI_NAME"`
 		CK_CERT_NO              string `json:"CK_CERT_NO"`
 		CHK_CERT_NAME_THAI      string `json:"CHK_CERT_NAME_THAI"`
-		ID                      string `json:"ID"`
 		SUCCESS_YEAR            string `json:"SUCCESS_YEAR"`
 		SUCCESS_SEMESTER        string `json:"SUCCESS_SEMESTER"`
 		NAME_THAI       		string `json:"NAME_THAI"`
@@ -169,8 +168,8 @@ type (
 		MODIFIED                string `json:"MODIFIED"`
 		THESIS_THAI_TITLE       string `json:"THESIS_THAI_TITLE"`
 		THESIS_ENG_TITLE        string `json:"THESIS_ENG_TITLE"`
-		THESIS_THESIS_NAME      string `json:"THESIS_THESIS_NAME"`
-		THESIS_THESIS_TYPE      string `json:"THESIS_THESIS_TYPE"`
+		THESIS_TYPE      		string `json:"THESIS_TYPE"`
+		SIMILARITY      		string `json:"SIMILARITY"`
 	}
 
 	RegisterResponse struct {
@@ -290,6 +289,7 @@ type (
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
 		GetStudentRequestSuccess(stdCode string) (*StudentRequestSuccessService, error)
 		AddRequestSuccess(request *entities.RequestSuccess) error
+		EditRequestSuccess(request *entities.RequestSuccess) error
 
 		GetStudentSuccessCheck(stdCode string) (*StudentSuccessService, error)
 

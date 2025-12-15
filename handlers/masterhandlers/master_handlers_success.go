@@ -189,26 +189,111 @@ func (h *studentHandlers) AddRequestSuccess(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "โปรดระบุค่าในฟอร์มให้ถูกต้อง."})
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "โปรดระบุค่าในฟอร์มสร้างข้อมูลคำร้องขอจบการศึกษาให้ถูกต้อง."})
 		return
 	}
+
+	requestsuccess.STD_CODE = std_code
 
 	if err := h.studentService.AddRequestSuccess(&requestsuccess); err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
 		fmt.Println(&requestsuccess)
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่สามารถบันทึกข้อมูลได้. " + err.Error()})
+		c.IndentedJSON(http.StatusConflict, gin.H{"message": "ไม่สามารถสร้างข้อมูลคำร้องขอจบการศึกษาของ " + std_code + " ได้. " + err.Error()})
 		return 
 	}
 
 	studentSuccessResponse, err := h.studentService.GetStudentRequestSuccess(std_code)
 	if err != nil {
-		err = errors.New("ไม่พบข้อมูลขอจบสำเร็จการศึกษา " + std_code + "." + err.Error())
+		err = errors.New("ไม่พบข้อมูลคำร้องขอจบการศึกษาของ " + std_code + "." + err.Error())
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลขอจบสำเร็จการศึกษา " + std_code + "."})
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลคำร้องขอจบการศึกษาของ " + std_code + "." + err.Error()})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentSuccessResponse)
+
+}
+
+func (h *studentHandlers) EditRequestSuccess(c *gin.Context) {
+
+	token, err := middlewares.GetHeaderAuthorization(c)
+
+	fmt.Println(token)
+
+	if err != nil {
+		err = errors.New("ไม่พบ token login.")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ token login."})
+		c.Abort()
+		return
+	}
+
+	fmt.Println(token)
+
+	claim, err := middlewares.GetClaims(token)
+
+	if err != nil {
+		err = errors.New("ไม่พบ claims user." + err.Error())
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "ไม่พบ claims user."})
+		c.Abort()
+		return
+	}
+
+	role := claim.Role
+
+	fmt.Println(role)
+
+	if role == "Bachelor" {
+		err = errors.New("สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้...")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
+		c.Abort()
+		return
+	}
+
+	std_code := claim.StudentCode
+
+	var requestsuccess entities.RequestSuccess
+	
+	if err := c.ShouldBindJSON(&requestsuccess); err != nil {
+		log.Println("Bind Error")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "โปรดระบุค่าในฟอร์มแก้ไขข้อมูลคำร้องขอจบการศึกษาให้ถูกต้อง."})
+		return
+	}
+
+	requestsuccess.STD_CODE = std_code
+
+	if err := h.studentService.EditRequestSuccess(&requestsuccess); err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		fmt.Println(&requestsuccess)
+		c.IndentedJSON(http.StatusConflict, gin.H{"message": "ไม่สามารถแก้ไขข้อมูลคำร้องขอจบการศึกษาของ " + std_code + " ได้. " + err.Error()})
+		return 
+	}
+
+	studentSuccessResponse, err := h.studentService.GetStudentRequestSuccess(std_code)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลคำร้องขอจบการศึกษาของ " + std_code + "." + err.Error())
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลคำร้องขอจบการศึกษาของ " + std_code + "." + err.Error()})
 		c.Abort()
 		return
 	}

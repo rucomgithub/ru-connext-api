@@ -5,18 +5,18 @@ import (
 )
 
 type ThesisSimilarity struct {
-	StudentID              string                  `json:"studentId" db:"STD_CODE"`
-	Program                string                  `json:"program" db:"PROGRAM"`
-	Major                  string                  `json:"major" db:"MAJOR"`
-	Faculty                string                  `json:"faculty" db:"FACULTY"`
-	ThesisType             string                  `json:"thesisType" db:"THESIS_TYPE"`
-	ThesisTitleThai        string                  `json:"thesisTitleThai" db:"THESIS_TITLE_THAI"`
-	ThesisTitleEnglish     string                  `json:"thesisTitleEnglish" db:"THESIS_TITLE_ENGLISH"`
-	Similarity             float64                 `json:"similarity" db:"SIMILARITY"`
-	CreatedAt              time.Time               `json:"createdAt" db:"CREATED_AT"`
-	UpdatedAt              time.Time               `json:"updatedAt" db:"UPDATED_AT"`
-	CreatedBy              string                  `json:"createdBy" db:"CREATED_BY"`
-	UpdatedBy              string                  `json:"updatedBy" db:"UPDATED_BY"`
+	StudentID          string    `json:"studentId" db:"STD_CODE"`
+	Program            string    `json:"program" db:"PROGRAM"`
+	Major              string    `json:"major" db:"MAJOR"`
+	Faculty            string    `json:"faculty" db:"FACULTY"`
+	ThesisType         string    `json:"thesisType" db:"THESIS_TYPE"`
+	ThesisTitleThai    string    `json:"thesisTitleThai" db:"THESIS_TITLE_THAI"`
+	ThesisTitleEnglish string    `json:"thesisTitleEnglish" db:"THESIS_TITLE_ENGLISH"`
+	Similarity         float64   `json:"similarity" db:"SIMILARITY"`
+	CreatedAt          time.Time `json:"createdAt" db:"CREATED_AT"`
+	UpdatedAt          time.Time `json:"updatedAt" db:"UPDATED_AT"`
+	CreatedBy          string    `json:"createdBy" db:"CREATED_BY"`
+	UpdatedBy          string    `json:"updatedBy" db:"UPDATED_BY"`
 }
 
 type ThesisJournal struct {
@@ -35,6 +35,7 @@ type ThesisJournal struct {
 	CreatedBy              string                  `json:"createdBy" db:"CREATED_BY"`
 	UpdatedBy              string                  `json:"updatedBy" db:"UPDATED_BY"`
 	Similarity             float64                 `json:"similarity" db:"SIMILARITY"`
+	STATUS                 string                  `json:"status" db:"STATUS"`
 }
 
 type JournalPublication struct {
@@ -80,20 +81,19 @@ type OtherPublication struct {
 	CreatedAt    time.Time `json:"createdAt" db:"CREATED_AT"`
 }
 
-	// DB model — ใช้กับ sqlx / database/sql
+// DB model — ใช้กับ sqlx / database/sql
 type RequestSuccess struct {
-		ID               	int64       `json:"ID" db:"ID"`
-		STD_CODE 			string 		`json:"STD_CODE" validate:"min=9,max=10,regexp=^[0-9]" db:"STD_CODE"`
-		SUCCESS_YEAR      	string      `json:"SUCCESS_YEAR" validate:"min=4,max=4,regexp=^[0-9]" db:"SUCCESS_YEAR"`
-		SUCCESS_SEMESTER  	string      `json:"SUCCESS_SEMESTER" validate:"min=1,max=1,regexp=^[0-9]" db:"SUCCESS_SEMESTER"`
-		NAME_THAI  			string 	    `json:"NAME_THAI" db:"NAME_THAI"`
-		NAME_ENG   			string 	    `json:"NAME_ENG" db:"NAME_ENG"`
-		DEGREE    			string 		`json:"DEGREE" db:"DEGREE"`
-		THESIS_THAI   string      		`json:"THESIS_TITLE_THAI" db:"THESIS_THAI"`
-		THESIS_ENG   string         		`json:"THESIS_TITLE_ENGLISH" db:"THESIS_ENG"`
-		REGISTRATION        string         `json:"REGISTRATION" db:"REGISTRATION"`
-		GRADES        		string         `json:"GRADES" db:"GRADES"`
-		ADDRESS   	string        `json:"ADDRESS" db:"ADDRESS"`
-		CREATED         	string   		`json:"CREATED" db:"CREATED"`
-		MODIFIED        	string   		`json:"MODIFIED" db:"MODIFIED"`
+	STD_CODE         string `json:"STD_CODE" validate:"min=9,max=10,regexp=^[0-9]" db:"STD_CODE"`
+	SUCCESS_YEAR     string `json:"SUCCESS_YEAR" validate:"min=4,max=4,regexp=^[0-9]" db:"SUCCESS_YEAR"`
+	SUCCESS_SEMESTER string `json:"SUCCESS_SEMESTER" validate:"min=1,max=1,regexp=^[0-9]" db:"SUCCESS_SEMESTER"`
+	NAME_THAI        string `json:"NAME_THAI" db:"NAME_THAI"`
+	NAME_ENG         string `json:"NAME_ENG" db:"NAME_ENG"`
+	DEGREE           string `json:"DEGREE" db:"DEGREE"`
+	THESIS_THAI      string `json:"THESIS_THAI" db:"THESIS_THAI"`
+	THESIS_ENG       string `json:"THESIS_ENG" db:"THESIS_ENG"`
+	REGISTRATION     string `json:"REGISTRATION" db:"REGISTRATION"`
+	GRADES           string `json:"GRADES" db:"GRADES"`
+	ADDRESS          string `json:"ADDRESS" db:"ADDRESS"`
+	CREATED          string `json:"CREATED" db:"CREATED"`
+	MODIFIED         string `json:"MODIFIED" db:"MODIFIED"`
 }

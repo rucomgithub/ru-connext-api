@@ -52,19 +52,64 @@ func (r *studentRepoDB) GetStudentSuccess(studentCode string) (student *StudentS
 }
 
 // db is *sqlx.DB
-func (r *studentRepoDB) AddRequestSuccess(row *entities.RequestSuccess) error {
+func (r *studentRepoDB) CreateRequestSuccess(row *entities.RequestSuccess) error {
 	 query := `
             INSERT INTO DBGMIS00.EGRAD_REQUEST_SUCCESS
-            (ID,STD_CODE, SUCCESS_YEAR, SUCCESS_SEMESTER,
+            (STD_CODE, SUCCESS_YEAR, SUCCESS_SEMESTER,
             NAME_THAI, NAME_ENG, DEGREE,
             THESIS_THAI, THESIS_ENG, REGISTRATION, GRADES, ADDRESS)
             VALUES
-            (EGRAD_REQUEST_SUCCESS_SEQ.NEXTVAL, :STD_CODE, :SUCCESS_YEAR, :SUCCESS_SEMESTER,
+            (:STD_CODE, :SUCCESS_YEAR, :SUCCESS_SEMESTER,
             :NAME_THAI, :NAME_ENG, :DEGREE,
             :THESIS_THAI, :THESIS_ENG, :REGISTRATION, :GRADES, :ADDRESS)
             `
-     _, err := r.oracle_db_dbg.NamedExec(query, row)
+    result, err := r.oracle_db_dbg.NamedExec(query, row)
+     
+    if err != nil {
+		return err
+	}
+
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Rows affected: %d\n", rowsAffected)
+
+	if err != nil {
+		return err
+	}
     return err
+}
+
+// db is *sqlx.DB
+func (r *studentRepoDB) UpdateRequestSuccess(row *entities.RequestSuccess) error {
+    query := `
+           UPDATE DBGMIS00.EGRAD_REQUEST_SUCCESS 
+           SET SUCCESS_YEAR = :SUCCESS_YEAR, SUCCESS_SEMESTER = :SUCCESS_SEMESTER,
+           NAME_THAI = :NAME_THAI, NAME_ENG = :NAME_ENG, DEGREE = :DEGREE,
+           THESIS_THAI = :THESIS_THAI, THESIS_ENG = :THESIS_ENG, 
+           REGISTRATION = :REGISTRATION, GRADES = :GRADES, ADDRESS = :ADDRESS
+           WHERE STD_CODE = :STD_CODE
+           `
+    result , err := r.oracle_db_dbg.NamedExec(query, row)
+
+    if err != nil {
+		return err
+	}
+
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Rows affected: %d\n", rowsAffected)
+
+	if err != nil {
+		return err
+	}
+
+   return err
 }
 
 func (r *studentRepoDB) GetStudentRequestSuccess(studentCode string) (student *StudentRequestSuccessRepo, err error) { 
@@ -100,7 +145,6 @@ func (r *studentRepoDB) GetStudentRequestSuccess(studentCode string) (student *S
     VSS.INSTITUTE_THAI_NAME,
     VSS.CK_CERT_NO,
     VSS.CHK_CERT_NAME_THAI,
-    NVL(ES.ID, -1) AS ID,
     NVL(ES.SUCCESS_YEAR, '-') AS SUCCESS_YEAR,
     NVL(ES.SUCCESS_SEMESTER, '-') AS SUCCESS_SEMESTER,
     NVL(ES.NAME_THAI, '-') AS NAME_THAI,
@@ -113,12 +157,12 @@ func (r *studentRepoDB) GetStudentRequestSuccess(studentCode string) (student *S
     NVL(ES.ADDRESS, '-') AS ADDRESS,
     NVL(TO_CHAR(ES.CREATED, 'YYYY-MM-DD HH24:MI:SS'), '-') AS CREATED,
     NVL(TO_CHAR(ES.MODIFIED, 'YYYY-MM-DD HH24:MI:SS'), '-') AS MODIFIED,
-    NVL(DECODE(T.THAI_TITLE, NULL, '-', T.THAI_TITLE), '-') AS THESIS_THAI_TITLE,
-    NVL(DECODE(T.ENG_TITLE, NULL, '-', T.ENG_TITLE), '-') AS THESIS_ENG_TITLE,
-    NVL(T.THESIS_NAME, '-') AS THESIS_THESIS_NAME,
-    NVL(T.THESIS_TYPE, '-') AS THESIS_THESIS_TYPE 
+    NVL(DECODE(T.THESIS_TITLE_THAI, NULL, '-', T.THESIS_TITLE_THAI), '-') AS THESIS_THAI_TITLE,
+    NVL(DECODE(T.THESIS_TITLE_ENGLISH, NULL, '-', T.THESIS_TITLE_ENGLISH), '-') AS THESIS_ENG_TITLE,
+    NVL(T.THESIS_TYPE, '-') AS THESIS_TYPE,
+    NVL(T.SIMILARITY, -1) AS SIMILARITY 
     from VM_STUDENT_S VSS 
-    left join vt_thesis T on vss.std_code = t.std_code
+    left join egrad_thesis_similarity t on vss.std_code = t.std_code
     left join egrad_request_success ES on vss.std_code = es.std_code
     where VSS.STD_CODE = :param1`
 
