@@ -8,6 +8,7 @@ import (
 type ThesisJournalService interface {
 	CreateThesisJournal(ctx context.Context, thesisjournal *entities.ThesisJournal) error
 	GetThesisJournal(ctx context.Context, id string) (*entities.ThesisJournal, error)
+	UpdateThesisJournalStatus(ctx context.Context, id string) (*entities.ThesisJournal, error)
 	GetThesisJournalByStudentID(ctx context.Context, studentID string) (*entities.ThesisJournal, error)
 	UpdateThesisJournal(ctx context.Context, thesisjournal *entities.ThesisJournal) error
 	DeleteThesisJournal(ctx context.Context, id string) error

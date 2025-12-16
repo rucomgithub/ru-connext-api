@@ -1,21 +1,21 @@
 package handlers
 
 import (
-	"net/http"
-	"strconv"
-	"log"
-	"RU-Smart-Workspace/ru-smart-api/handlers"
-	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"RU-Smart-Workspace/ru-smart-api/domain/entities"
 	"RU-Smart-Workspace/ru-smart-api/domain/services"
+	"RU-Smart-Workspace/ru-smart-api/handlers"
+	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"errors"
 	"fmt"
+	"log"
+	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
 type journalHandler struct {
-	thesisJournalService services.ThesisJournalService 
+	thesisJournalService services.ThesisJournalService
 }
 
 func NewJournalHandler(thesisJournalService services.ThesisJournalService) *journalHandler {
@@ -24,7 +24,7 @@ func NewJournalHandler(thesisJournalService services.ThesisJournalService) *jour
 	}
 }
 
-func (h *journalHandler) CreateJournal(c *gin.Context) { 
+func (h *journalHandler) CreateJournal(c *gin.Context) {
 	var thesisJournal entities.ThesisJournal
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -33,7 +33,7 @@ func (h *journalHandler) CreateJournal(c *gin.Context) {
 
 	if err := h.thesisJournalService.CreateThesisJournal(c.Request.Context(), &thesisJournal); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return 
+		return
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
@@ -130,6 +130,21 @@ func (h *journalHandler) GetJournalByStudentID(c *gin.Context) {
 	})
 }
 
+func (h *journalHandler) UpdateJournalStatus(c *gin.Context) {
+	id := c.Param("id")
+
+	journal, err := h.thesisJournalService.UpdateThesisJournalStatus(c.Request.Context(), id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Journal updated status successfully",
+		"data":    journal,
+	})
+}
+
 func (h *journalHandler) UpdateJournal(c *gin.Context) {
 	id := c.Param("id")
 
@@ -194,7 +209,7 @@ func (h *journalHandler) UpdateJournalMaster(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	
+
 	var thesisJournal entities.ThesisJournal
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

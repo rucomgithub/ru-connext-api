@@ -114,6 +114,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		journals.GET("/:id", journalHandler.GetJournal)
 		journals.GET("/student-id/:studentId", journalHandler.GetJournalByStudentID)
 		journals.PUT("/:id", journalHandler.UpdateJournal)
+		journals.PUT("/status/:id", journalHandler.UpdateJournalStatus)
 		journals.DELETE("/:id", journalHandler.DeleteJoural)
 		journals.GET("/", journalHandler.ListJournals)
 

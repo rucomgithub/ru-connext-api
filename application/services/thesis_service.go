@@ -54,6 +54,28 @@ func (s *thesisJournalService) GetThesisJournal(ctx context.Context, id string) 
 	return s.repo.GetByID(ctx, id)
 }
 
+func (s *thesisJournalService) UpdateThesisJournalStatus(ctx context.Context, id string) (*entities.ThesisJournal, error) {
+	if id == "" {
+		return nil, fmt.Errorf("student ID cannot be empty")
+	}
+	thesisJournal, err := s.repo.GetByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+	thesisJournal.UpdatedAt = time.Now()
+	if thesisJournal.STATUS == "requested" {
+		thesisJournal.STATUS = "confirmed"
+	} else {
+		thesisJournal.STATUS = "requested"
+	}
+
+	err = s.repo.Update(ctx, thesisJournal)
+	if err != nil {
+		return nil, err
+	}
+	return thesisJournal, nil
+}
+
 func (s *thesisJournalService) GetThesisJournalByStudentID(ctx context.Context, studentID string) (*entities.ThesisJournal, error) {
 	if studentID == "" {
 		return nil, fmt.Errorf("student ID cannot be empty")
@@ -80,7 +102,7 @@ func (s *thesisJournalService) ListThesisJournals(ctx context.Context, limit, of
 	if limit <= 0 {
 		limit = 10
 	}
-	if offset < 0 {
+	if offset < 0 { 
 		offset = 0
 	}
 	return s.repo.List(ctx, limit, offset)
