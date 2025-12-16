@@ -42,7 +42,7 @@ func (h *journalHandler) CreateJournal(c *gin.Context) {
 	})
 }
 
-func (h *journalHandler) GetJournal(c *gin.Context) {
+func (h *journalHandler) GetJournal(c *gin.Context) { 
 	id := c.Param("id")
 
 	thesisJournal, err := h.thesisJournalService.GetThesisJournal(c.Request.Context(), id)
@@ -114,10 +114,10 @@ func (h *journalHandler) GetJournalMaster(c *gin.Context) {
 	})
 }
 
-func (h *journalHandler) GetJournalByStudentID(c *gin.Context) {
-	studentID := c.Param("studentId")
+func (h *journalHandler) GetJournalByValidateID(c *gin.Context) {
+	studentID := c.Param("id")
 
-	thesisJournal, err := h.thesisJournalService.GetThesisJournalByStudentID(c.Request.Context(), studentID)
+	thesisJournal, err := h.thesisJournalService.GetJournalByValidateID(c.Request.Context(), studentID)
 
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})

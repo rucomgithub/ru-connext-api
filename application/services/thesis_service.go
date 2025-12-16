@@ -76,11 +76,11 @@ func (s *thesisJournalService) UpdateThesisJournalStatus(ctx context.Context, id
 	return thesisJournal, nil
 }
 
-func (s *thesisJournalService) GetThesisJournalByStudentID(ctx context.Context, studentID string) (*entities.ThesisJournal, error) {
+func (s *thesisJournalService) GetJournalByValidateID(ctx context.Context, studentID string) (*entities.ThesisJournal, error) {
 	if studentID == "" {
 		return nil, fmt.Errorf("student ID cannot be empty")
 	}
-	return s.repo.GetByStudentID(ctx, studentID)
+	return s.repo.GetJournalByValidateID(ctx, studentID) 
 }
 
 func (s *thesisJournalService) UpdateThesisJournal(ctx context.Context, thesisjournal *entities.ThesisJournal) error {

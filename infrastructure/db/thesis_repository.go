@@ -168,7 +168,7 @@ func (r *thesisJournalRepository) GetByID(ctx context.Context, id string) (*enti
 	return thesisJournal, nil
 }
 
-func (r *thesisJournalRepository) GetByStudentID(ctx context.Context, studentID string) (*entities.ThesisJournal, error) {
+func (r *thesisJournalRepository) GetJournalByValidateID(ctx context.Context, studentID string) (*entities.ThesisJournal, error) {
 	thesisJournal := &entities.ThesisJournal{}
 
 	query := ` 

@@ -109,10 +109,10 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		// Initialize HTTP handler
 		journalHandler := _handlers.NewJournalHandler(journalService)
 
-		journals.POST("/", journalHandler.CreateJournal)
+		journals.POST("/", journalHandler.CreateJournal) 
 
 		journals.GET("/:id", journalHandler.GetJournal)
-		journals.GET("/student-id/:studentId", journalHandler.GetJournalByStudentID)
+		journals.GET("/validate/:id", journalHandler.GetJournalByValidateID)
 		journals.PUT("/:id", journalHandler.UpdateJournal)
 		journals.PUT("/status/:id", journalHandler.UpdateJournalStatus)
 		journals.DELETE("/:id", journalHandler.DeleteJoural)
