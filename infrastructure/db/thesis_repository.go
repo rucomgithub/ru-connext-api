@@ -208,7 +208,8 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 						THESIS_TITLE_ENGLISH = :THESIS_TITLE_ENGLISH,
 						UPDATED_AT = :UPDATED_AT,
 						CREATED_BY = :CREATED_BY, 
-						UPDATED_BY = :UPDATED_BY
+						UPDATED_BY = :UPDATED_BY,
+						STATUS = :STATUS
 					WHERE STD_CODE = :STD_CODE`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
