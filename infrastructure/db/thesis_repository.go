@@ -34,11 +34,11 @@ func (r *thesisJournalRepository) Create(ctx context.Context, thesisJournal *ent
         INSERT INTO EGRAD_THESIS (
             STD_CODE, PROGRAM, MAJOR, FACULTY,
             THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-            CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,STATUS
+            CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY
         ) VALUES (
             :STD_CODE, :PROGRAM, :MAJOR, :FACULTY,
             :THESIS_TYPE, :THESIS_TITLE_THAI, :THESIS_TITLE_ENGLISH,
-            :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY,:STATUS
+            :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY
         )`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)

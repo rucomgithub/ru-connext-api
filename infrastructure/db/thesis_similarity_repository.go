@@ -23,12 +23,12 @@ func (r *thesisJournalRepository) CreateSimilarity(ctx context.Context, thesisJo
             STD_CODE, PROGRAM, MAJOR, FACULTY,
             THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
             CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			SIMILARITY,STATUS
+			SIMILARITY
         ) VALUES (
             :STD_CODE, :PROGRAM, :MAJOR, :FACULTY,
             :THESIS_TYPE, :THESIS_TITLE_THAI, :THESIS_TITLE_ENGLISH,
             :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY,
-			:SIMILARITY, :STATUS
+			:SIMILARITY
         )`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
