@@ -64,8 +64,7 @@ func (r *thesisJournalRepository) UpdateSimilarity(ctx context.Context, thesisJo
 						UPDATED_AT = :UPDATED_AT,
 						CREATED_BY = :CREATED_BY, 
 						UPDATED_BY = :UPDATED_BY,
-						SIMILARITY = :SIMILARITY, 
-						STATUS = :STATUS
+						SIMILARITY = :SIMILARITY
 					WHERE STD_CODE = :STD_CODE`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
