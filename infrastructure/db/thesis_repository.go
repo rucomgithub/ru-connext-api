@@ -34,13 +34,11 @@ func (r *thesisJournalRepository) Create(ctx context.Context, thesisJournal *ent
         INSERT INTO EGRAD_THESIS (
             STD_CODE, PROGRAM, MAJOR, FACULTY,
             THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-            CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			SIMILARITY,STATUS
+            CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,STATUS
         ) VALUES (
             :STD_CODE, :PROGRAM, :MAJOR, :FACULTY,
             :THESIS_TYPE, :THESIS_TITLE_THAI, :THESIS_TITLE_ENGLISH,
-            :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY,
-			:SIMILARITY,:STATUS
+            :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY,:STATUS
         )`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
@@ -110,8 +108,7 @@ func (r *thesisJournalRepository) GetByID(ctx context.Context, id string) (*enti
 	query := `
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY,STATUS
+               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,STATUS
         FROM EGRAD_THESIS WHERE STD_CODE = :1`
 
 	err := r.db.GetContext(ctx, thesisJournal, query, id)
@@ -174,8 +171,7 @@ func (r *thesisJournalRepository) GetJournalByValidateID(ctx context.Context, st
 	query := ` 
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY,STATUS
+               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,STATUS
         FROM EGRAD_THESIS WHERE STD_CODE = :1`
 
 	err := r.db.GetContext(ctx, thesisJournal, query, studentID)
@@ -213,7 +209,6 @@ func (r *thesisJournalRepository) Update(ctx context.Context, thesisJournal *ent
 						UPDATED_AT = :UPDATED_AT,
 						CREATED_BY = :CREATED_BY, 
 						UPDATED_BY = :UPDATED_BY,
-						SIMILARITY = :SIMILARITY,
 						STATUS = :STATUS
 					WHERE STD_CODE = :STD_CODE`
 
@@ -425,8 +420,7 @@ func (r *thesisJournalRepository) List(ctx context.Context, limit, offset int) (
 	query := `
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
-               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY,STATUS
+               CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY, STATUS
         FROM EGRAD_THESIS
         ORDER BY CREATED_AT DESC
         OFFSET :1 ROWS FETCH NEXT :2 ROWS ONLY`

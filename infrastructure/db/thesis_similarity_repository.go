@@ -3,9 +3,10 @@ package db
 import (
 	"RU-Smart-Workspace/ru-smart-api/domain/entities"
 	"context"
+	"database/sql"
 	"fmt"
 	"log"
-	"database/sql"
+
 	_ "github.com/godror/godror"
 )
 
@@ -22,12 +23,12 @@ func (r *thesisJournalRepository) CreateSimilarity(ctx context.Context, thesisJo
             STD_CODE, PROGRAM, MAJOR, FACULTY,
             THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
             CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			SIMILARITY
+			SIMILARITY,STATUS
         ) VALUES (
             :STD_CODE, :PROGRAM, :MAJOR, :FACULTY,
             :THESIS_TYPE, :THESIS_TITLE_THAI, :THESIS_TITLE_ENGLISH,
             :CREATED_AT, :UPDATED_AT,:CREATED_BY, :UPDATED_BY,
-			:SIMILARITY
+			:SIMILARITY, :STATUS
         )`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
@@ -45,7 +46,7 @@ func (r *thesisJournalRepository) UpdateSimilarity(ctx context.Context, thesisJo
 	}
 	defer tx.Rollback()
 
-	thesis , err := r.GetSimilarityByID(ctx, thesisJournal.StudentID)
+	thesis, err := r.GetSimilarityByID(ctx, thesisJournal.StudentID)
 	if err != nil {
 		log.Print("Updating thesis similarity error get row: ", thesisJournal.StudentID)
 	}
@@ -63,7 +64,8 @@ func (r *thesisJournalRepository) UpdateSimilarity(ctx context.Context, thesisJo
 						UPDATED_AT = :UPDATED_AT,
 						CREATED_BY = :CREATED_BY, 
 						UPDATED_BY = :UPDATED_BY,
-						SIMILARITY = :SIMILARITY
+						SIMILARITY = :SIMILARITY, 
+						STATUS = :STATUS
 					WHERE STD_CODE = :STD_CODE`
 
 	_, err = tx.NamedExecContext(ctx, thesisQuery, thesisJournal)
@@ -81,7 +83,7 @@ func (r *thesisJournalRepository) GetSimilarityByID(ctx context.Context, id stri
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
                CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY
+			   SIMILARITY, STATUS
         FROM EGRAD_THESIS_SIMILARITY WHERE STD_CODE = :1`
 
 	err := r.db.GetContext(ctx, thesisSimilarity, query, id)
@@ -102,7 +104,7 @@ func (r *thesisJournalRepository) ListSimilarity(ctx context.Context, limit, off
         SELECT STD_CODE, PROGRAM, MAJOR, FACULTY,
                THESIS_TYPE, THESIS_TITLE_THAI, THESIS_TITLE_ENGLISH,
                CREATED_AT, UPDATED_AT,CREATED_BY, UPDATED_BY,
-			   SIMILARITY
+			   SIMILARITY, STATUS
         FROM EGRAD_THESIS_SIMILARITY 
         ORDER BY CREATED_AT DESC
         OFFSET :1 ROWS FETCH NEXT :2 ROWS ONLY`

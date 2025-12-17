@@ -1,14 +1,15 @@
 package handlers
 
 import (
-	"net/http"
-	"strconv"
-	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/domain/entities"
+	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"RU-Smart-Workspace/ru-smart-api/middlewares"
 	"errors"
 	"fmt"
 	"log"
+	"net/http"
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,22 +17,22 @@ func (h *journalHandler) CreateSimilarity(c *gin.Context) {
 	var thesisJournal entities.ThesisSimilarity
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "check error" + err.Error(),
 		})
-		return 
+		return
 	}
 
 	if err := h.thesisJournalService.CreateThesisSimilarity(c.Request.Context(), &thesisJournal); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "check error" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "Similarity created successfully",
 		"data":    thesisJournal,
 	})
@@ -43,7 +44,7 @@ func (h *journalHandler) UpdateSimilarity(c *gin.Context) {
 	var thesisJournal entities.ThesisSimilarity
 	if err := c.ShouldBindJSON(&thesisJournal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "check error" + err.Error(),
 		})
 		return
@@ -57,9 +58,24 @@ func (h *journalHandler) UpdateSimilarity(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "Similarity updated successfully.",
 		"data":    thesisJournal,
+	})
+}
+
+func (h *journalHandler) UpdateSimilarityStatus(c *gin.Context) {
+	id := c.Param("id")
+
+	journal, err := h.thesisJournalService.UpdateThesisSimilarityStatus(c.Request.Context(), id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Journal similarity updated status successfully",
+		"data":    journal,
 	})
 }
 
@@ -70,14 +86,14 @@ func (h *journalHandler) GetSimilarityByID(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "check error" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "Journal retrieved successfully",
 		"data":    thesisJournal,
 	})
@@ -100,14 +116,14 @@ func (h *journalHandler) ListSimilaritys(c *gin.Context) {
 	students, err := h.thesisJournalService.ListThesisSimilaritys(c.Request.Context(), limit, offset)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "check error" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "list similarity retrieved successfully",
 		"data":    students,
 	})
@@ -118,14 +134,14 @@ func (h *journalHandler) DeleteThesisSimilarity(c *gin.Context) {
 
 	if err := h.thesisJournalService.DeleteThesisSimilarity(c.Request.Context(), id); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "check error" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "Similarity deleted successfully",
 	})
 }
@@ -141,7 +157,7 @@ func (h *journalHandler) CreateSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "ไม่พบ token login."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "ไม่พบ token login."})
 		c.Abort()
 		return
 	}
@@ -155,7 +171,7 @@ func (h *journalHandler) CreateSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "ไม่พบ claims user."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "ไม่พบ claims user."})
 		c.Abort()
 		return
 	}
@@ -169,32 +185,32 @@ func (h *journalHandler) CreateSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
 		c.Abort()
 		return
 	}
-	
+
 	var thesisSimilarity entities.ThesisSimilarity
 	if err := c.ShouldBindJSON(&thesisSimilarity); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "โปรดระบุแบบฟอร์มให้ครบ " + err.Error(),
 		})
-		return 
+		return
 	}
 
 	thesisSimilarity.StudentID = claim.StudentCode
 
 	if err := h.thesisJournalService.CreateThesisSimilarity(c.Request.Context(), &thesisSimilarity); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "ไม่สามารถบันทึกข้อมูลได้ " + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "Similarity created successfully",
 		"data":    thesisSimilarity,
 	})
@@ -210,7 +226,7 @@ func (h *journalHandler) UpdateSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "ไม่พบ token login."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "ไม่พบ token login."})
 		c.Abort()
 		return
 	}
@@ -224,7 +240,7 @@ func (h *journalHandler) UpdateSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "ไม่พบ claims user."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "ไม่พบ claims user."})
 		c.Abort()
 		return
 	}
@@ -238,18 +254,18 @@ func (h *journalHandler) UpdateSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
 		c.Abort()
 		return
 	}
-	
+
 	var thesisSimilarity entities.ThesisSimilarity
 	if err := c.ShouldBindJSON(&thesisSimilarity); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "โปรดระบุแบบฟอร์มให้ครบ " + err.Error(),
 		})
-		return 
+		return
 	}
 
 	thesisSimilarity.StudentID = claim.StudentCode
@@ -260,7 +276,7 @@ func (h *journalHandler) UpdateSimilarityMaster(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "Similarity updated successfully.",
 		"data":    thesisSimilarity,
 	})
@@ -277,7 +293,7 @@ func (h *journalHandler) GetSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "ไม่พบ token login."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "ไม่พบ token login."})
 		c.Abort()
 		return
 	}
@@ -291,7 +307,7 @@ func (h *journalHandler) GetSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "ไม่พบ claims user."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "ไม่พบ claims user."})
 		c.Abort()
 		return
 	}
@@ -305,7 +321,7 @@ func (h *journalHandler) GetSimilarityMaster(c *gin.Context) {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
 		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success" : false,"message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{"success": false, "message": "สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้."})
 		c.Abort()
 		return
 	}
@@ -318,14 +334,14 @@ func (h *journalHandler) GetSimilarityMaster(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"success" : false,
+			"success": false,
 			"message": "check error" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"success" : true,
+		"success": true,
 		"message": "Journal retrieved successfully",
 		"data":    thesisJournal,
 	})

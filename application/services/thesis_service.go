@@ -63,10 +63,10 @@ func (s *thesisJournalService) UpdateThesisJournalStatus(ctx context.Context, id
 		return nil, err
 	}
 	thesisJournal.UpdatedAt = time.Now()
-	if thesisJournal.STATUS == "requested" {
-		thesisJournal.STATUS = "confirmed"
+	if thesisJournal.Status == "requested" {
+		thesisJournal.Status = "confirmed"
 	} else {
-		thesisJournal.STATUS = "requested"
+		thesisJournal.Status = "requested"
 	}
 
 	err = s.repo.Update(ctx, thesisJournal)
@@ -80,7 +80,7 @@ func (s *thesisJournalService) GetJournalByValidateID(ctx context.Context, stude
 	if studentID == "" {
 		return nil, fmt.Errorf("student ID cannot be empty")
 	}
-	return s.repo.GetJournalByValidateID(ctx, studentID) 
+	return s.repo.GetJournalByValidateID(ctx, studentID)
 }
 
 func (s *thesisJournalService) UpdateThesisJournal(ctx context.Context, thesisjournal *entities.ThesisJournal) error {
@@ -102,7 +102,7 @@ func (s *thesisJournalService) ListThesisJournals(ctx context.Context, limit, of
 	if limit <= 0 {
 		limit = 10
 	}
-	if offset < 0 { 
+	if offset < 0 {
 		offset = 0
 	}
 	return s.repo.List(ctx, limit, offset)
@@ -124,6 +124,28 @@ func (s *thesisJournalService) UpdateThesisSimilarity(ctx context.Context, thesi
 	}
 	thesisjournal.UpdatedAt = time.Now()
 	return s.repo.UpdateSimilarity(ctx, thesisjournal)
+}
+
+func (s *thesisJournalService) UpdateThesisSimilarityStatus(ctx context.Context, id string) (*entities.ThesisSimilarity, error) {
+	if id == "" {
+		return nil, fmt.Errorf("student ID cannot be empty")
+	}
+	thesisJournalSimilarity, err := s.repo.GetSimilarityByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+	thesisJournalSimilarity.UpdatedAt = time.Now()
+	if thesisJournalSimilarity.Status == "requested" {
+		thesisJournalSimilarity.Status = "confirmed"
+	} else {
+		thesisJournalSimilarity.Status = "requested"
+	}
+
+	err = s.repo.UpdateSimilarity(ctx, thesisJournalSimilarity)
+	if err != nil {
+		return nil, err
+	}
+	return thesisJournalSimilarity, nil
 }
 
 func (s *thesisJournalService) GetSimilarityByStudentID(ctx context.Context, studentID string) (*entities.ThesisSimilarity, error) {

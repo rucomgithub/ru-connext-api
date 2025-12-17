@@ -109,7 +109,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		// Initialize HTTP handler
 		journalHandler := _handlers.NewJournalHandler(journalService)
 
-		journals.POST("/", journalHandler.CreateJournal) 
+		journals.POST("/", journalHandler.CreateJournal)
 
 		journals.GET("/:id", journalHandler.GetJournal)
 		journals.GET("/validate/:id", journalHandler.GetJournalByValidateID)
@@ -120,6 +120,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		journals.POST("/similarity", journalHandler.CreateSimilarity)
 		journals.PUT("/similarity/:studentId", journalHandler.UpdateSimilarity)
+		journals.PUT("/similarity/status/:id", journalHandler.UpdateSimilarityStatus)
 		journals.GET("/similarity/:studentId", journalHandler.GetSimilarityByID)
 		journals.GET("/similarity", journalHandler.ListSimilaritys)
 		journals.DELETE("/similarity/:id", journalHandler.DeleteThesisSimilarity)
