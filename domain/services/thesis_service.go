@@ -20,4 +20,7 @@ type ThesisJournalService interface {
 	GetSimilarityByStudentID(ctx context.Context, studentID string) (*entities.ThesisSimilarity, error)
 	ListThesisSimilaritys(ctx context.Context, limit, offset int) ([]*entities.ThesisSimilarity, error)
 	DeleteThesisSimilarity(ctx context.Context, id string) error
+
+	GetRequestSuccessByID(ctx context.Context, id string) (*entities.RequestSuccess, error)
+	ListRequestSuccesss(ctx context.Context, limit, offset int) ([]*entities.RequestSuccess, error)
 }
