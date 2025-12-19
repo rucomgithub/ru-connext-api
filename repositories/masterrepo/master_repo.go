@@ -81,6 +81,7 @@ type (
 		THAI_DEGREE          string  `db:"THAI_DEGREE"`
 		ENG_DEGREE           string  `db:"ENG_DEGREE"`
 		THAI_MAJOR           string  `db:"THAI_MAJOR"`
+		ROLE           	     string  `db:"ROLE"`
 	}
 
 	StudentSuccessRepo struct {

@@ -46,6 +46,7 @@ func (s *studentServices) GetStudentProfile(studentCode string) (studentProfileR
 		THAI_DEGREE:           sp.THAI_DEGREE,
 		ENG_DEGREE:            sp.ENG_DEGREE,
 		THAI_MAJOR:            sp.THAI_MAJOR,
+		ROLE:            	   sp.ROLE,
 	}
 
 	studentProfileResponse = &student

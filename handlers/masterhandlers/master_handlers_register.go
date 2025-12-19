@@ -120,6 +120,36 @@ func (h *studentHandlers) GetRegisterFeeAll(c *gin.Context) {
 
 }
 
+func (h *studentHandlers) GetRegisterFeeAllById(c *gin.Context) {
+
+	std_code := c.Param("id")
+
+	studentProfileResponse, err := h.studentService.GetStudentProfile(std_code)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลประวัตินักศึกษา " + std_code + ".")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลประวัตินักศึกษา " + std_code + "."})
+		c.Abort()
+		return
+	}
+
+	studentRegisterFeeResponse, err := h.studentService.GetRegisterFeeAll(studentProfileResponse.STD_CODE,studentProfileResponse.ROLE)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลค่าธรรมเนียมการลงทะเบียนนักศึกษา " + std_code + ".")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลค่าธรรมเนียมการลงทะเบียนนักศึกษา " + std_code + "."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentRegisterFeeResponse)
+
+}
+
 func (h *studentHandlers) GetRegisterByYear(c *gin.Context) {
 
 	token, err := middlewares.GetHeaderAuthorization(c)

@@ -95,6 +95,7 @@ type (
 		THAI_DEGREE          string `json:"THAI_DEGREE"`
 		ENG_DEGREE           string `json:"ENG_DEGREE"`
 		THAI_MAJOR           string `json:"THAI_MAJOR"`
+		ROLE           		 string `json:"ROLE"`
 	}
 
 	StudentSuccessService struct {

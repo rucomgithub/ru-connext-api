@@ -9382,3 +9382,191 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:08:23Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:08:49Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:13:25Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T02:35:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T02:36:48Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/","service":"officer","status":200,"time":"2025-12-19T02:42:08Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:42:33Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T02:42:51Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T02:43:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:48:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:50:12Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:51:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:51:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:55:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T02:56:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T03:00:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T03:00:18Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T03:02:30Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T03:02:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T03:02:49Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T03:03:07Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T03:03:22Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T03:07:29Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/","service":"officer","status":200,"time":"2025-12-19T03:08:35Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T03:08:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T03:18:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T03:27:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T03:28:01Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T03:36:22Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T03:36:47Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T03:37:26Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T03:39:32Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T03:41:06Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T03:41:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-19T03:45:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T03:45:44Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T03:55:05Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T03:55:17Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T03:55:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T03:56:13Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:02:03Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:04:51Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:05:21Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:05:33Z"}
+{"file":"","level":"info","line":"","method":"PUT","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T04:08:53Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:09:47Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:10:58Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_success.go","level":"error","line":283,"method":"PUT","msg":"ORA-01407: cannot update (\"DBGMIS00\".\"EGRAD_REQUEST_SUCCESS\".\"SUCCESS_YEAR\") to NULL","path":"/master/student/requestsuccess","service":"master","status":409,"time":"2025-12-19T04:11:49Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/","service":"master","status":200,"time":"2025-12-19T04:12:02Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:12:06Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:12:34Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:12:42Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:12:42Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2025-12-19T04:12:48Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:17:07Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:17:29Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T04:17:37Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:17:53Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:18:09Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2025-12-19T04:22:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T04:26:16Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:29:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T04:30:33Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:30:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T04:31:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:31:46Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T04:42:30Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T04:49:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T04:49:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T04:49:51Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T04:51:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:02:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:02:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:06:17Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:06:22Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:06:31Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:07:02Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:07:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:07:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:07:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:23:03Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:29:19Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T05:39:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:45:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:46:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:49:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2025-12-19T05:52:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:55:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T05:57:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:10:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:10:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:10:14Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-19T06:15:04Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2025-12-19T06:15:43Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2025-12-19T06:15:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-19T06:15:57Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2025-12-19T06:16:08Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2025-12-19T06:19:22Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2025-12-19T06:19:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2025-12-19T06:19:25Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/register/","service":"master","status":200,"time":"2025-12-19T06:19:39Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":209,"method":"GET","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/master/register/asdfasdf","service":"master","status":404,"time":"2025-12-19T06:20:10Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":209,"method":"GET","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/master/register/5519860048","service":"master","status":404,"time":"2025-12-19T06:20:19Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":209,"method":"GET","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/master/register/5519860048","service":"master","status":404,"time":"2025-12-19T06:20:20Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:20:32Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:20:33Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:20:34Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:20:35Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:20:37Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:21:44Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:21:45Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:21:46Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:21:47Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:21:48Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-19T06:22:05Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:22:19Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:22:20Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:22:21Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:22:22Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:22:23Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/register/5519860048","service":"master","status":401,"time":"2025-12-19T06:22:23Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/fee/5519860048","service":"master","status":401,"time":"2025-12-19T06:24:18Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/fee/5519860048","service":"master","status":401,"time":"2025-12-19T06:24:19Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/fee/5519860048","service":"master","status":401,"time":"2025-12-19T06:24:22Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/fee/5519860048","service":"master","status":401,"time":"2025-12-19T06:24:23Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/fee/5519860048","service":"master","status":401,"time":"2025-12-19T06:24:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/officer/authorization","service":"officer","status":200,"time":"2025-12-19T06:24:43Z"}
+{"file":"/app/middlewares/officeAuth.go","level":"error","line":31,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/officer/fee/5519860048","service":"master","status":401,"time":"2025-12-19T06:25:02Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:16Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:19Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:48Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:50Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:25:51Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:00Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:01Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:10Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:12Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:13Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:13Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:14Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:15Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/grade/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:28Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/grade/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:32Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/grade/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:33Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/grade/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:34Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:39Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/fee/5519860048","service":"master","status":200,"time":"2025-12-19T06:26:40Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":142,"method":"GET","msg":"ไม่พบข้อมูลค่าธรรมเนียมการลงทะเบียนนักศึกษา 5312740208.","path":"/master/officer/fee/5312740208","service":"master","status":404,"time":"2025-12-19T06:27:29Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":142,"method":"GET","msg":"ไม่พบข้อมูลค่าธรรมเนียมการลงทะเบียนนักศึกษา 5312740208.","path":"/master/officer/fee/5312740208","service":"master","status":404,"time":"2025-12-19T06:27:30Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/grade/5312740208","service":"master","status":200,"time":"2025-12-19T06:27:37Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/officer/grade/5312740208","service":"master","status":200,"time":"2025-12-19T06:27:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:28:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:31:55Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:32:18Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:43:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:51:26Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T06:52:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:04:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:04:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:06:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:08:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:12:13Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T07:23:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:25:33Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:39:13Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess/6412590009","service":"officer","status":200,"time":"2025-12-19T07:40:04Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T07:40:15Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T07:40:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:41:00Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:41:20Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess/6412590009","service":"officer","status":200,"time":"2025-12-19T07:42:32Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:47:42Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token is malformed: token contains an invalid number of segments","path":"/master/journal/similarity","service":"master","status":401,"time":"2025-12-19T07:52:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/similarity","service":"officer","status":200,"time":"2025-12-19T07:53:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:55:03Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:56:49Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T07:58:02Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T08:03:26Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess","service":"officer","status":200,"time":"2025-12-19T08:04:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T08:04:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-19T08:05:09Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T08:05:20Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess/6412590009","service":"officer","status":200,"time":"2025-12-19T08:05:41Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token signature is invalid","path":"/master/register/fee","service":"master","status":401,"time":"2025-12-19T08:05:41Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token signature is invalid","path":"/master/grade/","service":"master","status":401,"time":"2025-12-19T08:05:48Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"token signature is invalid","path":"/master/register/fee","service":"master","status":401,"time":"2025-12-19T08:05:58Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/journal/similarity","service":"master","status":200,"time":"2025-12-19T08:08:07Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess/6412590009","service":"officer","status":200,"time":"2025-12-19T08:08:21Z"}
