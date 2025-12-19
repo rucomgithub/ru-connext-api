@@ -302,6 +302,47 @@ func (h *studentHandlers) EditRequestSuccess(c *gin.Context) {
 
 }
 
+func (h *studentHandlers) EditRequestSuccessById(c *gin.Context) {
+
+	std_code := c.Param("id")
+
+	var requestsuccess entities.RequestSuccessRepo
+	
+	if err := c.ShouldBindJSON(&requestsuccess); err != nil {
+		log.Println("Bind Error")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "โปรดระบุค่าในฟอร์มแก้ไขข้อมูลคำร้องขอจบการศึกษาให้ถูกต้อง."})
+		return
+	}
+
+	requestsuccess.STD_CODE = std_code
+
+	if err := h.studentService.EditRequestSuccess(&requestsuccess); err != nil {
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		fmt.Println(&requestsuccess)
+		c.IndentedJSON(http.StatusConflict, gin.H{"message": "ไม่สามารถแก้ไขข้อมูลคำร้องขอจบการศึกษาของ " + std_code + " ได้. " + err.Error()})
+		return 
+	}
+
+	studentSuccessResponse, err := h.studentService.GetStudentRequestSuccess(std_code)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลคำร้องขอจบการศึกษาของ " + std_code + "." + err.Error())
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลคำร้องขอจบการศึกษาของ " + std_code + "." + err.Error()})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentSuccessResponse)
+
+}
+
 func (h *studentHandlers) GetStudentSuccessById(c *gin.Context) {
 
 	std_code := c.Param("id")

@@ -9666,3 +9666,5 @@
 {"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/requestsuccess","service":"master","status":200,"time":"2025-12-19T09:02:41Z"}
 {"file":"/app/handlers/masterhandlers/master_handlers_register.go","level":"error","line":142,"method":"GET","msg":"ไม่พบข้อมูลค่าธรรมเนียมการลงทะเบียนนักศึกษา 5312740208.","path":"/master/officer/fee/5312740208","service":"master","status":404,"time":"2025-12-19T09:02:41Z"}
 {"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"PUT","msg":"token signature is invalid","path":"/master/student/requestsuccess","service":"master","status":401,"time":"2025-12-19T09:03:08Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess/5312740208","service":"officer","status":200,"time":"2025-12-19T09:05:58Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/officer/journals/requestsuccess/5312740208","service":"officer","status":200,"time":"2025-12-19T09:06:17Z"}
