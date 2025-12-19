@@ -292,6 +292,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officerMaster.GET("/photograduate/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetPhotoGraduateByStudentCode)
 		officerMaster.GET("/fee/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetRegisterFeeAllById)
 		officerMaster.GET("/grade/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetGradeAllById)
+		officerMaster.PUT("/requestsuccess", middlewares.AuthorizationOfficer(redis_cache), masterHandler.EditRequestSuccess)
 
 
 		certificateMaster := master.Group("/certificate")

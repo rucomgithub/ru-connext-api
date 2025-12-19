@@ -182,7 +182,7 @@ func (h *studentHandlers) AddRequestSuccess(c *gin.Context) {
 
 	std_code := claim.StudentCode
 
-	var requestsuccess entities.RequestSuccess
+	var requestsuccess entities.RequestSuccessRepo
 	
 	if err := c.ShouldBindJSON(&requestsuccess); err != nil {
 		log.Println("Bind Error")
@@ -265,7 +265,7 @@ func (h *studentHandlers) EditRequestSuccess(c *gin.Context) {
 
 	std_code := claim.StudentCode
 
-	var requestsuccess entities.RequestSuccess
+	var requestsuccess entities.RequestSuccessRepo
 	
 	if err := c.ShouldBindJSON(&requestsuccess); err != nil {
 		log.Println("Bind Error")

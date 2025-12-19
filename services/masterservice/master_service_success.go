@@ -196,7 +196,7 @@ func (s *studentServices) GetStudentRequestSuccess(studentCode string) (studentS
 	return studentSuccessResponse, nil
 }
 
-func (s *studentServices) AddRequestSuccess(request *entities.RequestSuccess) error {
+func (s *studentServices) AddRequestSuccess(request *entities.RequestSuccessRepo) error {
 
 	err := s.studentRepo.CreateRequestSuccess(request)
 
@@ -207,7 +207,7 @@ func (s *studentServices) AddRequestSuccess(request *entities.RequestSuccess) er
 	return nil
 }
 
-func (s *studentServices) EditRequestSuccess(request *entities.RequestSuccess) error {
+func (s *studentServices) EditRequestSuccess(request *entities.RequestSuccessRepo) error {
 
 	err := s.studentRepo.UpdateRequestSuccess(request)
 

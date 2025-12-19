@@ -52,7 +52,7 @@ func (r *studentRepoDB) GetStudentSuccess(studentCode string) (student *StudentS
 }
 
 // db is *sqlx.DB
-func (r *studentRepoDB) CreateRequestSuccess(row *entities.RequestSuccess) error {
+func (r *studentRepoDB) CreateRequestSuccess(row *entities.RequestSuccessRepo) error {
 	 query := `
             INSERT INTO DBGMIS00.EGRAD_REQUEST_SUCCESS
             (STD_CODE, SUCCESS_YEAR, SUCCESS_SEMESTER,
@@ -83,7 +83,7 @@ func (r *studentRepoDB) CreateRequestSuccess(row *entities.RequestSuccess) error
 }
 
 // db is *sqlx.DB
-func (r *studentRepoDB) UpdateRequestSuccess(row *entities.RequestSuccess) error {
+func (r *studentRepoDB) UpdateRequestSuccess(row *entities.RequestSuccessRepo) error {
     query := `
            UPDATE DBGMIS00.EGRAD_REQUEST_SUCCESS 
            SET SUCCESS_YEAR = :SUCCESS_YEAR, SUCCESS_SEMESTER = :SUCCESS_SEMESTER,

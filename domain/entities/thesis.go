@@ -110,8 +110,8 @@ type RequestSuccess struct {
 	INSTITUTE_THAI_NAME  string `db:"INSTITUTE_THAI_NAME" json:"instituteThaiName"`
 	CK_CERT_NO           string `db:"CK_CERT_NO" json:"ckCertNo"`
 	CHK_CERT_NAME_THAI   string `db:"CHK_CERT_NAME_THAI" json:"chkCertNameThai"`
-	SUCCESS_YEAR         string `db:"SUCCESS_YEAR" json:"successYear"`
-	SUCCESS_SEMESTER     string `db:"SUCCESS_SEMESTER" json:"successSemester"`
+	SUCCESS_YEAR         string `db:"SUCCESS_YEAR" json:"SUCCESS_YEAR"`
+	SUCCESS_SEMESTER     string `db:"SUCCESS_SEMESTER" json:"SUCCESS_SEMESTER"`
 	NAME_THAI            string `db:"NAME_THAI" json:"nameThai"`
 	NAME_ENG             string `db:"NAME_ENG" json:"nameEng"`
 	THESIS_THAI          string `db:"THESIS_THAI" json:"thesisThai"`
@@ -126,5 +126,21 @@ type RequestSuccess struct {
 	THESIS_ENG_TITLE     string `db:"THESIS_ENG_TITLE" json:"thesisEngTitle"`
 	THESIS_TYPE          string `db:"THESIS_TYPE" json:"thesisType"`
 	SIMILARITY           string `db:"SIMILARITY" json:"similarity"`
+}
+
+type RequestSuccessRepo struct {
+	STD_CODE         string `json:"STD_CODE" validate:"min=9,max=10,regexp=^[0-9]" db:"STD_CODE"`
+	SUCCESS_YEAR     string `json:"SUCCESS_YEAR" validate:"min=4,max=4,regexp=^[0-9]" db:"SUCCESS_YEAR"`
+	SUCCESS_SEMESTER string `json:"SUCCESS_SEMESTER" validate:"min=1,max=1,regexp=^[0-9]" db:"SUCCESS_SEMESTER"`
+	NAME_THAI        string `json:"NAME_THAI" db:"NAME_THAI"`
+	NAME_ENG         string `json:"NAME_ENG" db:"NAME_ENG"`
+	DEGREE           string `json:"DEGREE" db:"DEGREE"`
+	THESIS_THAI      string `json:"THESIS_THAI" db:"THESIS_THAI"`
+	THESIS_ENG       string `json:"THESIS_ENG" db:"THESIS_ENG"`
+	REGISTRATION     string `json:"REGISTRATION" db:"REGISTRATION"`
+	GRADES           string `json:"GRADES" db:"GRADES"`
+	ADDRESS          string `json:"ADDRESS" db:"ADDRESS"`
+	CREATED          string `json:"CREATED" db:"CREATED"`
+	MODIFIED         string `json:"MODIFIED" db:"MODIFIED"`
 }
 

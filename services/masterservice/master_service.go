@@ -289,8 +289,8 @@ type (
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
 		GetStudentRequestSuccess(stdCode string) (*StudentRequestSuccessService, error)
-		AddRequestSuccess(request *entities.RequestSuccess) error
-		EditRequestSuccess(request *entities.RequestSuccess) error
+		AddRequestSuccess(request *entities.RequestSuccessRepo) error
+		EditRequestSuccess(request *entities.RequestSuccessRepo) error
 
 		GetStudentSuccessCheck(stdCode string) (*StudentSuccessService, error)
 

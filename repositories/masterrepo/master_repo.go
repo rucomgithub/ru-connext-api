@@ -184,8 +184,8 @@ type (
 
 		GetStudentSuccess(studentCode string) (*StudentSuccessRepo, error)
 		GetStudentRequestSuccess(studentCode string) (*StudentRequestSuccessRepo, error)
-		CreateRequestSuccess(row *entities.RequestSuccess) error
-		UpdateRequestSuccess(row *entities.RequestSuccess) error
+		CreateRequestSuccess(row *entities.RequestSuccessRepo) error
+		UpdateRequestSuccess(row *entities.RequestSuccessRepo) error
 
 		GetRegisterByYear(std_code, year string) (*[]RegisterRepo, error)
 		GetRegisterAll(std_code string) (*[]RegisterRepo, error)
