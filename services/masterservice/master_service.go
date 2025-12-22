@@ -171,6 +171,7 @@ type (
 		THESIS_ENG_TITLE        string `json:"THESIS_ENG_TITLE"`
 		THESIS_TYPE      		string `json:"THESIS_TYPE"`
 		SIMILARITY      		string `json:"SIMILARITY"`
+		STATUS      		string `json:"STATUS"`
 	}
 
 	RegisterResponse struct {

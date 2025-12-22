@@ -184,6 +184,7 @@ func (s *studentServices) GetStudentRequestSuccess(studentCode string) (studentS
 		THESIS_ENG_TITLE       : sp.THESIS_ENG_TITLE,
 		THESIS_TYPE     		: sp.THESIS_TYPE,
 		SIMILARITY     			: sp.SIMILARITY,
+		STATUS     				: sp.STATUS,
 	}	
 
 	studentSuccessResponse = &student

@@ -56,6 +56,7 @@ type (
 		THESIS_ENG_TITLE        string `db:"THESIS_ENG_TITLE"`
 		THESIS_TYPE      		string `db:"THESIS_TYPE"`
 		SIMILARITY      		string `db:"SIMILARITY"`
+		STATUS      		string `db:"STATUS"`
 	}	
 
 	StudentProfileRepo struct {
