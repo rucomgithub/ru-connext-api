@@ -127,8 +127,8 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 
 		journals.GET("/requestsuccess", journalHandler.ListRequestSuccess)
 		journals.GET("/requestsuccess/:id", journalHandler.GetRequestSuccessByID)
+		journals.PUT("/requestsuccess/status/:id", journalHandler.UpdateRequestSuccessStatus)
 		
-
 	}
 
 	googleAuth := router.Group("/google")

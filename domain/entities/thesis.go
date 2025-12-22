@@ -120,12 +120,13 @@ type RequestSuccess struct {
 	REGISTRATION         string `db:"REGISTRATION" json:"registration"`
 	GRADES               string `db:"GRADES" json:"grades"`
 	ADDRESS              string `db:"ADDRESS" json:"address"`
-	CREATED              string `db:"CREATED" json:"created"`
-	MODIFIED             string `db:"MODIFIED" json:"modified"`
+	CREATED              time.Time `db:"CREATED" json:"created"`
+	MODIFIED             time.Time `db:"MODIFIED" json:"modified"`
 	THESIS_THAI_TITLE    string `db:"THESIS_THAI_TITLE" json:"thesisThaiTitle"`
 	THESIS_ENG_TITLE     string `db:"THESIS_ENG_TITLE" json:"thesisEngTitle"`
 	THESIS_TYPE          string `db:"THESIS_TYPE" json:"thesisType"`
 	SIMILARITY           string `db:"SIMILARITY" json:"similarity"`
+	STATUS           	 string `db:"STATUS" json:"status"`
 }
 
 type RequestSuccessRepo struct {
@@ -140,7 +141,8 @@ type RequestSuccessRepo struct {
 	REGISTRATION     string `json:"REGISTRATION" db:"REGISTRATION"`
 	GRADES           string `json:"GRADES" db:"GRADES"`
 	ADDRESS          string `json:"ADDRESS" db:"ADDRESS"`
-	CREATED          string `json:"CREATED" db:"CREATED"`
-	MODIFIED         string `json:"MODIFIED" db:"MODIFIED"`
+	CREATED          time.Time `json:"CREATED" db:"CREATED"`
+	MODIFIED         time.Time `json:"MODIFIED" db:"MODIFIED"`
+	STATUS           string `json:"STATUS" db:"STATUS"`
 }
 

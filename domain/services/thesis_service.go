@@ -23,4 +23,5 @@ type ThesisJournalService interface {
 
 	GetRequestSuccessByID(ctx context.Context, id string) (*entities.RequestSuccess, error)
 	ListRequestSuccesss(ctx context.Context, limit, offset int) ([]*entities.RequestSuccess, error)
+	UpdateRequestSuccessStatus(ctx context.Context, id string) (*entities.RequestSuccess, error)
 }
