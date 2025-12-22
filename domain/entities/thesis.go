@@ -110,8 +110,8 @@ type RequestSuccess struct {
 	INSTITUTE_THAI_NAME  string `db:"INSTITUTE_THAI_NAME" json:"instituteThaiName"`
 	CK_CERT_NO           string `db:"CK_CERT_NO" json:"ckCertNo"`
 	CHK_CERT_NAME_THAI   string `db:"CHK_CERT_NAME_THAI" json:"chkCertNameThai"`
-	SUCCESS_YEAR         string `db:"SUCCESS_YEAR" json:"SUCCESS_YEAR"`
-	SUCCESS_SEMESTER     string `db:"SUCCESS_SEMESTER" json:"SUCCESS_SEMESTER"`
+	SUCCESS_YEAR         string `db:"SUCCESS_YEAR" json:"successYear"`
+	SUCCESS_SEMESTER     string `db:"SUCCESS_SEMESTER" json:"successSemester"`
 	NAME_THAI            string `db:"NAME_THAI" json:"nameThai"`
 	NAME_ENG             string `db:"NAME_ENG" json:"nameEng"`
 	THESIS_THAI          string `db:"THESIS_THAI" json:"thesisThai"`
