@@ -156,7 +156,8 @@ func (r *thesisJournalRepository) ListRequestSuccess(ctx context.Context, limit,
 			NVL(DECODE(T.THESIS_TITLE_THAI, NULL, '-', T.THESIS_TITLE_THAI), '-') AS THESIS_THAI_TITLE,
 			NVL(DECODE(T.THESIS_TITLE_ENGLISH, NULL, '-', T.THESIS_TITLE_ENGLISH), '-') AS THESIS_ENG_TITLE,
 			NVL(T.THESIS_TYPE, '-') AS THESIS_TYPE,
-			NVL(T.SIMILARITY, -1) AS SIMILARITY 
+			NVL(T.SIMILARITY, -1) AS SIMILARITY,
+			es.STATUS
 			from egrad_request_success es
 			inner join VM_STUDENT_S VSS on vss.std_code = es.std_code
 			inner join egrad_thesis_similarity t on vss.std_code = t.std_code
