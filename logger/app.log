@@ -11896,3 +11896,105 @@
 {"file":"/app/middlewares/googleAuth.go","level":"error","line":91,"method":"POST","msg":"idtoken: audience provided does not match aud claim in the JWT","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T10:10:49Z"}
 {"file":"/app/middlewares/googleAuth.go","level":"error","line":91,"method":"POST","msg":"idtoken: audience provided does not match aud claim in the JWT","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T10:10:51Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization","service":"google","status":200,"time":"2025-12-27T10:11:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization","service":"google","status":200,"time":"2025-12-27T10:13:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T10:14:23Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2025-12-27T10:14:23Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999992","service":"grade","status":200,"time":"2025-12-27T10:14:23Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2025-12-27T10:14:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T10:14:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T10:14:25Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T10:14:25Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T10:14:26Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T10:14:26Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T10:14:28Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T10:14:28Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T10:14:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T10:15:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T10:15:21Z"}
+{"file":"/app/handlers/register.go","level":"error","line":126,"method":"POST","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/register/6299999992/schedulelatest","service":"register","status":404,"time":"2025-12-27T10:15:21Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2025-12-27T10:15:23Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2025-12-27T10:15:23Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2025-12-27T10:15:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T10:15:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T10:15:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T10:15:24Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T10:15:25Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T10:15:27Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T10:15:27Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T10:15:29Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T10:15:29Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T10:15:29Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization","service":"google","status":200,"time":"2025-12-27T10:16:52Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T10:46:56Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T10:47:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T10:52:51Z"}
+{"file":"/app/middlewares/googleAuth.go","level":"error","line":91,"method":"POST","msg":"idtoken: token expired","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T11:04:08Z"}
+{"file":"/app/middlewares/googleAuth.go","level":"error","line":91,"method":"POST","msg":"idtoken: token expired","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T11:04:10Z"}
+{"file":"/app/middlewares/googleAuth.go","level":"error","line":91,"method":"POST","msg":"idtoken: token expired","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T11:04:11Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:04:39Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:04:41Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-27T11:05:04Z"}
+{"file":"/app/handlers/register.go","level":"error","line":126,"method":"POST","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/register/6299999992/schedulelatest","service":"register","status":404,"time":"2025-12-27T11:05:04Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T11:05:04Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:05:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2025-12-27T11:05:16Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T11:05:18Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:05:26Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:05:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:07:49Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2025-12-27T11:08:21Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-27T11:08:22Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T11:08:22Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:08:23Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T11:08:23Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:08:25Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:08:26Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-27T11:08:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999992","service":"grade","status":200,"time":"2025-12-27T11:08:46Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2025-12-27T11:08:46Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:08:48Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:08:49Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T11:09:02Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T11:12:41Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T11:12:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2025-12-27T11:12:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999992","service":"grade","status":200,"time":"2025-12-27T11:12:42Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:12:44Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:14:45Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T11:15:40Z"}
+{"file":"/app/handlers/register.go","level":"error","line":126,"method":"POST","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/register/6299999992/schedulelatest","service":"register","status":404,"time":"2025-12-27T11:15:40Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T11:15:41Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:15:48Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T11:19:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999992","service":"grade","status":200,"time":"2025-12-27T11:19:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2025-12-27T11:19:01Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:19:01Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:19:11Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:19:29Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:28:06Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-27T11:30:05Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T11:30:06Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:30:34Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T11:30:55Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:30:55Z"}
+{"file":"/app/handlers/register.go","level":"error","line":126,"method":"POST","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/register/6299999992/schedulelatest","service":"register","status":404,"time":"2025-12-27T11:30:56Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:30:56Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:31:36Z"}
+{"file":"/app/middlewares/googleAuth.go","level":"error","line":91,"method":"POST","msg":"idtoken: token expired","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T11:34:28Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2025-12-27T11:35:00Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-27T11:35:01Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T11:35:01Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:35:02Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T11:35:02Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:35:03Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"GET","msg":"redis: nil","path":"/student/profile/6299999991","service":"student","status":401,"time":"2025-12-27T11:37:22Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T11:37:34Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/profile/6401510273","service":"student","status":200,"time":"2025-12-27T11:38:45Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6401510276","service":"student","status":404,"time":"2025-12-27T11:38:57Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T11:39:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T11:39:16Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/profile/6404010016","service":"student","status":200,"time":"2025-12-27T11:40:00Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/profile/6404010016","service":"student","status":200,"time":"2025-12-27T11:40:04Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6404010018","service":"student","status":404,"time":"2025-12-27T11:40:16Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6404010009","service":"student","status":404,"time":"2025-12-27T11:40:28Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/profile/6804502703","service":"student","status":200,"time":"2025-12-27T11:41:56Z"}
