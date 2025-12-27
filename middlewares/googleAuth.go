@@ -14,6 +14,7 @@ import (
 	"google.golang.org/api/oauth2/v1"
 	"google.golang.org/api/option"
 
+	"github.com/spf13/viper"
 	"google.golang.org/api/idtoken"
 )
 
@@ -117,6 +118,8 @@ func verifyGoogleAuth(id_token string) (*oauth2.Tokeninfo, error) {
 }
 
 func verifyGoogleAuthIDToken(idToken string) (*idtoken.Payload, error) {
+	google_client_appid := viper.GetString("google.google_client_appid")
+
 	if idToken == "" {
 		return nil, errors.New("ID token is empty")
 	}
@@ -126,7 +129,7 @@ func verifyGoogleAuthIDToken(idToken string) (*idtoken.Payload, error) {
 	ctx := context.Background()
 
 	// 🔍 FIRST: Validate WITHOUT audience to see what's in the token
-	payload, err := idtoken.Validate(ctx, idToken, "")
+	payload, err := idtoken.Validate(ctx, idToken, google_client_appid)
 	if err != nil {
 		log.Printf("Error validating ID token: %v", err)
 		return nil, err
