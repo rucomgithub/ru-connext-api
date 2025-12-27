@@ -5,6 +5,7 @@ import (
 	"context"
 	"errors"
 	"net/http"
+	"strings"
 	"time"
 
 	"log"
@@ -18,9 +19,55 @@ import (
 
 var ctx = context.Background()
 
+func GetHeaderAuthorizationToken(c *gin.Context) (string, error) {
+	const bearerSchema = "Bearer "
+
+	authHeader := c.GetHeader("Authorization")
+	if authHeader == "" {
+		return "", errors.New("authorization header is empty")
+	}
+
+	// Trim all whitespace
+	authHeader = strings.TrimSpace(authHeader)
+
+	if !strings.HasPrefix(authHeader, bearerSchema) {
+		return "", errors.New("authorization header must start with Bearer")
+	}
+
+	// Extract token
+	token := authHeader[len(bearerSchema):]
+
+	// 🧹 Clean the token thoroughly
+	token = strings.TrimSpace(token)
+	token = strings.ReplaceAll(token, "\n", "")
+	token = strings.ReplaceAll(token, "\r", "")
+	token = strings.ReplaceAll(token, "\t", "")
+	token = strings.ReplaceAll(token, " ", "")
+
+	// Validate JWT structure
+	parts := strings.Split(token, ".")
+	if len(parts) != 3 {
+		log.Printf("❌ Invalid JWT structure: expected 3 parts, got %d", len(parts))
+		return "", errors.New("invalid JWT format: must have 3 parts separated by dots")
+	}
+
+	// Validate each part is not empty
+	for i, part := range parts {
+		if part == "" {
+			log.Printf("❌ JWT part %d is empty", i)
+			return "", errors.New("invalid JWT format: empty part detected")
+		}
+	}
+
+	log.Printf("✅ Valid JWT structure: %d.%d.%d characters",
+		len(parts[0]), len(parts[1]), len(parts[2]))
+
+	return token, nil
+}
+
 func GoogleAuth(c *gin.Context) {
 
-	ID_TOKEN, err := GetHeaderAuthorization(c)
+	ID_TOKEN, err := GetHeaderAuthorizationToken(c)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
@@ -29,6 +76,13 @@ func GoogleAuth(c *gin.Context) {
 		c.Abort()
 		return
 	}
+
+	if err != nil {
+		c.JSON(401, gin.H{"error": err.Error()})
+		return
+	}
+
+	log.Println("ID TOKEN:", ID_TOKEN)
 
 	_, err = verifyGoogleAuthIDToken(ID_TOKEN)
 	if err != nil {
@@ -63,23 +117,26 @@ func verifyGoogleAuth(id_token string) (*oauth2.Tokeninfo, error) {
 }
 
 func verifyGoogleAuthIDToken(idToken string) (*idtoken.Payload, error) {
-
 	if idToken == "" {
-		return nil, errors.New("id token is empty")
+		return nil, errors.New("ID token is empty")
 	}
 
-	log.Printf("idToken: %s", idToken)
+	log.Printf("JWT TOKEN: %s", idToken)
 
 	ctx := context.Background()
 
-	payload, err := idtoken.Validate(
-		ctx,
-		idToken,
-		"668594026369-pbki4bj9l02svr8412ahgnhu99vpi0k3.apps.googleusercontent.com", // Web Client ID
-	)
+	// 🔍 FIRST: Validate WITHOUT audience to see what's in the token
+	payload, err := idtoken.Validate(ctx, idToken, "")
 	if err != nil {
+		log.Printf("Error validating ID token: %v", err)
 		return nil, err
 	}
+
+	// 📝 Log the actual audience claim
+	log.Printf("🔍 Token AUD claim: %v", payload.Audience)
+	log.Printf("🔍 Token ISS claim: %v", payload.Issuer)
+	log.Printf("🔍 Token SUB claim: %v", payload.Subject)
+	log.Printf("🔍 Token EMAIL: %v", payload.Claims["email"])
 
 	return payload, nil
 }
