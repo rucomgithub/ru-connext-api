@@ -67,7 +67,7 @@ func GetHeaderAuthorizationToken(c *gin.Context) (string, error) {
 
 func GoogleAuth(c *gin.Context) {
 
-	ID_TOKEN, err := GetHeaderAuthorizationToken(c)
+	ID_TOKEN, err := GetHeaderAuthorization(c)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
@@ -84,7 +84,7 @@ func GoogleAuth(c *gin.Context) {
 
 	log.Println("ID TOKEN:", ID_TOKEN)
 
-	_, err = verifyGoogleAuthIDToken(ID_TOKEN)
+	_, err = verifyGoogleAuth(ID_TOKEN)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())

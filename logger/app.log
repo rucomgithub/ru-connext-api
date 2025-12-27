@@ -11747,3 +11747,50 @@
 {"file":"/app/middlewares/googleAuth.go","level":"error","line":90,"method":"POST","msg":"idtoken: unable to decode JWT signature: illegal base64 data at input byte 232","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T09:37:15Z"}
 {"file":"/app/middlewares/googleAuth.go","level":"error","line":90,"method":"POST","msg":"idtoken: unable to decode JWT signature: illegal base64 data at input byte 232","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T09:37:18Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization","service":"google","status":200,"time":"2025-12-27T09:37:32Z"}
+{"file":"/app/middlewares/authorization.go","level":"error","line":29,"method":"POST","msg":"token is malformed: token contains an invalid number of segments","path":"/register/","service":"register","status":401,"time":"2025-12-27T09:39:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T09:39:59Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/data","service":"mr30","status":200,"time":"2025-12-27T09:40:01Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T09:40:19Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T09:40:19Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/","service":"register","status":200,"time":"2025-12-27T09:40:20Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T09:40:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/data","service":"mr30","status":200,"time":"2025-12-27T09:40:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization","service":"google","status":200,"time":"2025-12-27T09:40:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T09:40:59Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":49,"method":"POST","msg":"ไม่พบข้อมูลผลการศึกษา","path":"/grade/5312740208","service":"grade","status":404,"time":"2025-12-27T09:40:59Z"}
+{"file":"/app/handlers/register.go","level":"error","line":56,"method":"GET","msg":"ไม่พบข้อมูลปีการศึกษา","path":"/register/5312740208/year","service":"register","status":404,"time":"2025-12-27T09:40:59Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2025-12-27T09:41:00Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photograduate","service":"student","status":200,"time":"2025-12-27T09:41:00Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/student/profile","service":"master","status":200,"time":"2025-12-27T09:41:14Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2025-12-27T09:41:19Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/master/grade/","service":"master","status":200,"time":"2025-12-27T09:41:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T09:41:44Z"}
+{"file":"/app/handlers/masterhandlers/master_handlers_profile.go","level":"error","line":47,"method":"GET","msg":"สิทธิ์ไม่สามารถเข้าถึงข้อมูลส่วนนี้ได้.","path":"/master/student/profile","service":"master","status":401,"time":"2025-12-27T09:41:44Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-27T09:41:44Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999991/year","service":"register","status":200,"time":"2025-12-27T09:41:44Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T09:41:44Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T09:41:45Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T09:41:45Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/profile/6299999991","service":"student","status":200,"time":"2025-12-27T09:41:46Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/profile/6299999991","service":"student","status":200,"time":"2025-12-27T09:41:47Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T09:42:03Z"}
+{"file":"/app/handlers/register.go","level":"error","line":126,"method":"POST","msg":"ไม่พบข้อมูลการลงทะเบียนเรียน","path":"/register/6299999992/schedulelatest","service":"register","status":404,"time":"2025-12-27T09:42:03Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T09:42:04Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T09:42:04Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T09:42:04Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T09:42:05Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":438,"method":"GET","msg":"Invalid image format.","path":"/student/photograduate","service":"student","status":400,"time":"2025-12-27T09:42:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/data","service":"mr30","status":200,"time":"2025-12-27T09:42:05Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T09:42:06Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T09:42:06Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T09:42:13Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T09:42:13Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/6299999992/year","service":"register","status":200,"time":"2025-12-27T09:42:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T09:42:54Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T09:42:55Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T09:43:02Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T09:43:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2025-12-27T09:43:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-27T09:43:16Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/student/photoprofile","service":"student","status":200,"time":"2025-12-27T09:43:36Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":254,"method":"GET","msg":"sql: no rows in result set","path":"/student/profile/6299999992","service":"student","status":404,"time":"2025-12-27T09:43:37Z"}
