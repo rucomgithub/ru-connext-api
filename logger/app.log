@@ -11687,3 +11687,4 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/year","service":"mr30","status":200,"time":"2025-12-27T08:41:40Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/mr30/data","service":"mr30","status":200,"time":"2025-12-27T08:41:40Z"}
 {"file":"/app/middlewares/googleAuth.go","level":"error","line":34,"method":"POST","msg":"idtoken: audience provided does not match aud claim in the JWT","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T08:42:02Z"}
+{"file":"/app/middlewares/googleAuth.go","level":"error","line":36,"method":"POST","msg":"idtoken: audience provided does not match aud claim in the JWT","path":"/google/authorization","service":"google","status":401,"time":"2025-12-27T08:46:56Z"}
