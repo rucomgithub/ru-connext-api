@@ -1,58 +1,68 @@
 package middlewares
 
 import (
-	"RU-Smart-Workspace/ru-smart-api/handlers"
 	"context"
+	"errors"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
-	"google.golang.org/api/oauth2/v1"
-	"google.golang.org/api/option"
+	"google.golang.org/api/idtoken"
 )
 
 var ctx = context.Background()
 
 func GoogleAuth(c *gin.Context) {
 
-	ID_TOKEN, err := GetHeaderAuthorization(c)
+	idToken, err := GetHeaderAuthorization(c)
 	if err != nil {
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"accessToken": "", "isAuth": false, "message": "authorization key in header not found"})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{
+			"isAuth":  false,
+			"message": "authorization header not found",
+		})
 		c.Abort()
 		return
 	}
 
-	_, err = verifyGoogleAuth(ID_TOKEN)
+	payload, err := verifyGoogleAuth(idToken)
 	if err != nil {
-		c.Error(err)
-		c.Set("line", handlers.GetLineNumber())
-		c.Set("file", handlers.GetFileName())
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"accessToken": "", "isAuth": false, "message": "Google is not authorized"})
+		c.IndentedJSON(http.StatusUnauthorized, gin.H{
+			"isAuth":  false,
+			"message": "google token invalid",
+		})
 		c.Abort()
 		return
 	}
+
+	// ✅ เก็บข้อมูล user ไว้ใช้ต่อใน handler
+	c.Set("google_sub", payload.Subject)
+	c.Set("email", payload.Claims["email"])
+	c.Set("name", payload.Claims["name"])
+
 	c.Next()
-
 }
 
-func verifyGoogleAuth(id_token string) (*oauth2.Tokeninfo, error) {
+func verifyGoogleAuth(idToken string) (*idtoken.Payload, error) {
 
-	timeout := time.Duration(5 * time.Second)
-	httpClient := &http.Client{Timeout: timeout}
+	if idToken == "" {
+		return nil, errors.New("id token is empty")
+	}
 
-	oauth2Service, err := oauth2.NewService(ctx, option.WithHTTPClient(httpClient))
+	ctx := context.Background()
+
+	payload, err := idtoken.Validate(
+		ctx,
+		idToken,
+		"505837308278-q7h4ihqtu9quajaotvtejhosb2pepmmt.apps.googleusercontent.com", // 👈 Web Client ID
+	)
 	if err != nil {
 		return nil, err
 	}
 
-	tokenInfoCall := oauth2Service.Tokeninfo()
-	tokenInfoCall.AccessToken(id_token)
-	tokenInfo, err := tokenInfoCall.Do()
-	if err != nil {
-		return nil, err
+	// (optional) เช็คเพิ่ม
+	if payload.Issuer != "https://accounts.google.com" &&
+		payload.Issuer != "accounts.google.com" {
+		return nil, errors.New("invalid issuer")
 	}
-	return tokenInfo, nil
+
+	return payload, nil
 }
