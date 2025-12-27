@@ -128,7 +128,7 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		journals.GET("/requestsuccess", journalHandler.ListRequestSuccess)
 		journals.GET("/requestsuccess/:id", journalHandler.GetRequestSuccessByID)
 		journals.PUT("/requestsuccess/status/:id", journalHandler.UpdateRequestSuccessStatus)
-		
+
 	}
 
 	googleAuth := router.Group("/google")
@@ -293,7 +293,6 @@ func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis
 		officerMaster.GET("/fee/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetRegisterFeeAllById)
 		officerMaster.GET("/grade/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.GetGradeAllById)
 		officerMaster.PUT("/requestsuccess/:id", middlewares.AuthorizationOfficer(redis_cache), masterHandler.EditRequestSuccessById)
-
 
 		certificateMaster := master.Group("/certificate")
 		certificateMaster.POST("/company", masterHandler.AddCommpany)
