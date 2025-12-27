@@ -30,7 +30,7 @@ func GoogleAuth(c *gin.Context) {
 		return
 	}
 
-	_, err = verifyGoogleAuth(ID_TOKEN)
+	_, err = verifyGoogleAuthIDToken(ID_TOKEN)
 	if err != nil {
 		c.Error(err)
 		c.Set("line", handlers.GetLineNumber())
