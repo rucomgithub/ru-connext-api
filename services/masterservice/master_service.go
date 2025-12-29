@@ -2,6 +2,7 @@ package masterservice
 
 import (
 	"RU-Smart-Workspace/ru-smart-api/repositories/masterrepo"
+	"RU-Smart-Workspace/ru-smart-api/domain/entities"
 	"context"
 
 	"github.com/go-redis/redis/v8"
@@ -89,29 +90,108 @@ type (
 		PENAL_NAME_THAI      string `json:"PENAL_NAME_THAI"`
 		MOBILE_TELEPHONE     string `json:"MOBILE_TELEPHONE"`
 		EMAIL_ADDRESS        string `json:"EMAIL_ADDRESS"`
+		THAI_NAME            string `json:"THAI_NAME"`
+		ENG_NAME             string `json:"ENG_NAME"`
+		THAI_DEGREE          string `json:"THAI_DEGREE"`
+		ENG_DEGREE           string `json:"ENG_DEGREE"`
+		THAI_MAJOR           string `json:"THAI_MAJOR"`
+		ROLE           		 string `json:"ROLE"`
 	}
 
 	StudentSuccessService struct {
-		STD_CODE        string `json:"STD_CODE"`
-		NAME_THAI       string `json:"NAME_THAI"`
-		NAME_ENG        string `json:"NAME_ENG"`
-		YEAR            string `json:"YEAR"`
-		SEMESTER        string `json:"SEMESTER"`
-		CURR_NAME       string `json:"CURR_NAME"`
-		MAJOR_NAME_THAI string `json:"MAJOR_NAME_THAI"`
-		MAJOR_NAME      string `json:"MAJOR_NAME"`
-		PLAN            string `json:"PLAN"`
-		CONFERENCE_NO   string `db:"CONFERENCE_NO"`
-		SERIAL_NO       string `json:"SERIAL_NO"`
-		CONFERENCE_DATE string `json:"CONFERENCE_DATE"`
-		GRADUATED_DATE  string `json:"GRADUATED_DATE"`
-		CONFIRM_DATE    string `json:"CONFIRM_DATE"`
+		STD_CODE        string  `json:"STD_CODE"`
+		NAME_THAI       string  `json:"NAME_THAI"`
+		NAME_ENG        string  `json:"NAME_ENG"`
+		YEAR            string  `json:"YEAR"`
+		SEMESTER        string  `json:"SEMESTER"`
+		CURR_NAME       string  `json:"CURR_NAME"`
+		CURR_ENG        string  `json:"CURR_ENG"`
+		THAI_NAME       string  `json:"THAI_NAME"`
+		ENG_NAME        string  `json:"ENG_NAME"`
+		MAJOR_NAME      string  `json:"MAJOR_NAME"`
+		MAJOR_ENG       string  `json:"MAJOR_ENG"`
+		MAIN_MAJOR_THAI string  `json:"MAIN_MAJOR_THAI"`
+		MAIN_MAJOR_ENG  string  `json:"MAIN_MAJOR_ENG"`
+		PLAN            string  `json:"PLAN"`
+		GPA             float32 `json:"GPA"`
+		CONFERENCE_NO   string  `json:"CONFERENCE_NO"`
+		SERIAL_NO       string  `json:"SERIAL_NO"`
+		CONFERENCE_DATE string  `json:"CONFERENCE_DATE"`
+		ADMIT_DATE      string  `json:"ADMIT_DATE"`
+		ADMIT_DATE_EN   string  `json:"ADMIT_DATE_EN"`
+		GRADUATED_DATE  string  `json:"GRADUATED_DATE"`
+		GRADUATED_DATE_EN  string  `json:"GRADUATED_DATE_EN"`
+		CONFIRM_DATE    string  `json:"CONFIRM_DATE"`
+		MOBILE     string `json:"MOBILE"`
+		EMAIL        string `json:"EMAIL"`
+	}
+
+	StudentRequestSuccessService struct {
+		ENROLL_YEAR             string `json:"ENROLL_YEAR"`
+		ENROLL_SEMESTER         string `json:"ENROLL_SEMESTER"`
+		STD_CODE                string `json:"STD_CODE"`
+		PRENAME_THAI_S          string `json:"PRENAME_THAI_S"`
+		PRENAME_ENG_S           string `json:"PRENAME_ENG_S"`
+		FIRST_NAME              string `json:"FIRST_NAME"`
+		LAST_NAME               string `json:"LAST_NAME"`
+		FIRST_NAME_ENG          string `json:"FIRST_NAME_ENG"`
+		LAST_NAME_ENG           string `json:"LAST_NAME_ENG"`
+		THAI_NAME               string `json:"THAI_NAME"`
+		PLAN_NO                 string `json:"PLAN_NO"`
+		SEX                     string `json:"SEX"`
+		REGINAL_NAME            string `json:"REGINAL_NAME"`
+		SUBSIDY_NAME            string `json:"SUBSIDY_NAME"`
+		STATUS_NAME_THAI        string `json:"STATUS_NAME_THAI"`
+		BIRTH_DATE              string `json:"BIRTH_DATE"`
+		STD_ADDR                string `json:"STD_ADDR"`
+		ADDR_TEL                string `json:"ADDR_TEL"`
+		JOB_POSITION            string `json:"JOB_POSITION"`
+		STD_OFFICE              string `json:"STD_OFFICE"`
+		OFFICE_TEL              string `json:"OFFICE_TEL"`
+		DEGREE_NAME             string `json:"DEGREE_NAME"`
+		BSC_DEGREE_NO           string 	`json:"BSC_DEGREE_NO"`
+		BSC_DEGREE_THAI_NAME    string `json:"BSC_DEGREE_THAI_NAME"`
+		BSC_INSTITUTE_NO        string `json:"BSC_INSTITUTE_NO"`
+		INSTITUTE_THAI_NAME     string `json:"INSTITUTE_THAI_NAME"`
+		CK_CERT_NO              string `json:"CK_CERT_NO"`
+		CHK_CERT_NAME_THAI      string `json:"CHK_CERT_NAME_THAI"`
+		SUCCESS_YEAR            string `json:"SUCCESS_YEAR"`
+		SUCCESS_SEMESTER        string `json:"SUCCESS_SEMESTER"`
+		NAME_THAI       		string `json:"NAME_THAI"`
+		NAME_ENG        		string `json:"NAME_ENG"`
+		THESIS_THAI     		string `json:"THESIS_THAI"`
+		THESIS_ENG      		string `json:"THESIS_ENG"`
+		DEGREE          		string `json:"DEGREE"`
+		REGISTRATION           	string `json:"REGISTRATION"`
+		GRADES                	string `json:"GRADES"`
+		ADDRESS               	string `json:"ADDRESS"`
+		CREATED                 string `json:"CREATED"`
+		MODIFIED                string `json:"MODIFIED"`
+		THESIS_THAI_TITLE       string `json:"THESIS_THAI_TITLE"`
+		THESIS_ENG_TITLE        string `json:"THESIS_ENG_TITLE"`
+		THESIS_TYPE      		string `json:"THESIS_TYPE"`
+		SIMILARITY      		string `json:"SIMILARITY"`
+		STATUS      		string `json:"STATUS"`
 	}
 
 	RegisterResponse struct {
 		STD_CODE string                 `json:"std_code"`
 		YEAR     string                 `json:"year"`
 		REGISTER []RegisterResponseRepo `json:"register"`
+	}
+
+	RegisterFeeResponse struct {
+		STD_CODE string  `json:"std_code"`
+		FEE []RegisterFeeResponseRepo `json:"fee"`
+	}
+
+	RegisterFeeResponseRepo struct {
+		STD_CODE      string `json:"STD_CODE"`
+		YEAR  		  string `json:"YEAR"`
+		SEMESTER  	  string `json:"SEMESTER"`
+		TOTAL_AMOUNT  int    `json:"TOTAL_AMOUNT"`
+		REGIS_TYPE    string    `json:"REGIS_TYPE"`
+		REGIS_NAME    string    `json:"REGIS_NAME"`
 	}
 
 	GradeResponse struct {
@@ -141,6 +221,8 @@ type (
 		COURSE_NO string `json:"COURSE_NO"`
 		CREDIT    int    `json:"CREDIT"`
 		GRADE     string `json:"GRADE"`
+		COURSE_TYPE_NO string `json:"COURSE_TYPE_NO"`
+		THAI_DESCRIPTION string `json:"THAI_DESCRIPTION"`
 	}
 
 	RegisterRequest struct {
@@ -148,16 +230,87 @@ type (
 		YEAR     string `json:"year" validate:"min=4,max=4,regexp=^[0-9]"`
 	}
 
+	PrivacyPolicyResponse struct {
+		STD_CODE string `json:"STD_CODE"`
+		VERSION  string `json:"VERSION"`
+		STATUS   string `json:"STATUS"`
+		CREATED  string `json:"CREATED"`
+		MODIFIED string `json:"MODIFIED"`
+	}
+
+	PrivacyPolicyRequest struct {
+		VERSION string `json:"version" validate:"regexp=^[0-9]"`
+		STATUS  string `json:"status" validate:"regexp=^[0-1]"`
+	}
+
+	QualificationRequest struct {
+		STATUS      string `json:"status" validate:"required"`
+		DESCRIPTION string `json:"description"`
+	}
+
+	QualificationResponse struct {
+		STD_CODE     string `json:"std_code"`
+		REQUEST_DATE string `json:"request_date"`
+		OPERATE_DATE string `json:"operate_date"`
+		CONFIRM_DATE string `json:"confirm_date"`
+		CANCEL_DATE  string `json:"cancel_date"`
+		STATUS       string `json:"status"`
+		CREATED      string `json:"created"`
+		MODIFIED     string `json:"modified"`
+		DESCRIPTION  string `json:"description"`
+	}
+
+	TokenCertificateResponse struct {
+		CertificateToken string `json:"certificateToken"`
+		StartDate        string `json:"startDate"`
+		ExpireDate       string `json:"expireDate"`
+		Certificate      string `json:"certificate"`
+		Message          string `json:"message"`
+		StatusCode       int    `json:"status_code"`
+	}
+
+	CompanyRequest struct {
+		STD_CODE string `json:"std_code" validate:"required"`
+		EMAIL    string `json:"email" validate:"required"`
+		FULLNAME string `json:"fullname" validate:"required"`
+		COMPANY  string `json:"company" validate:"required"`
+	}
+
+	CompanyResponse struct {
+		STD_CODE string `json:"std_code"`
+		EMAIL    string `json:"email"`
+		FULLNAME string `json:"fullname"`
+		COMPANY  string `json:"company"`
+		CREATED  string `json:"created"`
+		MODIFIED string `json:"modified"`
+	}
+
 	StudentServicesInterface interface {
+		Certificate(token string) (*TokenCertificateResponse, error)
 		GetStudentProfile(stdCode string) (*StudentProfileService, error)
 		GetStudentSuccess(stdCode string) (*StudentSuccessService, error)
+		GetStudentRequestSuccess(stdCode string) (*StudentRequestSuccessService, error)
+		AddRequestSuccess(request *entities.RequestSuccessRepo) error
+		EditRequestSuccess(request *entities.RequestSuccessRepo) error
+
 		GetStudentSuccessCheck(stdCode string) (*StudentSuccessService, error)
 
 		GetRegisterAll(stdCode string) (*RegisterResponse, error)
+		GetRegisterFeeAll(stdCode,role string) (*RegisterFeeResponse, error)
 		GetRegisterByYear(stdCode, year string) (*RegisterResponse, error)
 
 		GetGradeAll(stdCode string) (*GradeResponse, error)
 		GetGradeByYear(stdCode, year string) (*GradeResponse, error)
+
+		GetPrivacyPolicy(std_code, version string) (*PrivacyPolicyResponse, error)
+		SetPrivacyPolicy(std_code, version, status string) (*PrivacyPolicyResponse, error)
+
+		GetQualification(std_code string) (*QualificationResponse, error)
+		AddQualification(std_code string) (*QualificationResponse, error)
+
+		GetCommpanyByEmail(email string) (*CompanyResponse, error)
+		GetCommpany(std_code, email string) (*CompanyResponse, error)
+		AddCommpany(request CompanyRequest) (*CompanyResponse, error)
 	}
 )
 

@@ -2,6 +2,19 @@ package repositories
 
 import "fmt"
 
+func (r *registerRepoDB) GetRegisterCourse(year, semester, course_no string) (*[]RegisterCourseRepo, error) {
+
+	register := []RegisterCourseRepo{}
+	query := "SELECT R.YEAR,R.SEMESTER,R.COURSE_NO,R.STD_CODE,NVL(P.MOBILE_TELEPHONE,'-') MOBILE_TELEPHONE,NVL(P.EMAIL_ADDRESS,'-') EMAIL_ADDRESS FROM DBBACH00.UGB_REGIS_RU24 R INNER JOIN DBBACH00.VM_STUDENT_PROFILE P ON R.STD_CODE = P.STD_CODE WHERE  R.YEAR = :param1 and R.SEMESTER = :param2 and R.COURSE_NO = :param3 ORDER BY R.STD_CODE"
+
+	err := r.oracle_db.Select(&register, query, year, semester, course_no)
+	if err != nil {
+		return nil, err
+	}
+
+	return &register, nil
+}
+
 func (r *registerRepoDB) GetRegisterAll(std_code, year string) (*[]RegisterRepo, error) {
 	if std_code == "6299999991" {
 		std_code = "6401510273"

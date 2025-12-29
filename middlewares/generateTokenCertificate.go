@@ -16,7 +16,7 @@ func GenerateTokenCertificate(ID_TOKEN, stdCode, certificate string, redis_cache
 	generateToken := &TokenCertificateResponse{}
 	//expirationAccessToken := time.Now().AddDate(0, 0, 1).Unix()
 	timeStart := time.Now()
-	timeExpire := timeStart.Add(time.Minute * 60)
+	timeExpire := timeStart.Add(time.Hour * 24 * 120)
 	expirationAccessToken := timeExpire.Unix()
 
 	generateToken.AccessTokenKey = stdCode + "::certificate::" + uuid.New().String()

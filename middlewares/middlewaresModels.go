@@ -11,6 +11,11 @@ import (
 )
 
 type (
+	CacheOfficer struct {
+		Username string `json:"Username"`
+		Role     string `json:"role"`
+	}
+
 	CacheStudent struct {
 		StdCode string `json:"std_code"`
 		Role    string `json:"std_role"`
@@ -30,6 +35,16 @@ type (
 		AccessToken     string `json:"accessToken"`
 		RefreshToken    string `json:"refreshToken"`
 		IsAuth          bool   `json:"isAuth"`
+		AccessTokenKey  string `json:"access_token_key"`
+		RefreshTokenKey string `json:"refresh_token_key"`
+	}
+
+	ClaimsTokenOfficer struct {
+		Issuer          string `json:"issuer"`
+		Subject         string `json:"subject"`
+		Role            string `json:"role"`
+		Officer         string `json:"officer"`
+		ExpiresToken    string `json:"expires_token"`
 		AccessTokenKey  string `json:"access_token_key"`
 		RefreshTokenKey string `json:"refresh_token_key"`
 	}
@@ -114,12 +129,14 @@ func VerifyCertificateToken(preTokenKey string, token string, redis_cache *redis
 
 	claims, err := GetCertificateClaims(token)
 	if err != nil {
+		fmt.Println(err.Error())
 		return false, err
 	}
 
 	_, err = redis_cache.Get(ctx, claims.AccessTokenKey).Result()
 
 	if err != nil {
+		fmt.Println(err.Error())
 		return false, err
 	}
 

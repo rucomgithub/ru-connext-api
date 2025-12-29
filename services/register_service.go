@@ -10,6 +10,46 @@ import (
 	"gopkg.in/validator.v2"
 )
 
+func (s *registerServices) GetRegisterCourse(year,semester,courseno string,) (*[]RegisterCourseResponse, error) {
+
+	registerCourseResponse := []RegisterCourseResponse{}
+
+	key := "register::course" + year + semester + courseno
+	registerCache, err := s.redis_cache.Get(ctx, key).Result()
+	if err == nil {
+		_ = json.Unmarshal([]byte(registerCache), &registerCourseResponse)
+		fmt.Println("cache")
+		return &registerCourseResponse, nil
+	}
+
+	fmt.Println("database")
+
+	registerCourseRepo, err := s.registerRepo.GetRegisterCourse(year,semester,courseno)
+	if err != nil {
+		return &registerCourseResponse, err
+	}
+
+	for _, c := range *registerCourseRepo {
+		registerCourseResponse = append(registerCourseResponse, RegisterCourseResponse{
+			YEAR          : c.YEAR,
+			SEMESTER      : c.SEMESTER,
+			STD_CODE            : c.STD_CODE,
+			COURSE_NO            : c.COURSE_NO,
+			MOBILE_TELEPHONE     : c.MOBILE_TELEPHONE,
+			EMAIL_ADDRESS 		 : c.EMAIL_ADDRESS,
+		})
+	}
+
+	if len(registerCourseResponse) != 0 {
+		registerJSON, _ := json.Marshal(&registerCourseResponse)
+		timeNow := time.Now()
+		redisCacheregister := time.Unix(timeNow.Add(time.Minute*1).Unix(), 0)
+		_ = s.redis_cache.Set(ctx, key, registerJSON, redisCacheregister.Sub(timeNow)).Err()
+	}
+
+	return &registerCourseResponse, nil
+}
+
 func (register *registerServices) GetSchedule(std_code string) (*RegisterScheduleResponse, error) {
 
 	yearSemester, err := register.registerRepo.GetYearSemesterLatest()

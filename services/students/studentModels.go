@@ -14,11 +14,33 @@ type (
 	studentServices struct {
 		studentRepo studentr.StudentRepoInterface
 		redis_cache *redis.Client
+		clientID string
 	}
 
 	AuthenPlayload struct {
 		Std_code      string `json:"std_code"`
 		Refresh_token string `json:"refresh_token"`
+	}
+
+	GoogleTokenInfo struct {
+		Iss           string `json:"iss"`
+		Azp           string `json:"azp"`
+		Aud           string `json:"aud"`
+		Sub           string `json:"sub"`
+		Hd            string `json:"hd"`
+		Email         string `json:"email"`
+		EmailVerified string `json:"email_verified"`
+		Nbf           string `json:"nbf"`
+		Name          string `json:"name"`
+		Picture       string `json:"picture"`
+		GivenName     string `json:"given_name"`
+		FamilyName    string `json:"family_name"`
+		Iat           string `json:"iat"`
+		Exp           string `json:"exp"`
+		Jti           string `json:"jti"`
+		Alg           string `json:"alg"`
+		Kid           string `json:"kid"`
+		Typ           string `json:"typ"`
 	}
 
 	RegisterPlayload struct {
@@ -149,12 +171,16 @@ type (
 		GetRegisterAll(studentCode, courseYear string) (*RegisterAllResponse, error)
 
 		GetStudentAll() (*[]StudentResponse, error)
+
+		VerifyToken(ctx context.Context, token string) (*GoogleTokenInfo, error)
+		ExtractStudentID(email string) string
 	}
 )
 
-func NewStudentServices(studentRepo studentr.StudentRepoInterface, redis_cache *redis.Client) StudentServicesInterface {
+func NewStudentServices(studentRepo studentr.StudentRepoInterface, redis_cache *redis.Client, clientID string) StudentServicesInterface {
 	return &studentServices{
 		studentRepo: studentRepo,
 		redis_cache: redis_cache,
+		clientID: clientID,
 	}
 }

@@ -14,5 +14,5 @@ RUN go build -o main .
 FROM oracle/instantclient:21 AS final_stage
 COPY --from=build_stage /app/main /
 COPY environments/config.yaml /environments/
-ENTRYPOINT /main
+ENTRYPOINT ["/main"]
 EXPOSE 8883

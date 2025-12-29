@@ -21,7 +21,7 @@ func (h *studentHandlers) Certifiate(c *gin.Context) {
 		return
 	}
 
-	tokenResponse, err := h.studentService.Certificate(ID_TOKEN)
+	tokenResponse, err := h.studentService.Certificate(ID_TOKEN) 
 	if err != nil {
 		c.Error(errors.New(err.Error() + ", " + ID_TOKEN))
 		c.Set("line", handlers.GetLineNumber())

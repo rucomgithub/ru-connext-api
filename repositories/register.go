@@ -47,12 +47,23 @@ type (
 		COURSE_EXAMDATE      string `db:"COURSE_EXAMDATE"`
 	}
 
+	RegisterCourseRepo struct {
+		YEAR          string `db:"YEAR"`
+		SEMESTER      string `db:"SEMESTER"`
+		COURSE_NO            string `db:"COURSE_NO"`
+		STD_CODE            string `db:"STD_CODE"`		
+		MOBILE_TELEPHONE     string `db:"MOBILE_TELEPHONE"`
+		EMAIL_ADDRESS 		 string `db:"EMAIL_ADDRESS"`
+	}
+
 	RegisterRepoInterface interface {
 		GetRegisterAll(std_code, year string) (*[]RegisterRepo, error)
 		GetListYearAll(std_code string) (*[]YearRepo, error)
 		GetListYearSemesterAll(std_code string) (*[]YearSemesterRepo, error)
 		GetScheduleAll(year, semester, studentCode string) (*[]ScheduleRepo, error)
 		GetYearSemesterLatest() (*YearSemesterRepo, error)
+
+		GetRegisterCourse(year, semester, course_no string) (*[]RegisterCourseRepo, error)
 	}
 )
 

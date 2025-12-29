@@ -65,6 +65,25 @@ func (h *studentHandlers) GetGradeAll(c *gin.Context) {
 
 }
 
+func (h *studentHandlers) GetGradeAllById(c *gin.Context) {
+
+	std_code := c.Param("id")
+
+	studentProfileResponse, err := h.studentService.GetGradeAll(std_code)
+	if err != nil {
+		err = errors.New("ไม่พบข้อมูลผลการเรียนนักศึกษา " + std_code + ".")
+		c.Error(err)
+		c.Set("line", handlers.GetLineNumber())
+		c.Set("file", handlers.GetFileName())
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "ไม่พบข้อมูลผลการเรียนนักศึกษา " + std_code + "."})
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, studentProfileResponse)
+
+}
+
 func (h *studentHandlers) GetGradeByYear(c *gin.Context) {
 
 	token, err := middlewares.GetHeaderAuthorization(c)

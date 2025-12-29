@@ -53,6 +53,8 @@ func (s *studentServices) GetGradeAll(std_code string) (*GradeResponse, error) {
 			COURSE_NO: c.COURSE_NO,
 			CREDIT:    c.CREDIT,
 			GRADE:     c.GRADE,
+			COURSE_TYPE_NO : c.COURSE_TYPE_NO,
+			THAI_DESCRIPTION : c.THAI_DESCRIPTION,
 		})
 	}
 

@@ -146,3 +146,31 @@ func (h *registerHandlers) YearSemesterLates(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, mr30Response)
 
 }
+
+func (h *registerHandlers) GetRegisterCourse(c *gin.Context) {
+
+	var requestBody services.RegisterCourseRequest
+
+	err := c.ShouldBindJSON(&requestBody)
+	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
+		c.IndentedJSON(http.StatusUnprocessableEntity, err.Error())
+		c.Abort()
+		return
+	}
+
+	registerResponse, err := h.registerServices.GetRegisterCourse(requestBody.YEAR, requestBody.SEMESTER, requestBody.COURSE_NO)
+	if err != nil {
+		c.Error(err)
+		c.Set("line", GetLineNumber())
+		c.Set("file", GetFileName())
+		c.IndentedJSON(http.StatusUnprocessableEntity, err.Error())
+		c.Abort()
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, registerResponse)
+
+}
