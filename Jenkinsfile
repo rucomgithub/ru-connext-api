@@ -17,11 +17,11 @@ pipeline {
                     sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
                  }
                 sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
-                sh 'docker build -t ru-connext-api .'
+                sh 'docker build -t ru-connext-api-v2 .'
                  dir('/home/ruconnext/ruconnext-dev') {
                     sh 'ls -a'
                     sh 'docker-compose up -d'
-                    sh 'docker-compose up --scale ru-connext-api=5 -d'
+                    sh 'docker-compose up --scale ru-connext-api-v2=5 -d'
                  }
             }
         }
@@ -55,11 +55,11 @@ pipeline {
                     sh 'cp /home/ruconnext/ruconnext-prod/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
                  }
                 sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
-                sh 'docker build -t ru-connext-api .'
+                sh 'docker build -t ru-connext-api-v2 .'
                  dir('/home/ruconnext/ruconnext-prod') {
                     sh 'ls -a'
                     sh 'docker-compose up -d'
-                    sh 'docker-compose up --scale ru-connext-api=10 -d'
+                    sh 'docker-compose up --scale ru-connext-api-v2=10 -d'
                  }
             }
         }
