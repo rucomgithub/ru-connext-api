@@ -15,4 +15,4 @@ FROM oracle/instantclient:21 AS final_stage
 COPY --from=build_stage /app/main /
 COPY environments/config.yaml /environments/
 ENTRYPOINT ["/main"]
-EXPOSE 8885
+EXPOSE 8883
