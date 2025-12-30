@@ -23,7 +23,7 @@ func (g *gradeServices) GradeYear(requestBody GradeRequest) (*GradeResponse, err
 		RECORD:   []gradeRecord{},
 	}
 
-	key := "grade::" + requestBody.STD_CODE + "-" + requestBody.YEAR
+	key := "v2-grade::" + requestBody.STD_CODE + "-" + requestBody.YEAR
 	gradeCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -81,7 +81,7 @@ func (g *gradeServices) GradeAll(std_code string) (*GradeResponse, error) {
 		RECORD:   []gradeRecord{},
 	}
 
-	key := "grade::" + std_code
+	key := "v2-grade::" + std_code
 	gradeCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)

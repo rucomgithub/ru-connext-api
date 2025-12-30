@@ -18,7 +18,7 @@ func (s *studentServices) GetGradeAll(std_code string) (*GradeResponse, error) {
 		GRADE:          []GradeResponseRepo{},
 	}
 
-	key := "master-grade::" + std_code
+	key := "v2-master-grade::" + std_code
 	fmt.Println(key)
 	gradeCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {
@@ -88,7 +88,7 @@ func (s *studentServices) GetGradeByYear(std_code, year string) (*GradeResponse,
 		GRADE:          []GradeResponseRepo{},
 	}
 
-	key := "master-grade-year::" + std_code + "::" + year
+	key := "v2-master-grade-year::" + std_code + "::" + year
 	fmt.Println(key)
 	gradeCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {

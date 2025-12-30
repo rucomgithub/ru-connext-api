@@ -64,7 +64,7 @@ func (g *ondemandServices) GetOndemandAll(requestBody OndemandRequest) (*Ondeman
 	}
 
 
-	key := "ondemand::" + requestBody.SUBJECT_ID + "-" + requestBody.SEMESTER+ "-" + requestBody.YEAR
+	key := "v2-ondemand::" + requestBody.SUBJECT_ID + "-" + requestBody.SEMESTER+ "-" + requestBody.YEAR
 	ondemandCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -146,7 +146,7 @@ func (g *ondemandServices) GetOndemandSubjectCode(requestBody OndemandSubjectCod
 	}
 
 
-	key := "ondemand::" + requestBody.SUBJECT_CODE
+	key := "v2-ondemand::" + requestBody.SUBJECT_CODE
 	ondemandCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)

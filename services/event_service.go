@@ -34,7 +34,7 @@ func (g *EventServices) GetEventListAll(eventRequest EventRequest) (*EventRespon
 		StdID: eventRequest.StdID,
 	}
 
-	key := "event::" + eventRequest.StdID
+	key := "v2-event::" + eventRequest.StdID
 	eventCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)

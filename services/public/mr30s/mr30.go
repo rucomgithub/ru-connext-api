@@ -30,7 +30,7 @@ func (mr30 *mr30Services) GetMr30(course_year, course_semester string) (*Mr30Res
 		RECORD:          []mr30Record{},
 	}
 
-	key := "mr30::" + course_year + "/" + course_semester
+	key := "v2-mr30::" + course_year + "/" + course_semester
 	mr30Cache, err := mr30.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		_ = json.Unmarshal([]byte(mr30Cache), &mr30Response)
@@ -94,7 +94,7 @@ func (mr30 *mr30Services) GetMr30Year() (*Mr30YearResponse, error) {
 		RECORDYEAR: []mr30YearRecord{},
 	}
 
-	key := "mr30::yearall"
+	key := "v2-mr30::yearall"
 	mr30Cache, err := mr30.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		_ = json.Unmarshal([]byte(mr30Cache), &mr30YearResponse)
@@ -141,7 +141,7 @@ func (mr30 *mr30Services) GetMr30Searching(course_year, course_semester, course_
 		RECORD:          []mr30Record{},
 	}
 
-	key := "mr30::" + course_year + "/" + course_semester
+	key := "v2-mr30::" + course_year + "/" + course_semester
 	mr30Cache, err := mr30.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		_ = json.Unmarshal([]byte(mr30Cache), &mr30Response)
@@ -216,7 +216,7 @@ func (mr30 *mr30Services) GetMr30Pagination(course_year, course_semester, limit,
 
 	mr30RecPage := []mr30Record{}
 
-	key := "mr30::" + course_year + "/" + course_semester
+	key := "v2-mr30::" + course_year + "/" + course_semester
 	mr30Cache, err := mr30.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		_ = json.Unmarshal([]byte(mr30Cache), &mr30Response)

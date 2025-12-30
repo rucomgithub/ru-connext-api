@@ -16,7 +16,7 @@ func (s *studentServices) GetRegisterAll(std_code string) (*RegisterResponse, er
 		REGISTER: []RegisterResponseRepo{},
 	}
 
-	key := "master-register::" + std_code
+	key := "v2-master-register::" + std_code
 	fmt.Println(key)
 	registerCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {
@@ -71,7 +71,7 @@ func (s *studentServices) GetRegisterFeeAll(std_code,role string) (*RegisterFeeR
 		FEE: []RegisterFeeResponseRepo{},
 	}
 
-	key := "master-register-fee::" + std_code
+	key := "v2-master-register-fee::" + std_code
 	fmt.Println(key)
 	registerCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {
@@ -127,7 +127,7 @@ func (s *studentServices) GetRegisterByYear(std_code, year string) (*RegisterRes
 		REGISTER: []RegisterResponseRepo{},
 	}
 
-	key := "master-register-year::" + std_code + "::" + year
+	key := "v2-master-register-year::" + std_code + "::" + year
 	fmt.Println(key)
 	registerCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {

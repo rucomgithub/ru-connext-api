@@ -12,7 +12,7 @@ func (s *officerServices) GetQualificationAll() (*[]QualificationResponse, int, 
 
 	qualificationResponses := []QualificationResponse{}
 
-	key := "qualification::all"
+	key := "v2-qualification::all"
 	fmt.Println(key)
 	qualificationCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {

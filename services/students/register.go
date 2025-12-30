@@ -79,7 +79,7 @@ func (s *studentServices) GetRegisterAll(std_code string, year string) (*Registe
 		RECORD:   []registerAllRecord{},
 	}
 
-	key := "register::" + std_code + "-" + year
+	key := "v2-register::" + std_code + "-" + year
 	registerCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		_ = json.Unmarshal([]byte(registerCache), &registerAllResponse)

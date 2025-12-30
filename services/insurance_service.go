@@ -67,7 +67,7 @@ func (g *InsuranceServices) GetInsuranceListAll(insuranceRequest InsuranceReques
 		StudentCode: insuranceRequest.StudentCode,
 	}
 
-	key := "insurance::" + insuranceRequest.StudentCode
+	key := "v2-insurance::" + insuranceRequest.StudentCode
 	insuranceCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)

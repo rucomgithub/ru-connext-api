@@ -23,7 +23,7 @@ func (g *rotcsServices) GetRotcsRegister(requestBody RotcsRequest) (*RotcsRegist
 		Total:       0,
 	}
 
-	key := "rotcs-register:::" + requestBody.StudentCode
+	key := "v2-rotcs-register:::" + requestBody.StudentCode
 	rotcsCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -91,7 +91,7 @@ func (g *rotcsServices) GetRotcsExtend(requestBody RotcsRequest) (*RotcsExtendRe
 		Total:       0,
 	}
 
-	key := "rotcs-extend:::" + requestBody.StudentCode
+	key := "v2-rotcs-extend:::" + requestBody.StudentCode
 	rotcsCache, err := g.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)

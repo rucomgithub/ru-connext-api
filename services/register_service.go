@@ -14,7 +14,7 @@ func (s *registerServices) GetRegisterCourse(year,semester,courseno string,) (*[
 
 	registerCourseResponse := []RegisterCourseResponse{}
 
-	key := "register::course" + year + semester + courseno
+	key := "v2-register::course" + year + semester + courseno
 	registerCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		_ = json.Unmarshal([]byte(registerCache), &registerCourseResponse)
@@ -64,7 +64,7 @@ func (register *registerServices) GetSchedule(std_code string) (*RegisterSchedul
 		RECORD:   []RegisterMr30Record{},
 	}
 
-	key := "registerMr30lates::" + std_code + yearSemester.YEAR + yearSemester.SEMESTER
+	key := "v2-registerMr30lates::" + std_code + yearSemester.YEAR + yearSemester.SEMESTER
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 
@@ -140,7 +140,7 @@ func (register *registerServices) GetScheduleYearSemester(std_code string, reque
 		RECORD:   []RegisterMr30Record{},
 	}
 
-	key := "registerMr30::" + std_code + requestBody.YEAR + requestBody.SEMESTER
+	key := "v2-registerMr30::" + std_code + requestBody.YEAR + requestBody.SEMESTER
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		fmt.Println("cache-register")
@@ -216,7 +216,7 @@ func (register *registerServices) GetRegister(requestBody RegisterRequest) (*Reg
 		RECORD:   []RegisterRecord{},
 	}
 
-	key := "register::" + requestBody.STD_CODE + "-" + requestBody.YEAR
+	key := "v2-register::" + requestBody.STD_CODE + "-" + requestBody.YEAR
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -272,7 +272,7 @@ func (register *registerServices) GetListYear(std_code string) (*RegisterYearRes
 		RECORD:   []registerYearRecord{},
 	}
 
-	key := "register-year::" + std_code
+	key := "v2-register-year::" + std_code
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -324,7 +324,7 @@ func (register *registerServices) GetListYearSemester(std_code string) (*Registe
 		RECORD:   []registerYearSemesterRecord{},
 	}
 
-	key := "register-year-semester::" + std_code
+	key := "v2-register-year-semester::" + std_code
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)
@@ -373,7 +373,7 @@ func (register *registerServices) GetYearSemesterLatest() (*YearSemesterResponse
 		SEMESTER: "",
 	}
 
-	key := "year-semester-latest::"
+	key := "v2-year-semester-latest::"
 	registerCache, err := register.redis_cache.Get(ctx, key).Result()
 	if err == nil {
 		log.Println(err)

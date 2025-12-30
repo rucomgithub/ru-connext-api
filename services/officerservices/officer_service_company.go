@@ -10,7 +10,7 @@ func (s *officerServices) GetCommpanyList(std_code string) (*[]CompanyResponse, 
 
 	companyResponses := []CompanyResponse{}
 
-	key := "company::all"
+	key := "v2-company::all"
 	fmt.Println(key)
 	companyCache, err := s.redis_cache.Get(ctx, key).Result()
 	if err == nil {

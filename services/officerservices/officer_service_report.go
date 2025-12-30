@@ -15,7 +15,7 @@ func (s *officerServices) GetReport(reportRequest *ReportRequest) (*ReportRespon
 		EndDate   : reportRequest.EndDate,
 	}
 
-	key := "report::" + reportRequest.StartDate + reportRequest.EndDate
+	key := "v2-report::" + reportRequest.StartDate + reportRequest.EndDate
 	reportCache, err := s.redis_cache.Get(ctx,key).Result()
 	if err == nil {
 		log.Println(err)
