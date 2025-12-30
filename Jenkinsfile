@@ -64,4 +64,15 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            echo "Deploy Release Success"
+            discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Deploy Image Ru ConneXt API  to ruconnext.ru.ac.th', webhookURL: 'https://discord.com/api/webhooks/1106420995797033051/h9hiBSuS_7Tqt56u7YwSG8DpqemtOMc7vWKUrtwYjmq2ICcd0uXokEgvc-A8bT8XmkG6'
+        }
+        failure {
+            echo "Deploy Release Failed"
+            discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '', result: 'FAILURE', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Deploy Image Ru ConneXt API  to ruconnext.ru.ac.th', webhookURL: 'https://discord.com/api/webhooks/1106420995797033051/h9hiBSuS_7Tqt56u7YwSG8DpqemtOMc7vWKUrtwYjmq2ICcd0uXokEgvc-A8bT8XmkG6'
+        }
+    }
 }
