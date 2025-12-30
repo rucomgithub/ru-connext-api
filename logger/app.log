@@ -12556,3 +12556,69 @@
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/extend","service":"rotcs","status":200,"time":"2025-12-29T07:22:55Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/rotcs/register","service":"rotcs","status":200,"time":"2025-12-29T07:23:26Z"}
 {"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/ondemand/","service":"ondemand","status":200,"time":"2025-12-29T07:27:45Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:54:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:54:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:54:44Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":47,"method":"POST","msg":"sql: no rows in result set, 6590008113","path":"/google/authorization-test","service":"google","status":422,"time":"2025-12-30T02:55:07Z"}
+{"file":"/app/handlers/studenth/studentHandler.go","level":"error","line":47,"method":"POST","msg":"sql: no rows in result set, 6590008113","path":"/google/authorization-test","service":"google","status":422,"time":"2025-12-30T02:55:08Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:55:14Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:55:15Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:55:57Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:55:58Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:56:07Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/google/authorization-test","service":"google","status":200,"time":"2025-12-30T02:56:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:09:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:09:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:09:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:09:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:09:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:10:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:10:07Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"ไม่พบข้อมูลผลการศึกษา","path":"/grade/6299999991/year","service":"grade","status":404,"time":"2025-12-30T03:10:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:10:20Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:10:22Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:10:28Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:10:29Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch","path":"/grade/6299999993/year","service":"grade","status":400,"time":"2025-12-30T03:14:38Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch","path":"/grade/6299999993/year","service":"grade","status":400,"time":"2025-12-30T03:14:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999993/year","service":"grade","status":200,"time":"2025-12-30T03:14:53Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999993/year","service":"grade","status":200,"time":"2025-12-30T03:14:54Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999993/year","service":"grade","status":200,"time":"2025-12-30T03:14:55Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999993/year","service":"grade","status":200,"time":"2025-12-30T03:15:04Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999993/year","service":"grade","status":200,"time":"2025-12-30T03:15:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999993/year","service":"grade","status":200,"time":"2025-12-30T03:15:05Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:15:12Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:15:13Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:15:24Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991/year","service":"grade","status":200,"time":"2025-12-30T03:15:25Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:17:14Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:17:16Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"YEAR: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:18:03Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"YEAR: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:18:14Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"YEAR: less than min, regular expression mismatch, STD_CODE: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:18:35Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch, YEAR: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:21:34Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch, YEAR: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:21:51Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"YEAR: less than min, regular expression mismatch, STD_CODE: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:21:52Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch, YEAR: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:21:52Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"YEAR: less than min, regular expression mismatch, STD_CODE: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:21:53Z"}
+{"file":"/app/handlers/grade.go","level":"error","line":33,"method":"POST","msg":"STD_CODE: less than min, regular expression mismatch, YEAR: less than min, regular expression mismatch","path":"/grade/6299999991/year","service":"grade","status":400,"time":"2025-12-30T03:22:09Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:24:41Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:24:42Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:24:43Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:25:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:25:10Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/grade/6299999991","service":"grade","status":200,"time":"2025-12-30T03:25:11Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-30T03:39:35Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-30T03:39:37Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-30T03:39:38Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-30T03:39:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-30T03:39:39Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-30T03:39:40Z"}
+{"file":"","level":"info","line":"","method":"POST","msg":"Request completed.","path":"/register/6299999991/schedulelatest","service":"register","status":200,"time":"2025-12-30T03:39:41Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-30T13:12:03Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-30T13:12:05Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-30T13:12:05Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-30T13:12:07Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-30T13:17:56Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-30T13:18:46Z"}
+{"file":"","level":"info","line":"","method":"GET","msg":"Request completed.","path":"/register/yearsemesterlates","service":"register","status":200,"time":"2025-12-30T13:18:48Z"}
