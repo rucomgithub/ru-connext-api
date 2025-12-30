@@ -21,7 +21,7 @@ pipeline {
                  dir('/home/ruconnext/ruconnext-dev') {
                     sh 'ls -a'
                     sh 'docker-compose up -d'
-                    sh 'docker-compose up --scale ru-connext-api-v2=5 -d'
+                    sh 'docker-compose up --scale ru-connext-api=5 --scale ru-connext-api-v2=5 -d'
                  }
             }
         }
