@@ -17,11 +17,11 @@ pipeline {
                     sh 'cp /home/ruconnext/ruconnext-dev/config.yaml /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
                  }
                 sh 'ls -la /home/ruconnext/jenkins_agent/workspace/${JOB_NAME}/environments'
-                sh 'docker build -t ru-connext-api-v2 .'
+                sh 'docker build -t ruconnext-api-v2 .'
                  dir('/home/ruconnext/ruconnext-dev') {
                     sh 'ls -a'
                     sh 'docker-compose up -d'
-                    sh 'docker-compose up --scale ru-connext-api-v2=5 -d'
+                    sh 'docker-compose up --scale ru-connext-api=5 --scale ru-connext-api-v2=5 -d'
                  }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
                  echo 'testing...'
                 dir('/home/ruconnext/docker/k6') {
                     sh 'ls -a'
-                    sh 'docker-compose run --rm k6 run --summary-export=/scripts/results.json /scripts/testapi/test_spec.js'
+                    sh 'docker-compose run --rm k6 run --summary-export=/scripts/results.json /scripts/testapi-v2/test_spec.js'
                 }
             }
         }
@@ -59,19 +59,19 @@ pipeline {
                  dir('/home/ruconnext/ruconnext-prod') {
                     sh 'ls -a'
                     sh 'docker-compose up -d'
-                    sh 'docker-compose up --scale ru-connext-api-v2=10 -d'
+                    sh 'docker-compose up --scale ru-connext-api=5 --scale ru-connext-api-v2=10 -d'
                  }
             }
         }
     }
-    
+
     post {
         success {
-            echo "Release Success"
+            echo "Deploy Release Success"
             discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Deploy Image Ru ConneXt API  to ruconnext.ru.ac.th', webhookURL: 'https://discord.com/api/webhooks/1106420995797033051/h9hiBSuS_7Tqt56u7YwSG8DpqemtOMc7vWKUrtwYjmq2ICcd0uXokEgvc-A8bT8XmkG6'
         }
         failure {
-            echo "Release Failed"
+            echo "Deploy Release Failed"
             discordSend description: '', enableArtifactsList: true, footer: '', image: '', link: '', result: 'FAILURE', scmWebUrl: '', showChangeset: true, thumbnail: '', title: 'Deploy Image Ru ConneXt API  to ruconnext.ru.ac.th', webhookURL: 'https://discord.com/api/webhooks/1106420995797033051/h9hiBSuS_7Tqt56u7YwSG8DpqemtOMc7vWKUrtwYjmq2ICcd0uXokEgvc-A8bT8XmkG6'
         }
     }
