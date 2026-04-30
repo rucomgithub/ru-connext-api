@@ -3,6 +3,7 @@ package routers
 import (
 	"log"
 	"net/http"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
@@ -40,7 +41,7 @@ import (
 )
 
 func Setup(router *gin.Engine, oracle_db *sqlx.DB, oracle_db_dbg *sqlx.DB, redis_cache *redis.Client, mysql_db *sqlx.DB, mysql_db_stdapps *sqlx.DB, mysql_db_rotcs *sqlx.DB, oracleScholar_db *sqlx.DB, database *_db.OracleDB, clientID string) {
-
+	fmt.Println(clientID);
 	jsonFileLogger, err := logger.NewJSONFileLogger("/logger/app.log")
 	if err != nil {
 		log.Fatal("Failed to open log file:", err)
