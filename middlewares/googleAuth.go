@@ -118,7 +118,7 @@ func verifyGoogleAuth(id_token string) (*oauth2.Tokeninfo, error) {
 }
 
 func verifyGoogleAuthIDToken(idToken string) (*idtoken.Payload, error) {
-	google_client_appid := viper.GetString("google.google_client_appid")
+	google_client_id := viper.GetString("google.google_client_id")
 
 	if idToken == "" {
 		return nil, errors.New("ID token is empty")
@@ -129,7 +129,7 @@ func verifyGoogleAuthIDToken(idToken string) (*idtoken.Payload, error) {
 	ctx := context.Background()
 
 	// 🔍 FIRST: Validate WITHOUT audience to see what's in the token
-	payload, err := idtoken.Validate(ctx, idToken, google_client_appid)
+	payload, err := idtoken.Validate(ctx, idToken, google_client_id)
 	if err != nil {
 		log.Printf("Error validating ID token: %v", err)
 		return nil, err
