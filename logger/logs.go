@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"io"
 	"os"
 	"runtime"
 	"strings"
@@ -20,7 +21,9 @@ func NewJSONFileLogger(filePath string) (*JSONFileLogger, error) {
 	}
 
 	logger := logrus.New()
-	logger.SetOutput(file)
+	// เขียนทั้งไฟล์และ stdout — เดิมเขียนแค่ไฟล์ ทำให้ `docker compose logs`
+	// (อ่านได้แค่ stdout/stderr ของ container) ไม่เห็น log ของทุก request เลย
+	logger.SetOutput(io.MultiWriter(file, os.Stdout))
 	logger.SetFormatter(&logrus.JSONFormatter{})
 
 	return &JSONFileLogger{log: logger}, nil
